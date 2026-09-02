@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern recipe website for kitchen inspiration, quick meals, and cooking tips." />
+    <title>Kitchenlo | Fresh Recipes for Every Home Cook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" class="active" data-key="navHome">Home</a>
+          <a href="recipes.html" data-key="navRecipes">Recipes</a>
+          <a href="categories.html" data-key="navCategories">Categories</a>
+          <a href="about.html" data-key="navAbout">About</a>
+          <a href="contact.html" data-key="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
+            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
+            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-key="homeEyebrow">Fresh ideas for the kitchen</p>
+            <h1 data-key="homeTitle">Cook meals that feel cozy, bright, and effortless.</h1>
+            <p class="hero-text" data-key="homeText">Discover quick dinners, comforting classics, and seasonal favorites with simple steps and bold flavor.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="recipes.html" data-key="homeCta">Explore Recipes</a>
+            </div>
+            <div class="hero-badges" role="group" aria-label="Recipe filters">
+              <a class="badge-link" href="recipes.html#quick" data-key="badgeQuick">30-minute meals</a>
+              <a class="badge-link" href="recipes.html#weeknight" data-key="badgeWeeknight">Weeknight favorites</a>
+              <a class="badge-link" href="recipes.html#healthy" data-key="badgeHealthy">Healthy swaps</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="recipe-showcase">
+              <img id="recipeOfTheDayImage" class="recipe-image" src="" data-alt-key="recipeOfTheDayImageAlt" alt="Recipe of the day" />
+              <div class="recipe-info">
+                <p class="eyebrow" data-key="recipeOfDayLabel">Recipe of the day</p>
+                <h2 id="recipeOfTheDayTitle" data-key="loadingText">Loading...</h2>
+                <p id="recipeOfTheDayText" data-key="recipeOfDayText">Finding a fresh dish for today.</p>
+                <a id="recipeOfTheDayLink" class="btn btn-secondary" href="recipes.html" data-key="recipeOfDayButton">See this recipe</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-strip">
+        <div class="container stats-grid">
+          <div>
+            <strong>120+</strong>
+            <span data-key="statRecipes">Recipes shared</span>
+          </div>
+          <div>
+            <strong>4.9/5</strong>
+            <span data-key="statRating">Average rating</span>
+          </div>
+          <div>
+            <strong>15 min</strong>
+            <span data-key="statPrep">Fastest prep</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span data-key="statFriendly">Home-cook friendly</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow" data-key="popularEyebrow">Popular this week</p>
+            <h2 data-key="popularTitle">Make something delicious tonight.</h2>
+          </div>
+          <div class="card-grid">
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#flatbread"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80" alt="Fresh flatbread with roasted vegetables" /></a>
+              <h3 data-key="cardSoupTitle">Roasted Veggie Flatbread</h3>
+              <p data-key="cardSoupText">Layered with herbed cream cheese, roasted vegetables, and a crisp finish.</p>
+              <a class="btn btn-secondary" href="recipes.html#flatbread" data-key="cardSoupButton">View Recipe</a>
+            </article>
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#noodles"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=900&q=80" alt="A colorful bowl of noodles with vegetables" /></a>
+              <h3 data-key="cardSalmonTitle">Sesame Noodle Bowl</h3>
+              <p data-key="cardSalmonText">A speedy noodle dish with crunchy vegetables and a nutty sauce.</p>
+              <a class="btn btn-secondary" href="recipes.html#noodles" data-key="cardSalmonButton">View Recipe</a>
+            </article>
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#chicken"><img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=900&q=80" alt="Lemon chicken served with potatoes" /></a>
+              <h3 data-key="cardParfaitTitle">One-Pan Lemon Chicken</h3>
+              <p data-key="cardParfaitText">Bright citrus, garlic, and baby potatoes make this dinner feel special with minimal cleanup.</p>
+              <a class="btn btn-secondary" href="recipes.html#chicken" data-key="cardParfaitButton">View Recipe</a>
+            </article>
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#chickpea-wrap"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80" alt="A vibrant chickpea wrap with fresh greens" /></a>
+              <h3 data-key="cardWrapTitle">Crispy Chickpea Wrap</h3>
+              <p data-key="cardWrapText">Crunchy roasted chickpeas, greens, and a creamy drizzle make a quick lunch you’ll repeat.</p>
+              <a class="btn btn-secondary" href="recipes.html#chickpea-wrap" data-key="cardWrapButton">View Recipe</a>
+            </article>
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#mushroom-risotto"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80" alt="Creamy mushroom risotto served in a bowl" /></a>
+              <h3 data-key="cardRisottoTitle">Creamy Mushroom Risotto</h3>
+              <p data-key="cardRisottoText">Silky rice, earthy mushrooms, and parmesan create a cozy dinner that feels restaurant-worthy.</p>
+              <a class="btn btn-secondary" href="recipes.html#mushroom-risotto" data-key="cardRisottoButton">View Recipe</a>
+            </article>
+            <article class="card recipe-card">
+              <a class="recipe-image-link" href="recipes.html#berry-crumble"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="A berry crumble dessert in a baking dish" /></a>
+              <h3 data-key="cardCrumbleTitle">Berry Oat Crumble</h3>
+              <p data-key="cardCrumbleText">Warm berries, oat topping, and a spoonful of vanilla make the perfect finish to any meal.</p>
+              <a class="btn btn-secondary" href="recipes.html#berry-crumble" data-key="cardCrumbleButton">View Recipe</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt-bg">
+        <div class="container split-section">
+          <div>
+            <p class="eyebrow" data-key="whyEyebrow">Why cooks love us</p>
+            <h2 data-key="whyTitle">Beautiful recipes, practical directions, and comforting flavor.</h2>
+            <p data-key="whyText">Kitchenlo brings together approachable meals, seasonal planning, and easy-to-follow steps that keep cooking fun.</p>
+            <a class="btn btn-primary" href="about.html" data-key="whyButton">Learn More</a>
+          </div>
+          <div class="preview-stack">
+            <div class="preview-card">
+              <h3 data-key="previewOneTitle">Quick weeknight dinners</h3>
+              <p data-key="previewOneText">Every recipe is designed to save time without sacrificing taste.</p>
+            </div>
+            <div class="preview-card">
+              <h3 data-key="previewTwoTitle">Flexible ingredient swaps</h3>
+              <p data-key="previewTwoText">Use what you have at home and still get a satisfying result.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

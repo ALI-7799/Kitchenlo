@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Kitchenlo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" data-key="navHome">Home</a>
+          <a href="recipes.html" data-key="navRecipes">Recipes</a>
+          <a href="categories.html" data-key="navCategories">Categories</a>
+          <a href="about.html" class="active" data-key="navAbout">About</a>
+          <a href="contact.html" data-key="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
+            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
+            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-key="aboutEyebrow">About Kitchenlo</p>
+          <h1 data-key="aboutTitle">We make home cooking feel inspired, practical, and joyful.</h1>
+          <p data-key="aboutIntro">Kitchenlo is a recipe destination built for busy people who still want meals full of warmth and personality.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container about-grid">
+          <div>
+            <h2 data-key="aboutHeading">Built for real kitchens.</h2>
+            <p data-key="aboutParaOne">From weeknight dinners to cozy weekend bakes, our recipes are created to work in real homes with real schedules. We focus on flavor, simplicity, and flexible ingredients.</p>
+            <p data-key="aboutParaTwo">Whether you need a quick lunch, a nourishing dinner, or a crowd-pleasing dessert, Kitchenlo is here to help you cook with confidence.</p>
+          </div>
+          <div class="card highlight-card">
+            <h3 data-key="aboutListTitle">What you’ll find</h3>
+            <ul>
+              <li data-key="aboutListOne">Easy meal ideas for any day</li>
+              <li data-key="aboutListTwo">Clear steps and pantry-friendly tips</li>
+              <li data-key="aboutListThree">Recipes that balance comfort and freshness</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

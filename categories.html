@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories | Kitchenlo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" data-key="navHome">Home</a>
+          <a href="recipes.html" data-key="navRecipes">Recipes</a>
+          <a href="categories.html" class="active" data-key="navCategories">Categories</a>
+          <a href="about.html" data-key="navAbout">About</a>
+          <a href="contact.html" data-key="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
+            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
+            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-key="categoryEyebrow">Browse by category</p>
+          <h1 data-key="categoryTitle">Find recipes that match your mood, time, and cravings.</h1>
+          <p data-key="categoryIntro">Choose from quick dinners, comforting classics, fresh bowls, and sweet treats.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card-grid">
+          <article class="card category-card">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="A hearty dinner plated on a table" />
+            <h3 data-key="categoryQuickTitle">Quick Dinners</h3>
+            <p data-key="categoryQuickText">Fast dinners with bold flavor and minimal prep.</p>
+            <ul class="category-list">
+              <li data-key="quickCategoryItem01">Garlic Butter Salmon</li>
+              <li data-key="quickCategoryItem02">Pesto Chicken Tortellini</li>
+              <li data-key="quickCategoryItem03">Crispy Taco Rice Bowls</li>
+              <li data-key="quickCategoryItem04">Miso Noodle Stir-Fry</li>
+              <li data-key="quickCategoryItem05">Mediterranean Flatbread</li>
+              <li data-key="quickCategoryItem06">Honey Soy Chicken Skillet</li>
+              <li data-key="quickCategoryItem07">Spinach Ricotta Toasts</li>
+              <li data-key="quickCategoryItem08">Smoky Tomato Pasta</li>
+              <li data-key="quickCategoryItem09">Lemon Herb Shrimp</li>
+              <li data-key="quickCategoryItem10">Cheesy Broccoli Quesadillas</li>
+            </ul>
+            <a class="btn btn-secondary" href="recipes.html#quick-dinners" data-key="categoryQuickButton">See recipes</a>
+          </article>
+          <article class="card category-card">
+            <img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=900&q=80" alt="A fresh healthy bowl with vegetables and grains" />
+            <h3 data-key="categoryHealthyTitle">Healthy Food</h3>
+            <p data-key="categoryHealthyText">Light, fresh dishes packed with nourishment and balance.</p>
+            <ul class="category-list">
+              <li data-key="healthyCategoryItem01">Mediterranean Chickpea Salad</li>
+              <li data-key="healthyCategoryItem02">Green Protein Smoothie Bowl</li>
+              <li data-key="healthyCategoryItem03">Avocado Quinoa Bowl</li>
+              <li data-key="healthyCategoryItem04">Lentil Herb Soup</li>
+              <li data-key="healthyCategoryItem05">Roasted Veggie Wrap</li>
+              <li data-key="healthyCategoryItem06">Citrus Kale Salad</li>
+              <li data-key="healthyCategoryItem07">Herbed Yogurt Bowl</li>
+              <li data-key="healthyCategoryItem08">Stuffed Bell Peppers</li>
+              <li data-key="healthyCategoryItem09">Warm Farro Salad</li>
+              <li data-key="healthyCategoryItem10">Coconut Rice Bowl</li>
+            </ul>
+            <a class="btn btn-secondary" href="recipes.html#healthy-food" data-key="categoryHealthyButton">See recipes</a>
+          </article>
+          <article class="card category-card">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" alt="A styled dessert with fresh berries" />
+            <h3 data-key="categoryDessertTitle">Desserts</h3>
+            <p data-key="categoryDessertText">Sweet finishes for cozy evenings and easy celebrations.</p>
+            <ul class="category-list">
+              <li data-key="dessertCategoryItem01">Chocolate Lava Mug Cake</li>
+              <li data-key="dessertCategoryItem02">Lemon Berry Tartlets</li>
+              <li data-key="dessertCategoryItem03">Vanilla Rice Pudding</li>
+              <li data-key="dessertCategoryItem04">Berry Oat Crumble</li>
+              <li data-key="dessertCategoryItem05">Panna Cotta Cups</li>
+              <li data-key="dessertCategoryItem06">Mini Lemon Bars</li>
+              <li data-key="dessertCategoryItem07">Honey Yogurt Parfait</li>
+              <li data-key="dessertCategoryItem08">Chocolate Banana Pops</li>
+              <li data-key="dessertCategoryItem09">Cinnamon Apple Crisp</li>
+              <li data-key="dessertCategoryItem10">Almond Berry Tart</li>
+            </ul>
+            <a class="btn btn-secondary" href="recipes.html#desserts" data-key="categoryDessertButton">See recipes</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

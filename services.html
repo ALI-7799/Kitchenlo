@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services | Kitchenlo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" data-key="navHome">Home</a>
+          <a href="about.html" data-key="navAbout">About</a>
+          <a href="services.html" class="active" data-key="navServices">Services</a>
+          <a href="projects.html" data-key="navProjects">Projects</a>
+          <a href="contact.html" data-key="navContact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-key="servicesEyebrow">Services</p>
+          <h1 data-key="servicesTitle">Flexible support for founders, creatives, and growing businesses.</h1>
+          <p data-key="servicesIntro">Choose a package that fits your stage and goals, whether you need a fresh launch or a full redesign.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card-grid">
+          <article class="card service-card">
+            <h3 data-key="serviceLaunchTitle">Launch Site</h3>
+            <p class="price" data-key="serviceLaunchPrice">From $1,200</p>
+            <ul>
+              <li data-key="serviceLaunchItemOne">Custom one-page launch site</li>
+              <li data-key="serviceLaunchItemTwo">Modern visuals and layout</li>
+              <li data-key="serviceLaunchItemThree">Fast delivery and mobile-ready</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3 data-key="serviceGrowthTitle">Growth Website</h3>
+            <p class="price" data-key="serviceGrowthPrice">From $2,500</p>
+            <ul>
+              <li data-key="serviceGrowthItemOne">Multi-page website structure</li>
+              <li data-key="serviceGrowthItemTwo">SEO foundations</li>
+              <li data-key="serviceGrowthItemThree">CMS-friendly content setup</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3 data-key="servicePremiumTitle">Premium Redesign</h3>
+            <p class="price" data-key="servicePremiumPrice">From $4,000</p>
+            <ul>
+              <li data-key="servicePremiumItemOne">Full visual refresh</li>
+              <li data-key="servicePremiumItemTwo">UX improvements and messaging</li>
+              <li data-key="servicePremiumItemThree">Ongoing optimization support</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-key="footerAbout">About</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

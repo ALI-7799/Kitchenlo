@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories | Kitchenlo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" data-key="navHome">Home</a>
+          <a href="recipes.html" data-key="navRecipes">Recipes</a>
+          <a href="categories.html" class="active" data-key="navCategories">Categories</a>
+          <a href="about.html" data-key="navAbout">About</a>
+          <a href="contact.html" data-key="navContact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Toggle color theme">☀︎</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-key="projectsEyebrow">Browse by category</p>
+          <h1 data-key="projectsTitle">Find recipes that match your mood, time, and cravings.</h1>
+          <p data-key="projectsIntro">Choose from quick dinners, comforting classics, fresh bowls, and sweet treats.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card-grid">
+          <article class="card category-card">
+            <h3 data-key="projectsQuickTitle">Quick Dinners</h3>
+            <p data-key="projectsQuickText">Fast meals with minimal prep and maximum flavor.</p>
+          </article>
+          <article class="card category-card">
+            <h3 data-key="projectsBreakfastTitle">Breakfast</h3>
+            <p data-key="projectsBreakfastText">Warm pastries, brunch plates, and energizing bowls.</p>
+          </article>
+          <article class="card category-card">
+            <h3 data-key="projectsDessertTitle">Desserts</h3>
+            <p data-key="projectsDessertText">Soft bakes, chilled treats, and simple sweets.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

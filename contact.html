@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Kitchenlo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Kitchenlo</a>
+        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav">
+          <a href="index.html" data-key="navHome">Home</a>
+          <a href="recipes.html" data-key="navRecipes">Recipes</a>
+          <a href="categories.html" data-key="navCategories">Categories</a>
+          <a href="about.html" data-key="navAbout">About</a>
+          <a href="contact.html" class="active" data-key="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
+            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
+            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          </div>
+          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow" data-key="contactEyebrow">Contact us</p>
+          <h1 data-key="contactTitle">Share your favorite recipe idea or ask for inspiration.</h1>
+          <p data-key="contactIntro">We’d love to hear what you’re cooking and what you want to see next.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-grid">
+          <form class="card contact-form" id="contactForm">
+            <label data-key="contactNameLabel">
+              Name
+              <input type="text" name="name" data-placeholder-key="contactNamePlaceholder" placeholder="Your name" required />
+            </label>
+            <label data-key="contactEmailLabel">
+              Email
+              <input type="email" name="email" data-placeholder-key="contactEmailPlaceholder" placeholder="you@example.com" required />
+            </label>
+            <label data-key="contactTopicLabel">
+              Topic
+              <select name="topic">
+                <option data-key="contactOptionRecipe">Recipe request</option>
+                <option data-key="contactOptionTip">Cooking tip</option>
+                <option data-key="contactOptionSwap">Ingredient swap</option>
+                <option data-key="contactOptionFeedback">General feedback</option>
+              </select>
+            </label>
+            <label data-key="contactMessageLabel">
+              Message
+              <textarea name="message" rows="5" data-placeholder-key="contactMessagePlaceholder" placeholder="Tell us what you’d like to cook or learn"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit" data-key="contactSubmit">Send Message</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+          <div class="card info-card">
+            <h3 data-key="contactInfoTitle">Visit the kitchen</h3>
+            <p data-key="contactInfoEmail">Email: hello@kitchenlo.com</p>
+            <p data-key="contactInfoInspiration">Inspiration: Daily recipe updates</p>
+            <p data-key="contactInfoResponse">Response: Usually within one business day</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
+          <a href="contact.html" data-key="footerContact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
