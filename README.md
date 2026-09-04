@@ -72,8 +72,9 @@ No rebuild needed for CSS-only changes.
 Built for recipe search from the ground up:
 
 - Every recipe emits full `Recipe` structured data — ingredients, `HowToStep`
-  instructions, ISO 8601 times, `AggregateRating` and `NutritionInformation` —
-  which is what makes Google eligible to show rich recipe results.
+  instructions, ISO 8601 times and `NutritionInformation` — which is what makes
+  Google eligible to show rich recipe results. (`AggregateRating` is deliberately
+  omitted; see below.)
 - Every recipe and guide also emits `FAQPage` schema from its Q&A section.
 - `BreadcrumbList` on every page; `WebSite` + `SearchAction` and `Organization` on
   the home page; `ItemList` on the index and category pages.
@@ -82,6 +83,10 @@ Built for recipe search from the ground up:
 - `sitemap.xml` with per-page `lastmod` and priority, referenced from `robots.txt`.
 - Private pages (`account`, `login`, `signup`, `favorites`, `shopping-list`) are
   `noindex` and excluded from the sitemap.
+- Images carry explicit `width`/`height` to avoid layout shift, lazy-load below the
+  fold, and the recipe hero uses `fetchpriority="high"`.
+- Six curated collection pages target long-tail queries the categories miss, each
+  with original copy rather than a bare filtered list.
 
 ### A deliberate omission: star ratings
 
@@ -98,8 +103,6 @@ without one.
 Once you are collecting genuine ratings from real users, set
 `ratings: { enabled: true }` in `src/data/site.js` and rebuild. That restores the
 stars across the UI and adds `aggregateRating` back to the Recipe schema.
-- Images carry explicit `width`/`height` to avoid layout shift, lazy-load below the
-  fold, and the recipe hero uses `fetchpriority="high"`.
 
 ## Images
 
