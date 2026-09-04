@@ -41,7 +41,9 @@ function home() {
               <a href="recipes/${esc(featured.slug)}.html" class="showcase-media">
                 <img src="${esc(C.imageUrl(featured, 0))}" alt="${esc(
     featured.imageAlt
-  )}" width="600" height="400" loading="eager" decoding="async" />
+  )}" width="600" height="400" loading="eager" decoding="async" data-fallback="${esc(
+    featured.fallbackImage
+  )}" />
               </a>
               <h2><a href="recipes/${esc(featured.slug)}.html">${esc(featured.title)}</a></h2>
               <p>${esc(featured.description)}</p>
@@ -547,7 +549,9 @@ function recipePage(recipe) {
             <figure class="recipe-hero-media">
               <img src="${esc(C.imageUrl(recipe, 1))}" alt="${esc(
     recipe.imageAlt
-  )}" itemprop="image" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" />
+  )}" itemprop="image" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" data-fallback="${esc(
+    rel(recipe.fallbackImage, 1)
+  )}" />
             </figure>
           </div>
         </section>

@@ -56,8 +56,10 @@ guides.forEach((guide) => pages.push(core.guidePage(guide)));
 
 /* ------------------------------------------------- generated cover art --- */
 
+// Art is written for every recipe: as the image where there is no photograph,
+// and as the browser fallback where a hotlinked photo might fail.
+Recipes.all.forEach((recipe) => write(recipe.fallbackImage, placeholderSvg(recipe)));
 const generated = Recipes.all.filter((r) => r.generatedImage);
-generated.forEach((recipe) => write(recipe.image, placeholderSvg(recipe)));
 
 /* -------------------------------------------------------------- render --- */
 
@@ -181,6 +183,4 @@ console.log(`    ${counts.guides} guide pages`);
 console.log(`    ${written.length - counts.recipes - counts.categories - counts.guides} other pages`);
 console.log(`  sitemap.xml with ${pages.length - excluded.size} URLs`);
 console.log(`  robots.txt, site.webmanifest, favicon.svg`);
-if (generated.length) {
-  console.log(`  ${generated.length} generated cover images (recipes awaiting photography)`);
-}
+console.log(`  ${Recipes.all.length} cover images (${generated.length} used directly, rest as photo fallbacks)`);

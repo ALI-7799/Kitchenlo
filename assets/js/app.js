@@ -26,6 +26,32 @@
     return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
   }
 
+  /* ------------------------------------------------------ image fallback */
+
+  /**
+   * Every recipe photo is hotlinked from a third-party host, so any of them can
+   * disappear without warning. Rather than showing a broken-image icon, swap in
+   * the locally generated cover art for that recipe.
+   *
+   * The error event does not bubble, so this listens in the capture phase and
+   * catches images added later by the index, favorites and planner views.
+   */
+  document.addEventListener(
+    'error',
+    function (event) {
+      var img = event.target;
+      if (!img || img.tagName !== 'IMG') return;
+
+      var fallback = img.getAttribute('data-fallback');
+      // Clear the attribute first, so a failing fallback cannot loop.
+      if (!fallback) return;
+      img.removeAttribute('data-fallback');
+      img.classList.add('is-fallback');
+      img.src = fallback;
+    },
+    true
+  );
+
   /* ---------------------------------------------------------------- year */
 
   $$('[data-year]').forEach(function (el) {
@@ -371,6 +397,7 @@
     var base = prefix === undefined ? ROOT : prefix;
     var href = base + 'recipes/' + recipe.slug + '.html';
     var img = /^https?:/.test(recipe.image) ? recipe.image : base + recipe.image;
+    var fallback = base + recipe.fallbackImage;
     var tags = (recipe.diet || [])
       .slice(0, 2)
       .map(function (d) {
@@ -382,7 +409,8 @@
       '<article class="card recipe-card" data-slug="' + e(recipe.slug) + '">' +
       '<a class="card-media" href="' + href + '" tabindex="-1" aria-hidden="true">' +
       '<img src="' + e(img) + '" alt="' + e(recipe.imageAlt) +
-      '" loading="lazy" decoding="async" width="600" height="400" />' +
+      '" loading="lazy" decoding="async" width="600" height="400" data-fallback="' +
+      e(fallback) + '" />' +
       '<span class="card-badge">' + e(recipe.difficulty) + '</span></a>' +
       '<button class="fav-btn" type="button" data-fav="' + e(recipe.slug) +
       '" aria-label="Save ' + e(recipe.title) + '" aria-pressed="false">' +

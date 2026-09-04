@@ -28,7 +28,7 @@ shopping list. Run it after any change:
 
 ```
 npm install        # once, for jsdom
-npm test           # builds, then runs 92 checks
+npm test           # builds, then runs 99 checks
 ```
 
 ## Project layout
@@ -63,9 +63,11 @@ and the meal planner.
 and rebuild. Every page updates, because the header and footer are defined once in
 `src/templates/layout.js`.
 
-**Change the design.** Edit `assets/css/styles.css`. Colours, spacing and radii are
-CSS custom properties at the top of the file, with a full dark theme below them.
-No rebuild needed for CSS-only changes.
+**Change the design.** Edit `assets/css/styles.css`. No rebuild needed for
+CSS-only changes. The header comment states the five rules the system follows;
+the short version is that structure comes from hairline rules and space rather
+than drop shadows, corners are nearly square, and every measurement comes from
+the spacing and type scales in section 1 rather than being typed by hand.
 
 ## SEO
 
@@ -112,8 +114,14 @@ deterministic SVG cover art in `assets/img/` instead — distinct per recipe,
 derived from the slug. This is deliberate: a duplicated stock photo or a hotlink
 that 404s is worse than honest illustration.
 
-To swap in a real photo, replace the `null` with a URL and rebuild. The generated
-file is simply no longer referenced.
+To swap in a real photo, replace the `null` with a URL and rebuild.
+
+Cover art is generated for **every** recipe, not just the ten without a photo.
+The extra 30 act as fallbacks: each `<img>` carries a `data-fallback`, and if a
+hotlinked photo fails to load the browser swaps in that recipe's artwork instead
+of showing a broken-image icon. Every photo on this site points at a third-party
+host, so any of them can disappear without warning. All 40 files together are
+about 40 KB.
 
 Two of the original photos are also reused across recipes (one appears on four),
 which predates this rebuild and is worth fixing when you commission photography:

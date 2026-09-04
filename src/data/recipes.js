@@ -43,12 +43,17 @@
     return acc.concat(list);
   }, []);
 
-  /* A recipe with no photograph gets generated cover art. The path is stored
-     site-root-relative (no leading slash) so the depth-aware link helper can
-     resolve it from nested directories. */
+  /* Every recipe gets generated cover art, stored site-root-relative so the
+     depth-aware link helper can resolve it from nested directories.
+     - No photograph: the artwork is the image.
+     - Has a photograph: the artwork is the fallback, swapped in by the browser
+       if the hotlinked photo fails to load. Every photo here points at a
+       third-party host, so a 404 there should degrade to something deliberate
+       rather than a broken-image icon. */
   all.forEach(function (recipe) {
+    recipe.fallbackImage = 'assets/img/recipe-' + recipe.slug + '.svg';
     if (!recipe.image) {
-      recipe.image = 'assets/img/recipe-' + recipe.slug + '.svg';
+      recipe.image = recipe.fallbackImage;
       recipe.imageAlt = recipe.imageAlt || recipe.title;
       recipe.generatedImage = true;
     }

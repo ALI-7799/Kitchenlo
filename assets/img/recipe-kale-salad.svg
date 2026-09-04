@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Citrus Kale Salad">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eab464"/>
+      <stop offset="1" stop-color="#b8471f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="298" cy="273" r="185" fill="#fff" opacity="0.05"/><circle cx="637" cy="530" r="181" fill="#fff" opacity="0.06"/><circle cx="660" cy="438" r="63" fill="#fff" opacity="0.10"/><circle cx="999" cy="695" r="189" fill="#fff" opacity="0.11"/>
+  <g transform="translate(600 400) scale(2.1)" color="#6d2a10">
+    <circle cx="0" cy="6" r="78" fill="rgba(255,255,255,.92)"/>
+    <circle cx="0" cy="6" r="52" fill="none" stroke="currentColor" stroke-width="6" opacity=".45"/>
+    <path d="M-26 6c0-30 22-52 52-52 0 30-22 52-52 52z" fill="currentColor" opacity=".8"/>
+  </g>
+</svg>

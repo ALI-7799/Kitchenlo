@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Berry Oat Crumble">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eab464"/>
+      <stop offset="1" stop-color="#b8471f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="218" cy="640" r="133" fill="#fff" opacity="0.06"/><circle cx="557" cy="-38" r="-17" fill="#fff" opacity="0.03"/><circle cx="580" cy="125" r="141" fill="#fff" opacity="0.11"/><circle cx="919" cy="383" r="137" fill="#fff" opacity="0.05"/>
+  <g transform="translate(600 400) scale(2.1)" color="#6d2a10">
+    <path d="M-70 -20h140l-22 84a16 16 0 0 1-16 12h-48a16 16 0 0 1-16-12z" fill="rgba(255,255,255,.92)"/>
+    <path d="M-70 -20c14-34 126-34 140 0z" fill="currentColor" opacity=".8"/>
+    <circle cx="0" cy="-46" r="12" fill="rgba(255,255,255,.95)"/>
+  </g>
+</svg>

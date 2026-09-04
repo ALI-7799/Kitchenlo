@@ -390,6 +390,31 @@ suite('generated recipe covers', () => {
   check('schema image is absolute', recipeLd.image[0].indexOf('https://') === 0, recipeLd.image[0]);
 });
 
+/* ------------------------------------------------------- image fallback -- */
+
+suite('broken image fallback', () => {
+  const { window, doc, errors } = load('index.html');
+  check('no script errors', errors.length === 0, errors[0]);
+
+  const img = doc.querySelector('.card-media img[data-fallback]');
+  check('cards declare a fallback', !!img, 'no img[data-fallback] found');
+
+  const expected = img.getAttribute('data-fallback');
+  const original = img.getAttribute('src');
+  check('fallback differs from the photo', expected !== original);
+
+  // Simulate the hotlinked photo failing.
+  img.dispatchEvent(new window.Event('error'));
+
+  check('src swapped to generated art', img.getAttribute('src') === expected, img.getAttribute('src'));
+  check('marked as fallback', img.classList.contains('is-fallback'));
+  check('attribute cleared so it cannot loop', !img.hasAttribute('data-fallback'));
+
+  // A second failure must not throw or reassign.
+  img.dispatchEvent(new window.Event('error'));
+  check('second failure is inert', img.getAttribute('src') === expected);
+});
+
 /* ----------------------------------------------------------------- 404 --- */
 
 suite('404.html', () => {

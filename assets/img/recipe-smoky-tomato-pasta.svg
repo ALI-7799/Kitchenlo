@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Smoky Tomato Pasta">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0c987"/>
+      <stop offset="1" stop-color="#c26a2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="803" cy="3" r="4" fill="#fff" opacity="0.02"/><circle cx="464" cy="-255" r="8" fill="#fff" opacity="0.01"/><circle cx="441" cy="-162" r="-4" fill="#fff" opacity="0.04"/><circle cx="102" cy="-420" r="0" fill="#fff" opacity="0.03"/>
+  <g transform="translate(600 400) scale(2.1)" color="#7c3c12">
+    <path d="M-96 24a96 44 0 0 0 192 0z" fill="rgba(255,255,255,.92)"/>
+    <path d="M-96 24h192" stroke="currentColor" stroke-width="6" opacity=".5"/>
+    <path d="M-40 -30c14-18 66-18 80 0" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

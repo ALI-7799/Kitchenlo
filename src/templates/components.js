@@ -68,7 +68,9 @@ function recipeCard(recipe, depth, opts) {
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
                 <img src="${esc(imageUrl(recipe, depth))}" alt="${esc(recipe.imageAlt)}" loading="${
     opts.eager ? 'eager' : 'lazy'
-  }" decoding="async" width="600" height="400" />
+  }" decoding="async" width="600" height="400" data-fallback="${esc(
+    rel(recipe.fallbackImage, depth)
+  )}" />
                 <span class="card-badge">${esc(recipe.difficulty)}</span>
               </a>
               <button class="fav-btn" type="button" data-fav="${esc(

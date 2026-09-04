@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
 
     <script>
@@ -260,7 +260,7 @@
           <div class="card-grid">
             <article class="card recipe-card" data-slug="banana-bread">
               <a class="card-media" href="../recipes/banana-bread.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-banana-bread.svg" alt="A sliced loaf of banana bread with a cracked top" loading="eager" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-banana-bread.svg" alt="A sliced loaf of banana bread with a cracked top" loading="eager" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-banana-bread.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="banana-bread" aria-label="Save One-Bowl Banana Bread" aria-pressed="false">
@@ -278,7 +278,7 @@
             </article>
             <article class="card recipe-card" data-slug="buttermilk-pancakes">
               <a class="card-media" href="../recipes/buttermilk-pancakes.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-buttermilk-pancakes.svg" alt="A stack of fluffy buttermilk pancakes with butter and syrup" loading="eager" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-buttermilk-pancakes.svg" alt="A stack of fluffy buttermilk pancakes with butter and syrup" loading="eager" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-buttermilk-pancakes.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="buttermilk-pancakes" aria-label="Save Fluffy Buttermilk Pancakes" aria-pressed="false">
@@ -296,7 +296,7 @@
             </article>
             <article class="card recipe-card" data-slug="shakshuka">
               <a class="card-media" href="../recipes/shakshuka.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-shakshuka.svg" alt="Shakshuka with eggs poached in a spiced tomato sauce" loading="eager" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-shakshuka.svg" alt="Shakshuka with eggs poached in a spiced tomato sauce" loading="eager" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-shakshuka.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="shakshuka" aria-label="Save Classic Shakshuka" aria-pressed="false">
@@ -315,7 +315,7 @@
             </article>
             <article class="card recipe-card" data-slug="blueberry-muffins">
               <a class="card-media" href="../recipes/blueberry-muffins.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-blueberry-muffins.svg" alt="Bakery-style blueberry muffins with domed sugary tops" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-blueberry-muffins.svg" alt="Bakery-style blueberry muffins with domed sugary tops" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-blueberry-muffins.svg" />
                 <span class="card-badge">Medium</span>
               </a>
               <button class="fav-btn" type="button" data-fav="blueberry-muffins" aria-label="Save Bakery-Style Blueberry Muffins" aria-pressed="false">
@@ -333,7 +333,7 @@
             </article>
             <article class="card recipe-card" data-slug="french-toast">
               <a class="card-media" href="../recipes/french-toast.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-french-toast.svg" alt="Golden brioche French toast dusted with icing sugar and berries" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-french-toast.svg" alt="Golden brioche French toast dusted with icing sugar and berries" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-french-toast.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="french-toast" aria-label="Save Brioche French Toast" aria-pressed="false">
@@ -351,7 +351,7 @@
             </article>
             <article class="card recipe-card" data-slug="overnight-oats">
               <a class="card-media" href="../recipes/overnight-oats.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-overnight-oats.svg" alt="A jar of vanilla overnight oats topped with berries" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-overnight-oats.svg" alt="A jar of vanilla overnight oats topped with berries" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-overnight-oats.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="overnight-oats" aria-label="Save Vanilla Overnight Oats" aria-pressed="false">
@@ -370,7 +370,7 @@
             </article>
             <article class="card recipe-card" data-slug="breakfast-burritos">
               <a class="card-media" href="../recipes/breakfast-burritos.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-breakfast-burritos.svg" alt="Breakfast burritos wrapped in foil, ready for the freezer" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-breakfast-burritos.svg" alt="Breakfast burritos wrapped in foil, ready for the freezer" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-breakfast-burritos.svg" />
                 <span class="card-badge">Medium</span>
               </a>
               <button class="fav-btn" type="button" data-fav="breakfast-burritos" aria-label="Save Freezer Breakfast Burritos" aria-pressed="false">
@@ -388,7 +388,7 @@
             </article>
             <article class="card recipe-card" data-slug="breakfast-hash">
               <a class="card-media" href="../recipes/breakfast-hash.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-breakfast-hash.svg" alt="A skillet of sweet potato hash with peppers and eggs" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-breakfast-hash.svg" alt="A skillet of sweet potato hash with peppers and eggs" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-breakfast-hash.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="breakfast-hash" aria-label="Save Sweet Potato Breakfast Hash" aria-pressed="false">
@@ -407,7 +407,7 @@
             </article>
             <article class="card recipe-card" data-slug="avocado-toast">
               <a class="card-media" href="../recipes/avocado-toast.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-avocado-toast.svg" alt="Avocado toast topped with a jammy soft-boiled egg and chilli" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-avocado-toast.svg" alt="Avocado toast topped with a jammy soft-boiled egg and chilli" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-avocado-toast.svg" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="avocado-toast" aria-label="Save Chilli Avocado Toast with a Soft Egg" aria-pressed="false">
@@ -426,7 +426,7 @@
             </article>
             <article class="card recipe-card" data-slug="spinach-feta-omelette">
               <a class="card-media" href="../recipes/spinach-feta-omelette.html" tabindex="-1" aria-hidden="true">
-                <img src="../assets/img/recipe-spinach-feta-omelette.svg" alt="A folded omelette filled with spinach and feta" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="../assets/img/recipe-spinach-feta-omelette.svg" alt="A folded omelette filled with spinach and feta" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-spinach-feta-omelette.svg" />
                 <span class="card-badge">Medium</span>
               </a>
               <button class="fav-btn" type="button" data-fav="spinach-feta-omelette" aria-label="Save Spinach and Feta Omelette" aria-pressed="false">
