@@ -90,6 +90,53 @@ This is stated plainly on the signup page rather than hidden.
 
 To switch to real accounts, follow the three steps in `assets/js/config.js`.
 
+## Deployment
+
+> **The custom domain is not connected yet.** As of the last build,
+> `www.kitchenlo.com` resolves to a Namecheap parking page, not to GitHub Pages.
+> Canonical URLs, Open Graph tags and `sitemap.xml` all point at that domain, so
+> search engines will not index the site correctly until DNS is pointed at GitHub.
+
+Two supported setups. Whichever you choose, set `origin` and `basePath` at the top
+of `src/data/site.js` to match, then rebuild — those two values drive every
+canonical URL, share tag and sitemap entry.
+
+### Option A — custom domain (what the config currently assumes)
+
+```js
+var origin = 'https://www.kitchenlo.com';
+var basePath = '';
+```
+
+At your DNS provider (Namecheap), replace the parking records with:
+
+| Type  | Host  | Value                  |
+| ----- | ----- | ---------------------- |
+| A     | `@`   | `185.199.108.153`      |
+| A     | `@`   | `185.199.109.153`      |
+| A     | `@`   | `185.199.110.153`      |
+| A     | `@`   | `185.199.111.153`      |
+| CNAME | `www` | `ali-7799.github.io.`  |
+
+Then in the repo: **Settings → Pages → Custom domain**, enter `www.kitchenlo.com`
+and save. GitHub commits a `CNAME` file for you and issues a TLS certificate once
+DNS propagates (minutes to a few hours). Tick **Enforce HTTPS** afterwards.
+
+No `CNAME` file is committed here deliberately — adding one before DNS is ready
+would redirect the working `github.io` address to a parked domain and take the
+site offline.
+
+### Option B — GitHub Pages project URL (works immediately)
+
+```js
+var origin = 'https://ali-7799.github.io';
+var basePath = '/Kitchenlo';
+```
+
+Rebuild, commit, and enable **Settings → Pages → Deploy from branch → `main` / root**.
+The site is then live at `https://ali-7799.github.io/Kitchenlo/` with correct
+canonicals. Switch to Option A whenever the domain is ready.
+
 ## Development
 
 Any static server works. From the repo root:

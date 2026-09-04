@@ -766,8 +766,8 @@ function notFound() {
           <h1>This page went the way of the leftovers.</h1>
           <p class="lede">The link is broken or the page has moved. Here is a way back into the kitchen.</p>
           <div class="button-row">
-            <a class="btn btn-primary" href="/index.html">Back to home</a>
-            <a class="btn btn-secondary" href="/recipes.html">Browse all recipes</a>
+            <a class="btn btn-primary" href="${esc(site.basePath)}/index.html">Back to home</a>
+            <a class="btn btn-secondary" href="${esc(site.basePath)}/recipes.html">Browse all recipes</a>
           </div>
         </div>
       </section>

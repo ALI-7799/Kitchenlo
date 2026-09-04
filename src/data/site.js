@@ -7,16 +7,30 @@
   if (typeof module === 'object' && module.exports) module.exports = factory();
   else root.KITCHENLO_SITE = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
+  /**
+   * Where the site is served from. Used for canonical URLs, Open Graph tags,
+   * the sitemap and robots.txt, so it must match the live address exactly.
+   *
+   *   Custom domain:  origin 'https://www.kitchenlo.com', basePath ''
+   *   Project pages:  origin 'https://ali-7799.github.io', basePath '/Kitchenlo'
+   *
+   * Change these two values and rerun `node tools/build.js`.
+   */
   var origin = 'https://www.kitchenlo.com';
+  var basePath = '';
 
   return {
     name: 'Kitchenlo',
     tagline: 'Fresh recipes for every home cook',
     origin: origin,
+    basePath: basePath,
     description:
       'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
     locale: 'en_US',
     twitter: '@kitchenlo',
+    /* Fallback share image for pages that have no image of their own. */
+    ogImage:
+      'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&h=630&q=80',
     email: 'hello@kitchenlo.com',
     founded: '2025',
     author: {

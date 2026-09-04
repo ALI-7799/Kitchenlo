@@ -28,7 +28,7 @@ function jsonLd(data) {
 function rel(href, depth) {
   if (!href || /^(https?:|mailto:|tel:|#|\/)/.test(href)) return href;
   // 404.html is served for arbitrary URLs, so it links from the site root.
-  if (depth === 'abs') return '/' + href;
+  if (depth === 'abs') return (site.basePath || '') + '/' + href;
   return depth > 0 ? '../'.repeat(depth) + href : href;
 }
 
@@ -213,7 +213,7 @@ function footerMarkup(depth) {
 function render(page) {
   const depth = page.absolute ? 'abs' : page.depth || 0;
   const canonical = site.origin + '/' + page.canonical.replace(/^\//, '');
-  const image = page.image || site.origin + '/assets/img/og-default.jpg';
+  const image = page.image || site.ogImage;
   const schemas = (page.schema || []).slice();
 
   if (page.breadcrumbs && page.breadcrumbs.length) {

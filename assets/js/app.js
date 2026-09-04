@@ -10,12 +10,13 @@
   var Auth = window.KitchenloAuth;
   var guides = window.KITCHENLO_GUIDES || [];
 
-  /** Depth-aware link prefix, so header links work from /recipes/ and /guides/. */
-  var ROOT = (function () {
-    var depth = window.location.pathname.split('/').filter(Boolean).length - 1;
-    var onSubPage = /\/(recipes|category|guides)\/[^/]+$/.test(window.location.pathname);
-    return onSubPage || depth > 0 ? '../' : '';
-  })();
+  /**
+   * Link prefix back to the site root, so header and search links resolve from
+   * the nested /recipes/, /category/ and /guides/ directories. Derived from the
+   * directory name rather than path depth, so it stays correct whether the site
+   * is served from a domain root or a project subpath.
+   */
+  var ROOT = /\/(recipes|category|guides)\/[^/]*$/.test(window.location.pathname) ? '../' : '';
 
   function $(selector, scope) {
     return (scope || document).querySelector(selector);

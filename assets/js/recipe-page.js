@@ -57,6 +57,31 @@
     return (Math.round(value * 100) / 100).toString();
   }
 
+  /* Bracketed metric conversions, e.g. "1/2 cup (120 ml)" or "(14 oz / 400 g)",
+     have to scale alongside the leading quantity or the two disagree. Two kinds
+     of parenthetical must be left alone: per-item sizes ("6 oz / 170 g each"),
+     because the leading count is what scales, and percentages. */
+  var MEASURE = /(\d+(?:\.\d+)?)(\s*)(kg|g|ml|L|l|oz|lb)\b/g;
+  var SKIP_PAREN = /\beach\b|per cent|%/i;
+
+  function roundMeasure(value) {
+    if (value >= 10) return String(Math.round(value));
+    return String(Math.round(value * 10) / 10);
+  }
+
+  function scaleConversions(text, factor) {
+    return text.replace(/\(([^)]*)\)/g, function (whole, inner) {
+      if (SKIP_PAREN.test(inner) || !/\d/.test(inner)) return whole;
+      return (
+        '(' +
+        inner.replace(MEASURE, function (m, amount, gap, unit) {
+          return roundMeasure(parseFloat(amount) * factor) + gap + unit;
+        }) +
+        ')'
+      );
+    });
+  }
+
   function scaleIngredients(servings) {
     var factor = servings / base;
 
@@ -65,17 +90,18 @@
       var match = original.match(QUANTITY);
 
       if (!match) {
-        span.textContent = original;
+        span.textContent = scaleConversions(original, factor);
         return;
       }
 
       var amount = parseQuantity(match[1]);
       if (!isFinite(amount)) {
-        span.textContent = original;
+        span.textContent = scaleConversions(original, factor);
         return;
       }
 
-      span.textContent = formatQuantity(amount * factor) + original.slice(match[1].length);
+      var rest = scaleConversions(original.slice(match[1].length), factor);
+      span.textContent = formatQuantity(amount * factor) + rest;
     });
   }
 
