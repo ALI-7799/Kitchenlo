@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Us | Kitchenlo</title>
-    <meta name="description" content="How Kitchenlo tests recipes, calculates nutrition and writes instructions that work in a real home kitchen. No thousand-word preambles, just tested cooking." />
-    <link rel="canonical" href="https://www.kitchenlo.com/about.html" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <title>Create a Free Account | Kitchenlo</title>
+    <meta name="description" content="Create a free Kitchenlo account to save recipes, build meal plans and generate shopping lists." />
+    <link rel="canonical" href="https://www.kitchenlo.com/signup.html" />
+    <meta name="robots" content="noindex, follow" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kitchenlo" />
-    <meta property="og:title" content="About Us | Kitchenlo" />
-    <meta property="og:description" content="How Kitchenlo tests recipes, calculates nutrition and writes instructions that work in a real home kitchen. No thousand-word preambles, just tested cooking." />
-    <meta property="og:url" content="https://www.kitchenlo.com/about.html" />
+    <meta property="og:title" content="Create a Free Account | Kitchenlo" />
+    <meta property="og:description" content="Create a free Kitchenlo account to save recipes, build meal plans and generate shopping lists." />
+    <meta property="og:url" content="https://www.kitchenlo.com/signup.html" />
     <meta property="og:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@kitchenlo" />
-    <meta name="twitter:title" content="About Us | Kitchenlo" />
-    <meta name="twitter:description" content="How Kitchenlo tests recipes, calculates nutrition and writes instructions that work in a real home kitchen. No thousand-word preambles, just tested cooking." />
+    <meta name="twitter:title" content="Create a Free Account | Kitchenlo" />
+    <meta name="twitter:description" content="Create a free Kitchenlo account to save recipes, build meal plans and generate shopping lists." />
     <meta name="twitter:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
     <meta name="theme-color" content="#d96a2b" />
 
@@ -42,37 +42,9 @@
         } catch (e) {}
       })();
     </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Kitchenlo",
-  "url": "https://www.kitchenlo.com/about.html",
-  "description": "How Kitchenlo tests and writes its recipes."
-}
-    </script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.kitchenlo.com/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "About",
-      "item": "https://www.kitchenlo.com/about.html"
-    }
-  ]
-}
-    </script>
+
   </head>
-  <body class="">
+  <body class="auth-page">
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" id="siteHeader">
       <div class="container nav-wrap">
@@ -98,7 +70,7 @@
           </li>
           <li><a href="meal-planner.html">Meal Planner</a></li>
           <li><a href="guides.html">Guides</a></li>
-          <li><a href="about.html" class="is-active" aria-current="page">About</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
@@ -151,87 +123,69 @@
         <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
       </div>
     </div>
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li aria-current="page">About</li>
-          </ol>
-        </div>
-      </nav>
+    
     <main id="main">
-      <section class="page-hero">
-        <div class="container">
-          <p class="eyebrow">About Kitchenlo</p>
-          <h1>We make home cooking feel inspired, practical, and joyful.</h1>
-          <p class="lede">Kitchenlo is a recipe library for people who want to cook well on an ordinary Tuesday, without a professional kitchen or three hours to spare.</p>
-        </div>
-      </section>
+      <section class="auth-section">
+        <div class="container auth-grid">
+          <div class="auth-card card">
+            <h1>Create your free account</h1>
+            <p class="auth-sub">No card, no spam. Save recipes and plan your week in under a minute.</p>
 
-      <section class="section">
-        <div class="container about-grid">
-          <div class="prose">
-            <h2>Built for real kitchens</h2>
-            <p>Most recipes online are written to be read, not cooked. They skip quantities, gloss over the step that actually decides the outcome, and assume you already know what "cook until done" means. We write the opposite way.</p>
-            <p>Every recipe here lists exact measurements in metric and imperial, gives you a visual cue for each stage, and calls out the one technical detail that determines whether it works. When a step matters, we explain why, because knowing the reason is what lets you improvise later.</p>
-            <h2>How we test</h2>
-            <p>Nothing goes on the site until it has been cooked at least three times in a domestic kitchen, on a normal hob, with supermarket ingredients. We time recipes from a cold start, including the chopping, which is why our timings tend to run longer and more honestly than most.</p>
-            <p>Nutrition figures are calculated per serving from ingredient averages. They are estimates rather than laboratory values, and we say so on every page rather than implying a precision we do not have.</p>
-            <h2>What we will not do</h2>
-            <p>We will not put a thousand words of memoir above the ingredient list. We will not invent a family tradition to lengthen a page. Every recipe opens with a short note on what makes it work and then gets out of the way.</p>
+            <form id="signupForm" novalidate>
+              <div class="field">
+                <label for="signupName">Name</label>
+                <input type="text" id="signupName" name="name" autocomplete="name" placeholder="Your name" required />
+                <p class="field-error" data-error-for="signupName"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" name="email" autocomplete="email" placeholder="you@example.com" required />
+                <p class="field-error" data-error-for="signupEmail"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupPassword">Password</label>
+                <div class="password-wrap">
+                  <input type="password" id="signupPassword" name="password" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8" />
+                  <button type="button" class="password-toggle" data-toggle-password="signupPassword" aria-label="Show password">Show</button>
+                </div>
+                <div class="strength" data-strength hidden>
+                  <div class="strength-bar"><span></span></div>
+                  <p class="strength-label"></p>
+                </div>
+                <p class="field-error" data-error-for="signupPassword"></p>
+              </div>
+
+              <div class="field">
+                <label for="signupConfirm">Confirm password</label>
+                <input type="password" id="signupConfirm" name="confirm" autocomplete="new-password" placeholder="Repeat your password" required />
+                <p class="field-error" data-error-for="signupConfirm"></p>
+              </div>
+
+              <label class="checkbox"><input type="checkbox" id="signupTerms" required /> <span>I agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a></span></label>
+              <p class="field-error" data-error-for="signupTerms"></p>
+
+              <button class="btn btn-primary btn-block" type="submit">Create account</button>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="auth-alt">Already have an account? <a href="login.html">Sign in</a></p>
           </div>
-          <div class="about-side">
-            <div class="card highlight-card">
-              <h3>What you will find</h3>
-              <ul class="check-list">
-                <li>30 tested recipes across three collections</li>
-                <li>Measured ingredients in metric and imperial</li>
-                <li>Full nutrition breakdown per serving</li>
-                <li>Storage and make-ahead notes on everything</li>
-                <li>Scaling from 1 to 12 servings, calculated live</li>
-                <li>Six long-form technique guides</li>
-              </ul>
+
+          <aside class="auth-aside">
+            <h2>What you unlock</h2>
+            <ul class="check-list">
+              <li>Unlimited saved recipes</li>
+              <li>A seven-day drag-free meal planner</li>
+              <li>Automatic shopping lists grouped by aisle</li>
+              <li>Your preferences remembered across visits</li>
+            </ul>
+            <div class="notice">
+              <strong>How your data is stored</strong>
+              <p>Accounts currently live in your browser's local storage, not on a server. Passwords are hashed with SHA-256 and a per-account salt rather than stored in plain text, but this is demo-grade and not a substitute for a real backend. Use a password you do not use elsewhere.</p>
             </div>
-            <div class="card highlight-card">
-              <h3>Free tools</h3>
-              <ul class="check-list">
-                <li>Save recipes to your account</li>
-                <li>Build a seven-day meal plan</li>
-                <li>Generate a combined shopping list</li>
-              </ul>
-              <a class="btn btn-primary btn-block" href="signup.html">Create a free account</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt-bg">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">By the numbers</p>
-            <h2>What is on the site today</h2>
-            
-            
-          </div>
-          <div class="stats-grid">
-            <div><strong>30</strong><span>Tested recipes</span></div>
-            <div><strong>3</strong><span>Collections</span></div>
-            <div><strong>6</strong><span>Technique guides</span></div>
-            <div><strong>190+</strong><span>Method steps written</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section cta-band">
-        <div class="container cta-inner">
-          <div>
-            <h2>Cook something good this week</h2>
-            <p>Create a free account to save recipes, build a meal plan and generate a shopping list in one click.</p>
-          </div>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="signup.html">Create free account</a>
-            <a class="btn btn-ghost" href="recipes.html">Browse all recipes</a>
-          </div>
+          </aside>
         </div>
       </section>
     </main>
@@ -330,6 +284,6 @@
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/store.js" defer></script>
     <script src="assets/js/app.js" defer></script>
-
+    <script src="assets/js/auth-pages.js" defer></script>
   </body>
 </html>

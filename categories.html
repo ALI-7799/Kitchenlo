@@ -1,118 +1,555 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categories | Kitchenlo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recipe Categories | Kitchenlo</title>
+    <meta name="description" content="Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls and easy desserts, with ten tested recipes in each collection." />
+    <link rel="canonical" href="https://www.kitchenlo.com/categories.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kitchenlo" />
+    <meta property="og:title" content="Recipe Categories | Kitchenlo" />
+    <meta property="og:description" content="Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls and easy desserts, with ten tested recipes in each collection." />
+    <meta property="og:url" content="https://www.kitchenlo.com/categories.html" />
+    <meta property="og:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kitchenlo" />
+    <meta name="twitter:title" content="Recipe Categories | Kitchenlo" />
+    <meta name="twitter:description" content="Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls and easy desserts, with ten tested recipes in each collection." />
+    <meta name="twitter:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta name="theme-color" content="#d96a2b" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script>
+      /* Applies the stored theme before first paint so the page never flashes. */
+      (function () {
+        try {
+          var saved = localStorage.getItem('kitchenlo-theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.kitchenlo.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Categories",
+      "item": "https://www.kitchenlo.com/categories.html"
+    }
+  ]
+}
+    </script>
   </head>
-  <body>
-    <header class="site-header">
+  <body class="">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header" id="siteHeader">
       <div class="container nav-wrap">
-        <a class="brand" href="index.html">Kitchenlo</a>
-        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="site-nav">
-          <a href="index.html" data-key="navHome">Home</a>
-          <a href="recipes.html" data-key="navRecipes">Recipes</a>
-          <a href="categories.html" class="active" data-key="navCategories">Categories</a>
-          <a href="about.html" data-key="navAbout">About</a>
-          <a href="contact.html" data-key="navContact">Contact</a>
+        <a class="brand" href="index.html" aria-label="Kitchenlo home">
+          <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Kitchenlo</span>
+        </a>
+
+        <nav class="site-nav" id="siteNav" aria-label="Main">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li class="has-submenu">
+            <a href="categories.html" class="is-active" aria-current="page">Categories<svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+            <ul class="submenu">
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+            </ul>
+          </li>
+          <li><a href="meal-planner.html">Meal Planner</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          </ul>
         </nav>
+
         <div class="header-actions">
-          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
-            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
-            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          <button class="icon-btn" type="button" id="searchTrigger" aria-label="Search recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <a class="icon-btn" href="favorites.html" aria-label="Saved recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span class="badge" data-favorites-count hidden>0</span>
+          </a>
+          <button class="icon-btn" type="button" id="themeToggle" aria-label="Switch colour theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1v2m0 14v2M1 10h2m14 0h2M3.6 3.6l1.4 1.4m10 10l1.4 1.4m0-11.4l-1.4 1.4m-10 10l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 12.5A7 7 0 0 1 7.5 4a7 7 0 1 0 8.5 8.5z" fill="currentColor"/></svg>
+          </button>
+
+          <div class="auth-slot" data-auth-slot>
+            <a class="btn btn-ghost btn-sm" href="login.html" data-auth-anon>Sign in</a>
+            <a class="btn btn-primary btn-sm" href="signup.html" data-auth-anon>Sign up</a>
+            <div class="account-menu" data-auth-user hidden>
+              <button type="button" class="avatar-btn" id="accountTrigger" aria-expanded="false" aria-haspopup="true">
+                <span class="avatar" data-user-initials>K</span>
+                <span class="account-name" data-user-name>Account</span>
+              </button>
+              <div class="account-dropdown" id="accountDropdown" hidden>
+                <a href="account.html">My account</a>
+                <a href="favorites.html">Saved recipes</a>
+                <a href="meal-planner.html">Meal planner</a>
+                <a href="shopping-list.html">Shopping list</a>
+                <button type="button" data-signout>Sign out</button>
+              </div>
+            </div>
           </div>
-          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+
+          <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
 
-    <main>
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
+        <div class="search-input-row">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="searchOverlayInput" placeholder="Search 30 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
+        </div>
+        <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
+      </div>
+    </div>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Categories</li>
+          </ol>
+        </div>
+      </nav>
+    <main id="main">
       <section class="page-hero">
         <div class="container">
-          <p class="eyebrow" data-key="categoryEyebrow">Browse by category</p>
-          <h1 data-key="categoryTitle">Find recipes that match your mood, time, and cravings.</h1>
-          <p data-key="categoryIntro">Choose from quick dinners, comforting classics, fresh bowls, and sweet treats.</p>
+          <p class="eyebrow">Browse by category</p>
+          <h1>Find recipes that match your mood, time, and cravings.</h1>
+          <p class="lede">Three collections of ten tested recipes each, organised by how you actually decide what to cook.</p>
         </div>
       </section>
 
       <section class="section">
-        <div class="container card-grid">
-          <article class="card category-card">
-            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="A hearty dinner plated on a table" />
-            <h3 data-key="categoryQuickTitle">Quick Dinners</h3>
-            <p data-key="categoryQuickText">Fast dinners with bold flavor and minimal prep.</p>
-            <ul class="category-list">
-              <li data-key="quickCategoryItem01">Garlic Butter Salmon</li>
-              <li data-key="quickCategoryItem02">Pesto Chicken Tortellini</li>
-              <li data-key="quickCategoryItem03">Crispy Taco Rice Bowls</li>
-              <li data-key="quickCategoryItem04">Miso Noodle Stir-Fry</li>
-              <li data-key="quickCategoryItem05">Mediterranean Flatbread</li>
-              <li data-key="quickCategoryItem06">Honey Soy Chicken Skillet</li>
-              <li data-key="quickCategoryItem07">Spinach Ricotta Toasts</li>
-              <li data-key="quickCategoryItem08">Smoky Tomato Pasta</li>
-              <li data-key="quickCategoryItem09">Lemon Herb Shrimp</li>
-              <li data-key="quickCategoryItem10">Cheesy Broccoli Quesadillas</li>
-            </ul>
-            <a class="btn btn-secondary" href="recipes.html#quick-dinners" data-key="categoryQuickButton">See recipes</a>
-          </article>
-          <article class="card category-card">
-            <img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=900&q=80" alt="A fresh healthy bowl with vegetables and grains" />
-            <h3 data-key="categoryHealthyTitle">Healthy Food</h3>
-            <p data-key="categoryHealthyText">Light, fresh dishes packed with nourishment and balance.</p>
-            <ul class="category-list">
-              <li data-key="healthyCategoryItem01">Mediterranean Chickpea Salad</li>
-              <li data-key="healthyCategoryItem02">Green Protein Smoothie Bowl</li>
-              <li data-key="healthyCategoryItem03">Avocado Quinoa Bowl</li>
-              <li data-key="healthyCategoryItem04">Lentil Herb Soup</li>
-              <li data-key="healthyCategoryItem05">Roasted Veggie Wrap</li>
-              <li data-key="healthyCategoryItem06">Citrus Kale Salad</li>
-              <li data-key="healthyCategoryItem07">Herbed Yogurt Bowl</li>
-              <li data-key="healthyCategoryItem08">Stuffed Bell Peppers</li>
-              <li data-key="healthyCategoryItem09">Warm Farro Salad</li>
-              <li data-key="healthyCategoryItem10">Coconut Rice Bowl</li>
-            </ul>
-            <a class="btn btn-secondary" href="recipes.html#healthy-food" data-key="categoryHealthyButton">See recipes</a>
-          </article>
-          <article class="card category-card">
-            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" alt="A styled dessert with fresh berries" />
-            <h3 data-key="categoryDessertTitle">Desserts</h3>
-            <p data-key="categoryDessertText">Sweet finishes for cozy evenings and easy celebrations.</p>
-            <ul class="category-list">
-              <li data-key="dessertCategoryItem01">Chocolate Lava Mug Cake</li>
-              <li data-key="dessertCategoryItem02">Lemon Berry Tartlets</li>
-              <li data-key="dessertCategoryItem03">Vanilla Rice Pudding</li>
-              <li data-key="dessertCategoryItem04">Berry Oat Crumble</li>
-              <li data-key="dessertCategoryItem05">Panna Cotta Cups</li>
-              <li data-key="dessertCategoryItem06">Mini Lemon Bars</li>
-              <li data-key="dessertCategoryItem07">Honey Yogurt Parfait</li>
-              <li data-key="dessertCategoryItem08">Chocolate Banana Pops</li>
-              <li data-key="dessertCategoryItem09">Cinnamon Apple Crisp</li>
-              <li data-key="dessertCategoryItem10">Almond Berry Tart</li>
-            </ul>
-            <a class="btn btn-secondary" href="recipes.html#desserts" data-key="categoryDessertButton">See recipes</a>
-          </article>
+        <div class="container">
+          <div class="card-grid">
+            <article class="card category-card">
+              <a class="card-media" href="category/quick-dinners.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A fast weeknight dinner plated on a table" loading="lazy" decoding="async" width="600" height="400" />
+              </a>
+              <div class="card-body">
+                <p class="eyebrow">10 recipes</p>
+                <h3><a href="category/quick-dinners.html">Quick Dinners</a></h3>
+                <p>Weeknight dinners that land on the table in 30 minutes or less, with short ingredient lists, one pan where possible and nothing that needs a special trip to the shops.</p>
+                <a class="btn btn-secondary" href="category/quick-dinners.html">Browse Quick</a>
+              </div>
+            </article>
+            <article class="card category-card">
+              <a class="card-media" href="category/healthy-food.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A fresh healthy bowl with vegetables and grains" loading="lazy" decoding="async" width="600" height="400" />
+              </a>
+              <div class="card-body">
+                <p class="eyebrow">10 recipes</p>
+                <h3><a href="category/healthy-food.html">Healthy Food</a></h3>
+                <p>Vegetable-forward bowls, grain salads and soups with real nutrition numbers, built to keep well for meal prep and to taste good cold on the third day.</p>
+                <a class="btn btn-secondary" href="category/healthy-food.html">Browse Healthy</a>
+              </div>
+            </article>
+            <article class="card category-card">
+              <a class="card-media" href="category/desserts.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A styled dessert with fresh berries" loading="lazy" decoding="async" width="600" height="400" />
+              </a>
+              <div class="card-body">
+                <p class="eyebrow">10 recipes</p>
+                <h3><a href="category/desserts.html">Desserts</a></h3>
+                <p>Approachable puddings, tarts and bakes with the technique explained, from a five-minute mug cake to a proper set panna cotta.</p>
+                <a class="btn btn-secondary" href="category/desserts.html">Browse Sweet</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Fast meals for busy nights</p>
+            <h2>Quick Dinners</h2>
+            <p>Weeknight dinners that land on the table in 30 minutes or less, with short ingredient lists, one pan where possible and nothing that needs a special trip to the shops.</p>
+            <a class="btn btn-secondary" href="category/quick-dinners.html">All 10 quick dinners</a>
+          </div>
+          <div class="card-grid">
+            <article class="card recipe-card" data-slug="taco-rice-bowls">
+              <a class="card-media" href="recipes/taco-rice-bowls.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Taco rice bowls topped with avocado, salsa and lime wedges" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="taco-rice-bowls" aria-label="Save Crispy Taco Rice Bowls" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>28 min</span>
+                </div>
+                <h3><a href="recipes/taco-rice-bowls.html">Crispy Taco Rice Bowls</a></h3>
+                <p>Spiced chicken, black beans and crisped rice layered into a loaded taco bowl with avocado and lime.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">615 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="honey-soy-chicken">
+              <a class="card-media" href="recipes/honey-soy-chicken.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Honey soy glazed chicken with broccoli and peppers in a skillet" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="honey-soy-chicken" aria-label="Save Honey Soy Chicken Skillet" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>26 min</span>
+                </div>
+                <h3><a href="recipes/honey-soy-chicken.html">Honey Soy Chicken Skillet</a></h3>
+                <p>Tender chicken and crisp vegetables glazed in a sweet-savoury honey soy sauce that reduces to a lacquer.</p>
+                <div class="card-tags">
+                  <span class="tag">dairy free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">468 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="lemon-herb-shrimp">
+              <a class="card-media" href="recipes/lemon-herb-shrimp.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1563379091331-03b75bec4a25?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Lemon herb shrimp in a pan sauce with parsley and lemon wedges" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lemon-herb-shrimp" aria-label="Save Lemon Herb Shrimp" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>17 min</span>
+                </div>
+                <h3><a href="recipes/lemon-herb-shrimp.html">Lemon Herb Shrimp</a></h3>
+                <p>Juicy shrimp in a bright lemon and white wine pan sauce that comes together in under ten minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">296 cal</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Fresh bowls and bright lunches</p>
+            <h2>Healthy Food</h2>
+            <p>Vegetable-forward bowls, grain salads and soups with real nutrition numbers, built to keep well for meal prep and to taste good cold on the third day.</p>
+            <a class="btn btn-secondary" href="category/healthy-food.html">All 10 healthy food</a>
+          </div>
+          <div class="card-grid">
+            <article class="card recipe-card" data-slug="lentil-soup">
+              <a class="card-media" href="recipes/lentil-soup.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A bright bowl of lentil herb soup topped with parsley" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lentil-soup" aria-label="Save Lentil Herb Soup" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>50 min</span>
+                </div>
+                <h3><a href="recipes/lentil-soup.html">Lentil Herb Soup</a></h3>
+                <p>A deeply savoury lentil soup with soffritto, herbs and lemon, thick enough to stand a spoon in.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">342 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="chickpea-salad">
+              <a class="card-media" href="recipes/chickpea-salad.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mediterranean chickpea salad with cucumber, tomato and feta in a bowl" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="chickpea-salad" aria-label="Save Mediterranean Chickpea Salad" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>15 min</span>
+                </div>
+                <h3><a href="recipes/chickpea-salad.html">Mediterranean Chickpea Salad</a></h3>
+                <p>Chickpeas, crisp cucumber, olives and feta in a lemon-oregano dressing that gets better as it sits.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">384 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="quinoa-bowl">
+              <a class="card-media" href="recipes/quinoa-bowl.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Avocado quinoa bowl with roasted vegetables and tahini dressing" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="quinoa-bowl" aria-label="Save Avocado Quinoa Bowl" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>45 min</span>
+                </div>
+                <h3><a href="recipes/quinoa-bowl.html">Avocado Quinoa Bowl</a></h3>
+                <p>Fluffy quinoa, roasted vegetables and avocado under a lemon-tahini dressing, built for meal prep.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">528 cal</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Sweet endings for every day</p>
+            <h2>Desserts</h2>
+            <p>Approachable puddings, tarts and bakes with the technique explained, from a five-minute mug cake to a proper set panna cotta.</p>
+            <a class="btn btn-secondary" href="category/desserts.html">All 10 desserts</a>
+          </div>
+          <div class="card-grid">
+            <article class="card recipe-card" data-slug="lava-mug-cake">
+              <a class="card-media" href="recipes/lava-mug-cake.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Chocolate lava mug cake with a molten centre spilling out" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lava-mug-cake" aria-label="Save Chocolate Lava Mug Cake" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>5 min</span>
+                </div>
+                <h3><a href="recipes/lava-mug-cake.html">Chocolate Lava Mug Cake</a></h3>
+                <p>A single-serve chocolate cake with a molten centre, mixed and microwaved in under five minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">486 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="apple-crisp">
+              <a class="card-media" href="recipes/apple-crisp.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Warm cinnamon apple crisp served in a dish with ice cream" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="apple-crisp" aria-label="Save Cinnamon Apple Crisp" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr 10 min</span>
+                </div>
+                <h3><a href="recipes/apple-crisp.html">Cinnamon Apple Crisp</a></h3>
+                <p>Tender spiced apples under a thick oat and brown sugar crisp topping, best served warm with ice cream.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">412 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="berry-crumble">
+              <a class="card-media" href="recipes/berry-crumble.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Berry oat crumble bubbling in a baking dish" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="berry-crumble" aria-label="Save Berry Oat Crumble" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr</span>
+                </div>
+                <h3><a href="recipes/berry-crumble.html">Berry Oat Crumble</a></h3>
+                <p>Jammy mixed berries under a thick, buttery oat topping that bakes into proper crunchy clusters.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">386 cal</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-band">
+        <div class="container cta-inner">
+          <div>
+            <h2>Cook something good this week</h2>
+            <p>Create a free account to save recipes, build a meal plan and generate a shopping list in one click.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="signup.html">Create free account</a>
+            <a class="btn btn-ghost" href="recipes.html">Browse all recipes</a>
+          </div>
         </div>
       </section>
     </main>
-
     <footer class="site-footer">
-      <div class="container footer-wrap">
-        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
-        <div class="footer-links">
-          <a href="recipes.html" data-key="footerRecipes">Recipes</a>
-          <a href="contact.html" data-key="footerContact">Contact</a>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="index.html">
+              <svg class="brand-mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Kitchenlo</span>
+            </a>
+            <p>Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.</p>
+            <div class="social-row">
+            <a href="https://instagram.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Instagram" class="social-link">I</a>
+            <a href="https://pinterest.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Pinterest" class="social-link">P</a>
+            <a href="https://youtube.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="YouTube" class="social-link">Y</a>
+            <a href="https://tiktok.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="TikTok" class="social-link">T</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h3>Recipes</h3>
+            <ul>
+              <li><a href="recipes.html">All Recipes</a></li>
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+              <li><a href="categories.html">Browse Categories</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Kitchen Tools</h3>
+            <ul>
+              <li><a href="meal-planner.html">Meal Planner</a></li>
+              <li><a href="shopping-list.html">Shopping List</a></li>
+              <li><a href="favorites.html">Saved Recipes</a></li>
+              <li><a href="guides.html">Cooking Guides</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Use</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Account</h3>
+            <ul>
+              <li><a href="login.html">Sign In</a></li>
+              <li><a href="signup.html">Create Account</a></li>
+              <li><a href="account.html">My Account</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <div>
+            <h3>Get one good recipe a week</h3>
+            <p>No spam, no 2,000-word life stories. Just a tested recipe and what to shop for.</p>
+          </div>
+          <form class="newsletter-form" data-newsletter novalidate>
+            <label class="sr-only" for="footerEmail">Email address</label>
+            <input type="email" id="footerEmail" name="email" placeholder="you@example.com" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; <span data-year>2026</span> Kitchenlo. All rights reserved.</p>
+          <p class="footer-legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="sitemap.xml">Sitemap</a>
+          </p>
         </div>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" hidden>
+      <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m0 0L4 10m6-6l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <script src="src/data/site.js"></script>
+    <script src="src/data/recipes-quick-dinners.js"></script>
+    <script src="src/data/recipes-healthy-food.js"></script>
+    <script src="src/data/recipes-desserts.js"></script>
+    <script src="src/data/recipes.js"></script>
+    <script src="src/data/guides.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/store.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+
   </body>
 </html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weekly Meal Planner | Kitchenlo</title>
+    <meta name="description" content="Plan seven days of meals from the Kitchenlo recipe library and turn the week into a single combined shopping list." />
+    <link rel="canonical" href="https://www.kitchenlo.com/meal-planner.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kitchenlo" />
+    <meta property="og:title" content="Weekly Meal Planner | Kitchenlo" />
+    <meta property="og:description" content="Plan seven days of meals from the Kitchenlo recipe library and turn the week into a single combined shopping list." />
+    <meta property="og:url" content="https://www.kitchenlo.com/meal-planner.html" />
+    <meta property="og:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kitchenlo" />
+    <meta name="twitter:title" content="Weekly Meal Planner | Kitchenlo" />
+    <meta name="twitter:description" content="Plan seven days of meals from the Kitchenlo recipe library and turn the week into a single combined shopping list." />
+    <meta name="twitter:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta name="theme-color" content="#d96a2b" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script>
+      /* Applies the stored theme before first paint so the page never flashes. */
+      (function () {
+        try {
+          var saved = localStorage.getItem('kitchenlo-theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.kitchenlo.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Meal Planner",
+      "item": "https://www.kitchenlo.com/meal-planner.html"
+    }
+  ]
+}
+    </script>
+  </head>
+  <body class="">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header" id="siteHeader">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="Kitchenlo home">
+          <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Kitchenlo</span>
+        </a>
+
+        <nav class="site-nav" id="siteNav" aria-label="Main">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li class="has-submenu">
+            <a href="categories.html">Categories<svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+            <ul class="submenu">
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+            </ul>
+          </li>
+          <li><a href="meal-planner.html" class="is-active" aria-current="page">Meal Planner</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" type="button" id="searchTrigger" aria-label="Search recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <a class="icon-btn" href="favorites.html" aria-label="Saved recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span class="badge" data-favorites-count hidden>0</span>
+          </a>
+          <button class="icon-btn" type="button" id="themeToggle" aria-label="Switch colour theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1v2m0 14v2M1 10h2m14 0h2M3.6 3.6l1.4 1.4m10 10l1.4 1.4m0-11.4l-1.4 1.4m-10 10l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 12.5A7 7 0 0 1 7.5 4a7 7 0 1 0 8.5 8.5z" fill="currentColor"/></svg>
+          </button>
+
+          <div class="auth-slot" data-auth-slot>
+            <a class="btn btn-ghost btn-sm" href="login.html" data-auth-anon>Sign in</a>
+            <a class="btn btn-primary btn-sm" href="signup.html" data-auth-anon>Sign up</a>
+            <div class="account-menu" data-auth-user hidden>
+              <button type="button" class="avatar-btn" id="accountTrigger" aria-expanded="false" aria-haspopup="true">
+                <span class="avatar" data-user-initials>K</span>
+                <span class="account-name" data-user-name>Account</span>
+              </button>
+              <div class="account-dropdown" id="accountDropdown" hidden>
+                <a href="account.html">My account</a>
+                <a href="favorites.html">Saved recipes</a>
+                <a href="meal-planner.html">Meal planner</a>
+                <a href="shopping-list.html">Shopping list</a>
+                <button type="button" data-signout>Sign out</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
+        <div class="search-input-row">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="searchOverlayInput" placeholder="Search 30 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
+        </div>
+        <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
+      </div>
+    </div>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Meal Planner</li>
+          </ol>
+        </div>
+      </nav>
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow">Plan the week</p>
+          <h1>Meal planner</h1>
+          <p class="lede">Assign a recipe to each day, then turn the whole week into one shopping list.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="planner-toolbar">
+            <button class="btn btn-primary" type="button" data-build-list>Build shopping list from plan</button>
+            <button class="btn btn-secondary" type="button" data-random-plan>Surprise me</button>
+            <button class="btn btn-ghost" type="button" data-clear-plan>Clear week</button>
+            <p class="form-status" role="status" aria-live="polite" data-plan-status></p>
+          </div>
+
+          <div class="planner-grid" id="plannerGrid">
+            <div class="planner-day" data-day="Monday">
+              <h2>Monday</h2>
+              <div class="planner-slot" data-slot="Monday"></div>
+              <label class="sr-only" for="pick-Monday">Choose a recipe for Monday</label>
+              <select class="planner-select" id="pick-Monday" data-day-select="Monday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Tuesday">
+              <h2>Tuesday</h2>
+              <div class="planner-slot" data-slot="Tuesday"></div>
+              <label class="sr-only" for="pick-Tuesday">Choose a recipe for Tuesday</label>
+              <select class="planner-select" id="pick-Tuesday" data-day-select="Tuesday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Wednesday">
+              <h2>Wednesday</h2>
+              <div class="planner-slot" data-slot="Wednesday"></div>
+              <label class="sr-only" for="pick-Wednesday">Choose a recipe for Wednesday</label>
+              <select class="planner-select" id="pick-Wednesday" data-day-select="Wednesday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Thursday">
+              <h2>Thursday</h2>
+              <div class="planner-slot" data-slot="Thursday"></div>
+              <label class="sr-only" for="pick-Thursday">Choose a recipe for Thursday</label>
+              <select class="planner-select" id="pick-Thursday" data-day-select="Thursday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Friday">
+              <h2>Friday</h2>
+              <div class="planner-slot" data-slot="Friday"></div>
+              <label class="sr-only" for="pick-Friday">Choose a recipe for Friday</label>
+              <select class="planner-select" id="pick-Friday" data-day-select="Friday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Saturday">
+              <h2>Saturday</h2>
+              <div class="planner-slot" data-slot="Saturday"></div>
+              <label class="sr-only" for="pick-Saturday">Choose a recipe for Saturday</label>
+              <select class="planner-select" id="pick-Saturday" data-day-select="Saturday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="planner-day" data-day="Sunday">
+              <h2>Sunday</h2>
+              <div class="planner-slot" data-slot="Sunday"></div>
+              <label class="sr-only" for="pick-Sunday">Choose a recipe for Sunday</label>
+              <select class="planner-select" id="pick-Sunday" data-day-select="Sunday">
+                <option value="">Add a recipe...</option>
+                <optgroup label="Quick Dinners">
+                  <option value="garlic-butter-salmon">Garlic Butter Salmon</option>
+                  <option value="pesto-tortellini">Pesto Chicken Tortellini</option>
+                  <option value="taco-rice-bowls">Crispy Taco Rice Bowls</option>
+                  <option value="miso-noodles">Miso Noodle Stir-Fry</option>
+                  <option value="mediterranean-flatbread">Mediterranean Flatbread</option>
+                  <option value="honey-soy-chicken">Honey Soy Chicken Skillet</option>
+                  <option value="ricotta-toasts">Spinach Ricotta Toasts</option>
+                  <option value="smoky-tomato-pasta">Smoky Tomato Pasta</option>
+                  <option value="lemon-herb-shrimp">Lemon Herb Shrimp</option>
+                  <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
+                </optgroup>
+                <optgroup label="Healthy Food">
+                  <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
+                  <option value="smoothie-bowl">Green Protein Smoothie Bowl</option>
+                  <option value="quinoa-bowl">Avocado Quinoa Bowl</option>
+                  <option value="lentil-soup">Lentil Herb Soup</option>
+                  <option value="roasted-wrap">Roasted Veggie Wrap</option>
+                  <option value="kale-salad">Citrus Kale Salad</option>
+                  <option value="herbed-yogurt-bowl">Herbed Yogurt Bowl</option>
+                  <option value="stuffed-peppers">Stuffed Bell Peppers</option>
+                  <option value="farro-salad">Warm Farro Salad</option>
+                  <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="lava-mug-cake">Chocolate Lava Mug Cake</option>
+                  <option value="berry-tartlets">Lemon Berry Tartlets</option>
+                  <option value="rice-pudding">Vanilla Rice Pudding</option>
+                  <option value="berry-crumble">Berry Oat Crumble</option>
+                  <option value="panna-cotta">Panna Cotta Cups</option>
+                  <option value="lemon-bars">Mini Lemon Bars</option>
+                  <option value="yogurt-parfait">Honey Yogurt Parfait</option>
+                  <option value="banana-pops">Chocolate Banana Pops</option>
+                  <option value="apple-crisp">Cinnamon Apple Crisp</option>
+                  <option value="almond-tart">Almond Berry Tart</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <div class="planner-summary card" id="plannerSummary" hidden>
+            <h2>Week at a glance</h2>
+            <div class="summary-stats">
+              <div><strong data-plan-meals>0</strong><span>Meals planned</span></div>
+              <div><strong data-plan-calories>0</strong><span>Avg calories/serving</span></div>
+              <div><strong data-plan-time>0</strong><span>Total cook time</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="index.html">
+              <svg class="brand-mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Kitchenlo</span>
+            </a>
+            <p>Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.</p>
+            <div class="social-row">
+            <a href="https://instagram.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Instagram" class="social-link">I</a>
+            <a href="https://pinterest.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Pinterest" class="social-link">P</a>
+            <a href="https://youtube.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="YouTube" class="social-link">Y</a>
+            <a href="https://tiktok.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="TikTok" class="social-link">T</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h3>Recipes</h3>
+            <ul>
+              <li><a href="recipes.html">All Recipes</a></li>
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+              <li><a href="categories.html">Browse Categories</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Kitchen Tools</h3>
+            <ul>
+              <li><a href="meal-planner.html">Meal Planner</a></li>
+              <li><a href="shopping-list.html">Shopping List</a></li>
+              <li><a href="favorites.html">Saved Recipes</a></li>
+              <li><a href="guides.html">Cooking Guides</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Use</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Account</h3>
+            <ul>
+              <li><a href="login.html">Sign In</a></li>
+              <li><a href="signup.html">Create Account</a></li>
+              <li><a href="account.html">My Account</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <div>
+            <h3>Get one good recipe a week</h3>
+            <p>No spam, no 2,000-word life stories. Just a tested recipe and what to shop for.</p>
+          </div>
+          <form class="newsletter-form" data-newsletter novalidate>
+            <label class="sr-only" for="footerEmail">Email address</label>
+            <input type="email" id="footerEmail" name="email" placeholder="you@example.com" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; <span data-year>2026</span> Kitchenlo. All rights reserved.</p>
+          <p class="footer-legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="sitemap.xml">Sitemap</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" hidden>
+      <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m0 0L4 10m6-6l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <script src="src/data/site.js"></script>
+    <script src="src/data/recipes-quick-dinners.js"></script>
+    <script src="src/data/recipes-healthy-food.js"></script>
+    <script src="src/data/recipes-desserts.js"></script>
+    <script src="src/data/recipes.js"></script>
+    <script src="src/data/guides.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/store.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/planner.js" defer></script>
+  </body>
+</html>

@@ -1,706 +1,1217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipes | Kitchenlo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>All Recipes | Kitchenlo</title>
+    <meta name="description" content="Browse all 30 Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls and easy desserts." />
+    <link rel="canonical" href="https://www.kitchenlo.com/recipes.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kitchenlo" />
+    <meta property="og:title" content="All Recipes | Kitchenlo" />
+    <meta property="og:description" content="Browse all 30 Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls and easy desserts." />
+    <meta property="og:url" content="https://www.kitchenlo.com/recipes.html" />
+    <meta property="og:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kitchenlo" />
+    <meta name="twitter:title" content="All Recipes | Kitchenlo" />
+    <meta name="twitter:description" content="Browse all 30 Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls and easy desserts." />
+    <meta name="twitter:image" content="https://www.kitchenlo.com/assets/img/og-default.jpg" />
+    <meta name="theme-color" content="#d96a2b" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script>
+      /* Applies the stored theme before first paint so the page never flashes. */
+      (function () {
+        try {
+          var saved = localStorage.getItem('kitchenlo-theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "All Recipes",
+  "url": "https://www.kitchenlo.com/recipes.html",
+  "description": "The complete Kitchenlo recipe library.",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 30,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://www.kitchenlo.com/recipes/lava-mug-cake.html",
+        "name": "Chocolate Lava Mug Cake"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://www.kitchenlo.com/recipes/lentil-soup.html",
+        "name": "Lentil Herb Soup"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "url": "https://www.kitchenlo.com/recipes/apple-crisp.html",
+        "name": "Cinnamon Apple Crisp"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "url": "https://www.kitchenlo.com/recipes/taco-rice-bowls.html",
+        "name": "Crispy Taco Rice Bowls"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "url": "https://www.kitchenlo.com/recipes/berry-crumble.html",
+        "name": "Berry Oat Crumble"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "url": "https://www.kitchenlo.com/recipes/chickpea-salad.html",
+        "name": "Mediterranean Chickpea Salad"
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "url": "https://www.kitchenlo.com/recipes/honey-soy-chicken.html",
+        "name": "Honey Soy Chicken Skillet"
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "url": "https://www.kitchenlo.com/recipes/lemon-herb-shrimp.html",
+        "name": "Lemon Herb Shrimp"
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "url": "https://www.kitchenlo.com/recipes/quinoa-bowl.html",
+        "name": "Avocado Quinoa Bowl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "url": "https://www.kitchenlo.com/recipes/garlic-butter-salmon.html",
+        "name": "Garlic Butter Salmon"
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "url": "https://www.kitchenlo.com/recipes/lemon-bars.html",
+        "name": "Mini Lemon Bars"
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "url": "https://www.kitchenlo.com/recipes/smoky-tomato-pasta.html",
+        "name": "Smoky Tomato Pasta"
+      },
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "url": "https://www.kitchenlo.com/recipes/stuffed-peppers.html",
+        "name": "Stuffed Bell Peppers"
+      },
+      {
+        "@type": "ListItem",
+        "position": 14,
+        "url": "https://www.kitchenlo.com/recipes/banana-pops.html",
+        "name": "Chocolate Banana Pops"
+      },
+      {
+        "@type": "ListItem",
+        "position": 15,
+        "url": "https://www.kitchenlo.com/recipes/smoothie-bowl.html",
+        "name": "Green Protein Smoothie Bowl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 16,
+        "url": "https://www.kitchenlo.com/recipes/pesto-tortellini.html",
+        "name": "Pesto Chicken Tortellini"
+      },
+      {
+        "@type": "ListItem",
+        "position": 17,
+        "url": "https://www.kitchenlo.com/recipes/berry-tartlets.html",
+        "name": "Lemon Berry Tartlets"
+      },
+      {
+        "@type": "ListItem",
+        "position": 18,
+        "url": "https://www.kitchenlo.com/recipes/mediterranean-flatbread.html",
+        "name": "Mediterranean Flatbread"
+      },
+      {
+        "@type": "ListItem",
+        "position": 19,
+        "url": "https://www.kitchenlo.com/recipes/panna-cotta.html",
+        "name": "Panna Cotta Cups"
+      },
+      {
+        "@type": "ListItem",
+        "position": 20,
+        "url": "https://www.kitchenlo.com/recipes/coconut-rice-bowl.html",
+        "name": "Coconut Rice Bowl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 21,
+        "url": "https://www.kitchenlo.com/recipes/broccoli-quesadillas.html",
+        "name": "Cheesy Broccoli Quesadillas"
+      },
+      {
+        "@type": "ListItem",
+        "position": 22,
+        "url": "https://www.kitchenlo.com/recipes/rice-pudding.html",
+        "name": "Vanilla Rice Pudding"
+      },
+      {
+        "@type": "ListItem",
+        "position": 23,
+        "url": "https://www.kitchenlo.com/recipes/kale-salad.html",
+        "name": "Citrus Kale Salad"
+      },
+      {
+        "@type": "ListItem",
+        "position": 24,
+        "url": "https://www.kitchenlo.com/recipes/almond-tart.html",
+        "name": "Almond Berry Tart"
+      },
+      {
+        "@type": "ListItem",
+        "position": 25,
+        "url": "https://www.kitchenlo.com/recipes/miso-noodles.html",
+        "name": "Miso Noodle Stir-Fry"
+      },
+      {
+        "@type": "ListItem",
+        "position": 26,
+        "url": "https://www.kitchenlo.com/recipes/roasted-wrap.html",
+        "name": "Roasted Veggie Wrap"
+      },
+      {
+        "@type": "ListItem",
+        "position": 27,
+        "url": "https://www.kitchenlo.com/recipes/yogurt-parfait.html",
+        "name": "Honey Yogurt Parfait"
+      },
+      {
+        "@type": "ListItem",
+        "position": 28,
+        "url": "https://www.kitchenlo.com/recipes/farro-salad.html",
+        "name": "Warm Farro Salad"
+      },
+      {
+        "@type": "ListItem",
+        "position": 29,
+        "url": "https://www.kitchenlo.com/recipes/ricotta-toasts.html",
+        "name": "Spinach Ricotta Toasts"
+      },
+      {
+        "@type": "ListItem",
+        "position": 30,
+        "url": "https://www.kitchenlo.com/recipes/herbed-yogurt-bowl.html",
+        "name": "Herbed Yogurt Bowl"
+      }
+    ]
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.kitchenlo.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Recipes",
+      "item": "https://www.kitchenlo.com/recipes.html"
+    }
+  ]
+}
+    </script>
   </head>
-  <body>
-    <header class="site-header">
+  <body class="">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header" id="siteHeader">
       <div class="container nav-wrap">
-        <a class="brand" href="index.html">Kitchenlo</a>
-        <button class="nav-toggle" data-aria-key="navToggleAria" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="site-nav">
-          <a href="index.html" data-key="navHome">Home</a>
-          <a href="recipes.html" class="active" data-key="navRecipes">Recipes</a>
-          <a href="categories.html" data-key="navCategories">Categories</a>
-          <a href="about.html" data-key="navAbout">About</a>
-          <a href="contact.html" data-key="navContact">Contact</a>
+        <a class="brand" href="index.html" aria-label="Kitchenlo home">
+          <svg class="brand-mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Kitchenlo</span>
+        </a>
+
+        <nav class="site-nav" id="siteNav" aria-label="Main">
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html" class="is-active" aria-current="page">Recipes</a></li>
+          <li class="has-submenu">
+            <a href="categories.html">Categories<svg class="chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+            <ul class="submenu">
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+            </ul>
+          </li>
+          <li><a href="meal-planner.html">Meal Planner</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          </ul>
         </nav>
+
         <div class="header-actions">
-          <div class="lang-switcher" role="group" data-aria-key="languageSwitcherAria" aria-label="Choose language">
-            <button type="button" class="lang-option active" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" class="lang-option" data-lang="fr" aria-pressed="false">FR</button>
-            <button type="button" class="lang-option" data-lang="es" aria-pressed="false">ES</button>
+          <button class="icon-btn" type="button" id="searchTrigger" aria-label="Search recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <a class="icon-btn" href="favorites.html" aria-label="Saved recipes">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span class="badge" data-favorites-count hidden>0</span>
+          </a>
+          <button class="icon-btn" type="button" id="themeToggle" aria-label="Switch colour theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor"/><path d="M10 1v2m0 14v2M1 10h2m14 0h2M3.6 3.6l1.4 1.4m10 10l1.4 1.4m0-11.4l-1.4 1.4m-10 10l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 12.5A7 7 0 0 1 7.5 4a7 7 0 1 0 8.5 8.5z" fill="currentColor"/></svg>
+          </button>
+
+          <div class="auth-slot" data-auth-slot>
+            <a class="btn btn-ghost btn-sm" href="login.html" data-auth-anon>Sign in</a>
+            <a class="btn btn-primary btn-sm" href="signup.html" data-auth-anon>Sign up</a>
+            <div class="account-menu" data-auth-user hidden>
+              <button type="button" class="avatar-btn" id="accountTrigger" aria-expanded="false" aria-haspopup="true">
+                <span class="avatar" data-user-initials>K</span>
+                <span class="account-name" data-user-name>Account</span>
+              </button>
+              <div class="account-dropdown" id="accountDropdown" hidden>
+                <a href="account.html">My account</a>
+                <a href="favorites.html">Saved recipes</a>
+                <a href="meal-planner.html">Meal planner</a>
+                <a href="shopping-list.html">Shopping list</a>
+                <button type="button" data-signout>Sign out</button>
+              </div>
+            </div>
           </div>
-          <button class="theme-toggle" type="button" data-aria-key="themeToggleAria" aria-label="Toggle color theme">☀︎</button>
+
+          <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
 
-    <main>
+    <div class="search-overlay" id="searchOverlay" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
+        <div class="search-input-row">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="searchOverlayInput" placeholder="Search 30 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
+        </div>
+        <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
+      </div>
+    </div>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Recipes</li>
+          </ol>
+        </div>
+      </nav>
+    <main id="main">
       <section class="page-hero">
         <div class="container">
-          <p class="eyebrow" data-key="recipePageEyebrow">Recipe collection</p>
-          <h1 data-key="recipePageTitle">Handpicked dishes for comfort, speed, and everyday joy.</h1>
-          <p data-key="recipePageIntro">Browse favorites that are simple to follow and satisfying to share.</p>
+          <p class="eyebrow">Recipe collection</p>
+          <h1>All 30 recipes, searchable and filterable.</h1>
+          <p class="lede">Search by ingredient, filter by diet or time, and sort by whatever matters tonight. Everything updates instantly.</p>
         </div>
       </section>
 
-      <section class="section" id="quick-dinners">
+      <section class="section-tight">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-key="recipeSectionQuickEyebrow">Quick dinners</p>
-            <h2 data-key="recipeSectionQuickTitle">Fast meals for busy nights</h2>
-          </div>
-          <div class="card-grid">
-            <article class="card recipe-card" id="garlic-butter-salmon">
-              <a class="recipe-image-link" href="#garlic-butter-salmon"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80" alt="Salmon with lemon and herbs" /></a>
-              <h3 data-key="quickRecipe01Title">Garlic Butter Salmon</h3>
-              <p data-key="quickRecipe01Text">A quick salmon dinner with bright lemon and a silky butter finish.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe01Ing1">Salmon fillets</li>
-                  <li data-key="quickRecipe01Ing2">Butter, garlic, lemon</li>
-                  <li data-key="quickRecipe01Ing3">Parsley and black pepper</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe01Step1">Season salmon and pan-sear until lightly crisp.</li>
-                  <li data-key="quickRecipe01Step2">Cook garlic in butter, then add lemon juice and parsley.</li>
-                  <li data-key="quickRecipe01Step3">Spoon the sauce over the fish and serve with greens.</li>
-                </ol>
+          <div class="filter-bar" id="filterBar">
+            <div class="search-row">
+              <label class="sr-only" for="recipeSearch">Search recipes</label>
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <input type="search" id="recipeSearch" placeholder="Search by name or ingredient..." autocomplete="off" />
+              <button type="button" class="btn btn-ghost btn-sm" id="clearFilters">Reset</button>
+            </div>
+
+            <details class="filter-drawer" open>
+              <summary>Filters</summary>
+              <div class="filter-groups">
+                <div class="filter-group" role="group" aria-label="category">
+              <button type="button" class="chip is-active" data-filter="category" data-value="">All categories</button>
+              <button type="button" class="chip" data-filter="category" data-value="quick-dinners">Quick Dinners</button>
+              <button type="button" class="chip" data-filter="category" data-value="healthy-food">Healthy Food</button>
+              <button type="button" class="chip" data-filter="category" data-value="desserts">Desserts</button>
+            </div>
+                <div class="filter-group" role="group" aria-label="time">
+              <button type="button" class="chip is-active" data-filter="time" data-value="">Any time</button>
+              <button type="button" class="chip" data-filter="time" data-value="under-15">Under 15 min</button>
+              <button type="button" class="chip" data-filter="time" data-value="under-30">Under 30 min</button>
+              <button type="button" class="chip" data-filter="time" data-value="under-45">Under 45 min</button>
+            </div>
+                <div class="filter-group" role="group" aria-label="diet">
+              <button type="button" class="chip is-active" data-filter="diet" data-value="">Any diet</button>
+              <button type="button" class="chip" data-filter="diet" data-value="vegetarian">Vegetarian</button>
+              <button type="button" class="chip" data-filter="diet" data-value="vegan">Vegan</button>
+              <button type="button" class="chip" data-filter="diet" data-value="gluten-free">Gluten free</button>
+              <button type="button" class="chip" data-filter="diet" data-value="dairy-free">Dairy free</button>
+              <button type="button" class="chip" data-filter="diet" data-value="high-protein">High protein</button>
+              <button type="button" class="chip" data-filter="diet" data-value="high-fibre">High fibre</button>
+              <button type="button" class="chip" data-filter="diet" data-value="low-carb">Low carb</button>
+            </div>
+                <div class="filter-group" role="group" aria-label="difficulty">
+              <button type="button" class="chip is-active" data-filter="difficulty" data-value="">Any level</button>
+              <button type="button" class="chip" data-filter="difficulty" data-value="Easy">Easy</button>
+              <button type="button" class="chip" data-filter="difficulty" data-value="Medium">Medium</button>
+            </div>
               </div>
-              <a class="btn btn-secondary" href="#garlic-butter-salmon" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="pesto-tortellini">
-              <a class="recipe-image-link" href="#pesto-tortellini"><img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80" alt="Pesto tortellini served in a bowl" /></a>
-              <h3 data-key="quickRecipe02Title">Pesto Chicken Tortellini</h3>
-              <p data-key="quickRecipe02Text">Cheesy tortellini, chicken, and basil pesto make a cozy weeknight bowl.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe02Ing1">Cheese tortellini</li>
-                  <li data-key="quickRecipe02Ing2">Cooked chicken, pesto, cherry tomatoes</li>
-                  <li data-key="quickRecipe02Ing3">Parmesan and basil</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe02Step1">Boil the tortellini until tender, then drain.</li>
-                  <li data-key="quickRecipe02Step2">Warm chicken with pesto and tomatoes until glossy.</li>
-                  <li data-key="quickRecipe02Step3">Toss everything together and finish with parmesan.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#pesto-tortellini" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="taco-rice-bowls">
-              <a class="recipe-image-link" href="#taco-rice-bowls"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80" alt="Crispy taco rice bowls plated on a table" /></a>
-              <h3 data-key="quickRecipe03Title">Crispy Taco Rice Bowls</h3>
-              <p data-key="quickRecipe03Text">Rice, black beans, and spiced chicken come together in a crunchy bowl.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe03Ing1">Cooked rice</li>
-                  <li data-key="quickRecipe03Ing2">Chicken, black beans, corn</li>
-                  <li data-key="quickRecipe03Ing3">Avocado, salsa, cheese</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe03Step1">Season chicken and cook until browned.</li>
-                  <li data-key="quickRecipe03Step2">Layer rice, beans, corn, and avocado in bowls.</li>
-                  <li data-key="quickRecipe03Step3">Top with chicken, salsa, cheese, and lime.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#taco-rice-bowls" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="miso-noodles">
-              <a class="recipe-image-link" href="#miso-noodles"><img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&w=900&q=80" alt="A stir-fry bowl of noodles with vegetables" /></a>
-              <h3 data-key="quickRecipe04Title">Miso Noodle Stir-Fry</h3>
-              <p data-key="quickRecipe04Text">A fast noodle skillet with snap peas, tofu, and a glossy sauce.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe04Ing1">Rice noodles</li>
-                  <li data-key="quickRecipe04Ing2">Tofu, snap peas, carrots</li>
-                  <li data-key="quickRecipe04Ing3">Miso paste, soy sauce, sesame oil</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe04Step1">Cook noodles and set aside.</li>
-                  <li data-key="quickRecipe04Step2">Pan-fry tofu and vegetables until lightly charred.</li>
-                  <li data-key="quickRecipe04Step3">Stir in miso sauce and toss with noodles.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#miso-noodles" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="mediterranean-flatbread">
-              <a class="recipe-image-link" href="#mediterranean-flatbread"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80" alt="Mediterranean flatbread on a board" /></a>
-              <h3 data-key="quickRecipe05Title">Mediterranean Flatbread</h3>
-              <p data-key="quickRecipe05Text">Warm flatbread layered with olives, tomatoes, and feta in minutes.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe05Ing1">Flatbread</li>
-                  <li data-key="quickRecipe05Ing2">Tomatoes, olives, feta</li>
-                  <li data-key="quickRecipe05Ing3">Olive oil, oregano, garlic</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe05Step1">Brush the flatbread with olive oil and garlic.</li>
-                  <li data-key="quickRecipe05Step2">Top with tomatoes, olives, and feta.</li>
-                  <li data-key="quickRecipe05Step3">Bake until crisp at the edges and serve warm.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#mediterranean-flatbread" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="honey-soy-chicken">
-              <a class="recipe-image-link" href="#honey-soy-chicken"><img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=900&q=80" alt="Honey soy chicken with vegetables" /></a>
-              <h3 data-key="quickRecipe06Title">Honey Soy Chicken Skillet</h3>
-              <p data-key="quickRecipe06Text">Tender chicken and vegetables glazed with a sweet-savory sauce.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe06Ing1">Chicken breast</li>
-                  <li data-key="quickRecipe06Ing2">Broccoli, carrots, bell pepper</li>
-                  <li data-key="quickRecipe06Ing3">Honey, soy sauce, ginger</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe06Step1">Cook chicken until golden and caramelized.</li>
-                  <li data-key="quickRecipe06Step2">Add vegetables and saute until crisp-tender.</li>
-                  <li data-key="quickRecipe06Step3">Pour in honey-soy sauce and glaze everything well.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#honey-soy-chicken" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="ricotta-toasts">
-              <a class="recipe-image-link" href="#ricotta-toasts"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Ricotta toasts with spinach on a platter" /></a>
-              <h3 data-key="quickRecipe07Title">Spinach Ricotta Toasts</h3>
-              <p data-key="quickRecipe07Text">Toasted bread topped with creamy ricotta and wilted greens.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe07Ing1">Sourdough or baguette</li>
-                  <li data-key="quickRecipe07Ing2">Ricotta, spinach, garlic</li>
-                  <li data-key="quickRecipe07Ing3">Lemon zest and chili flakes</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe07Step1">Toast bread until crisp.</li>
-                  <li data-key="quickRecipe07Step2">Cook spinach with garlic until wilted.</li>
-                  <li data-key="quickRecipe07Step3">Spread ricotta, add spinach, and finish with lemon zest.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#ricotta-toasts" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="smoky-tomato-pasta">
-              <a class="recipe-image-link" href="#smoky-tomato-pasta"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80" alt="Smoky tomato pasta in a bowl" /></a>
-              <h3 data-key="quickRecipe08Title">Smoky Tomato Pasta</h3>
-              <p data-key="quickRecipe08Text">A pantry-friendly pasta with roasted tomatoes and a silky finish.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe08Ing1">Pasta</li>
-                  <li data-key="quickRecipe08Ing2">Tomatoes, garlic, chili flakes</li>
-                  <li data-key="quickRecipe08Ing3">Olive oil and parmesan</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe08Step1">Cook pasta and reserve a little cooking water.</li>
-                  <li data-key="quickRecipe08Step2">Simmer garlic and tomatoes until saucy and fragrant.</li>
-                  <li data-key="quickRecipe08Step3">Toss with pasta, parmesan, and chili flakes.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#smoky-tomato-pasta" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="lemon-herb-shrimp">
-              <a class="recipe-image-link" href="#lemon-herb-shrimp"><img src="https://images.unsplash.com/photo-1563379091331-03b75bec4a25?auto=format&fit=crop&w=900&q=80" alt="Lemon herb shrimp on a plate" /></a>
-              <h3 data-key="quickRecipe09Title">Lemon Herb Shrimp</h3>
-              <p data-key="quickRecipe09Text">Juicy shrimp in a bright lemon pan sauce that feels dinner-party worthy.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe09Ing1">Shrimp</li>
-                  <li data-key="quickRecipe09Ing2">Garlic, butter, lemon</li>
-                  <li data-key="quickRecipe09Ing3">Parsley and capers</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe09Step1">Cook shrimp quickly in a hot skillet.</li>
-                  <li data-key="quickRecipe09Step2">Add butter, garlic, lemon, and capers.</li>
-                  <li data-key="quickRecipe09Step3">Finish with parsley and serve immediately.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#lemon-herb-shrimp" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="broccoli-quesadillas">
-              <a class="recipe-image-link" href="#broccoli-quesadillas"><img src="https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=900&q=80" alt="Crisp broccoli quesadillas on a plate" /></a>
-              <h3 data-key="quickRecipe10Title">Cheesy Broccoli Quesadillas</h3>
-              <p data-key="quickRecipe10Text">Crisp tortillas filled with broccoli, cheese, and a little spice.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="quickRecipe10Ing1">Tortillas</li>
-                  <li data-key="quickRecipe10Ing2">Broccoli, cheddar, onion</li>
-                  <li data-key="quickRecipe10Ing3">Greek yogurt and chili flakes</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="quickRecipe10Step1">Saute broccoli and onion until tender.</li>
-                  <li data-key="quickRecipe10Step2">Fill tortillas with cheese and vegetables.</li>
-                  <li data-key="quickRecipe10Step3">Toast until crisp and serve with yogurt.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#broccoli-quesadillas" data-key="viewRecipe">View Recipe</a>
-            </article>
+            </details>
+
+            <div class="results-row">
+              <p class="results-count" id="resultsCount" role="status" aria-live="polite">Showing 30 recipes</p>
+              <label class="sort-label" for="sortSelect">Sort
+                <select id="sortSelect">
+                  <option value="popular">Most popular</option>
+                  <option value="newest">Newest</option>
+                  <option value="quickest">Quickest</option>
+                  <option value="rating">Highest rated</option>
+                  <option value="az">A to Z</option>
+                </select>
+              </label>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section alt-bg" id="healthy-food">
+      <section class="section-tight">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-key="recipeSectionHealthyEyebrow">Healthy food</p>
-            <h2 data-key="recipeSectionHealthyTitle">Fresh bowls and bright lunches</h2>
+          <div class="card-grid" id="recipeResults">
+            <article class="card recipe-card" data-slug="lava-mug-cake">
+              <a class="card-media" href="recipes/lava-mug-cake.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Chocolate lava mug cake with a molten centre spilling out" loading="eager" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lava-mug-cake" aria-label="Save Chocolate Lava Mug Cake" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>5 min</span>
+                </div>
+                <h3><a href="recipes/lava-mug-cake.html">Chocolate Lava Mug Cake</a></h3>
+                <p>A single-serve chocolate cake with a molten centre, mixed and microwaved in under five minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">486 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="lentil-soup">
+              <a class="card-media" href="recipes/lentil-soup.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A bright bowl of lentil herb soup topped with parsley" loading="eager" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lentil-soup" aria-label="Save Lentil Herb Soup" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>50 min</span>
+                </div>
+                <h3><a href="recipes/lentil-soup.html">Lentil Herb Soup</a></h3>
+                <p>A deeply savoury lentil soup with soffritto, herbs and lemon, thick enough to stand a spoon in.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">342 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="apple-crisp">
+              <a class="card-media" href="recipes/apple-crisp.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Warm cinnamon apple crisp served in a dish with ice cream" loading="eager" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="apple-crisp" aria-label="Save Cinnamon Apple Crisp" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr 10 min</span>
+                </div>
+                <h3><a href="recipes/apple-crisp.html">Cinnamon Apple Crisp</a></h3>
+                <p>Tender spiced apples under a thick oat and brown sugar crisp topping, best served warm with ice cream.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">412 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="taco-rice-bowls">
+              <a class="card-media" href="recipes/taco-rice-bowls.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Taco rice bowls topped with avocado, salsa and lime wedges" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="taco-rice-bowls" aria-label="Save Crispy Taco Rice Bowls" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>28 min</span>
+                </div>
+                <h3><a href="recipes/taco-rice-bowls.html">Crispy Taco Rice Bowls</a></h3>
+                <p>Spiced chicken, black beans and crisped rice layered into a loaded taco bowl with avocado and lime.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">615 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="berry-crumble">
+              <a class="card-media" href="recipes/berry-crumble.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Berry oat crumble bubbling in a baking dish" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="berry-crumble" aria-label="Save Berry Oat Crumble" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr</span>
+                </div>
+                <h3><a href="recipes/berry-crumble.html">Berry Oat Crumble</a></h3>
+                <p>Jammy mixed berries under a thick, buttery oat topping that bakes into proper crunchy clusters.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">386 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="chickpea-salad">
+              <a class="card-media" href="recipes/chickpea-salad.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mediterranean chickpea salad with cucumber, tomato and feta in a bowl" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="chickpea-salad" aria-label="Save Mediterranean Chickpea Salad" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>15 min</span>
+                </div>
+                <h3><a href="recipes/chickpea-salad.html">Mediterranean Chickpea Salad</a></h3>
+                <p>Chickpeas, crisp cucumber, olives and feta in a lemon-oregano dressing that gets better as it sits.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">384 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="honey-soy-chicken">
+              <a class="card-media" href="recipes/honey-soy-chicken.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Honey soy glazed chicken with broccoli and peppers in a skillet" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="honey-soy-chicken" aria-label="Save Honey Soy Chicken Skillet" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>26 min</span>
+                </div>
+                <h3><a href="recipes/honey-soy-chicken.html">Honey Soy Chicken Skillet</a></h3>
+                <p>Tender chicken and crisp vegetables glazed in a sweet-savoury honey soy sauce that reduces to a lacquer.</p>
+                <div class="card-tags">
+                  <span class="tag">dairy free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">468 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="lemon-herb-shrimp">
+              <a class="card-media" href="recipes/lemon-herb-shrimp.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1563379091331-03b75bec4a25?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Lemon herb shrimp in a pan sauce with parsley and lemon wedges" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lemon-herb-shrimp" aria-label="Save Lemon Herb Shrimp" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.9 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>17 min</span>
+                </div>
+                <h3><a href="recipes/lemon-herb-shrimp.html">Lemon Herb Shrimp</a></h3>
+                <p>Juicy shrimp in a bright lemon and white wine pan sauce that comes together in under ten minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">296 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="quinoa-bowl">
+              <a class="card-media" href="recipes/quinoa-bowl.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Avocado quinoa bowl with roasted vegetables and tahini dressing" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="quinoa-bowl" aria-label="Save Avocado Quinoa Bowl" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>45 min</span>
+                </div>
+                <h3><a href="recipes/quinoa-bowl.html">Avocado Quinoa Bowl</a></h3>
+                <p>Fluffy quinoa, roasted vegetables and avocado under a lemon-tahini dressing, built for meal prep.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">528 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="garlic-butter-salmon">
+              <a class="card-media" href="recipes/garlic-butter-salmon.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Seared salmon fillets with lemon slices and fresh parsley" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="garlic-butter-salmon" aria-label="Save Garlic Butter Salmon" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>17 min</span>
+                </div>
+                <h3><a href="recipes/garlic-butter-salmon.html">Garlic Butter Salmon</a></h3>
+                <p>A quick salmon dinner with bright lemon and a silky butter pan sauce, ready in under 20 minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">412 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="lemon-bars">
+              <a class="card-media" href="recipes/lemon-bars.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mini lemon bars dusted with icing sugar on a cooling rack" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Medium</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="lemon-bars" aria-label="Save Mini Lemon Bars" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr 5 min</span>
+                </div>
+                <h3><a href="recipes/lemon-bars.html">Mini Lemon Bars</a></h3>
+                <p>A buttery shortbread base under a sharp, glossy lemon curd filling that sets to a clean slice.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">232 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="smoky-tomato-pasta">
+              <a class="card-media" href="recipes/smoky-tomato-pasta.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Smoky tomato pasta twirled in a wide bowl with basil" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="smoky-tomato-pasta" aria-label="Save Smoky Tomato Pasta" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>30 min</span>
+                </div>
+                <h3><a href="recipes/smoky-tomato-pasta.html">Smoky Tomato Pasta</a></h3>
+                <p>A pantry pasta built on slow-blistered tomatoes, smoked paprika and a silky, emulsified finish.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">524 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="stuffed-peppers">
+              <a class="card-media" href="recipes/stuffed-peppers.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Stuffed bell peppers with rice, beans and melted cheese on a baking tray" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Medium</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="stuffed-peppers" aria-label="Save Stuffed Bell Peppers" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>1 hr 5 min</span>
+                </div>
+                <h3><a href="recipes/stuffed-peppers.html">Stuffed Bell Peppers</a></h3>
+                <p>Sweet roasted peppers packed with herby rice, black beans and melted cheese, a full meal in one dish.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">398 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="banana-pops">
+              <a class="card-media" href="recipes/banana-pops.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Chocolate covered banana pops with nuts and sprinkles on a tray" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="banana-pops" aria-label="Save Chocolate Banana Pops" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>15 min</span>
+                </div>
+                <h3><a href="recipes/banana-pops.html">Chocolate Banana Pops</a></h3>
+                <p>Frozen banana halves dipped in dark chocolate and rolled in nuts, sprinkles or coconut.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">198 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="smoothie-bowl">
+              <a class="card-media" href="recipes/smoothie-bowl.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Green smoothie bowl topped with berries, banana and seeds" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="smoothie-bowl" aria-label="Save Green Protein Smoothie Bowl" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>8 min</span>
+                </div>
+                <h3><a href="recipes/smoothie-bowl.html">Green Protein Smoothie Bowl</a></h3>
+                <p>A thick, spoonable blend of spinach, banana, Greek yogurt and protein, built to keep you full until lunch.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">412 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="pesto-tortellini">
+              <a class="card-media" href="recipes/pesto-tortellini.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Pesto tortellini with chicken and cherry tomatoes in a shallow bowl" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="pesto-tortellini" aria-label="Save Pesto Chicken Tortellini" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>20 min</span>
+                </div>
+                <h3><a href="recipes/pesto-tortellini.html">Pesto Chicken Tortellini</a></h3>
+                <p>Cheesy tortellini, tender chicken and basil pesto tossed into a cozy weeknight bowl in 20 minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">598 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="berry-tartlets">
+              <a class="card-media" href="recipes/berry-tartlets.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Lemon berry tartlets topped with raspberries and blueberries" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="berry-tartlets" aria-label="Save Lemon Berry Tartlets" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>20 min</span>
+                </div>
+                <h3><a href="recipes/berry-tartlets.html">Lemon Berry Tartlets</a></h3>
+                <p>Crisp pastry shells filled with lemon mascarpone cream and piled with fresh berries.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">392 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="mediterranean-flatbread">
+              <a class="card-media" href="recipes/mediterranean-flatbread.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mediterranean flatbread with olives, tomatoes and feta on a wooden board" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="mediterranean-flatbread" aria-label="Save Mediterranean Flatbread" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>20 min</span>
+                </div>
+                <h3><a href="recipes/mediterranean-flatbread.html">Mediterranean Flatbread</a></h3>
+                <p>Warm flatbread layered with herbed ricotta, olives, blistered tomatoes and feta, on the table in 20 minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">452 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="panna-cotta">
+              <a class="card-media" href="recipes/panna-cotta.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Panna cotta cups topped with berry syrup" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Medium</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="panna-cotta" aria-label="Save Panna Cotta Cups" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.8 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>28 min</span>
+                </div>
+                <h3><a href="recipes/panna-cotta.html">Panna Cotta Cups</a></h3>
+                <p>Silky vanilla cream set with just enough gelatine to wobble, served with a sharp berry syrup.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">368 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="coconut-rice-bowl">
+              <a class="card-media" href="recipes/coconut-rice-bowl.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Coconut rice bowl with pickled vegetables, edamame and peanut sauce" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="coconut-rice-bowl" aria-label="Save Coconut Rice Bowl" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>40 min</span>
+                </div>
+                <h3><a href="recipes/coconut-rice-bowl.html">Coconut Rice Bowl</a></h3>
+                <p>Fragrant coconut rice topped with quick-pickled vegetables, edamame and a lime-peanut drizzle.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">574 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="broccoli-quesadillas">
+              <a class="card-media" href="recipes/broccoli-quesadillas.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Crisp broccoli quesadillas cut into wedges on a plate" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="broccoli-quesadillas" aria-label="Save Cheesy Broccoli Quesadillas" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>26 min</span>
+                </div>
+                <h3><a href="recipes/broccoli-quesadillas.html">Cheesy Broccoli Quesadillas</a></h3>
+                <p>Crisp golden tortillas filled with charred broccoli, melted cheddar and a little smoky heat.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">486 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="rice-pudding">
+              <a class="card-media" href="recipes/rice-pudding.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A bowl of creamy vanilla rice pudding dusted with cinnamon" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="rice-pudding" aria-label="Save Vanilla Rice Pudding" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>45 min</span>
+                </div>
+                <h3><a href="recipes/rice-pudding.html">Vanilla Rice Pudding</a></h3>
+                <p>Slow-simmered creamy rice pudding scented with vanilla and cinnamon, comforting and barely sweet.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">312 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="kale-salad">
+              <a class="card-media" href="recipes/kale-salad.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Citrus kale salad with orange segments and toasted seeds on a white plate" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="kale-salad" aria-label="Save Citrus Kale Salad" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>23 min</span>
+                </div>
+                <h3><a href="recipes/kale-salad.html">Citrus Kale Salad</a></h3>
+                <p>Massaged kale with orange segments, toasted seeds and a sharp lemon dressing that holds up for days.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">268 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="almond-tart">
+              <a class="card-media" href="recipes/almond-tart.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Almond berry tart topped with fresh raspberries and blueberries" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Medium</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="almond-tart" aria-label="Save Almond Berry Tart" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.7 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>53 min</span>
+                </div>
+                <h3><a href="recipes/almond-tart.html">Almond Berry Tart</a></h3>
+                <p>A press-in almond crust filled with vanilla cream and covered in fresh berries, no rolling pin needed.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">386 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="miso-noodles">
+              <a class="card-media" href="recipes/miso-noodles.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Miso noodle stir-fry with tofu, snap peas and carrots" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="miso-noodles" aria-label="Save Miso Noodle Stir-Fry" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>25 min</span>
+                </div>
+                <h3><a href="recipes/miso-noodles.html">Miso Noodle Stir-Fry</a></h3>
+                <p>A fast noodle skillet with crisp snap peas, golden tofu and a glossy miso sauce that clings to every strand.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">dairy free</span>
+                  <span class="tag tag-muted">486 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="roasted-wrap">
+              <a class="card-media" href="recipes/roasted-wrap.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Roasted vegetable wrap cut in half showing the filling" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="roasted-wrap" aria-label="Save Roasted Veggie Wrap" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.5 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>40 min</span>
+                </div>
+                <h3><a href="recipes/roasted-wrap.html">Roasted Veggie Wrap</a></h3>
+                <p>Charred vegetables, whipped hummus and crunchy greens rolled into a wrap that does not go soggy.</p>
+                <div class="card-tags">
+                  <span class="tag">vegan</span>
+                  <span class="tag">high fibre</span>
+                  <span class="tag tag-muted">446 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="yogurt-parfait">
+              <a class="card-media" href="recipes/yogurt-parfait.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Honey yogurt parfait layered with berries and granola in a glass" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="yogurt-parfait" aria-label="Save Honey Yogurt Parfait" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.5 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>10 min</span>
+                </div>
+                <h3><a href="recipes/yogurt-parfait.html">Honey Yogurt Parfait</a></h3>
+                <p>Layers of thick honeyed yogurt, macerated fruit and crunchy granola, assembled in five minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">328 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="farro-salad">
+              <a class="card-media" href="recipes/farro-salad.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Warm farro salad with roasted squash and greens" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="farro-salad" aria-label="Save Warm Farro Salad" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.6 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>50 min</span>
+                </div>
+                <h3><a href="recipes/farro-salad.html">Warm Farro Salad</a></h3>
+                <p>Nutty farro tossed with roasted squash, wilted greens and a sharp mustard vinaigrette.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">high fibre</span>
+                  <span class="tag tag-muted">462 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="ricotta-toasts">
+              <a class="card-media" href="recipes/ricotta-toasts.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Ricotta toasts topped with wilted spinach on a serving platter" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="ricotta-toasts" aria-label="Save Spinach Ricotta Toasts" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.5 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>15 min</span>
+                </div>
+                <h3><a href="recipes/ricotta-toasts.html">Spinach Ricotta Toasts</a></h3>
+                <p>Thick toasted sourdough topped with whipped lemon ricotta and garlicky wilted spinach.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag tag-muted">338 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="herbed-yogurt-bowl">
+              <a class="card-media" href="recipes/herbed-yogurt-bowl.html" tabindex="-1" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Herbed yogurt bowl topped with cucumber, seeds and olive oil" loading="lazy" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="herbed-yogurt-bowl" aria-label="Save Herbed Yogurt Bowl" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="stars" role="img" aria-label="4.5 out of 5 stars"><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star full">&#9733;</span><span class="star half">&#9733;</span></span>
+                  <span class="meta-dot">&middot;</span>
+                  <span>14 min</span>
+                </div>
+                <h3><a href="recipes/herbed-yogurt-bowl.html">Herbed Yogurt Bowl</a></h3>
+                <p>Cool garlicky yogurt with cucumber, heaps of herbs and toasted seeds, ready in ten minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">gluten free</span>
+                  <span class="tag tag-muted">322 cal</span>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="card-grid">
-            <article class="card recipe-card" id="chickpea-salad">
-              <a class="recipe-image-link" href="#chickpea-salad"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80" alt="Mediterranean chickpea salad in a bowl" /></a>
-              <h3 data-key="healthyRecipe01Title">Mediterranean Chickpea Salad</h3>
-              <p data-key="healthyRecipe01Text">Chickpeas, cucumbers, olives, and feta create a filling lunch bowl.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe01Ing1">Chickpeas</li>
-                  <li data-key="healthyRecipe01Ing2">Cucumber, tomato, olives</li>
-                  <li data-key="healthyRecipe01Ing3">Lemon dressing, feta</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe01Step1">Combine chickpeas with chopped vegetables.</li>
-                  <li data-key="healthyRecipe01Step2">Whisk lemon juice, oil, and mustard for dressing.</li>
-                  <li data-key="healthyRecipe01Step3">Top with feta and serve chilled or room temp.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#chickpea-salad" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="smoothie-bowl">
-              <a class="recipe-image-link" href="#smoothie-bowl"><img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=900&q=80" alt="Green smoothie bowl topped with fruit" /></a>
-              <h3 data-key="healthyRecipe02Title">Green Protein Smoothie Bowl</h3>
-              <p data-key="healthyRecipe02Text">A creamy blend of spinach, yogurt, banana, and berries for a fresh breakfast.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe02Ing1">Spinach</li>
-                  <li data-key="healthyRecipe02Ing2">Banana, yogurt, berries</li>
-                  <li data-key="healthyRecipe02Ing3">Chia seeds and granola</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe02Step1">Blend spinach, banana, and yogurt until smooth.</li>
-                  <li data-key="healthyRecipe02Step2">Pour into a bowl and top with berries.</li>
-                  <li data-key="healthyRecipe02Step3">Finish with chia seeds and granola.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#smoothie-bowl" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="quinoa-bowl">
-              <a class="recipe-image-link" href="#quinoa-bowl"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=900&q=80" alt="Avocado quinoa bowl on a plate" /></a>
-              <h3 data-key="healthyRecipe03Title">Avocado Quinoa Bowl</h3>
-              <p data-key="healthyRecipe03Text">Quinoa, avocado, and roasted vegetables make a nourishing midday meal.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe03Ing1">Quinoa</li>
-                  <li data-key="healthyRecipe03Ing2">Avocado, cucumber, tomato</li>
-                  <li data-key="healthyRecipe03Ing3">Lemon dressing and herbs</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe03Step1">Cook quinoa and cool slightly.</li>
-                  <li data-key="healthyRecipe03Step2">Layer with vegetables and avocado.</li>
-                  <li data-key="healthyRecipe03Step3">Finish with lemon dressing and herbs.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#quinoa-bowl" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="lentil-soup">
-              <a class="recipe-image-link" href="#lentil-soup"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="Lentil soup in a bright bowl" /></a>
-              <h3 data-key="healthyRecipe04Title">Lentil Herb Soup</h3>
-              <p data-key="healthyRecipe04Text">Easy lentils, herbs, and vegetables simmer into a comforting bowl.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe04Ing1">Red lentils</li>
-                  <li data-key="healthyRecipe04Ing2">Carrot, celery, onion</li>
-                  <li data-key="healthyRecipe04Ing3">Vegetable stock and herbs</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe04Step1">Saute onion, carrot, and celery.</li>
-                  <li data-key="healthyRecipe04Step2">Add lentils and stock and simmer until soft.</li>
-                  <li data-key="healthyRecipe04Step3">Blend partly and finish with herbs.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#lentil-soup" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="roasted-wrap">
-              <a class="recipe-image-link" href="#roasted-wrap"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80" alt="Roasted veggie wrap on a plate" /></a>
-              <h3 data-key="healthyRecipe05Title">Roasted Veggie Wrap</h3>
-              <p data-key="healthyRecipe05Text">Crunchy vegetables and hummus tucked into a bright wrap for a light lunch.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe05Ing1">Wraps</li>
-                  <li data-key="healthyRecipe05Ing2">Roasted zucchini, peppers, onions</li>
-                  <li data-key="healthyRecipe05Ing3">Hummus and greens</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe05Step1">Roast vegetables until tender and lightly charred.</li>
-                  <li data-key="healthyRecipe05Step2">Spread hummus over the wrap.</li>
-                  <li data-key="healthyRecipe05Step3">Layer vegetables and greens, roll tight, and slice.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#roasted-wrap" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="kale-salad">
-              <a class="recipe-image-link" href="#kale-salad"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80" alt="Citrus kale salad on a white plate" /></a>
-              <h3 data-key="healthyRecipe06Title">Citrus Kale Salad</h3>
-              <p data-key="healthyRecipe06Text">A crisp salad with citrus, seeds, and a lemony dressing.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe06Ing1">Kale</li>
-                  <li data-key="healthyRecipe06Ing2">Orange, avocado, pumpkin seeds</li>
-                  <li data-key="healthyRecipe06Ing3">Lemon dressing</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe06Step1">Toss kale with citrus segments and avocado.</li>
-                  <li data-key="healthyRecipe06Step2">Sprinkle with pumpkin seeds.</li>
-                  <li data-key="healthyRecipe06Step3">Drizzle with lemon dressing and serve.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#kale-salad" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="herbed-yogurt-bowl">
-              <a class="recipe-image-link" href="#herbed-yogurt-bowl"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Herbed yogurt bowl with seeds and vegetables" /></a>
-              <h3 data-key="healthyRecipe07Title">Herbed Yogurt Bowl</h3>
-              <p data-key="healthyRecipe07Text">A cool yogurt bowl with cucumbers, herbs, and toasted seeds.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe07Ing1">Greek yogurt</li>
-                  <li data-key="healthyRecipe07Ing2">Cucumber, dill, mint</li>
-                  <li data-key="healthyRecipe07Ing3">Toasted seeds and olive oil</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe07Step1">Season yogurt with herbs and olive oil.</li>
-                  <li data-key="healthyRecipe07Step2">Top with cucumbers and toasted seeds.</li>
-                  <li data-key="healthyRecipe07Step3">Serve cold as a light lunch or snack.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#herbed-yogurt-bowl" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="stuffed-peppers">
-              <a class="recipe-image-link" href="#stuffed-peppers"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=900&q=80" alt="Stuffed bell peppers on a baking tray" /></a>
-              <h3 data-key="healthyRecipe08Title">Stuffed Bell Peppers</h3>
-              <p data-key="healthyRecipe08Text">Colorful peppers packed with grains, beans, and herbs.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe08Ing1">Bell peppers</li>
-                  <li data-key="healthyRecipe08Ing2">Rice, black beans, onion</li>
-                  <li data-key="healthyRecipe08Ing3">Tomato sauce and herbs</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe08Step1">Fill halved peppers with the rice and bean mixture.</li>
-                  <li data-key="healthyRecipe08Step2">Place in a baking dish with tomato sauce.</li>
-                  <li data-key="healthyRecipe08Step3">Bake until the peppers are tender and the filling is hot.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#stuffed-peppers" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="farro-salad">
-              <a class="recipe-image-link" href="#farro-salad"><img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=80" alt="Warm farro salad with roasted squash" /></a>
-              <h3 data-key="healthyRecipe09Title">Warm Farro Salad</h3>
-              <p data-key="healthyRecipe09Text">Toasty farro with greens, roasted squash, and a zesty vinaigrette.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe09Ing1">Farro</li>
-                  <li data-key="healthyRecipe09Ing2">Roasted squash, spinach, pumpkin seeds</li>
-                  <li data-key="healthyRecipe09Ing3">Olive oil and lemon</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe09Step1">Cook farro until tender and chewy.</li>
-                  <li data-key="healthyRecipe09Step2">Roast squash until caramelized.</li>
-                  <li data-key="healthyRecipe09Step3">Toss everything with lemon dressing and seeds.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#farro-salad" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="coconut-rice-bowl">
-              <a class="recipe-image-link" href="#coconut-rice-bowl"><img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=900&q=80" alt="Coconut rice bowl with vegetables" /></a>
-              <h3 data-key="healthyRecipe10Title">Coconut Rice Bowl</h3>
-              <p data-key="healthyRecipe10Text">A fragrant bowl of rice, vegetables, and a light coconut finish.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="healthyRecipe10Ing1">Rice</li>
-                  <li data-key="healthyRecipe10Ing2">Carrot, peas, edamame</li>
-                  <li data-key="healthyRecipe10Ing3">Coconut milk and herbs</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="healthyRecipe10Step1">Cook rice and simmer with coconut milk.</li>
-                  <li data-key="healthyRecipe10Step2">Steam vegetables until bright and crisp-tender.</li>
-                  <li data-key="healthyRecipe10Step3">Top with herbs and serve warm.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#coconut-rice-bowl" data-key="viewRecipe">View Recipe</a>
-            </article>
+          <div class="empty-state" id="emptyState" hidden>
+            <h2>No recipes match those filters</h2>
+            <p>Try removing a filter or searching for a single ingredient instead.</p>
+            <button class="btn btn-secondary" type="button" data-reset-filters>Clear all filters</button>
           </div>
         </div>
       </section>
 
-      <section class="section" id="desserts">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-key="recipeSectionDessertEyebrow">Desserts</p>
-            <h2 data-key="recipeSectionDessertTitle">Sweet endings for every day</h2>
+      <section class="section cta-band">
+        <div class="container cta-inner">
+          <div>
+            <h2>Cook something good this week</h2>
+            <p>Create a free account to save recipes, build a meal plan and generate a shopping list in one click.</p>
           </div>
-          <div class="card-grid">
-            <article class="card recipe-card" id="lava-mug-cake">
-              <a class="recipe-image-link" href="#lava-mug-cake"><img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=900&q=80" alt="Chocolate lava mug cake with molten center" /></a>
-              <h3 data-key="dessertRecipe01Title">Chocolate Lava Mug Cake</h3>
-              <p data-key="dessertRecipe01Text">Warm, gooey chocolate cake made in minutes for a cozy treat.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe01Ing1">Flour, cocoa, sugar</li>
-                  <li data-key="dessertRecipe01Ing2">Milk, butter, egg</li>
-                  <li data-key="dessertRecipe01Ing3">Chocolate chips</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe01Step1">Mix the dry ingredients in a mug.</li>
-                  <li data-key="dessertRecipe01Step2">Stir in the wet ingredients and chocolate chips.</li>
-                  <li data-key="dessertRecipe01Step3">Microwave until set but still soft in the center.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#lava-mug-cake" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="berry-tartlets">
-              <a class="recipe-image-link" href="#berry-tartlets"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Berry tartlets on a plate" /></a>
-              <h3 data-key="dessertRecipe02Title">Lemon Berry Tartlets</h3>
-              <p data-key="dessertRecipe02Text">Light pastry shells filled with cream and topped with bright berries.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe02Ing1">Mini pastry shells</li>
-                  <li data-key="dessertRecipe02Ing2">Cream cheese, lemon zest</li>
-                  <li data-key="dessertRecipe02Ing3">Fresh berries</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe02Step1">Whip cream cheese with lemon zest and sugar.</li>
-                  <li data-key="dessertRecipe02Step2">Spoon into shells and top with berries.</li>
-                  <li data-key="dessertRecipe02Step3">Chill for a light, fresh finish.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#berry-tartlets" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="rice-pudding">
-              <a class="recipe-image-link" href="#rice-pudding"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=80" alt="A bowl of vanilla rice pudding" /></a>
-              <h3 data-key="dessertRecipe03Title">Vanilla Rice Pudding</h3>
-              <p data-key="dessertRecipe03Text">Soft, creamy rice pudding finished with cinnamon and vanilla.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe03Ing1">Rice</li>
-                  <li data-key="dessertRecipe03Ing2">Milk, sugar, vanilla</li>
-                  <li data-key="dessertRecipe03Ing3">Cinnamon and raisins</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe03Step1">Simmer rice in milk until creamy.</li>
-                  <li data-key="dessertRecipe03Step2">Stir in sugar, vanilla, and cinnamon.</li>
-                  <li data-key="dessertRecipe03Step3">Serve warm or chilled with raisins.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#rice-pudding" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="berry-crumble">
-              <a class="recipe-image-link" href="#berry-crumble"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Berry crumble on a baking dish" /></a>
-              <h3 data-key="dessertRecipe04Title">Berry Oat Crumble</h3>
-              <p data-key="dessertRecipe04Text">Warm fruit under a buttery oat topping that feels homemade and easy.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe04Ing1">Mixed berries</li>
-                  <li data-key="dessertRecipe04Ing2">Rolled oats, butter, flour</li>
-                  <li data-key="dessertRecipe04Ing3">Brown sugar and vanilla</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe04Step1">Spread fruit in a dish and sprinkle with sugar.</li>
-                  <li data-key="dessertRecipe04Step2">Rub together oats, flour, butter, and sugar.</li>
-                  <li data-key="dessertRecipe04Step3">Bake until bubbling and golden.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#berry-crumble" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="panna-cotta">
-              <a class="recipe-image-link" href="#panna-cotta"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Panna cotta cups with berry topping" /></a>
-              <h3 data-key="dessertRecipe05Title">Panna Cotta Cups</h3>
-              <p data-key="dessertRecipe05Text">Silky vanilla custard served with fresh fruit and a little syrup.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe05Ing1">Heavy cream, milk</li>
-                  <li data-key="dessertRecipe05Ing2">Gelatin, sugar, vanilla</li>
-                  <li data-key="dessertRecipe05Ing3">Berry compote</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe05Step1">Heat cream and milk with sugar and vanilla.</li>
-                  <li data-key="dessertRecipe05Step2">Stir in gelatin and pour into cups.</li>
-                  <li data-key="dessertRecipe05Step3">Chill until set and top with berries.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#panna-cotta" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="lemon-bars">
-              <a class="recipe-image-link" href="#lemon-bars"><img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=80" alt="Lemon bars on a cooling rack" /></a>
-              <h3 data-key="dessertRecipe06Title">Mini Lemon Bars</h3>
-              <p data-key="dessertRecipe06Text">Bright citrus bars with a buttery crust and a soft filling.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe06Ing1">Butter, flour, sugar</li>
-                  <li data-key="dessertRecipe06Ing2">Lemons, eggs</li>
-                  <li data-key="dessertRecipe06Ing3">Icing sugar</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe06Step1">Bake a shortbread crust until lightly golden.</li>
-                  <li data-key="dessertRecipe06Step2">Pour over lemon filling and return to the oven.</li>
-                  <li data-key="dessertRecipe06Step3">Cool and dust with icing sugar.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#lemon-bars" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="yogurt-parfait">
-              <a class="recipe-image-link" href="#yogurt-parfait"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" alt="Honey yogurt parfait layered in a glass" /></a>
-              <h3 data-key="dessertRecipe07Title">Honey Yogurt Parfait</h3>
-              <p data-key="dessertRecipe07Text">Layered yogurt, fruit, nuts, and honey for a quick sweet bite.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe07Ing1">Greek yogurt</li>
-                  <li data-key="dessertRecipe07Ing2">Berries, honey, granola</li>
-                  <li data-key="dessertRecipe07Ing3">Chopped nuts</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe07Step1">Layer yogurt with berries and granola.</li>
-                  <li data-key="dessertRecipe07Step2">Drizzle with honey and add nuts.</li>
-                  <li data-key="dessertRecipe07Step3">Serve chilled for a quick dessert.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#yogurt-parfait" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="banana-pops">
-              <a class="recipe-image-link" href="#banana-pops"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=900&q=80" alt="Chocolate banana pops on a tray" /></a>
-              <h3 data-key="dessertRecipe08Title">Chocolate Banana Pops</h3>
-              <p data-key="dessertRecipe08Text">Frozen banana pops coated in chocolate and sprinkled with crunch.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe08Ing1">Bananas</li>
-                  <li data-key="dessertRecipe08Ing2">Dark chocolate, coconut flakes</li>
-                  <li data-key="dessertRecipe08Ing3">Sprinkles or nuts</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe08Step1">Insert sticks into halved bananas.</li>
-                  <li data-key="dessertRecipe08Step2">Dip in melted chocolate and add toppings.</li>
-                  <li data-key="dessertRecipe08Step3">Freeze until firm before serving.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#banana-pops" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="apple-crisp">
-              <a class="recipe-image-link" href="#apple-crisp"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=900&q=80" alt="Warm cinnamon apple crisp served in a dish" /></a>
-              <h3 data-key="dessertRecipe09Title">Cinnamon Apple Crisp</h3>
-              <p data-key="dessertRecipe09Text">Tender apples baked under a spice-scented crisp topping.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe09Ing1">Apples</li>
-                  <li data-key="dessertRecipe09Ing2">Brown sugar, oats, butter</li>
-                  <li data-key="dessertRecipe09Ing3">Cinnamon and vanilla</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe09Step1">Slice apples and toss with sugar and cinnamon.</li>
-                  <li data-key="dessertRecipe09Step2">Top with oats, butter, and brown sugar.</li>
-                  <li data-key="dessertRecipe09Step3">Bake until bubbling and golden.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#apple-crisp" data-key="viewRecipe">View Recipe</a>
-            </article>
-            <article class="card recipe-card" id="almond-tart">
-              <a class="recipe-image-link" href="#almond-tart"><img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&fit=crop&w=900&q=80" alt="Almond berry tart on a dessert plate" /></a>
-              <h3 data-key="dessertRecipe10Title">Almond Berry Tart</h3>
-              <p data-key="dessertRecipe10Text">A simple almond crust filled with cream and fresh berries.</p>
-              <div class="recipe-details">
-                <p><strong data-key="recipeIngredientsLabel">Ingredients:</strong></p>
-                <ul>
-                  <li data-key="dessertRecipe10Ing1">Almond flour</li>
-                  <li data-key="dessertRecipe10Ing2">Butter, sugar, cream cheese</li>
-                  <li data-key="dessertRecipe10Ing3">Fresh berries</li>
-                </ul>
-                <p><strong data-key="recipeMethodLabel">Method:</strong></p>
-                <ol class="method-steps">
-                  <li data-key="dessertRecipe10Step1">Press almond crust into a tart pan and bake.</li>
-                  <li data-key="dessertRecipe10Step2">Fill with sweetened cream cheese.</li>
-                  <li data-key="dessertRecipe10Step3">Top with berries and chill before serving.</li>
-                </ol>
-              </div>
-              <a class="btn btn-secondary" href="#almond-tart" data-key="viewRecipe">View Recipe</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt-bg">
-        <div class="container recipe-guide-card">
-          <p class="eyebrow" data-key="guideEyebrow">Complete guide</p>
-          <h2 data-key="guideTitle">Roasted Veggie Flatbread from start to finish</h2>
-          <p data-key="guideIntro">This recipe is simple, colorful, and perfect for sharing. Follow these steps from prep to serving.</p>
-          <div class="recipe-steps">
-            <div><strong data-key="guideStepOneTitle">1. Prep the vegetables</strong><p data-key="guideStepOneText">Roast sliced peppers, zucchini, and onion with olive oil, salt, and a little oregano until lightly golden.</p></div>
-            <div><strong data-key="guideStepTwoTitle">2. Spread the base</strong><p data-key="guideStepTwoText">Lay the flatbread on a tray and smooth on a generous layer of herbed cream cheese.</p></div>
-            <div><strong data-key="guideStepThreeTitle">3. Build the topping</strong><p data-key="guideStepThreeText">Scatter the roasted vegetables over the base and finish with a few fresh herbs.</p></div>
-            <div><strong data-key="guideStepFourTitle">4. Bake and serve</strong><p data-key="guideStepFourText">Bake until the edges are crisp, slice into pieces, and serve warm with a light salad.</p></div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="signup.html">Create free account</a>
+            <a class="btn btn-ghost" href="recipes.html">Browse all recipes</a>
           </div>
         </div>
       </section>
     </main>
-
     <footer class="site-footer">
-      <div class="container footer-wrap">
-        <p><span>©</span> <span id="year"></span> Kitchenlo. <span data-key="footerRights">All rights reserved.</span></p>
-        <div class="footer-links">
-          <a href="categories.html" data-key="footerCategories">Categories</a>
-          <a href="contact.html" data-key="footerContact">Contact</a>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="index.html">
+              <svg class="brand-mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 9v8a3 3 0 0 0 3 3v5m0-16v6m3-6v6M22 9c-1.5 1.5-2 4-2 6s.5 3 2 3v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Kitchenlo</span>
+            </a>
+            <p>Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.</p>
+            <div class="social-row">
+            <a href="https://instagram.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Instagram" class="social-link">I</a>
+            <a href="https://pinterest.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Pinterest" class="social-link">P</a>
+            <a href="https://youtube.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="YouTube" class="social-link">Y</a>
+            <a href="https://tiktok.com/@kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="TikTok" class="social-link">T</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h3>Recipes</h3>
+            <ul>
+              <li><a href="recipes.html">All Recipes</a></li>
+              <li><a href="category/quick-dinners.html">Quick Dinners</a></li>
+              <li><a href="category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="category/desserts.html">Desserts</a></li>
+              <li><a href="categories.html">Browse Categories</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Kitchen Tools</h3>
+            <ul>
+              <li><a href="meal-planner.html">Meal Planner</a></li>
+              <li><a href="shopping-list.html">Shopping List</a></li>
+              <li><a href="favorites.html">Saved Recipes</a></li>
+              <li><a href="guides.html">Cooking Guides</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Use</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Account</h3>
+            <ul>
+              <li><a href="login.html">Sign In</a></li>
+              <li><a href="signup.html">Create Account</a></li>
+              <li><a href="account.html">My Account</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <div>
+            <h3>Get one good recipe a week</h3>
+            <p>No spam, no 2,000-word life stories. Just a tested recipe and what to shop for.</p>
+          </div>
+          <form class="newsletter-form" data-newsletter novalidate>
+            <label class="sr-only" for="footerEmail">Email address</label>
+            <input type="email" id="footerEmail" name="email" placeholder="you@example.com" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; <span data-year>2026</span> Kitchenlo. All rights reserved.</p>
+          <p class="footer-legal">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="sitemap.xml">Sitemap</a>
+          </p>
         </div>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" hidden>
+      <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m0 0L4 10m6-6l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <script src="src/data/site.js"></script>
+    <script src="src/data/recipes-quick-dinners.js"></script>
+    <script src="src/data/recipes-healthy-food.js"></script>
+    <script src="src/data/recipes-desserts.js"></script>
+    <script src="src/data/recipes.js"></script>
+    <script src="src/data/guides.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/store.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/recipe-index.js" defer></script>
   </body>
 </html>
