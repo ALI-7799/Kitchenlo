@@ -81,6 +81,22 @@ Built for recipe search from the ground up:
 - `sitemap.xml` with per-page `lastmod` and priority, referenced from `robots.txt`.
 - Private pages (`account`, `login`, `signup`, `favorites`, `shopping-list`) are
   `noindex` and excluded from the sitemap.
+
+### A deliberate omission: star ratings
+
+The `rating` and `ratingCount` fields in the recipe data are **placeholders, not
+real reviews**, so `site.ratings.enabled` is `false` and no `aggregateRating` is
+published.
+
+Marking up invented ratings is a direct violation of Google's structured data and
+spam policies. The downside is not merely losing the stars — it risks a manual
+action against the whole domain, which would undo every other optimisation here.
+Recipe rich results do not require a rating, so the pages remain fully eligible
+without one.
+
+Once you are collecting genuine ratings from real users, set
+`ratings: { enabled: true }` in `src/data/site.js` and rebuild. That restores the
+stars across the UI and adds `aggregateRating` back to the Recipe schema.
 - Images carry explicit `width`/`height` to avoid layout shift, lazy-load below the
   fold, and the recipe hero uses `fetchpriority="high"`.
 

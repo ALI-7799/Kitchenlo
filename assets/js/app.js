@@ -331,7 +331,11 @@
 
   /* ------------------------------------------------- shared form helpers */
 
+  var site = window.KITCHENLO_SITE || {};
+  var ratingsOn = !!(site.ratings && site.ratings.enabled);
+
   function stars(rating) {
+    if (!ratingsOn) return '';
     var rounded = Math.round(rating * 2) / 2;
     var out = '';
     for (var i = 1; i <= 5; i++) {
@@ -340,6 +344,18 @@
       else out += '<span class="star">&#9733;</span>';
     }
     return '<span class="stars" role="img" aria-label="' + rating + ' out of 5 stars">' + out + '</span>';
+  }
+
+  /** Mirrors components.js cardLead so generated and rendered cards agree. */
+  function cardLead(recipe) {
+    var total = Recipes.totalMinutes(recipe);
+    if (ratingsOn) {
+      return stars(recipe.rating) + '<span class="meta-dot">&middot;</span><span>' +
+        timeLabel(total) + '</span>';
+    }
+    return '<span class="meta-strong">' + timeLabel(total) +
+      '</span><span class="meta-dot">&middot;</span><span>' + escapeHtml(recipe.course) +
+      '</span><span class="meta-dot">&middot;</span><span>' + escapeHtml(recipe.cuisine) + '</span>';
   }
 
   function timeLabel(minutes) {
@@ -370,9 +386,7 @@
       '" aria-label="Save ' + e(recipe.title) + '" aria-pressed="false">' +
       '<svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
       '</button>' +
-      '<div class="card-body"><div class="card-meta">' + stars(recipe.rating) +
-      '<span class="meta-dot">&middot;</span><span>' +
-      timeLabel(Recipes.totalMinutes(recipe)) + '</span></div>' +
+      '<div class="card-body"><div class="card-meta">' + cardLead(recipe) + '</div>' +
       '<h3><a href="' + href + '">' + e(recipe.title) + '</a></h3>' +
       '<p>' + e(recipe.description) + '</p>' +
       '<div class="card-tags">' + tags +

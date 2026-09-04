@@ -2689,3 +2689,5 @@ a.badge-link:hover {
     content: '';
   }
 }
+
+.meta-strong { color: var(--text); font-weight: 600; }

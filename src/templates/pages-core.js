@@ -44,10 +44,15 @@ function home() {
               <h2><a href="recipes/${esc(featured.slug)}.html">${esc(featured.title)}</a></h2>
               <p>${esc(featured.description)}</p>
               <div class="showcase-meta">
-                ${C.stars(featured.rating)}
-                <span>${featured.ratingCount} ratings</span>
+                ${
+                  site.ratings.enabled
+                    ? `${C.stars(featured.rating)}<span>${featured.ratingCount} ratings</span>`
+                    : `<span>${esc(featured.difficulty)}</span>`
+                }
                 <span class="meta-dot">&middot;</span>
                 <span>${esc(C.timeLabel(Recipes.totalMinutes(featured)))}</span>
+                <span class="meta-dot">&middot;</span>
+                <span>${featured.nutrition.calories} cal</span>
               </div>
               <a class="btn btn-secondary" href="recipes/${esc(featured.slug)}.html">See this recipe</a>
             </div>
@@ -352,7 +357,9 @@ function categoriesIndex() {
 function categoryPage(cat) {
   const list = Recipes.byCategory(cat.slug).sort((a, b) => b.ratingCount - a.ratingCount);
   const fastest = list.slice().sort((a, b) => Recipes.totalMinutes(a) - Recipes.totalMinutes(b))[0];
-  const avg = (list.reduce((s, r) => s + r.rating, 0) / list.length).toFixed(1);
+  const avgTime = Math.round(
+    list.reduce((s, r) => s + Recipes.totalMinutes(r), 0) / list.length
+  );
 
   const body = `      <section class="page-hero">
         <div class="container">
@@ -361,7 +368,7 @@ function categoryPage(cat) {
           <p class="lede">${esc(cat.description)}</p>
           <div class="hero-badges">
             <span class="badge-link">${list.length} recipes</span>
-            <span class="badge-link">Average rating ${avg}</span>
+            <span class="badge-link">Average ${esc(C.timeLabel(avgTime))}</span>
             <span class="badge-link">Fastest ${esc(C.timeLabel(Recipes.totalMinutes(fastest)))}</span>
           </div>
         </div>
@@ -492,9 +499,14 @@ function recipePage(recipe) {
               <h1 itemprop="name">${esc(recipe.title)}</h1>
               <p class="lede" itemprop="description">${esc(recipe.description)}</p>
               <div class="recipe-byline">
-                ${C.stars(recipe.rating)}
+                ${
+                  site.ratings.enabled
+                    ? `${C.stars(recipe.rating)}
                 <span><strong>${recipe.rating}</strong> from ${recipe.ratingCount} ratings</span>
-                <span class="meta-dot">&middot;</span>
+                <span class="meta-dot">&middot;</span>`
+                    : `<span>${esc(recipe.cuisine)} ${esc(recipe.course.toLowerCase())}</span>
+                <span class="meta-dot">&middot;</span>`
+                }
                 <span>Updated ${esc(
                   new Date(recipe.dateModified).toLocaleDateString('en-GB', {
                     day: 'numeric',
@@ -656,13 +668,6 @@ function recipePage(recipe) {
       text: s.text,
       url: `${site.origin}/recipes/${recipe.slug}.html#step-${i + 1}`
     })),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: recipe.rating,
-      ratingCount: recipe.ratingCount,
-      bestRating: 5,
-      worstRating: 1
-    },
     nutrition: {
       '@type': 'NutritionInformation',
       servingSize: '1 serving',
@@ -677,6 +682,17 @@ function recipePage(recipe) {
   };
 
   if (!schema.suitableForDiet.length) delete schema.suitableForDiet;
+
+  // Only publish a rating once it reflects genuine reviews; see site.ratings.
+  if (site.ratings.enabled) {
+    schema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: recipe.rating,
+      ratingCount: recipe.ratingCount,
+      bestRating: 5,
+      worstRating: 1
+    };
+  }
 
   return {
     file: `recipes/${recipe.slug}.html`,

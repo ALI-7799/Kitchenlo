@@ -177,8 +177,14 @@ suite('recipes/garlic-butter-salmon.html', () => {
   check('Recipe schema present', !!recipeLd);
   check('has HowToStep instructions', recipeLd.recipeInstructions.length === 6);
   check('has ISO durations', recipeLd.totalTime === 'PT17M', recipeLd.totalTime);
-  check('has aggregateRating', recipeLd.aggregateRating.ratingValue === 4.8);
   check('has nutrition', recipeLd.nutrition.calories === '412 calories');
+  // Placeholder ratings must not be published as review data; see site.ratings.
+  const site = require('../src/data/site.js');
+  check(
+    'aggregateRating matches ratings config',
+    ('aggregateRating' in recipeLd) === site.ratings.enabled,
+    'schema and config disagree'
+  );
 
   // Servings scaler doubles quantities and their bracketed conversions.
   const first = doc.querySelector('[data-ingredient]');

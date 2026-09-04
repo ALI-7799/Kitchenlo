@@ -33,6 +33,22 @@
       'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&h=630&q=80',
     email: 'hello@kitchenlo.com',
     founded: '2025',
+
+    /**
+     * Star ratings, off by default and deliberately so.
+     *
+     * The `rating` / `ratingCount` values in the recipe data are placeholders,
+     * not real user reviews. Publishing invented numbers as AggregateRating
+     * breaks Google's structured data and spam policies and risks a manual
+     * action, which is far more costly than the rich-result stars are worth.
+     * Recipe rich results do not require a rating.
+     *
+     * Set enabled to true only once the ratings reflect genuine reviews
+     * collected from real users, then rebuild. That restores the stars in the
+     * UI and the aggregateRating block in the Recipe schema.
+     */
+    ratings: { enabled: false },
+
     author: {
       name: 'The Kitchenlo Kitchen',
       url: origin + '/about.html'

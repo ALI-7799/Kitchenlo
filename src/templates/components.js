@@ -1,10 +1,15 @@
 /**
  * Reusable markup fragments shared by every page template.
  */
-const { esc, rel } = require('./layout.js');
+const { esc, rel, site } = require('./layout.js');
 const Recipes = require('../data/recipes.js');
 
+/**
+ * Renders stars only when site.ratings.enabled is on. Until the ratings are
+ * real, cards lead with facts a cook can act on instead of invented scores.
+ */
 function stars(rating) {
+  if (!site.ratings.enabled) return '';
   const rounded = Math.round(rating * 2) / 2;
   let out = '';
   for (let i = 1; i <= 5; i++) {
@@ -13,6 +18,19 @@ function stars(rating) {
     else out += '<span class="star">&#9733;</span>';
   }
   return `<span class="stars" role="img" aria-label="${rating} out of 5 stars">${out}</span>`;
+}
+
+/** Leading metadata for a card: stars when enabled, otherwise time and diet. */
+function cardLead(recipe) {
+  const total = Recipes.totalMinutes(recipe);
+  if (site.ratings.enabled) {
+    return `${stars(recipe.rating)}<span class="meta-dot">&middot;</span><span>${esc(
+      timeLabel(total)
+    )}</span>`;
+  }
+  return `<span class="meta-strong">${esc(timeLabel(total))}</span><span class="meta-dot">&middot;</span><span>${esc(
+    recipe.course
+  )}</span><span class="meta-dot">&middot;</span><span>${esc(recipe.cuisine)}</span>`;
 }
 
 function timeLabel(minutes) {
@@ -49,11 +67,7 @@ function recipeCard(recipe, depth, opts) {
                 <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
               </button>
               <div class="card-body">
-                <div class="card-meta">
-                  ${stars(recipe.rating)}
-                  <span class="meta-dot">&middot;</span>
-                  <span>${esc(timeLabel(total))}</span>
-                </div>
+                <div class="card-meta">${cardLead(recipe)}</div>
                 <h3><a href="${esc(href)}">${esc(recipe.title)}</a></h3>
                 <p>${esc(recipe.description)}</p>
                 <div class="card-tags">
@@ -183,6 +197,7 @@ function newsletterCta() {
 
 module.exports = {
   stars,
+  cardLead,
   timeLabel,
   isoDuration,
   recipeCard,
