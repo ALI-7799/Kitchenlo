@@ -15,11 +15,21 @@ The important consequence: **do not edit the generated `.html` files.** They are
 overwritten on every build. Edit the data or the templates and rebuild.
 
 ```
-node tools/build.js
+npm run build      # node tools/build.js
 ```
 
 That writes 54 pages plus `sitemap.xml`, `robots.txt`, `site.webmanifest` and
 `favicon.svg`.
+
+There is a smoke-test suite that loads the generated pages in a real DOM, runs the
+browser scripts and drives the actual interactions — filtering, ingredient
+scaling, form validation, the full signup/login lifecycle, the planner and the
+shopping list. Run it after any change:
+
+```
+npm install        # once, for jsdom
+npm test           # builds, then runs 79 checks
+```
 
 ## Project layout
 

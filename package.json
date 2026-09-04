@@ -1,0 +1,23 @@
+{
+  "name": "kitchenlo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Kitchenlo — a statically generated recipe site with 30 tested recipes, meal planning and structured data for recipe search.",
+  "homepage": "https://www.kitchenlo.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ALI-7799/Kitchenlo.git"
+  },
+  "scripts": {
+    "build": "node tools/build.js",
+    "test": "node tools/build.js && node tools/smoke-test.js",
+    "start": "node tools/build.js && npx --yes serve ."
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
