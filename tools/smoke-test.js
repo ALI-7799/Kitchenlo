@@ -104,7 +104,10 @@ suite('index.html', () => {
   check('auth provider ready', !!window.KitchenloAuth);
   check('store ready', !!window.KitchenloStore);
   check('header rendered', !!doc.querySelector('.site-header .brand'));
-  check('footer rendered', doc.querySelectorAll('.footer-col').length === 4);
+  check(
+    'footer renders every configured column',
+    doc.querySelectorAll('.footer-col').length === require('../src/data/site.js').footer.length
+  );
   check('recipe cards present', doc.querySelectorAll('.recipe-card').length >= 6);
   check('JSON-LD blocks', doc.querySelectorAll('script[type="application/ld+json"]').length >= 2);
 
@@ -332,6 +335,28 @@ suite('favorites.html', () => {
     Array.from(doc.querySelectorAll('#favoritesGrid [data-fav]')).every(
       (b) => b.getAttribute('aria-pressed') === 'true'
     ));
+});
+
+/* ---------------------------------------------------------- collections -- */
+
+suite('collection/vegetarian-recipes.html', () => {
+  const { doc, errors } = load('collection/vegetarian-recipes.html');
+  const collections = require('../src/data/collections.js');
+  const core = require('../src/templates/pages-core.js');
+  const spec = collections.find((c) => c.slug === 'vegetarian-recipes');
+  const expected = core.collectionRecipes(spec).length;
+
+  check('no script errors', errors.length === 0, errors[0]);
+  check('renders every qualifying recipe', doc.querySelectorAll('.recipe-card').length === expected, 'expected ' + expected);
+  check('has original intro copy', doc.querySelectorAll('.prose p').length >= 3);
+  check('has faqs', doc.querySelectorAll('.faq-item').length === spec.faqs.length);
+  check('cross-links other collections', doc.querySelectorAll('.chip-links a').length >= 6);
+
+  const ld = Array.from(doc.querySelectorAll('script[type="application/ld+json"]'))
+    .map((s) => JSON.parse(s.textContent));
+  const list = ld.find((d) => d['@type'] === 'CollectionPage');
+  check('ItemList schema present', !!list && list.mainEntity.numberOfItems === expected);
+  check('FAQPage schema present', ld.some((d) => d['@type'] === 'FAQPage'));
 });
 
 /* ----------------------------------------------------------------- 404 --- */

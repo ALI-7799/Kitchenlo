@@ -92,6 +92,17 @@
         ]
       },
       {
+        title: 'Collections',
+        links: [
+          { label: 'Vegetarian', href: 'collection/vegetarian-recipes.html' },
+          { label: 'Gluten Free', href: 'collection/gluten-free-recipes.html' },
+          { label: 'High Protein', href: 'collection/high-protein-recipes.html' },
+          { label: 'High Fibre', href: 'collection/high-fibre-recipes.html' },
+          { label: '30-Minute Meals', href: 'collection/30-minute-meals.html' },
+          { label: 'Meal Prep', href: 'collection/meal-prep-recipes.html' }
+        ]
+      },
+      {
         title: 'Kitchen Tools',
         links: [
           { label: 'Meal Planner', href: 'meal-planner.html' },

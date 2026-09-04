@@ -16,6 +16,7 @@ const core = require('../src/templates/pages-core.js');
 const statics = require('../src/templates/pages-static.js');
 const Recipes = require('../src/data/recipes.js');
 const guides = require('../src/data/guides.js');
+const collections = require('../src/data/collections.js');
 const site = require('../src/data/site.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -48,6 +49,7 @@ const pages = [
 ];
 
 site.categories.forEach((cat) => pages.push(core.categoryPage(cat)));
+collections.forEach((collection) => pages.push(core.collectionPage(collection)));
 Recipes.all.forEach((recipe) => pages.push(core.recipePage(recipe)));
 guides.forEach((guide) => pages.push(core.guidePage(guide)));
 
@@ -73,6 +75,7 @@ function priorityFor(file) {
   if (file === 'index.html') return '1.0';
   if (file === 'recipes.html' || file === 'categories.html') return '0.9';
   if (file.startsWith('recipes/') || file.startsWith('category/')) return '0.8';
+  if (file.startsWith('collection/')) return '0.8';
   if (file.startsWith('guides/') || file === 'guides.html') return '0.7';
   return '0.5';
 }

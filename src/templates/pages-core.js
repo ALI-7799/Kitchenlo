@@ -6,6 +6,7 @@ const { esc, rel, site } = require('./layout.js');
 const C = require('./components.js');
 const Recipes = require('../data/recipes.js');
 const guides = require('../data/guides.js');
+const collections = require('../data/collections.js');
 
 /* ------------------------------------------------------------------ home -- */
 
@@ -135,6 +136,23 @@ function home() {
       </section>
 
       <section class="section">
+        <div class="container">
+          ${C.sectionHeading('Curated collections', 'Cooking around something specific?', 'Hand-picked lists for the way people actually search: by diet, by time, by how well a dish keeps.')}
+          <div class="collection-grid">
+            ${collections
+              .map((c) => {
+                const count = collectionRecipes(c).length;
+                return `<a class="collection-tile" href="collection/${esc(c.slug)}.html">
+              <span class="collection-count">${count}</span>
+              <span class="collection-name">${esc(c.title)}</span>
+            </a>`;
+              })
+              .join('\n            ')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt-bg">
         <div class="container">
           ${C.sectionHeading('Cooking guides', 'Learn the technique, not just the recipe.', 'Long-form guides on the fundamentals that make everything else easier.', {
             href: 'guides.html',
@@ -716,6 +734,101 @@ function recipePage(recipe) {
   };
 }
 
+/* --------------------------------------------------------- collections --- */
+
+/** Resolves a collection's filter (or explicit slug list) to recipes. */
+function collectionRecipes(collection) {
+  if (collection.slugs) {
+    return collection.slugs.map(Recipes.bySlug).filter(Boolean);
+  }
+  return Recipes.query(
+    Object.assign({ sort: 'quickest' }, collection.filter)
+  );
+}
+
+function collectionPage(collection) {
+  const list = collectionRecipes(collection);
+  const others = collections.filter((c) => c.slug !== collection.slug);
+
+  const body = `      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow">Collection &middot; ${list.length} recipes</p>
+          <h1>${esc(collection.heading)}</h1>
+          <p class="lede">${esc(collection.description)}</p>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container narrow">
+          <div class="prose">
+            ${collection.intro.map((p) => `<p>${esc(p)}</p>`).join('\n            ')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          ${C.recipeGrid(list, 1, { eager: true })}
+        </div>
+      </section>
+
+      ${C.faqBlock(collection.faqs, `${collection.title}: common questions`)}
+
+      <section class="section">
+        <div class="container">
+          ${C.sectionHeading('Keep browsing', 'Other collections', null)}
+          <div class="chip-links">
+            ${others
+              .map(
+                (c) =>
+                  `<a class="badge-link" href="${esc(rel(`collection/${c.slug}.html`, 1))}">${esc(
+                    c.title
+                  )}</a>`
+              )
+              .join('\n            ')}
+            <a class="badge-link" href="${esc(rel('recipes.html', 1))}">All 30 recipes</a>
+          </div>
+        </div>
+      </section>`;
+
+  return {
+    file: `collection/${collection.slug}.html`,
+    depth: 1,
+    title: `${collection.title} | ${site.name}`,
+    description: collection.description,
+    canonical: `collection/${collection.slug}.html`,
+    active: 'recipes.html',
+    image: collection.image,
+    body,
+    breadcrumbs: [
+      { name: 'Home', href: 'index.html' },
+      { name: 'Recipes', href: 'recipes.html' },
+      { name: collection.title, href: `collection/${collection.slug}.html` }
+    ],
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: collection.title,
+        url: `${site.origin}/collection/${collection.slug}.html`,
+        description: collection.description,
+        keywords: (collection.keywords || []).join(', '),
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: list.length,
+          itemListElement: list.map((r, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            url: `${site.origin}/recipes/${r.slug}.html`,
+            name: r.title
+          }))
+        }
+      },
+      C.faqSchema(collection.faqs)
+    ]
+  };
+}
+
 /* ------------------------------------------------------------- guides ---- */
 
 function guidesIndex() {
@@ -848,6 +961,8 @@ function guidePage(guide) {
 
 module.exports = {
   home,
+  collectionPage,
+  collectionRecipes,
   recipesIndex,
   categoriesIndex,
   categoryPage,

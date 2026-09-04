@@ -73,6 +73,42 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.kitchenlo.com/collection/vegetarian-recipes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kitchenlo.com/collection/gluten-free-recipes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kitchenlo.com/collection/high-protein-recipes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kitchenlo.com/collection/high-fibre-recipes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kitchenlo.com/collection/30-minute-meals.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kitchenlo.com/collection/meal-prep-recipes.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.kitchenlo.com/recipes/garlic-butter-salmon.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
