@@ -11,6 +11,9 @@ const path = require('path');
 const { JSDOM, VirtualConsole } = require('jsdom');
 
 const ROOT = path.resolve(__dirname, '..');
+const RECIPES = require('../src/data/recipes.js');
+const SITE = require('../src/data/site.js');
+const TOTAL = RECIPES.all.length;
 
 let failures = 0;
 let checks = 0;
@@ -100,7 +103,7 @@ function suite(name, fn) {
 suite('index.html', () => {
   const { window, doc, errors } = load('index.html');
   check('no script errors', errors.length === 0, errors[0]);
-  check('data layer loaded', window.Kitchenlo && window.Kitchenlo.all.length === 30);
+  check('data layer loaded', window.Kitchenlo && window.Kitchenlo.all.length === TOTAL, 'expected ' + TOTAL);
   check('auth provider ready', !!window.KitchenloAuth);
   check('store ready', !!window.KitchenloStore);
   check('header rendered', !!doc.querySelector('.site-header .brand'));
@@ -139,9 +142,10 @@ suite('recipes.html (filtering, async)', () => {
   const dessertChip = doc.querySelector('.chip[data-value="desserts"]');
   dessertChip.click();
   const shown = doc.querySelectorAll('#recipeResults .recipe-card').length;
-  check('category filter narrows to 10', shown === 10, 'got ' + shown);
+  const expectedDesserts = RECIPES.byCategory('desserts').length;
+  check('category filter narrows correctly', shown === expectedDesserts, 'got ' + shown);
   check('chip marked active', dessertChip.classList.contains('is-active'));
-  check('count text updates', /10 recipes/.test(doc.getElementById('resultsCount').textContent));
+  check('count text updates', doc.getElementById('resultsCount').textContent.indexOf(String(expectedDesserts)) !== -1);
 
   // Diet filter combines with category.
   doc.querySelector('.chip[data-value="vegan"]').click();
@@ -150,7 +154,7 @@ suite('recipes.html (filtering, async)', () => {
 
   // Reset restores everything.
   doc.getElementById('clearFilters').click();
-  check('reset restores all 30', doc.querySelectorAll('#recipeResults .recipe-card').length === 30);
+  check('reset restores every recipe', doc.querySelectorAll('#recipeResults .recipe-card').length === TOTAL);
 
   // Empty state appears when nothing matches.
   doc.querySelector('.chip[data-value="desserts"]').click();
@@ -357,6 +361,33 @@ suite('collection/vegetarian-recipes.html', () => {
   const list = ld.find((d) => d['@type'] === 'CollectionPage');
   check('ItemList schema present', !!list && list.mainEntity.numberOfItems === expected);
   check('FAQPage schema present', ld.some((d) => d['@type'] === 'FAQPage'));
+});
+
+/* --------------------------------------------------- generated cover art -- */
+
+suite('generated recipe covers', () => {
+  const generated = RECIPES.all.filter((r) => r.generatedImage);
+  check('breakfast recipes have generated art', generated.length === 10, generated.length + ' found');
+  check(
+    'every generated cover exists on disk',
+    generated.every((r) => fs.existsSync(path.join(ROOT, r.image))),
+    'missing files'
+  );
+  check(
+    'covers are unique per recipe',
+    new Set(generated.map((r) => fs.readFileSync(path.join(ROOT, r.image), 'utf8'))).size ===
+      generated.length
+  );
+
+  const { doc, errors } = load('recipes/shakshuka.html');
+  check('breakfast recipe page renders', errors.length === 0, errors[0]);
+  const heroSrc = doc.querySelector('.recipe-hero-media img').getAttribute('src');
+  check('cover resolves from a nested page', heroSrc.indexOf('../assets/img/') === 0, heroSrc);
+
+  const ld = Array.from(doc.querySelectorAll('script[type="application/ld+json"]'))
+    .map((s) => JSON.parse(s.textContent));
+  const recipeLd = ld.find((d) => d['@type'] === 'Recipe');
+  check('schema image is absolute', recipeLd.image[0].indexOf('https://') === 0, recipeLd.image[0]);
 });
 
 /* ----------------------------------------------------------------- 404 --- */

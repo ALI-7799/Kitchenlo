@@ -52,41 +52,53 @@
   "keywords": "high fibre recipes, high fiber meals, gut health recipes, fibre rich dinner",
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": 6,
+    "numberOfItems": 8,
     "itemListElement": [
       {
         "@type": "ListItem",
         "position": 1,
+        "url": "https://www.kitchenlo.com/recipes/overnight-oats.html",
+        "name": "Vanilla Overnight Oats"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
         "url": "https://www.kitchenlo.com/recipes/chickpea-salad.html",
         "name": "Mediterranean Chickpea Salad"
       },
       {
         "@type": "ListItem",
-        "position": 2,
+        "position": 3,
+        "url": "https://www.kitchenlo.com/recipes/avocado-toast.html",
+        "name": "Chilli Avocado Toast with a Soft Egg"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "url": "https://www.kitchenlo.com/recipes/roasted-wrap.html",
         "name": "Roasted Veggie Wrap"
       },
       {
         "@type": "ListItem",
-        "position": 3,
+        "position": 5,
         "url": "https://www.kitchenlo.com/recipes/quinoa-bowl.html",
         "name": "Avocado Quinoa Bowl"
       },
       {
         "@type": "ListItem",
-        "position": 4,
+        "position": 6,
         "url": "https://www.kitchenlo.com/recipes/lentil-soup.html",
         "name": "Lentil Herb Soup"
       },
       {
         "@type": "ListItem",
-        "position": 5,
+        "position": 7,
         "url": "https://www.kitchenlo.com/recipes/farro-salad.html",
         "name": "Warm Farro Salad"
       },
       {
         "@type": "ListItem",
-        "position": 6,
+        "position": 8,
         "url": "https://www.kitchenlo.com/recipes/stuffed-peppers.html",
         "name": "Stuffed Bell Peppers"
       }
@@ -174,6 +186,7 @@
             <ul class="submenu">
               <li><a href="../category/quick-dinners.html">Quick Dinners</a></li>
               <li><a href="../category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="../category/breakfast.html">Breakfast &amp; Brunch</a></li>
               <li><a href="../category/desserts.html">Desserts</a></li>
             </ul>
           </li>
@@ -226,7 +239,7 @@
       <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
         <div class="search-input-row">
           <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="search" id="searchOverlayInput" placeholder="Search 30 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <input type="search" id="searchOverlayInput" placeholder="Search 40 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
           <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
         </div>
         <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
@@ -244,7 +257,7 @@
     <main id="main">
       <section class="page-hero">
         <div class="container">
-          <p class="eyebrow">Collection &middot; 6 recipes</p>
+          <p class="eyebrow">Collection &middot; 8 recipes</p>
           <h1>High-fibre meals built on legumes and whole grains</h1>
           <p class="lede">Meals delivering 10 g of fibre or more per serving from beans, lentils, whole grains and vegetables, with the numbers published.</p>
         </div>
@@ -263,6 +276,25 @@
       <section class="section">
         <div class="container">
           <div class="card-grid">
+            <article class="card recipe-card" data-slug="overnight-oats">
+              <a class="card-media" href="../recipes/overnight-oats.html" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-overnight-oats.svg" alt="A jar of vanilla overnight oats topped with berries" loading="eager" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="overnight-oats" aria-label="Save Vanilla Overnight Oats" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">8 min</span><span class="meta-dot">&middot;</span><span>Breakfast</span><span class="meta-dot">&middot;</span><span>International</span></div>
+                <h3><a href="../recipes/overnight-oats.html">Vanilla Overnight Oats</a></h3>
+                <p>A no-cook breakfast that thickens in the fridge overnight, with a base ratio you can build on all week.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">high fibre</span>
+                  <span class="tag tag-muted">372 cal</span>
+                </div>
+              </div>
+            </article>
             <article class="card recipe-card" data-slug="chickpea-salad">
               <a class="card-media" href="../recipes/chickpea-salad.html" tabindex="-1" aria-hidden="true">
                 <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mediterranean chickpea salad with cucumber, tomato and feta in a bowl" loading="eager" decoding="async" width="600" height="400" />
@@ -282,9 +314,28 @@
                 </div>
               </div>
             </article>
+            <article class="card recipe-card" data-slug="avocado-toast">
+              <a class="card-media" href="../recipes/avocado-toast.html" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-avocado-toast.svg" alt="Avocado toast topped with a jammy soft-boiled egg and chilli" loading="eager" decoding="async" width="600" height="400" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="avocado-toast" aria-label="Save Chilli Avocado Toast with a Soft Egg" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">15 min</span><span class="meta-dot">&middot;</span><span>Breakfast</span><span class="meta-dot">&middot;</span><span>Californian</span></div>
+                <h3><a href="../recipes/avocado-toast.html">Chilli Avocado Toast with a Soft Egg</a></h3>
+                <p>Properly seasoned smashed avocado on charred sourdough, finished with a jammy egg and chilli crisp.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">high fibre</span>
+                  <span class="tag tag-muted">424 cal</span>
+                </div>
+              </div>
+            </article>
             <article class="card recipe-card" data-slug="roasted-wrap">
               <a class="card-media" href="../recipes/roasted-wrap.html" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Roasted vegetable wrap cut in half showing the filling" loading="eager" decoding="async" width="600" height="400" />
+                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Roasted vegetable wrap cut in half showing the filling" loading="lazy" decoding="async" width="600" height="400" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="roasted-wrap" aria-label="Save Roasted Veggie Wrap" aria-pressed="false">
@@ -303,7 +354,7 @@
             </article>
             <article class="card recipe-card" data-slug="quinoa-bowl">
               <a class="card-media" href="../recipes/quinoa-bowl.html" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Avocado quinoa bowl with roasted vegetables and tahini dressing" loading="eager" decoding="async" width="600" height="400" />
+                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Avocado quinoa bowl with roasted vegetables and tahini dressing" loading="lazy" decoding="async" width="600" height="400" />
                 <span class="card-badge">Easy</span>
               </a>
               <button class="fav-btn" type="button" data-fav="quinoa-bowl" aria-label="Save Avocado Quinoa Bowl" aria-pressed="false">
@@ -415,7 +466,7 @@
             <a class="badge-link" href="../collection/high-protein-recipes.html">High-Protein Recipes</a>
             <a class="badge-link" href="../collection/30-minute-meals.html">30-Minute Meals</a>
             <a class="badge-link" href="../collection/meal-prep-recipes.html">Meal Prep Recipes</a>
-            <a class="badge-link" href="../recipes.html">All 30 recipes</a>
+            <a class="badge-link" href="../recipes.html">All 40 recipes</a>
           </div>
         </div>
       </section>
@@ -431,7 +482,7 @@
               </svg>
               <span>Kitchenlo</span>
             </a>
-            <p>Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.</p>
+            <p>Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.</p>
             <div class="social-row">
             <a href="https://instagram.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Instagram" class="social-link">I</a>
             <a href="https://pinterest.com/kitchenlo" rel="noopener noreferrer" target="_blank" aria-label="Pinterest" class="social-link">P</a>
@@ -445,6 +496,7 @@
               <li><a href="../recipes.html">All Recipes</a></li>
               <li><a href="../category/quick-dinners.html">Quick Dinners</a></li>
               <li><a href="../category/healthy-food.html">Healthy Food</a></li>
+              <li><a href="../category/breakfast.html">Breakfast &amp; Brunch</a></li>
               <li><a href="../category/desserts.html">Desserts</a></li>
               <li><a href="../categories.html">Browse Categories</a></li>
             </ul>
@@ -519,6 +571,7 @@
     <script src="../src/data/site.js"></script>
     <script src="../src/data/recipes-quick-dinners.js"></script>
     <script src="../src/data/recipes-healthy-food.js"></script>
+    <script src="../src/data/recipes-breakfast.js"></script>
     <script src="../src/data/recipes-desserts.js"></script>
     <script src="../src/data/recipes.js"></script>
     <script src="../src/data/guides.js"></script>

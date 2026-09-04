@@ -33,7 +33,7 @@ function about() {
             <div class="card highlight-card">
               <h3>What you will find</h3>
               <ul class="check-list">
-                <li>30 tested recipes across three collections</li>
+                <li>${Recipes.all.length} tested recipes across ${site.categories.length} collections</li>
                 <li>Measured ingredients in metric and imperial</li>
                 <li>Full nutrition breakdown per serving</li>
                 <li>Storage and make-ahead notes on everything</li>
@@ -58,10 +58,10 @@ function about() {
         <div class="container">
           ${C.sectionHeading('By the numbers', 'What is on the site today', null)}
           <div class="stats-grid">
-            <div><strong>30</strong><span>Tested recipes</span></div>
-            <div><strong>3</strong><span>Collections</span></div>
+            <div><strong>${Recipes.all.length}</strong><span>Tested recipes</span></div>
+            <div><strong>${site.categories.length}</strong><span>Collections</span></div>
             <div><strong>6</strong><span>Technique guides</span></div>
-            <div><strong>190+</strong><span>Method steps written</span></div>
+            <div><strong>${Recipes.all.reduce((n, r) => n + r.instructions.length, 0)}</strong><span>Method steps written</span></div>
           </div>
         </div>
       </section>

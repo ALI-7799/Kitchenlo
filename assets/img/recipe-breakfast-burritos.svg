@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Freezer Breakfast Burritos">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0c987"/>
+      <stop offset="1" stop-color="#c26a2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="765" cy="333" r="84" fill="#fff" opacity="0.07"/><circle cx="426" cy="76" r="88" fill="#fff" opacity="0.06"/><circle cx="87" cy="498" r="92" fill="#fff" opacity="0.05"/><circle cx="788" cy="241" r="96" fill="#fff" opacity="0.11"/>
+  <g transform="translate(600 400) scale(2.1)" color="#7c3c12">
+    <ellipse cx="0" cy="10" rx="86" ry="58" fill="rgba(255,255,255,.92)"/>
+    <circle cx="6" cy="4" r="30" fill="currentColor" opacity=".85"/>
+    <path d="M120 -34h58a20 20 0 0 1 0 40h-8" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="7" stroke-linecap="round"/>
+    <rect x="60" y="-34" width="64" height="70" rx="10" fill="rgba(255,255,255,.9)"/>
+    <path d="M74 -60c0-10 10-10 10-20M92 -60c0-10 10-10 10-20" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

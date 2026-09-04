@@ -25,7 +25,7 @@
     origin: origin,
     basePath: basePath,
     description:
-      'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
+      'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
     locale: 'en_US',
     twitter: '@kitchenlo',
     /* Fallback share image for pages that have no image of their own. */
@@ -70,6 +70,7 @@
         children: [
           { label: 'Quick Dinners', href: 'category/quick-dinners.html' },
           { label: 'Healthy Food', href: 'category/healthy-food.html' },
+          { label: 'Breakfast & Brunch', href: 'category/breakfast.html' },
           { label: 'Desserts', href: 'category/desserts.html' }
         ]
       },
@@ -87,6 +88,7 @@
           { label: 'All Recipes', href: 'recipes.html' },
           { label: 'Quick Dinners', href: 'category/quick-dinners.html' },
           { label: 'Healthy Food', href: 'category/healthy-food.html' },
+          { label: 'Breakfast & Brunch', href: 'category/breakfast.html' },
           { label: 'Desserts', href: 'category/desserts.html' },
           { label: 'Browse Categories', href: 'categories.html' }
         ]
@@ -159,6 +161,19 @@
         keywords: ['healthy recipes', 'meal prep bowls', 'high fibre lunch', 'nutritious dinner ideas']
       },
       {
+        slug: 'breakfast',
+        title: 'Breakfast & Brunch',
+        short: 'Breakfast',
+        tagline: 'Mornings worth getting up for',
+        description:
+          'Weekday breakfasts you can make half-asleep and weekend brunches worth setting the table for, from five-minute overnight oats to a proper shakshuka.',
+        intro:
+          'Breakfast splits cleanly into two problems. On a weekday you need something that takes minutes or was made in advance, which is what the overnight oats, freezer burritos and six-minute omelette are for. At the weekend the constraint disappears and technique becomes the point, which is where the pancakes, French toast and shakshuka earn their place. Both halves are here, and each recipe says plainly which one it is.',
+        image: 'assets/img/recipe-shakshuka.svg',
+        imageAlt: 'A breakfast spread with eggs, pancakes and coffee',
+        keywords: ['breakfast recipes', 'brunch ideas', 'easy breakfast', 'make ahead breakfast']
+      },
+      {
         slug: 'desserts',
         title: 'Desserts',
         short: 'Sweet',
@@ -204,7 +219,7 @@
 
     /* Home page trust strip. */
     stats: [
-      { value: '30', label: 'Tested recipes' },
+      { value: '40', label: 'Tested recipes' },
       { value: '4.7', label: 'Average rating' },
       { value: '5 min', label: 'Fastest recipe' },
       { value: '100%', label: 'Home-cook friendly' }

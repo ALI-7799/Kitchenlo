@@ -1,6 +1,6 @@
 # Kitchenlo
 
-A recipe website for home cooks: 30 tested recipes with measured ingredients, real
+A recipe website for home cooks: 40 tested recipes with measured ingredients, real
 timings and nutrition, plus saved recipes, a weekly meal planner and a shopping list.
 
 Live site: <https://www.kitchenlo.com>
@@ -18,7 +18,7 @@ overwritten on every build. Edit the data or the templates and rebuild.
 npm run build      # node tools/build.js
 ```
 
-That writes 54 pages plus `sitemap.xml`, `robots.txt`, `site.webmanifest` and
+That writes 71 pages plus `sitemap.xml`, `robots.txt`, `site.webmanifest` and
 `favicon.svg`.
 
 There is a smoke-test suite that loads the generated pages in a real DOM, runs the
@@ -28,7 +28,7 @@ shopping list. Run it after any change:
 
 ```
 npm install        # once, for jsdom
-npm test           # builds, then runs 79 checks
+npm test           # builds, then runs 92 checks
 ```
 
 ## Project layout
@@ -37,7 +37,8 @@ npm test           # builds, then runs 79 checks
 src/data/           Content — the source of truth
   site.js             Brand, navigation, footer, categories, filter facets
   recipes.js          Merges the collections, plus query/search helpers
-  recipes-*.js        The three recipe collections (10 recipes each)
+  recipes-*.js        The four recipe collections (10 recipes each)
+  collections.js      Curated cross-cutting collections (diet, time, meal prep)
   guides.js           Six long-form cooking guides
 src/templates/      Rendering
   layout.js           <head>, header, footer, SEO tags, JSON-LD wrapper
@@ -99,6 +100,23 @@ Once you are collecting genuine ratings from real users, set
 stars across the UI and adds `aggregateRating` back to the Recipe schema.
 - Images carry explicit `width`/`height` to avoid layout shift, lazy-load below the
   fold, and the recipe hero uses `fetchpriority="high"`.
+
+## Images
+
+Recipe photography is hotlinked from Unsplash. The ten breakfast recipes have no
+photograph yet, so they carry `image: null` and the generator produces
+deterministic SVG cover art in `assets/img/` instead — distinct per recipe,
+derived from the slug. This is deliberate: a duplicated stock photo or a hotlink
+that 404s is worse than honest illustration.
+
+To swap in a real photo, replace the `null` with a URL and rebuild. The generated
+file is simply no longer referenced.
+
+Two of the original photos are also reused across recipes (one appears on four),
+which predates this rebuild and is worth fixing when you commission photography:
+
+    photo-1488477181946  herbed-yogurt-bowl, berry-tartlets, berry-crumble, yogurt-parfait
+    photo-1529042410759  quinoa-bowl, stuffed-peppers
 
 ## Accounts
 

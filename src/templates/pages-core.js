@@ -14,13 +14,14 @@ function home() {
   const popular = Recipes.query({ sort: 'popular' }).slice(0, 6);
   const quickest = Recipes.query({ sort: 'quickest' }).slice(0, 3);
   const featured = Recipes.bySlug('lentil-soup');
+  const total = Recipes.all.length;
 
   const body = `      <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">${esc(site.tagline)}</p>
             <h1>Cook meals that feel cozy, bright, and effortless.</h1>
-            <p class="lede">Thirty tested recipes with measured ingredients, real timings and nutrition for every dish. Quick dinners, healthy bowls and easy desserts, written for people who cook on weeknights.</p>
+            <p class="lede">${total} tested recipes with measured ingredients, real timings and nutrition for every dish. Quick dinners, healthy bowls and easy desserts, written for people who cook on weeknights.</p>
             <form class="hero-search" action="recipes.html" method="get" role="search">
               <label class="sr-only" for="heroSearch">Search recipes</label>
               <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -38,7 +39,7 @@ function home() {
             <div class="recipe-showcase">
               <p class="eyebrow">Recipe of the day</p>
               <a href="recipes/${esc(featured.slug)}.html" class="showcase-media">
-                <img src="${esc(featured.image)}" alt="${esc(
+                <img src="${esc(C.imageUrl(featured, 0))}" alt="${esc(
     featured.imageAlt
   )}" width="600" height="400" loading="eager" decoding="async" />
               </a>
@@ -75,7 +76,7 @@ function home() {
 
       <section class="section">
         <div class="container">
-          ${C.sectionHeading('Browse by category', 'Find something that fits tonight.', 'Three collections, ten tested recipes in each.')}
+          ${C.sectionHeading('Browse by category', 'Find something that fits tonight.', `${site.categories.length} collections covering dinner, lunch, breakfast and pudding.`)}
           <div class="card-grid">
             ${site.categories
               .map((cat) => C.categoryCard(cat, Recipes.byCategory(cat.slug).length, 0))
@@ -88,7 +89,7 @@ function home() {
         <div class="container">
           ${C.sectionHeading('Popular this week', 'Make something delicious tonight.', null, {
             href: 'recipes.html',
-            label: 'View all 30 recipes'
+            label: `View all ${total} recipes`
           })}
           ${C.recipeGrid(popular, 0, { eager: true })}
         </div>
@@ -176,7 +177,7 @@ function home() {
     canonical: 'index.html',
     active: 'index.html',
     body,
-    image: featured.image,
+    image: C.absoluteImageUrl(featured),
     schema: [
       {
         '@context': 'https://schema.org',
@@ -228,7 +229,7 @@ function recipesIndex() {
   const body = `      <section class="page-hero">
         <div class="container">
           <p class="eyebrow">Recipe collection</p>
-          <h1>All 30 recipes, searchable and filterable.</h1>
+          <h1>All ${all.length} recipes, searchable and filterable.</h1>
           <p class="lede">Search by ingredient, filter by diet or time, and sort by whatever matters tonight. Everything updates instantly.</p>
         </div>
       </section>
@@ -288,7 +289,7 @@ function recipesIndex() {
     file: 'recipes.html',
     title: `All Recipes | ${site.name}`,
     description:
-      'Browse all 30 Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls and easy desserts.',
+      `Browse all ${all.length} Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls, breakfasts and easy desserts.`,
     canonical: 'recipes.html',
     active: 'recipes.html',
     body,
@@ -326,7 +327,7 @@ function categoriesIndex() {
         <div class="container">
           <p class="eyebrow">Browse by category</p>
           <h1>Find recipes that match your mood, time, and cravings.</h1>
-          <p class="lede">Three collections of ten tested recipes each, organised by how you actually decide what to cook.</p>
+          <p class="lede">${site.categories.length} collections, ${Recipes.all.length} tested recipes, organised by how you actually decide what to cook.</p>
         </div>
       </section>
 
@@ -361,7 +362,7 @@ function categoriesIndex() {
     file: 'categories.html',
     title: `Recipe Categories | ${site.name}`,
     description:
-      'Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls and easy desserts, with ten tested recipes in each collection.',
+      'Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls, breakfasts and easy desserts, each a collection of tested recipes.',
     canonical: 'categories.html',
     active: 'categories.html',
     body,
@@ -544,7 +545,7 @@ function recipePage(recipe) {
               </div>
             </div>
             <figure class="recipe-hero-media">
-              <img src="${esc(recipe.image)}" alt="${esc(
+              <img src="${esc(C.imageUrl(recipe, 1))}" alt="${esc(
     recipe.imageAlt
   )}" itemprop="image" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" />
             </figure>
@@ -652,7 +653,7 @@ function recipePage(recipe) {
     '@type': 'Recipe',
     name: recipe.title,
     description: recipe.description,
-    image: [recipe.image],
+    image: [C.absoluteImageUrl(recipe)],
     author: { '@type': 'Organization', name: site.author.name, url: site.author.url },
     publisher: {
       '@type': 'Organization',
@@ -719,7 +720,7 @@ function recipePage(recipe) {
     description: recipe.description,
     canonical: `recipes/${recipe.slug}.html`,
     active: 'recipes.html',
-    image: recipe.image,
+    image: C.absoluteImageUrl(recipe),
     type: 'article',
     bodyClass: 'recipe-page',
     body,
@@ -786,7 +787,7 @@ function collectionPage(collection) {
                   )}</a>`
               )
               .join('\n            ')}
-            <a class="badge-link" href="${esc(rel('recipes.html', 1))}">All 30 recipes</a>
+            <a class="badge-link" href="${esc(rel('recipes.html', 1))}">All ${Recipes.all.length} recipes</a>
           </div>
         </div>
       </section>`;

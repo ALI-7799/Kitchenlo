@@ -6,21 +6,53 @@
  * have been loaded already as <script> tags that populate window.KITCHENLO_DATA.
  */
 (function (root, factory) {
+  /**
+   * The one place collections are registered. `file` is what the generator
+   * loads and what layout.js emits as a script tag; `key` is the property each
+   * collection sets on window.KITCHENLO_DATA in the browser. Adding a
+   * collection means adding one line here and nothing else.
+   */
+  var COLLECTIONS = [
+    { file: './recipes-quick-dinners.js', key: 'quickDinners' },
+    { file: './recipes-healthy-food.js', key: 'healthyFood' },
+    { file: './recipes-breakfast.js', key: 'breakfast' },
+    { file: './recipes-desserts.js', key: 'desserts' }
+  ];
+
   if (typeof module === 'object' && module.exports) {
-    module.exports = factory([
-      require('./recipes-quick-dinners.js'),
-      require('./recipes-healthy-food.js'),
-      require('./recipes-desserts.js')
-    ]);
+    var api = factory(
+      COLLECTIONS.map(function (c) {
+        return require(c.file);
+      })
+    );
+    api.COLLECTION_FILES = COLLECTIONS.map(function (c) {
+      return c.file.replace('./', 'src/data/');
+    });
+    module.exports = api;
   } else {
     var data = root.KITCHENLO_DATA || {};
-    root.Kitchenlo = factory([data.quickDinners || [], data.healthyFood || [], data.desserts || []]);
+    root.Kitchenlo = factory(
+      COLLECTIONS.map(function (c) {
+        return data[c.key] || [];
+      })
+    );
     root.KITCHENLO_RECIPES = root.Kitchenlo.all;
   }
 })(typeof self !== 'undefined' ? self : this, function (collections) {
   var all = collections.reduce(function (acc, list) {
     return acc.concat(list);
   }, []);
+
+  /* A recipe with no photograph gets generated cover art. The path is stored
+     site-root-relative (no leading slash) so the depth-aware link helper can
+     resolve it from nested directories. */
+  all.forEach(function (recipe) {
+    if (!recipe.image) {
+      recipe.image = 'assets/img/recipe-' + recipe.slug + '.svg';
+      recipe.imageAlt = recipe.imageAlt || recipe.title;
+      recipe.generatedImage = true;
+    }
+  });
 
   function totalMinutes(recipe) {
     return (recipe.prepMinutes || 0) + (recipe.cookMinutes || 0);

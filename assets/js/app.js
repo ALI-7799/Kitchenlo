@@ -127,7 +127,7 @@
           r.slug +
           '.html">' +
           '<img src="' +
-          r.image +
+          (/^https?:/.test(r.image) ? r.image : ROOT + r.image) +
           '" alt="" loading="lazy" />' +
           '<span><strong>' +
           escapeHtml(r.title) +
@@ -368,7 +368,9 @@
   /** Client-side twin of the generator's recipe card, kept visually identical. */
   function recipeCardHtml(recipe, prefix) {
     var e = escapeHtml;
-    var href = (prefix === undefined ? ROOT : prefix) + 'recipes/' + recipe.slug + '.html';
+    var base = prefix === undefined ? ROOT : prefix;
+    var href = base + 'recipes/' + recipe.slug + '.html';
+    var img = /^https?:/.test(recipe.image) ? recipe.image : base + recipe.image;
     var tags = (recipe.diet || [])
       .slice(0, 2)
       .map(function (d) {
@@ -379,7 +381,7 @@
     return (
       '<article class="card recipe-card" data-slug="' + e(recipe.slug) + '">' +
       '<a class="card-media" href="' + href + '" tabindex="-1" aria-hidden="true">' +
-      '<img src="' + e(recipe.image) + '" alt="' + e(recipe.imageAlt) +
+      '<img src="' + e(img) + '" alt="' + e(recipe.imageAlt) +
       '" loading="lazy" decoding="async" width="600" height="400" />' +
       '<span class="card-badge">' + e(recipe.difficulty) + '</span></a>' +
       '<button class="fav-btn" type="button" data-fav="' + e(recipe.slug) +

@@ -18,6 +18,7 @@ const Recipes = require('../src/data/recipes.js');
 const guides = require('../src/data/guides.js');
 const collections = require('../src/data/collections.js');
 const site = require('../src/data/site.js');
+const { placeholderSvg } = require('../src/templates/placeholder.js');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -52,6 +53,11 @@ site.categories.forEach((cat) => pages.push(core.categoryPage(cat)));
 collections.forEach((collection) => pages.push(core.collectionPage(collection)));
 Recipes.all.forEach((recipe) => pages.push(core.recipePage(recipe)));
 guides.forEach((guide) => pages.push(core.guidePage(guide)));
+
+/* ------------------------------------------------- generated cover art --- */
+
+const generated = Recipes.all.filter((r) => r.generatedImage);
+generated.forEach((recipe) => write(recipe.image, placeholderSvg(recipe)));
 
 /* -------------------------------------------------------------- render --- */
 
@@ -175,3 +181,6 @@ console.log(`    ${counts.guides} guide pages`);
 console.log(`    ${written.length - counts.recipes - counts.categories - counts.guides} other pages`);
 console.log(`  sitemap.xml with ${pages.length - excluded.size} URLs`);
 console.log(`  robots.txt, site.webmanifest, favicon.svg`);
+if (generated.length) {
+  console.log(`  ${generated.length} generated cover images (recipes awaiting photography)`);
+}

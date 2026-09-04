@@ -4,6 +4,16 @@
 const { esc, rel, site } = require('./layout.js');
 const Recipes = require('../data/recipes.js');
 
+/** Photos are absolute URLs; generated covers are root-relative and need depth. */
+function imageUrl(recipe, depth) {
+  return rel(recipe.image, depth);
+}
+
+/** Absolute form, for structured data and share tags. */
+function absoluteImageUrl(recipe) {
+  return /^https?:/.test(recipe.image) ? recipe.image : site.origin + '/' + recipe.image;
+}
+
 /**
  * Renders stars only when site.ratings.enabled is on. Until the ratings are
  * real, cards lead with facts a cook can act on instead of invented scores.
@@ -56,7 +66,7 @@ function recipeCard(recipe, depth, opts) {
 
   return `<article class="card recipe-card" data-slug="${esc(recipe.slug)}">
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
-                <img src="${esc(recipe.image)}" alt="${esc(recipe.imageAlt)}" loading="${
+                <img src="${esc(imageUrl(recipe, depth))}" alt="${esc(recipe.imageAlt)}" loading="${
     opts.eager ? 'eager' : 'lazy'
   }" decoding="async" width="600" height="400" />
                 <span class="card-badge">${esc(recipe.difficulty)}</span>
@@ -111,7 +121,7 @@ function categoryCard(category, count, depth) {
   const href = rel(`category/${category.slug}.html`, depth);
   return `<article class="card category-card">
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
-                <img src="${esc(category.image)}" alt="${esc(category.imageAlt)}" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="${esc(rel(category.image, depth))}" alt="${esc(category.imageAlt)}" loading="lazy" decoding="async" width="600" height="400" />
               </a>
               <div class="card-body">
                 <p class="eyebrow">${count} recipes</p>
@@ -196,6 +206,8 @@ function newsletterCta() {
 }
 
 module.exports = {
+  imageUrl,
+  absoluteImageUrl,
   stars,
   cardLead,
   timeLabel,

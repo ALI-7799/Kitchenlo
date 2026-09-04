@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Sweet Potato Breakfast Hash">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7d08a"/>
+      <stop offset="1" stop-color="#d97b29"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="167" cy="-510" r="-18" fill="#fff" opacity="0.02"/><circle cx="868" cy="-87" r="-14" fill="#fff" opacity="0.01"/><circle cx="845" cy="5" r="-26" fill="#fff" opacity="0.04"/><circle cx="506" cy="-252" r="-22" fill="#fff" opacity="0.03"/>
+  <g transform="translate(600 400) scale(2.1)" color="#84420f">
+    <ellipse cx="0" cy="10" rx="86" ry="58" fill="rgba(255,255,255,.92)"/>
+    <circle cx="6" cy="4" r="30" fill="currentColor" opacity=".85"/>
+    <path d="M120 -34h58a20 20 0 0 1 0 40h-8" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="7" stroke-linecap="round"/>
+    <rect x="60" y="-34" width="64" height="70" rx="10" fill="rgba(255,255,255,.9)"/>
+    <path d="M74 -60c0-10 10-10 10-20M92 -60c0-10 10-10 10-20" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

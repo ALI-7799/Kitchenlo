@@ -4,6 +4,8 @@
  * defined exactly once and rebuilding propagates changes across the whole site.
  */
 const site = require('../data/site.js');
+const Recipes = require('../data/recipes.js');
+const recipeCount = Recipes.all.length;
 
 /** Escapes text destined for HTML body content or attribute values. */
 function esc(value) {
@@ -122,7 +124,7 @@ function headerMarkup(active, depth) {
       <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
         <div class="search-input-row">
           <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="search" id="searchOverlayInput" placeholder="Search 30 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <input type="search" id="searchOverlayInput" placeholder="Search ${recipeCount} recipes and guides..." autocomplete="off" aria-label="Search recipes" />
           <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
         </div>
         <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
@@ -309,9 +311,7 @@ ${page.body}
     ${footerMarkup(depth)}
 
     <script src="${esc(rel('src/data/site.js', depth))}"></script>
-    <script src="${esc(rel('src/data/recipes-quick-dinners.js', depth))}"></script>
-    <script src="${esc(rel('src/data/recipes-healthy-food.js', depth))}"></script>
-    <script src="${esc(rel('src/data/recipes-desserts.js', depth))}"></script>
+${Recipes.COLLECTION_FILES.map((f) => `    <script src="${esc(rel(f, depth))}"></script>`).join('\n')}
     <script src="${esc(rel('src/data/recipes.js', depth))}"></script>
     <script src="${esc(rel('src/data/guides.js', depth))}"></script>
     <script src="${esc(rel('assets/js/config.js', depth))}"></script>
