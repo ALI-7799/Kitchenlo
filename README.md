@@ -147,50 +147,57 @@ To switch to real accounts, follow the three steps in `assets/js/config.js`.
 
 ## Deployment
 
-> **The custom domain is not connected yet.** As of the last build,
-> `www.kitchenlo.com` resolves to a Namecheap parking page, not to GitHub Pages.
-> Canonical URLs, Open Graph tags and `sitemap.xml` all point at that domain, so
-> search engines will not index the site correctly until DNS is pointed at GitHub.
+> **The custom domain is not connected yet.** `www.kitchenlo.com` resolves to a
+> Namecheap parking page. Canonical URLs, Open Graph tags and `sitemap.xml` all
+> point at that domain, so search engines will not index the site correctly until
+> it is attached to whichever host you are using.
 
-Two supported setups. Whichever you choose, set `origin` and `basePath` at the top
-of `src/data/site.js` to match, then rebuild — those two values drive every
-canonical URL, share tag and sitemap entry.
+`origin` and `basePath` at the top of `src/data/site.ts` drive every canonical
+URL, share tag and sitemap entry. Set them to match wherever the site actually
+answers, then rebuild.
 
-### Option A — custom domain (what the config currently assumes)
+### Vercel (current host)
 
-```js
-var origin = 'https://www.kitchenlo.com';
-var basePath = '';
+`vercel.json` is configured already. The generator writes into the repo root
+rather than a `dist` directory, so `outputDirectory` is `"."`; Vercel's "Other"
+preset would otherwise look for `public/`.
+
+Two things to know:
+
+- `engines.node` must be a **pinned major** such as `"22.x"`. Vercel rejects
+  ranges like `">=18"` and aborts before the build starts.
+- `cleanUrls` is deliberately off. Every internal link is written with an
+  explicit `.html`, so enabling it would 301-redirect all of them.
+
+To attach the domain: **Project → Settings → Domains**, add `www.kitchenlo.com`,
+then replace the parking records at Namecheap with what Vercel shows you, which
+is normally:
+
+| Type  | Host  | Value                   |
+| ----- | ----- | ----------------------- |
+| A     | `@`   | `76.76.21.21`           |
+| CNAME | `www` | `cname.vercel-dns.com.` |
+
+TLS is issued automatically once DNS propagates. Leave `origin` as
+`https://www.kitchenlo.com` and no rebuild is needed.
+
+If you would rather stay on the `.vercel.app` URL for now, set `origin` to it
+and rebuild, so canonicals point somewhere that actually serves the site.
+
+### GitHub Pages (alternative)
+
+Works too, since the generated HTML is committed. Enable **Settings → Pages →
+Deploy from branch → `main` / root**. For the project URL rather than a custom
+domain, set:
+
+```ts
+const origin = 'https://ali-7799.github.io';
+const basePath = '/Kitchenlo';
 ```
 
-At your DNS provider (Namecheap), replace the parking records with:
-
-| Type  | Host  | Value                  |
-| ----- | ----- | ---------------------- |
-| A     | `@`   | `185.199.108.153`      |
-| A     | `@`   | `185.199.109.153`      |
-| A     | `@`   | `185.199.110.153`      |
-| A     | `@`   | `185.199.111.153`      |
-| CNAME | `www` | `ali-7799.github.io.`  |
-
-Then in the repo: **Settings → Pages → Custom domain**, enter `www.kitchenlo.com`
-and save. GitHub commits a `CNAME` file for you and issues a TLS certificate once
-DNS propagates (minutes to a few hours). Tick **Enforce HTTPS** afterwards.
-
-No `CNAME` file is committed here deliberately — adding one before DNS is ready
-would redirect the working `github.io` address to a parked domain and take the
-site offline.
-
-### Option B — GitHub Pages project URL (works immediately)
-
-```js
-var origin = 'https://ali-7799.github.io';
-var basePath = '/Kitchenlo';
-```
-
-Rebuild, commit, and enable **Settings → Pages → Deploy from branch → `main` / root**.
-The site is then live at `https://ali-7799.github.io/Kitchenlo/` with correct
-canonicals. Switch to Option A whenever the domain is ready.
+and rebuild. For a custom domain on Pages the DNS records are different from
+Vercel's: four A records pointing at `185.199.108-111.153` plus a `www` CNAME to
+`ali-7799.github.io.`. Do not point the domain at both hosts at once.
 
 ## Development
 
