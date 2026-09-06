@@ -8,21 +8,22 @@
  *
  * Usage: node tools/build.js
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
-const layout = require('../src/templates/layout.js');
-const core = require('../src/templates/pages-core.js');
-const statics = require('../src/templates/pages-static.js');
-const Recipes = require('../src/data/recipes.js');
-const guides = require('../src/data/guides.js');
-const collections = require('../src/data/collections.js');
-const site = require('../src/data/site.js');
-const { placeholderSvg } = require('../src/templates/placeholder.js');
+import { render } from '../src/templates/layout.js';
+import * as core from '../src/templates/pages-core.js';
+import * as statics from '../src/templates/pages-static.js';
+import * as Recipes from '../src/data/recipes.js';
+import guides from '../src/data/guides.js';
+import collections from '../src/data/collections.js';
+import site from '../src/data/site.js';
+import { placeholderSvg } from '../src/templates/placeholder.js';
+import type { PageSpec } from '../src/types.js';
 
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(import.meta.dirname, '..');
 
-function write(relPath, contents) {
+function write(relPath: string, contents: string): string {
   const full = path.join(ROOT, relPath);
   fs.mkdirSync(path.dirname(full), { recursive: true });
   fs.writeFileSync(full, contents, 'utf8');
@@ -31,7 +32,7 @@ function write(relPath, contents) {
 
 /* ------------------------------------------------------------ collect ---- */
 
-const pages = [
+const pages: PageSpec[] = [
   core.home(),
   core.recipesIndex(),
   core.categoriesIndex(),
@@ -63,7 +64,7 @@ const generated = Recipes.all.filter((r) => r.generatedImage);
 
 /* -------------------------------------------------------------- render --- */
 
-const written = pages.map((page) => write(page.file, layout.render(page)));
+const written = pages.map((page) => write(page.file, render(page)));
 
 /* ------------------------------------------------------------- sitemap --- */
 
@@ -79,7 +80,7 @@ const excluded = new Set([
   'shopping-list.html'
 ]);
 
-function priorityFor(file) {
+function priorityFor(file: string): string {
   if (file === 'index.html') return '1.0';
   if (file === 'recipes.html' || file === 'categories.html') return '0.9';
   if (file.startsWith('recipes/') || file.startsWith('category/')) return '0.8';
@@ -88,7 +89,7 @@ function priorityFor(file) {
   return '0.5';
 }
 
-function lastModFor(page) {
+function lastModFor(page: PageSpec): string {
   const recipe = Recipes.bySlug(path.basename(page.file, '.html'));
   if (recipe && page.file.startsWith('recipes/')) return recipe.dateModified;
   const guide = guides.find((g) => page.file === `guides/${g.slug}.html`);
@@ -97,8 +98,8 @@ function lastModFor(page) {
 }
 
 const urls = pages
-  .filter((p) => !excluded.has(p.file))
-  .map((p) => {
+  .filter((p: PageSpec) => !excluded.has(p.file))
+  .map((p: PageSpec) => {
     const loc = site.origin + '/' + (p.file === 'index.html' ? '' : p.file);
     return `  <url>
     <loc>${loc}</loc>

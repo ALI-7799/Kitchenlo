@@ -3,3 +3,6 @@ node_modules/
 Thumbs.db
 *.log
 .vscode/
+
+# TypeScript build output
+.build/

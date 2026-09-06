@@ -2,18 +2,19 @@
  * Templates for the content pages: home, recipe index, categories, single
  * recipe, guides index and single guide.
  */
-const { esc, rel, site } = require('./layout.js');
-const C = require('./components.js');
-const Recipes = require('../data/recipes.js');
-const guides = require('../data/guides.js');
-const collections = require('../data/collections.js');
+import { esc, rel, site } from './layout.js';
+import * as C from './components.js';
+import * as Recipes from '../data/recipes.js';
+import guides from '../data/guides.js';
+import collections from '../data/collections.js';
+import type { Block, Category, Collection, Depth, Guide, PageSpec, Recipe } from '../types.js';
 
 /* ------------------------------------------------------------------ home -- */
 
-function home() {
+function home(): PageSpec {
   const popular = Recipes.query({ sort: 'popular' }).slice(0, 6);
   const quickest = Recipes.query({ sort: 'quickest' }).slice(0, 3);
-  const featured = Recipes.bySlug('lentil-soup');
+  const featured = Recipes.requireBySlug('lentil-soup');
   const total = Recipes.all.length;
 
   const body = `      <section class="hero">
@@ -81,7 +82,7 @@ function home() {
           ${C.sectionHeading('Browse by category', 'Find something that fits tonight.', `${site.categories.length} collections covering dinner, lunch, breakfast and pudding.`)}
           <div class="card-grid">
             ${site.categories
-              .map((cat) => C.categoryCard(cat, Recipes.byCategory(cat.slug).length, 0))
+              .map((cat: Category) => C.categoryCard(cat, Recipes.byCategory(cat.slug).length, 0))
               .join('\n            ')}
           </div>
         </div>
@@ -143,7 +144,7 @@ function home() {
           ${C.sectionHeading('Curated collections', 'Cooking around something specific?', 'Hand-picked lists for the way people actually search: by diet, by time, by how well a dish keeps.')}
           <div class="collection-grid">
             ${collections
-              .map((c) => {
+              .map((c: Collection) => {
                 const count = collectionRecipes(c).length;
                 return `<a class="collection-tile" href="collection/${esc(c.slug)}.html">
               <span class="collection-count">${count}</span>
@@ -164,7 +165,7 @@ function home() {
           <div class="card-grid">
             ${guides
               .slice(0, 3)
-              .map((g) => C.guideCard(g, 0))
+              .map((g: Guide) => C.guideCard(g, 0))
               .join('\n            ')}
           </div>
         </div>
@@ -211,16 +212,20 @@ function home() {
 
 /* --------------------------------------------------------- recipe index -- */
 
-function recipesIndex() {
+function recipesIndex(): PageSpec {
   const all = Recipes.query({ sort: 'popular' });
 
-  const chips = (name, items, allLabel) => `<div class="filter-group" role="group" aria-label="${esc(name)}">
+  const chips = (
+    name: string,
+    items: { id: string; label: string }[],
+    allLabel: string
+  ) => `<div class="filter-group" role="group" aria-label="${esc(name)}">
               <button type="button" class="chip is-active" data-filter="${esc(
                 name
               )}" data-value="">${esc(allLabel)}</button>
               ${items
                 .map(
-                  (i) =>
+                  (i: { id: string; label: string }) =>
                     `<button type="button" class="chip" data-filter="${esc(name)}" data-value="${esc(
                       i.id
                     )}">${esc(i.label)}</button>`
@@ -263,7 +268,7 @@ function recipesIndex() {
               <label class="sort-label" for="sortSelect">Sort
                 <select id="sortSelect">
                   ${site.filters.sort
-                    .map((s) => `<option value="${esc(s.id)}">${esc(s.label)}</option>`)
+                    .map((s: { id: string; label: string }) => `<option value="${esc(s.id)}">${esc(s.label)}</option>`)
                     .join('\n                  ')}
                 </select>
               </label>
@@ -275,7 +280,7 @@ function recipesIndex() {
       <section class="section-tight">
         <div class="container">
           <div class="card-grid" id="recipeResults">
-            ${all.map((r, i) => C.recipeCard(r, 0, { eager: i < 3 })).join('\n            ')}
+            ${all.map((r: Recipe, i: number) => C.recipeCard(r, 0, { eager: i < 3 })).join('\n            ')}
           </div>
           <div class="empty-state" id="emptyState" hidden>
             <h2>No recipes match those filters</h2>
@@ -295,7 +300,6 @@ function recipesIndex() {
     canonical: 'recipes.html',
     active: 'recipes.html',
     body,
-    scripts: ['assets/js/recipe-index.js'],
     breadcrumbs: [
       { name: 'Home', href: 'index.html' },
       { name: 'Recipes', href: 'recipes.html' }
@@ -310,7 +314,7 @@ function recipesIndex() {
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: all.length,
-          itemListElement: all.map((r, i) => ({
+          itemListElement: all.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
             url: `${site.origin}/recipes/${r.slug}.html`,
@@ -324,7 +328,7 @@ function recipesIndex() {
 
 /* ------------------------------------------------------------ categories -- */
 
-function categoriesIndex() {
+function categoriesIndex(): PageSpec {
   const body = `      <section class="page-hero">
         <div class="container">
           <p class="eyebrow">Browse by category</p>
@@ -337,14 +341,14 @@ function categoriesIndex() {
         <div class="container">
           <div class="card-grid">
             ${site.categories
-              .map((cat) => C.categoryCard(cat, Recipes.byCategory(cat.slug).length, 0))
+              .map((cat: Category) => C.categoryCard(cat, Recipes.byCategory(cat.slug).length, 0))
               .join('\n            ')}
           </div>
         </div>
       </section>
 
       ${site.categories
-        .map((cat) => {
+        .map((cat: Category) => {
           const list = Recipes.byCategory(cat.slug).sort((a, b) => b.ratingCount - a.ratingCount).slice(0, 3);
           return `<section class="section${site.categories.indexOf(cat) % 2 ? ' alt-bg' : ''}">
         <div class="container">
@@ -375,9 +379,9 @@ function categoriesIndex() {
   };
 }
 
-function categoryPage(cat) {
+function categoryPage(cat: Category): PageSpec {
   const list = Recipes.byCategory(cat.slug).sort((a, b) => b.ratingCount - a.ratingCount);
-  const fastest = list.slice().sort((a, b) => Recipes.totalMinutes(a) - Recipes.totalMinutes(b))[0];
+  const fastest = list.slice().sort((a, b) => Recipes.totalMinutes(a) - Recipes.totalMinutes(b))[0]!;
   const avgTime = Math.round(
     list.reduce((s, r) => s + Recipes.totalMinutes(r), 0) / list.length
   );
@@ -414,8 +418,8 @@ function categoryPage(cat) {
           ${C.sectionHeading('Keep exploring', 'Other collections', null)}
           <div class="card-grid">
             ${site.categories
-              .filter((c) => c.slug !== cat.slug)
-              .map((c) => C.categoryCard(c, Recipes.byCategory(c.slug).length, 1))
+              .filter((c: Category) => c.slug !== cat.slug)
+              .map((c: Category) => C.categoryCard(c, Recipes.byCategory(c.slug).length, 1))
               .join('\n            ')}
           </div>
         </div>
@@ -445,7 +449,7 @@ function categoryPage(cat) {
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: list.length,
-          itemListElement: list.map((r, i) => ({
+          itemListElement: list.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
             url: `${site.origin}/recipes/${r.slug}.html`,
@@ -459,10 +463,10 @@ function categoryPage(cat) {
 
 /* --------------------------------------------------------- recipe detail -- */
 
-function recipePage(recipe) {
+function recipePage(recipe: Recipe): PageSpec {
   const total = Recipes.totalMinutes(recipe);
   const cat = site.categories.find((c) => c.slug === recipe.category);
-  const related = (recipe.related || []).map(Recipes.bySlug).filter(Boolean);
+  const related = (recipe.related ?? []).map(Recipes.requireBySlug);
   const flat = Recipes.flatIngredients(recipe);
 
   const ingredientGroups = recipe.ingredients
@@ -472,7 +476,7 @@ function recipePage(recipe) {
                 <ul class="ingredient-list">
                   ${group.items
                     .map(
-                      (item, i) => `<li>
+                      (item: string) => `<li>
                     <label class="ingredient">
                       <input type="checkbox" />
                       <span data-ingredient="${esc(item)}">${esc(item)}</span>
@@ -487,7 +491,7 @@ function recipePage(recipe) {
 
   const steps = recipe.instructions
     .map(
-      (step, i) => `<li class="step">
+      (step: { title: string; text: string }, i: number) => `<li class="step">
                   <div class="step-number">${i + 1}</div>
                   <div class="step-body">
                     <h3>${esc(step.title)}</h3>
@@ -498,7 +502,7 @@ function recipePage(recipe) {
     .join('\n                ');
 
   const n = recipe.nutrition;
-  const nutritionRows = [
+  const nutritionRows = ([
     ['Calories', n.calories + ' kcal'],
     ['Protein', n.protein + ' g'],
     ['Carbohydrates', n.carbs + ' g'],
@@ -506,7 +510,7 @@ function recipePage(recipe) {
     ['Fibre', n.fiber + ' g'],
     ['Sugar', n.sugar + ' g'],
     ['Sodium', n.sodium + ' mg']
-  ]
+  ] as [string, string][])
     .map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`)
     .join('\n                ');
 
@@ -599,7 +603,7 @@ function recipePage(recipe) {
               <div class="equipment-box">
                 <h3>Equipment</h3>
                 <ul>
-                  ${recipe.equipment.map((e) => `<li>${esc(e)}</li>`).join('\n                  ')}
+                  ${recipe.equipment.map((e: string) => `<li>${esc(e)}</li>`).join('\n                  ')}
                 </ul>
               </div>
             </div>
@@ -613,14 +617,14 @@ function recipePage(recipe) {
               <div class="tips-box">
                 <h3>Cook&rsquo;s tips</h3>
                 <ul>
-                  ${recipe.tips.map((t) => `<li>${esc(t)}</li>`).join('\n                  ')}
+                  ${recipe.tips.map((t: string) => `<li>${esc(t)}</li>`).join('\n                  ')}
                 </ul>
               </div>
 
               <div class="tips-box variations">
                 <h3>Variations</h3>
                 <ul>
-                  ${recipe.variations.map((t) => `<li>${esc(t)}</li>`).join('\n                  ')}
+                  ${recipe.variations.map((t: string) => `<li>${esc(t)}</li>`).join('\n                  ')}
                 </ul>
               </div>
 
@@ -652,7 +656,7 @@ function recipePage(recipe) {
         </div>
       </section>`;
 
-  const schema = {
+  const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
     name: recipe.title,
@@ -674,7 +678,7 @@ function recipePage(recipe) {
     recipeCuisine: recipe.cuisine,
     keywords: (recipe.keywords || []).join(', '),
     suitableForDiet: (recipe.diet || [])
-      .map((d) =>
+      .map((d: string) =>
         ({
           vegetarian: 'https://schema.org/VegetarianDiet',
           vegan: 'https://schema.org/VeganDiet',
@@ -684,7 +688,7 @@ function recipePage(recipe) {
       )
       .filter(Boolean),
     recipeIngredient: flat,
-    recipeInstructions: recipe.instructions.map((s, i) => ({
+    recipeInstructions: recipe.instructions.map((s: { title: string; text: string }, i: number) => ({
       '@type': 'HowToStep',
       position: i + 1,
       name: s.title,
@@ -704,7 +708,7 @@ function recipePage(recipe) {
     }
   };
 
-  if (!schema.suitableForDiet.length) delete schema.suitableForDiet;
+  if (!(schema.suitableForDiet as string[]).length) delete schema.suitableForDiet;
 
   // Only publish a rating once it reflects genuine reviews; see site.ratings.
   if (site.ratings.enabled) {
@@ -728,7 +732,6 @@ function recipePage(recipe) {
     type: 'article',
     bodyClass: 'recipe-page',
     body,
-    scripts: ['assets/js/recipe-page.js'],
     breadcrumbs: [
       { name: 'Home', href: 'index.html' },
       { name: 'Recipes', href: 'recipes.html' },
@@ -742,16 +745,14 @@ function recipePage(recipe) {
 /* --------------------------------------------------------- collections --- */
 
 /** Resolves a collection's filter (or explicit slug list) to recipes. */
-function collectionRecipes(collection) {
+function collectionRecipes(collection: Collection): Recipe[] {
   if (collection.slugs) {
-    return collection.slugs.map(Recipes.bySlug).filter(Boolean);
+    return collection.slugs.map(Recipes.requireBySlug);
   }
-  return Recipes.query(
-    Object.assign({ sort: 'quickest' }, collection.filter)
-  );
+  return Recipes.query({ sort: 'quickest', ...collection.filter });
 }
 
-function collectionPage(collection) {
+function collectionPage(collection: Collection): PageSpec {
   const list = collectionRecipes(collection);
   const others = collections.filter((c) => c.slug !== collection.slug);
 
@@ -766,7 +767,7 @@ function collectionPage(collection) {
       <section class="section-tight">
         <div class="container narrow">
           <div class="prose">
-            ${collection.intro.map((p) => `<p>${esc(p)}</p>`).join('\n            ')}
+            ${collection.intro.map((p: string) => `<p>${esc(p)}</p>`).join('\n            ')}
           </div>
         </div>
       </section>
@@ -785,7 +786,7 @@ function collectionPage(collection) {
           <div class="chip-links">
             ${others
               .map(
-                (c) =>
+                (c: Collection) =>
                   `<a class="badge-link" href="${esc(rel(`collection/${c.slug}.html`, 1))}">${esc(
                     c.title
                   )}</a>`
@@ -821,7 +822,7 @@ function collectionPage(collection) {
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: list.length,
-          itemListElement: list.map((r, i) => ({
+          itemListElement: list.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
             url: `${site.origin}/recipes/${r.slug}.html`,
@@ -836,7 +837,7 @@ function collectionPage(collection) {
 
 /* ------------------------------------------------------------- guides ---- */
 
-function guidesIndex() {
+function guidesIndex(): PageSpec {
   const body = `      <section class="page-hero">
         <div class="container">
           <p class="eyebrow">Cooking guides</p>
@@ -848,7 +849,7 @@ function guidesIndex() {
       <section class="section">
         <div class="container">
           <div class="card-grid">
-            ${guides.map((g) => C.guideCard(g, 0)).join('\n            ')}
+            ${guides.map((g: Guide) => C.guideCard(g, 0)).join('\n            ')}
           </div>
         </div>
       </section>
@@ -870,9 +871,10 @@ function guidesIndex() {
   };
 }
 
-function guidePage(guide) {
-  const related = (guide.related || []).map(Recipes.bySlug).filter(Boolean);
-  const headings = guide.body.filter((b) => b.type === 'h2');
+function guidePage(guide: Guide): PageSpec {
+  const related = (guide.related ?? []).map(Recipes.requireBySlug);
+  type Heading = { type: 'p' | 'h2' | 'h3'; text: string };
+  const headings = guide.body.filter((b): b is Heading => b.type === 'h2');
 
   const body = `      <article class="guide">
         <section class="page-hero">
@@ -898,7 +900,7 @@ function guidePage(guide) {
               <ol>
                 ${headings
                   .map(
-                    (h) =>
+                    (h: Heading) =>
                       `<li><a href="#${esc(
                         h.text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
                       )}">${esc(h.text)}</a></li>`
@@ -964,7 +966,7 @@ function guidePage(guide) {
   };
 }
 
-module.exports = {
+export {
   home,
   collectionPage,
   collectionRecipes,

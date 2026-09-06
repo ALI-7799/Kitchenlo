@@ -3,12 +3,13 @@
  * Every generated page passes through here, so the navigation and footer are
  * defined exactly once and rebuilding propagates changes across the whole site.
  */
-const site = require('../data/site.js');
-const Recipes = require('../data/recipes.js');
+import site from '../data/site.js';
+import * as Recipes from '../data/recipes.js';
+import type { Depth, NavItem, PageSpec } from '../types.js';
 const recipeCount = Recipes.all.length;
 
 /** Escapes text destined for HTML body content or attribute values. */
-function esc(value) {
+function esc(value: unknown): string {
   return String(value == null ? '' : value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -18,7 +19,7 @@ function esc(value) {
 }
 
 /** Serialises JSON-LD, neutralising any "</script>" sequence inside strings. */
-function jsonLd(data) {
+function jsonLd(data: unknown): string {
   return JSON.stringify(data, null, 2).replace(/</g, '\\u003c');
 }
 
@@ -27,17 +28,17 @@ function jsonLd(data) {
  * Pages live in the repo root or one directory down (recipes/, category/, guides/),
  * so a depth of 1 turns "recipes.html" into "../recipes.html".
  */
-function rel(href, depth) {
+function rel(href: string, depth: Depth): string {
   if (!href || /^(https?:|mailto:|tel:|#|\/)/.test(href)) return href;
   // 404.html is served for arbitrary URLs, so it links from the site root.
   if (depth === 'abs') return (site.basePath || '') + '/' + href;
   return depth > 0 ? '../'.repeat(depth) + href : href;
 }
 
-function navMarkup(active, depth) {
+function navMarkup(active: string, depth: Depth): string {
   return site.nav
-    .map((item) => {
-      const isActive = active === item.href || (item.children || []).some((c) => c.href === active);
+    .map((item: NavItem) => {
+      const isActive = active === item.href || (item.children || []).some((c: NavItem) => c.href === active);
       const current = isActive ? ' aria-current="page"' : '';
       const cls = isActive ? ' class="is-active"' : '';
 
@@ -47,7 +48,7 @@ function navMarkup(active, depth) {
 
       const submenu = item.children
         .map(
-          (child) =>
+          (child: NavItem) =>
             `<li><a href="${esc(rel(child.href, depth))}"${
               active === child.href ? ' aria-current="page"' : ''
             }>${esc(child.label)}</a></li>`
@@ -64,7 +65,7 @@ function navMarkup(active, depth) {
     .join('\n          ');
 }
 
-function headerMarkup(active, depth) {
+function headerMarkup(active: string, depth: Depth): string {
   return `<a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" id="siteHeader">
       <div class="container nav-wrap">
@@ -132,14 +133,14 @@ function headerMarkup(active, depth) {
     </div>`;
 }
 
-function footerMarkup(depth) {
+function footerMarkup(depth: Depth): string {
   const columns = site.footer
     .map(
-      (col) => `<div class="footer-col">
+      (col: (typeof site.footer)[number]) => `<div class="footer-col">
             <h3>${esc(col.title)}</h3>
             <ul>
               ${col.links
-                .map((l) => `<li><a href="${esc(rel(l.href, depth))}">${esc(l.label)}</a></li>`)
+                .map((l: { label: string; href: string }) => `<li><a href="${esc(rel(l.href, depth))}">${esc(l.label)}</a></li>`)
                 .join('\n              ')}
             </ul>
           </div>`
@@ -148,7 +149,7 @@ function footerMarkup(depth) {
 
   const socials = site.social
     .map(
-      (s) =>
+      (s: (typeof site.social)[number]) =>
         `<a href="${esc(s.href)}" rel="noopener noreferrer" target="_blank" aria-label="${esc(
           s.label
         )}" class="social-link">${esc(s.label[0])}</a>`
@@ -212,7 +213,7 @@ function footerMarkup(depth) {
  *          schema?:object[], bodyClass?:string, scripts?:string[],
  *          noindex?:boolean, breadcrumbs?:{name:string,href:string}[]}} page
  */
-function render(page) {
+function render(page: PageSpec): string {
   const depth = page.absolute ? 'abs' : page.depth || 0;
   const canonical = site.origin + '/' + page.canonical.replace(/^\//, '');
   const image = page.image || site.ogImage;
@@ -222,7 +223,7 @@ function render(page) {
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: page.breadcrumbs.map((crumb, i) => ({
+      itemListElement: page.breadcrumbs.map((crumb, i: number) => ({
         '@type': 'ListItem',
         position: i + 1,
         name: crumb.name,
@@ -232,7 +233,7 @@ function render(page) {
   }
 
   const schemaTags = schemas
-    .map((s) => `    <script type="application/ld+json">\n${jsonLd(s)}\n    </script>`)
+    .map((s: unknown) => `    <script type="application/ld+json">\n${jsonLd(s)}\n    </script>`)
     .join('\n');
 
   const breadcrumbNav =
@@ -241,7 +242,7 @@ function render(page) {
         <div class="container">
           <ol>
             ${page.breadcrumbs
-              .map((crumb, i, arr) =>
+              .map((crumb, i: number, arr: { name: string; href: string }[]) =>
                 i === arr.length - 1
                   ? `<li aria-current="page">${esc(crumb.name)}</li>`
                   : `<li><a href="${esc(rel(crumb.href, depth))}">${esc(crumb.name)}</a></li>`
@@ -251,10 +252,6 @@ function render(page) {
         </div>
       </nav>`
       : '';
-
-  const extraScripts = (page.scripts || [])
-    .map((s) => `    <script src="${esc(rel(s, depth))}" defer></script>`)
-    .join('\n');
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="light">
@@ -310,18 +307,12 @@ ${page.body}
     </main>
     ${footerMarkup(depth)}
 
-    <script src="${esc(rel('src/data/site.js', depth))}"></script>
-${Recipes.COLLECTION_FILES.map((f) => `    <script src="${esc(rel(f, depth))}"></script>`).join('\n')}
-    <script src="${esc(rel('src/data/recipes.js', depth))}"></script>
-    <script src="${esc(rel('src/data/guides.js', depth))}"></script>
+    <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
     <script src="${esc(rel('assets/js/config.js', depth))}"></script>
-    <script src="${esc(rel('assets/js/auth.js', depth))}" defer></script>
-    <script src="${esc(rel('assets/js/store.js', depth))}" defer></script>
-    <script src="${esc(rel('assets/js/app.js', depth))}" defer></script>
-${extraScripts}
+    <script src="${esc(rel('assets/js/kitchenlo.js', depth))}" defer></script>
   </body>
 </html>
 `;
 }
 
-module.exports = { render, esc, rel, jsonLd, site };
+export { render, esc, rel, jsonLd, site };

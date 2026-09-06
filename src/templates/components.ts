@@ -1,16 +1,25 @@
 /**
  * Reusable markup fragments shared by every page template.
  */
-const { esc, rel, site } = require('./layout.js');
-const Recipes = require('../data/recipes.js');
+import { esc, rel } from './layout.js';
+import site from '../data/site.js';
+import * as Recipes from '../data/recipes.js';
+import type {
+  Block,
+  Category,
+  Depth,
+  Faq,
+  Guide,
+  Recipe
+} from '../types.js';
 
 /** Photos are absolute URLs; generated covers are root-relative and need depth. */
-function imageUrl(recipe, depth) {
+function imageUrl(recipe: Recipe, depth: Depth): string {
   return rel(recipe.image, depth);
 }
 
 /** Absolute form, for structured data and share tags. */
-function absoluteImageUrl(recipe) {
+function absoluteImageUrl(recipe: Recipe): string {
   return /^https?:/.test(recipe.image) ? recipe.image : site.origin + '/' + recipe.image;
 }
 
@@ -18,7 +27,7 @@ function absoluteImageUrl(recipe) {
  * Renders stars only when site.ratings.enabled is on. Until the ratings are
  * real, cards lead with facts a cook can act on instead of invented scores.
  */
-function stars(rating) {
+function stars(rating: number): string {
   if (!site.ratings.enabled) return '';
   const rounded = Math.round(rating * 2) / 2;
   let out = '';
@@ -31,7 +40,7 @@ function stars(rating) {
 }
 
 /** Leading metadata for a card: stars when enabled, otherwise time and diet. */
-function cardLead(recipe) {
+function cardLead(recipe: Recipe): string {
   const total = Recipes.totalMinutes(recipe);
   if (site.ratings.enabled) {
     return `${stars(recipe.rating)}<span class="meta-dot">&middot;</span><span>${esc(
@@ -43,7 +52,7 @@ function cardLead(recipe) {
   )}</span><span class="meta-dot">&middot;</span><span>${esc(recipe.cuisine)}</span>`;
 }
 
-function timeLabel(minutes) {
+function timeLabel(minutes: number): string {
   if (minutes < 60) return `${minutes} min`;
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
@@ -51,14 +60,14 @@ function timeLabel(minutes) {
 }
 
 /** ISO 8601 duration, required by Recipe structured data. */
-function isoDuration(minutes) {
+function isoDuration(minutes: number): string | undefined {
   if (!minutes) return undefined;
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
   return 'PT' + (h ? h + 'H' : '') + (m ? m + 'M' : '');
 }
 
-function recipeCard(recipe, depth, opts) {
+function recipeCard(recipe: Recipe, depth: Depth, opts?: { eager?: boolean }) {
   opts = opts || {};
   const total = Recipes.totalMinutes(recipe);
   const href = rel(`recipes/${recipe.slug}.html`, depth);
@@ -83,20 +92,25 @@ function recipeCard(recipe, depth, opts) {
                 <h3><a href="${esc(href)}">${esc(recipe.title)}</a></h3>
                 <p>${esc(recipe.description)}</p>
                 <div class="card-tags">
-                  ${diet.map((d) => `<span class="tag">${esc(d.replace(/-/g, ' '))}</span>`).join('\n                  ')}
+                  ${diet.map((d: string) => `<span class="tag">${esc(d.replace(/-/g, ' '))}</span>`).join('\n                  ')}
                   <span class="tag tag-muted">${recipe.nutrition.calories} cal</span>
                 </div>
               </div>
             </article>`;
 }
 
-function recipeGrid(list, depth, opts) {
+function recipeGrid(list: Recipe[], depth: Depth, opts?: { eager?: boolean }) {
   return `<div class="card-grid">
-            ${list.map((r, i) => recipeCard(r, depth, { eager: opts && opts.eager && i < 3 })).join('\n            ')}
+            ${list.map((r: Recipe, i: number) => recipeCard(r, depth, { eager: opts && opts.eager && i < 3 })).join('\n            ')}
           </div>`;
 }
 
-function sectionHeading(eyebrow, title, text, action) {
+function sectionHeading(
+  eyebrow: string | null,
+  title: string,
+  text?: string | null,
+  action?: { href: string; label: string } | null
+) {
   return `<div class="section-heading">
             ${eyebrow ? `<p class="eyebrow">${esc(eyebrow)}</p>` : ''}
             <h2>${esc(title)}</h2>
@@ -105,7 +119,7 @@ function sectionHeading(eyebrow, title, text, action) {
           </div>`;
 }
 
-function guideCard(guide, depth) {
+function guideCard(guide: Guide, depth: Depth) {
   const href = rel(`guides/${guide.slug}.html`, depth);
   return `<article class="card guide-card">
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
@@ -119,7 +133,7 @@ function guideCard(guide, depth) {
             </article>`;
 }
 
-function categoryCard(category, count, depth) {
+function categoryCard(category: Category, count: number, depth: Depth) {
   const href = rel(`category/${category.slug}.html`, depth);
   return `<article class="card category-card">
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
@@ -135,9 +149,9 @@ function categoryCard(category, count, depth) {
 }
 
 /** Renders a guide body block array into HTML. */
-function richText(blocks) {
+function richText(blocks: Block[]): string {
   return blocks
-    .map((block) => {
+    .map((block: Block) => {
       switch (block.type) {
         case 'h2':
           return `<h2 id="${esc(
@@ -149,7 +163,7 @@ function richText(blocks) {
         case 'h3':
           return `<h3>${esc(block.text)}</h3>`;
         case 'ul':
-          return `<ul>\n${block.items.map((i) => `            <li>${esc(i)}</li>`).join('\n')}\n          </ul>`;
+          return `<ul>\n${block.items.map((i: string) => `            <li>${esc(i)}</li>`).join('\n')}\n          </ul>`;
         case 'ol':
           return `<ol>\n${block.items.map((i) => `            <li>${esc(i)}</li>`).join('\n')}\n          </ol>`;
         case 'callout':
@@ -161,15 +175,14 @@ function richText(blocks) {
     .join('\n          ');
 }
 
-function faqBlock(faqs, heading) {
+function faqBlock(faqs: Faq[], heading?: string): string {
   if (!faqs || !faqs.length) return '';
   return `<section class="section faq-section">
         <div class="container narrow">
           <h2>${esc(heading || 'Frequently asked questions')}</h2>
           <div class="faq-list">
             ${faqs
-              .map(
-                (f) => `<details class="faq-item">
+              .map((f: Faq) => `<details class="faq-item">
               <summary>${esc(f.q)}</summary>
               <div class="faq-answer"><p>${esc(f.a)}</p></div>
             </details>`
@@ -180,11 +193,11 @@ function faqBlock(faqs, heading) {
       </section>`;
 }
 
-function faqSchema(faqs) {
+function faqSchema(faqs: Faq[]): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
+    mainEntity: faqs.map((f: Faq) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a }
@@ -207,7 +220,7 @@ function newsletterCta() {
       </section>`;
 }
 
-module.exports = {
+export {
   imageUrl,
   absoluteImageUrl,
   stars,

@@ -9,9 +9,13 @@
     "url": "https://github.com/ALI-7799/Kitchenlo.git"
   },
   "scripts": {
-    "build": "node tools/build.js",
-    "test": "node tools/build.js && node tools/smoke-test.js",
-    "start": "node tools/build.js && npx --yes serve ."
+    "typecheck": "tsc --noEmit",
+    "bundle": "node tools/bundle.mjs",
+    "generate": "node .build/build.mjs",
+    "build": "npm run typecheck && npm run bundle && npm run generate",
+    "dev": "node tools/bundle.mjs --watch",
+    "test": "npm run build && node .build/smoke-test.mjs",
+    "start": "npm run build && npx --yes serve ."
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

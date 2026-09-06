@@ -2,9 +2,10 @@
  * Templates for the non-content pages: about, contact, auth, account tools
  * and legal.
  */
-const { esc, site } = require('./layout.js');
-const C = require('./components.js');
-const Recipes = require('../data/recipes.js');
+import { esc, site } from './layout.js';
+import * as C from './components.js';
+import * as Recipes from '../data/recipes.js';
+import type { PageSpec } from '../types.js';
 
 /* -------------------------------------------------------------- about ---- */
 
@@ -185,7 +186,6 @@ function contact() {
     canonical: 'contact.html',
     active: 'contact.html',
     body,
-    scripts: ['assets/js/contact.js'],
     breadcrumbs: [
       { name: 'Home', href: 'index.html' },
       { name: 'Contact', href: 'contact.html' }
@@ -262,8 +262,7 @@ function login() {
     active: 'login.html',
     bodyClass: 'auth-page',
     noindex: true,
-    body,
-    scripts: ['assets/js/auth-pages.js']
+    body
   };
 }
 
@@ -340,8 +339,7 @@ function signup() {
     active: 'signup.html',
     bodyClass: 'auth-page',
     noindex: true,
-    body,
-    scripts: ['assets/js/auth-pages.js']
+    body
   };
 }
 
@@ -452,8 +450,7 @@ function account() {
     canonical: 'account.html',
     active: 'account.html',
     noindex: true,
-    body,
-    scripts: ['assets/js/account.js']
+    body
   };
 }
 
@@ -490,8 +487,7 @@ function favorites() {
     canonical: 'favorites.html',
     active: 'favorites.html',
     noindex: true,
-    body,
-    scripts: ['assets/js/favorites.js']
+    body
   };
 }
 
@@ -557,7 +553,6 @@ function mealPlanner() {
     canonical: 'meal-planner.html',
     active: 'meal-planner.html',
     body,
-    scripts: ['assets/js/planner.js'],
     breadcrumbs: [
       { name: 'Home', href: 'index.html' },
       { name: 'Meal Planner', href: 'meal-planner.html' }
@@ -611,14 +606,18 @@ function shoppingList() {
     canonical: 'shopping-list.html',
     active: 'shopping-list.html',
     noindex: true,
-    body,
-    scripts: ['assets/js/shopping-list.js']
+    body
   };
 }
 
 /* -------------------------------------------------------------- legal ---- */
 
-function legalPage(slug, title, description, sections) {
+function legalPage(
+  slug: string,
+  title: string,
+  description: string,
+  sections: { h: string; p: string[] }[]
+): PageSpec {
   const body = `      <section class="page-hero">
         <div class="container narrow">
           <p class="eyebrow">Legal</p>
@@ -633,7 +632,7 @@ function legalPage(slug, title, description, sections) {
         <div class="container narrow">
           <div class="prose">
             ${sections
-              .map((s) => `<h2>${esc(s.h)}</h2>\n            ${s.p.map((p) => `<p>${esc(p)}</p>`).join('\n            ')}`)
+              .map((s: { h: string; p: string[] }) => `<h2>${esc(s.h)}</h2>\n            ${s.p.map((p: string) => `<p>${esc(p)}</p>`).join('\n            ')}`)
               .join('\n            ')}
           </div>
         </div>
@@ -790,7 +789,7 @@ function notFound() {
   };
 }
 
-module.exports = {
+export {
   about,
   contact,
   login,
