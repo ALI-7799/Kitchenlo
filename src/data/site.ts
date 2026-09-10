@@ -18,12 +18,12 @@ import type { SiteConfig } from '../types.js';
   var basePath = '';
 
 const site: SiteConfig = {
-  name: 'KIT',
+  name: 'Kitchenlo',
   tagline: 'Fresh recipes for every home cook',
   origin: origin,
   basePath: basePath,
   description:
-    'KIT is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
+    'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
   locale: 'en_US',
   twitter: '@kitchenlo',
   /* Fallback share image for pages that have no image of their own. */
@@ -48,7 +48,7 @@ const site: SiteConfig = {
   ratings: { enabled: false },
 
   author: {
-    name: 'The KIT Kitchen',
+    name: 'The Kitchenlo Kitchen',
     url: origin + '/about.html'
   },
   social: [

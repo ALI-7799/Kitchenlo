@@ -12,9 +12,9 @@ import type { PageSpec } from '../types.js';
 function about() {
   const body = `      <section class="page-hero">
         <div class="container">
-          <p class="eyebrow">About KIT</p>
+          <p class="eyebrow">About Kitchenlo</p>
           <h1>We make home cooking feel inspired, practical, and joyful.</h1>
-          <p class="lede">KIT is a recipe library for people who want to cook well on an ordinary Tuesday, without a professional kitchen or three hours to spare.</p>
+          <p class="lede">Kitchenlo is a recipe library for people who want to cook well on an ordinary Tuesday, without a professional kitchen or three hours to spare.</p>
         </div>
       </section>
 
@@ -73,7 +73,7 @@ function about() {
     file: 'about.html',
     title: `About Us | ${site.name}`,
     description:
-      'How KIT tests recipes, calculates nutrition and writes instructions that work in a real home kitchen. No thousand-word preambles, just tested cooking.',
+      'How Kitchenlo tests recipes, calculates nutrition and writes instructions that work in a real home kitchen. No thousand-word preambles, just tested cooking.',
     canonical: 'about.html',
     active: 'about.html',
     body,
@@ -85,9 +85,9 @@ function about() {
       {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
-        name: 'About KIT',
+        name: 'About Kitchenlo',
         url: site.origin + '/about.html',
-        description: 'How KIT tests and writes its recipes.'
+        description: 'How Kitchenlo tests and writes its recipes.'
       }
     ]
   };
@@ -182,7 +182,7 @@ function contact() {
     file: 'contact.html',
     title: `Contact Us | ${site.name}`,
     description:
-      'Get in touch with KIT. Request a recipe, ask for help with a dish that did not work, or send feedback. We reply within one business day.',
+      'Get in touch with Kitchenlo. Request a recipe, ask for help with a dish that did not work, or send feedback. We reply within one business day.',
     canonical: 'contact.html',
     active: 'contact.html',
     body,
@@ -194,7 +194,7 @@ function contact() {
       {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
-        name: 'Contact KIT',
+        name: 'Contact Kitchenlo',
         url: site.origin + '/contact.html'
       }
     ]
@@ -257,7 +257,7 @@ function login() {
   return {
     file: 'login.html',
     title: `Sign In | ${site.name}`,
-    description: 'Sign in to your KIT account to reach your saved recipes, meal plan and shopping list.',
+    description: 'Sign in to your Kitchenlo account to reach your saved recipes, meal plan and shopping list.',
     canonical: 'login.html',
     active: 'login.html',
     bodyClass: 'auth-page',
@@ -334,7 +334,7 @@ function signup() {
   return {
     file: 'signup.html',
     title: `Create a Free Account | ${site.name}`,
-    description: 'Create a free KIT account to save recipes, build meal plans and generate shopping lists.',
+    description: 'Create a free Kitchenlo account to save recipes, build meal plans and generate shopping lists.',
     canonical: 'signup.html',
     active: 'signup.html',
     bodyClass: 'auth-page',
@@ -446,7 +446,7 @@ function account() {
   return {
     file: 'account.html',
     title: `My Account | ${site.name}`,
-    description: 'Manage your KIT profile, preferences and saved data.',
+    description: 'Manage your Kitchenlo profile, preferences and saved data.',
     canonical: 'account.html',
     active: 'account.html',
     noindex: true,
@@ -483,7 +483,7 @@ function favorites() {
   return {
     file: 'favorites.html',
     title: `Saved Recipes | ${site.name}`,
-    description: 'Your saved KIT recipes, all in one place.',
+    description: 'Your saved Kitchenlo recipes, all in one place.',
     canonical: 'favorites.html',
     active: 'favorites.html',
     noindex: true,
@@ -549,7 +549,7 @@ function mealPlanner() {
     file: 'meal-planner.html',
     title: `Weekly Meal Planner | ${site.name}`,
     description:
-      'Plan seven days of meals from the KIT recipe library and turn the week into a single combined shopping list.',
+      'Plan seven days of meals from the Kitchenlo recipe library and turn the week into a single combined shopping list.',
     canonical: 'meal-planner.html',
     active: 'meal-planner.html',
     body,
@@ -602,7 +602,7 @@ function shoppingList() {
   return {
     file: 'shopping-list.html',
     title: `Shopping List | ${site.name}`,
-    description: 'Your combined KIT shopping list, built from saved recipes and your weekly meal plan.',
+    description: 'Your combined Kitchenlo shopping list, built from saved recipes and your weekly meal plan.',
     canonical: 'shopping-list.html',
     active: 'shopping-list.html',
     noindex: true,
@@ -656,12 +656,12 @@ function privacy() {
   return legalPage(
     'privacy',
     'Privacy Policy',
-    'How KIT handles your data. We store account details in your own browser and do not sell personal information.',
+    'How Kitchenlo handles your data. We store account details in your own browser and do not sell personal information.',
     [
       {
         h: 'What we collect',
         p: [
-          'KIT currently operates without a server-side database. When you create an account, your name, email address and a hashed password are stored in your own browser using local storage. That data never leaves your device and is not transmitted to us.',
+          'Kitchenlo currently operates without a server-side database. When you create an account, your name, email address and a hashed password are stored in your own browser using local storage. That data never leaves your device and is not transmitted to us.',
           'Saved recipes, meal plans, shopping lists and preferences are stored the same way, locally in your browser.'
         ]
       },
@@ -709,12 +709,12 @@ function terms() {
   return legalPage(
     'terms',
     'Terms of Use',
-    'The terms governing use of the KIT website, its recipes and its free account features.',
+    'The terms governing use of the Kitchenlo website, its recipes and its free account features.',
     [
       {
         h: 'Acceptance',
         p: [
-          'By using KIT you agree to these terms. If you do not agree with them, please do not use the site.'
+          'By using Kitchenlo you agree to these terms. If you do not agree with them, please do not use the site.'
         ]
       },
       {

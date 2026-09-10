@@ -1,4 +1,4 @@
-# KIT
+# Kitchenlo
 User-agent: *
 Allow: /
 Disallow: /account.html

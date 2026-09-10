@@ -296,7 +296,7 @@ function recipesIndex(): PageSpec {
     file: 'recipes.html',
     title: `All Recipes | ${site.name}`,
     description:
-      `Browse all ${all.length} KIT recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls, breakfasts and easy desserts.`,
+      `Browse all ${all.length} Kitchenlo recipes. Search by ingredient and filter by diet, cooking time or difficulty to find quick dinners, healthy bowls, breakfasts and easy desserts.`,
     canonical: 'recipes.html',
     active: 'recipes.html',
     body,
@@ -310,7 +310,7 @@ function recipesIndex(): PageSpec {
         '@type': 'CollectionPage',
         name: 'All Recipes',
         url: site.origin + '/recipes.html',
-        description: 'The complete KIT recipe library.',
+        description: 'The complete Kitchenlo recipe library.',
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: all.length,
@@ -368,7 +368,7 @@ function categoriesIndex(): PageSpec {
     file: 'categories.html',
     title: `Recipe Categories | ${site.name}`,
     description:
-      'Browse KIT recipes by category: quick 30-minute dinners, healthy meal-prep bowls, breakfasts and easy desserts, each a collection of tested recipes.',
+      'Browse Kitchenlo recipes by category: quick 30-minute dinners, healthy meal-prep bowls, breakfasts and easy desserts, each a collection of tested recipes.',
     canonical: 'categories.html',
     active: 'categories.html',
     body,
@@ -860,7 +860,7 @@ function guidesIndex(): PageSpec {
     file: 'guides.html',
     title: `Cooking Guides | ${site.name}`,
     description:
-      'In-depth cooking guides from KIT: how to meal prep, pantry essentials, knife skills, seasoning technique and cutting food waste.',
+      'In-depth cooking guides from Kitchenlo: how to meal prep, pantry essentials, knife skills, seasoning technique and cutting food waste.',
     canonical: 'guides.html',
     active: 'guides.html',
     body,

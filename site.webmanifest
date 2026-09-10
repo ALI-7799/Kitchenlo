@@ -1,7 +1,7 @@
 {
-  "name": "KIT",
-  "short_name": "KIT",
-  "description": "KIT is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.",
+  "name": "Kitchenlo",
+  "short_name": "Kitchenlo",
+  "description": "Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#f7f2ea",
