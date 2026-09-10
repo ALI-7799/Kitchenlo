@@ -10,8 +10,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 
-import { render } from '../src/templates/layout.js';
+import { render, setAssetVersion } from '../src/templates/layout.js';
 import * as core from '../src/templates/pages-core.js';
 import * as statics from '../src/templates/pages-static.js';
 import * as Recipes from '../src/data/recipes.js';
@@ -29,6 +30,34 @@ function write(relPath: string, contents: string): string {
   fs.writeFileSync(full, contents, 'utf8');
   return relPath;
 }
+
+/* ------------------------------------------------------ asset version ---- */
+
+/*
+ * Stamp the stylesheet and the client bundle with a hash of their own contents.
+ *
+ * The pages and the bundle are cached separately by the browser, so without
+ * this a visitor can hold freshly built HTML together with a stale script.
+ * The client rebuilds search cards from that script, so an old copy keeps
+ * producing the old markup - and therefore the old image paths - long after
+ * the site is fixed. A hashed URL makes that pairing impossible.
+ *
+ * The bundle is written before this runs; see the build script's ordering.
+ */
+const assetVersion = crypto
+  .createHash('sha256')
+  .update(
+    ['assets/css/styles.css', 'assets/js/kitchenlo.js', 'assets/js/config.js']
+      .map((f) => {
+        const full = path.join(ROOT, f);
+        return fs.existsSync(full) ? fs.readFileSync(full) : Buffer.alloc(0);
+      })
+      .reduce((a, b) => Buffer.concat([a, b]), Buffer.alloc(0))
+  )
+  .digest('hex')
+  .slice(0, 10);
+
+setAssetVersion(assetVersion);
 
 /* ------------------------------------------------------------ collect ---- */
 

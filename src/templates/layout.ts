@@ -35,6 +35,32 @@ function rel(href: string, depth: Depth): string {
   return depth > 0 ? '../'.repeat(depth) + href : href;
 }
 
+/*
+ * Cache busting for the CSS and JS.
+ *
+ * The pages and the bundle are cached independently by the browser, on
+ * separate clocks. Without a version in the URL a visitor can end up holding
+ * new HTML alongside a stale bundle, and since the client rebuilds search
+ * cards using logic from that bundle, a fixed page and an unfixed script
+ * produce wrong image paths until the script's own TTL happens to lapse.
+ * Stamping the content hash into the URL makes that combination impossible:
+ * new markup always requests a bundle URL the old cache does not hold.
+ *
+ * layout.ts is reachable from the browser bundle, so it cannot read the files
+ * itself. The generator computes the hash and pushes it in here.
+ */
+let assetVersion = '';
+
+function setAssetVersion(version: string): void {
+  assetVersion = version;
+}
+
+/** A static asset href, with the build's content hash attached. */
+function asset(href: string, depth: Depth): string {
+  const base = rel(href, depth);
+  return assetVersion ? `${base}?v=${assetVersion}` : base;
+}
+
 function navMarkup(active: string, depth: Depth): string {
   return site.nav
     .map((item: NavItem) => {
@@ -291,7 +317,7 @@ function render(page: PageSpec): string {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="${esc(rel('assets/css/styles.css', depth))}" />
+    <link rel="stylesheet" href="${esc(asset('assets/css/styles.css', depth))}" />
 
     <script>
       /* Applies the stored theme before first paint so the page never flashes. */
@@ -314,11 +340,11 @@ ${page.body}
     ${footerMarkup(depth)}
 
     <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
-    <script src="${esc(rel('assets/js/config.js', depth))}"></script>
-    <script src="${esc(rel('assets/js/kitchenlo.js', depth))}" defer></script>
+    <script src="${esc(asset('assets/js/config.js', depth))}"></script>
+    <script src="${esc(asset('assets/js/kitchenlo.js', depth))}" defer></script>
   </body>
 </html>
 `;
 }
 
-export { render, esc, rel, jsonLd, site };
+export { render, esc, rel, jsonLd, site, setAssetVersion };

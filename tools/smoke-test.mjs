@@ -96,7 +96,10 @@ function load(relPath, options = {}) {
     .map((s) => s.getAttribute('src'))
     .filter((src) => !/^https?:/.test(src));
 
-  for (const src of scripts) {
+  for (const rawSrc of scripts) {
+    // Static assets carry a ?v= cache-busting hash, which is part of the URL
+    // a browser requests but not part of the filename on disk.
+    const src = rawSrc.split('?')[0];
     // 404.html links from the site root, so resolve those against ROOT.
     const file = src.startsWith('/')
       ? path.join(ROOT, src.slice(1))
@@ -610,7 +613,7 @@ suite('every image on every generated page resolves', () => {
       ...Array.from(html.matchAll(/data-fallback="([^"]+)"/g)).map((m) => m[1])
     ];
     for (const raw of found) {
-      const src = raw.replace(/&amp;/g, '&');
+      const src = raw.replace(/&amp;/g, '&').split('?')[0];
       if (/^(https?:|data:)/.test(src)) continue;
       refs++;
       const target = src.startsWith('/')
