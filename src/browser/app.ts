@@ -129,7 +129,7 @@ function renderSearch(term: string): void {
   const guideRows = guideHits
     .map(
       (g) => `<a class="search-result" href="${ROOT}guides/${g.slug}.html">
-        <img src="${escapeHtml(g.image)}" alt="" loading="lazy" />
+        <img src="${escapeHtml(src(g.image))}" alt="" loading="lazy" />
         <span><strong>${escapeHtml(g.title)}</strong><span>Guide &middot; ${
         g.readMinutes
       } min read</span></span></a>`

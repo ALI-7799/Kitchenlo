@@ -527,6 +527,44 @@ suite('404.html', () => {
   check('recovery links present', doc.querySelectorAll('.error-hero .btn').length === 2);
 });
 
+/* --------------------------------------------- client-rendered search ---- */
+
+/*
+ * The search dropdown builds its rows in the browser, so none of them appear
+ * in the generated HTML and the page checks above cannot see them. Recipe rows
+ * and guide rows are built by two separate code paths, and the guide path once
+ * emitted a site-relative image path without the per-page prefix, which
+ * resolved to a 404 from every nested page.
+ */
+suite('search dropdown from a nested page', async () => {
+  const { window, doc, errors } = load('recipes/raclette.html');
+  check('no script errors', errors.length === 0, errors[0]);
+
+  const input = doc.querySelector('#searchOverlayInput');
+  const results = doc.querySelector('#searchOverlayResults');
+  check('search input and results panel present', !!input && !!results);
+  if (!input || !results) return;
+
+  // 'knife' matches a guide by title, so both row types get exercised.
+  input.value = 'knife';
+  input.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await new Promise((resolve) => setTimeout(resolve, 300));
+
+  const rows = Array.from(results.querySelectorAll('a.search-result'));
+  check('rows rendered', rows.length > 0, String(rows.length));
+
+  const srcs = rows.map((a) => {
+    const img = a.querySelector('img');
+    return img ? img.getAttribute('src') : '';
+  });
+  check('every row carries an image', srcs.every(Boolean));
+
+  const broken = srcs.filter(
+    (src) => src && !/^https?:/.test(src) && !fs.existsSync(path.join(ROOT, 'recipes', src))
+  );
+  check('every result image resolves from a nested page', broken.length === 0, broken.join(', '));
+});
+
 /* --------------------------------------------------------------- runner -- */
 
 for (const { name, fn } of suites) {

@@ -22,7 +22,7 @@ const collections: Collection[] = [
     filter: { diet: ['vegetarian'] },
     keywords: ['vegetarian recipes', 'vegetarian dinner ideas', 'easy vegetarian meals', 'meat free recipes'],
     image: 'assets/img/photos/collection-vegetarian-recipes.jpg',
-    imageAlt: 'A vegetarian bowl of chickpeas, cucumber and feta',
+    imageAlt: 'Broccoli and carrots cooking in a wok',
     intro: [
       'Vegetarian cooking goes wrong when it is conceived as a subtraction. Take the meat out of a dish designed around meat and you are left with a gap where the savoury depth used to be, which is why so many vegetarian recipes taste thin.',
       'Everything in this collection is built the other way round. The depth comes from ingredients that supply it directly: caramelised tomato paste, browned mushrooms, miso, parmesan, toasted nuts and properly charred vegetables. None of these are stand-ins for anything. They are the point of the dish.',
@@ -52,7 +52,7 @@ const collections: Collection[] = [
     filter: { diet: ['gluten-free'] },
     keywords: ['gluten free recipes', 'gluten free dinner', 'celiac friendly meals', 'naturally gluten free'],
     image: 'assets/img/photos/collection-gluten-free-recipes.jpg',
-    imageAlt: 'Seared salmon with lemon, a naturally gluten-free dinner',
+    imageAlt: 'A rice bowl with chicken, corn, avocado and tomatoes',
     intro: [
       'The most reliable gluten-free cooking is not gluten-free baking. It is the very large body of food that never contained wheat to begin with: seared fish, rice bowls, grain salads built on quinoa, soups thickened by their own lentils, custards set with gelatine.',
       'Every recipe here is naturally gluten-free rather than adapted. Nothing depends on a flour blend behaving like wheat, which is the step where most gluten-free cooking becomes difficult and expensive.',
@@ -142,7 +142,7 @@ const collections: Collection[] = [
     filter: { maxTime: 30 },
     keywords: ['30 minute meals', 'quick dinner recipes', 'fast weeknight dinner', 'easy dinner ideas'],
     image: 'assets/img/photos/collection-30-minute-meals.jpg',
-    imageAlt: 'Lemon herb shrimp, a ten-minute dinner',
+    imageAlt: 'A bowl of quickly stir-fried vegetables',
     intro: [
       'Published cooking times are routinely optimistic, because they measure the cooking and quietly omit the twelve minutes of chopping that precede it. Everything here is timed from a cold start with nothing prepared, which is why some of these numbers look larger than equivalent recipes elsewhere. They are simply honest.',
       'Three habits do most of the work in a fast kitchen. Put the pan or the oven on before you start cutting, so the equipment heats while you prep. Read the whole recipe first, so you never discover mid-cook that something needed doing twenty minutes ago. And prepare everything before the pan goes on for anything stir-fried, because once it is hot there is no time to chop.',
