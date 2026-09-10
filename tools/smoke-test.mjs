@@ -582,6 +582,58 @@ suite('search results resolve their images from every page depth', async () => {
   }
 });
 
+suite('every image on every generated page resolves', () => {
+  /*
+   * Walks the whole output and resolves each img src and data-fallback
+   * relative to the page that references it. A path built without the page's
+   * depth still looks plausible in the markup and only 404s once served, which
+   * is how six guide pages shipped with a broken hero image.
+   */
+  const pages = [];
+  (function walk(dir) {
+    for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
+      const rel = dir ? dir + '/' + entry.name : entry.name;
+      if (entry.isDirectory()) {
+        if (!['node_modules', '.git', '.build', 'assets', 'src', 'tools'].includes(entry.name)) walk(rel);
+      } else if (entry.name.endsWith('.html')) {
+        pages.push(rel);
+      }
+    }
+  })('');
+
+  const broken = [];
+  let refs = 0;
+  for (const page of pages) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    const found = [
+      ...Array.from(html.matchAll(/<img[^>]*\ssrc="([^"]+)"/g)).map((m) => m[1]),
+      ...Array.from(html.matchAll(/data-fallback="([^"]+)"/g)).map((m) => m[1])
+    ];
+    for (const raw of found) {
+      const src = raw.replace(/&amp;/g, '&');
+      if (/^(https?:|data:)/.test(src)) continue;
+      refs++;
+      const target = src.startsWith('/')
+        ? path.join(ROOT, src.slice(1))
+        : path.resolve(path.dirname(path.join(ROOT, page)), src);
+      if (!fs.existsSync(target)) broken.push(page + ' -> ' + src);
+    }
+  }
+  check('pages scanned', pages.length > 50, String(pages.length));
+  check('local image references resolve', broken.length === 0, refs + ' refs; broken: ' + broken.slice(0, 5).join(' | '));
+});
+
+suite('share images are absolute', () => {
+  // og:image and twitter:image are fetched by crawlers with no page context,
+  // so a site-relative value is silently useless.
+  for (const page of ['index.html', 'category/comfort-food.html', 'collection/vegetarian-recipes.html', 'guides/knife-skills-basics.html', 'recipes/raclette.html']) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    const og = (html.match(/property="og:image" content="([^"]+)"/) || [])[1] || '';
+    const tw = (html.match(/name="twitter:image" content="([^"]+)"/) || [])[1] || '';
+    check(page + ': share images absolute', /^https?:\/\//.test(og) && /^https?:\/\//.test(tw), og);
+  }
+});
+
 suite('every page declares its depth to the client', () => {
   // The client reads body[data-depth] to rebuild paths. If a page omits it,
   // the client silently falls back to guessing from the URL.

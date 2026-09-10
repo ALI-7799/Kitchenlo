@@ -216,7 +216,14 @@ function footerMarkup(depth: Depth): string {
 function render(page: PageSpec): string {
   const depth = page.absolute ? 'abs' : page.depth || 0;
   const canonical = site.origin + '/' + page.canonical.replace(/^\//, '');
-  const image = page.image || site.ogImage;
+  // og:image and twitter:image are read off-site, so they must be absolute.
+  // Pages may hand us either an absolute URL or a site-relative path; since the
+  // photography moved in-repo most are relative, and a relative share image is
+  // simply ignored by every crawler that reads it.
+  const rawImage = page.image || site.ogImage;
+  const image = /^https?:/.test(rawImage)
+    ? rawImage
+    : site.origin + '/' + rawImage.replace(/^\//, '');
   const schemas = (page.schema || []).slice();
 
   if (page.breadcrumbs && page.breadcrumbs.length) {

@@ -887,7 +887,7 @@ function guidePage(guide: Guide): PageSpec {
 
         <figure class="guide-media">
           <div class="container">
-            <img src="${esc(guide.image)}" alt="${esc(
+            <img src="${esc(rel(guide.image, 1))}" alt="${esc(
     guide.imageAlt
   )}" width="1200" height="700" loading="eager" decoding="async" />
           </div>
@@ -949,7 +949,8 @@ function guidePage(guide: Guide): PageSpec {
         '@type': 'Article',
         headline: guide.title,
         description: guide.description,
-        image: [guide.image],
+        // Structured data is consumed off-site, so this has to be absolute.
+        image: [C.absoluteUrl(guide.image)],
         datePublished: guide.datePublished,
         dateModified: guide.dateModified,
         author: { '@type': 'Organization', name: site.author.name, url: site.author.url },

@@ -13,14 +13,24 @@ import type {
   Recipe
 } from '../types.js';
 
-/** Photos are absolute URLs; generated covers are root-relative and need depth. */
+/** Images are site-relative paths and need the page depth to resolve. */
 function imageUrl(recipe: Recipe, depth: Depth): string {
   return rel(recipe.image, depth);
 }
 
-/** Absolute form, for structured data and share tags. */
+/**
+ * Any image path in its absolute form, for structured data and share tags,
+ * which are read off-site where a relative path means nothing. Accepts an
+ * already-absolute URL unchanged.
+ */
+function absoluteUrl(pathOrUrl: string): string {
+  return /^https?:/.test(pathOrUrl)
+    ? pathOrUrl
+    : site.origin + '/' + pathOrUrl.replace(/^\//, '');
+}
+
 function absoluteImageUrl(recipe: Recipe): string {
-  return /^https?:/.test(recipe.image) ? recipe.image : site.origin + '/' + recipe.image;
+  return absoluteUrl(recipe.image);
 }
 
 /**
@@ -123,7 +133,7 @@ function guideCard(guide: Guide, depth: Depth) {
   const href = rel(`guides/${guide.slug}.html`, depth);
   return `<article class="card guide-card">
               <a class="card-media" href="${esc(href)}" tabindex="-1" aria-hidden="true">
-                <img src="${esc(guide.image)}" alt="${esc(guide.imageAlt)}" loading="lazy" decoding="async" width="600" height="400" />
+                <img src="${esc(rel(guide.image, depth))}" alt="${esc(guide.imageAlt)}" loading="lazy" decoding="async" width="600" height="400" />
               </a>
               <div class="card-body">
                 <div class="card-meta"><span>${guide.readMinutes} min read</span></div>
@@ -222,6 +232,7 @@ function newsletterCta() {
 
 export {
   imageUrl,
+  absoluteUrl,
   absoluteImageUrl,
   stars,
   cardLead,
