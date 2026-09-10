@@ -455,6 +455,448 @@ const recipes: RecipeSource[] = [
       { q: 'Should I soak the dried apricots first?', a: 'Not if they are the soft ready-to-eat kind, which is what this recipe assumes. Firmer, fully dried apricots benefit from 20 minutes in hot water, and you can add that soaking liquid to the braise rather than throwing it away.' }
     ],
     related: ['moroccan-chicken-tajine', 'spaghetti-bolognese', 'lentil-soup']
+  },
+  {
+    slug: 'cheese-fondue',
+    title: 'Swiss Cheese Fondue',
+    description: 'Gruyere and Vacherin melted into white wine with a whisper of kirsch, kept smooth by a spoon of cornflour.',
+    intro: 'Fondue splits for one reason: the cheese is heated too fast and the fat separates from the protein. Everything in this method exists to stop that. The cheese is tossed in cornflour before it goes anywhere near the pot, the wine goes in cold, the heat stays low, and the cheese is added a handful at a time so the emulsion is never asked to absorb more than it can. Get that right and the pot stays glossy from the first dip to the crust at the bottom.',
+    category: 'comfort-food',
+    cuisine: 'Swiss',
+    course: 'Dinner',
+    method: 'Stovetop',
+    diet: ['vegetarian'],
+    keywords: ['cheese fondue recipe', 'swiss fondue', 'gruyere fondue', 'fondue for two'],
+    image: 'https://images.unsplash.com/photo-1754910568106-e71804067c2c?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A pot of melted cheese fondue with forks dipping bread into it',
+    prepMinutes: 15,
+    cookMinutes: 20,
+    servings: 4,
+    yieldText: '4 servings, one caquelon',
+    difficulty: 'Medium',
+    rating: 4.8,
+    ratingCount: 132,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 784, protein: 41, carbs: 38, fat: 46, fiber: 2, sugar: 3, sodium: 1120 },
+    equipment: ['Caquelon or heavy enamelled pot', 'Fondue burner', 'Long fondue forks', 'Wooden spoon'],
+    ingredients: [
+      { group: 'For the fondue', items: [
+        '10 oz (300 g) Gruyere, coarsely grated',
+        '10 oz (300 g) Vacherin Fribourgeois or Emmental, coarsely grated',
+        '1 tbsp cornflour',
+        '1 garlic clove, halved',
+        '1.5 cups (350 ml) dry white wine, such as Fendant or Riesling',
+        '1 tsp lemon juice',
+        '2 tbsp kirsch (optional)',
+        'Freshly grated nutmeg and black pepper'
+      ] },
+      { group: 'To dip', items: [
+        '1 large day-old crusty loaf, cut into 1 inch cubes with crust on every piece',
+        'Cornichons and pickled onions',
+        'Boiled new potatoes (optional)'
+      ] }
+    ],
+    instructions: [
+      { title: 'Toss the cheese in cornflour', text: 'Combine both cheeses in a bowl and toss thoroughly with the cornflour until every shred is dusted. The starch is what holds the emulsion together once the fat renders, and it is the single most reliable defence against a split pot.' },
+      { title: 'Prepare the pot', text: 'Rub the cut garlic hard around the inside of the caquelon, then leave it in. Pour in the wine and the lemon juice and warm over medium-low until it steams and shows small bubbles at the edge, but do not let it boil.' },
+      { title: 'Add the cheese gradually', text: 'Add the cheese one large handful at a time, stirring in a slow figure of eight with a wooden spoon. Wait until each addition has completely disappeared before adding the next. Rushing this is the other way fondue splits.' },
+      { title: 'Season and finish', text: 'Once smooth and glossy, stir in the kirsch, a scrape of nutmeg and plenty of black pepper. The texture should coat a fork thickly and fall from it in a ribbon; loosen with a splash of warm wine if it is too tight.' },
+      { title: 'Move to the burner', text: 'Set the pot over a low flame at the table. Keep it just below a simmer and keep stirring as people dip, so the base never scorches.' },
+      { title: 'Eat, and save the crust', text: 'Spear each bread cube through the soft side and out through the crust so it holds, then stir it through the cheese. When the pot is nearly empty a golden crust forms on the base, called la religieuse; lift it out and share it.' }
+    ],
+    tips: [
+      'Use day-old bread. Fresh bread is too soft and disintegrates off the fork halfway to your mouth.',
+      'Never let the fondue boil. Above a gentle simmer the proteins tighten, the fat pools on top and the pot turns grainy.',
+      'If it does split, take it off the heat and whisk in a slurry of a teaspoon of cornflour in a tablespoon of lemon juice. It will usually come back together.'
+    ],
+    variations: [
+      'Moitie-moitie is the classic Fribourg half-and-half of Gruyere and Vacherin, which is what this recipe is.',
+      'Stir a spoon of wholegrain mustard or a handful of sauteed mushrooms through at the end.',
+      'For a wine-free pot, use strong vegetable stock with an extra teaspoon of lemon juice for the acidity the cheese needs.'
+    ],
+    storage: 'Fondue is a cook-and-eat dish and does not keep well; reheated cheese usually splits. Leftovers can be refrigerated for 2 days and used as a sauce, melted gently over low heat with a splash of milk, or spread on bread and grilled.',
+    faqs: [
+      { q: 'Why did my fondue go stringy or grainy?', a: 'Too much heat, or the cheese went in too fast. Cheese emulsions break above roughly 180F, and stringiness means the proteins have tightened into ropes. Keep the pot below a simmer and add the cheese a handful at a time.' },
+      { q: 'Can I make fondue without alcohol?', a: 'Yes. The wine is there for acidity as much as flavour, and acidity is what keeps the cheese proteins apart. Replace it with vegetable stock plus an extra teaspoon or two of lemon juice, and skip the kirsch.' },
+      { q: 'How much cheese do I need per person?', a: 'Around 5 oz / 150 g per person for a main course, which is what this recipe assumes. As a starter or with a lot of potatoes alongside, 3.5 oz / 100 g each is plenty.' }
+    ],
+    related: ['raclette', 'baked-mac-and-cheese', 'moussaka']
+  },
+  {
+    slug: 'raclette',
+    title: 'Raclette with Potatoes and Pickles',
+    description: 'Melted raclette cheese scraped over hot waxy potatoes, with cornichons and cured meats to cut the richness.',
+    intro: 'Raclette is less a recipe than an arrangement, and it lives or dies on two things: the potatoes must be waxy and genuinely hot, and there must be enough acidity on the table to keep the whole thing from becoming a wall of fat. The name comes from racler, to scrape, because the original version was a half wheel melted by a fire and scraped onto plates. A tabletop grill does the same job with less drama.',
+    category: 'comfort-food',
+    cuisine: 'Swiss',
+    course: 'Dinner',
+    method: 'Grilled',
+    diet: ['vegetarian', 'gluten-free'],
+    keywords: ['raclette recipe', 'raclette cheese dinner', 'swiss raclette', 'melted cheese potatoes'],
+    image: 'https://images.unsplash.com/photo-1654796605349-015a7841f680?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Golden potatoes smothered in melted raclette cheese in a pan',
+    prepMinutes: 20,
+    cookMinutes: 30,
+    servings: 6,
+    yieldText: '6 servings',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 118,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 692, protein: 34, carbs: 44, fat: 42, fiber: 4, sugar: 4, sodium: 980 },
+    equipment: ['Raclette grill or heavy ovenproof pan', 'Large pot for the potatoes', 'Small serving bowls'],
+    ingredients: [
+      { group: 'The cheese and potatoes', items: [
+        '2.6 lb (1.2 kg) small waxy potatoes, such as Charlotte or new potatoes',
+        '2.6 lb (1.2 kg) raclette cheese, sliced about 1/4 inch thick',
+        '1 tbsp salt, for the potato water'
+      ] },
+      { group: 'On the table', items: [
+        '1 jar cornichons, drained',
+        '1 jar pickled silverskin onions, drained',
+        '7 oz (200 g) air-dried ham or bresaola (omit to keep it vegetarian)',
+        'Freshly ground black pepper',
+        'Sweet paprika and grated nutmeg, in small bowls'
+      ] },
+      { group: 'Alongside', items: [
+        'A green salad with a sharp mustard vinaigrette',
+        'Cold dry white wine or hot black tea'
+      ] }
+    ],
+    instructions: [
+      { title: 'Boil the potatoes', text: 'Put the potatoes in a large pot, cover with cold water, add the salt and bring to a boil. Simmer 18-22 minutes until a knife slides in with no resistance. Leave the skins on; they hold the potato together under a load of cheese.' },
+      { title: 'Keep them hot', text: 'Drain and return them to the warm pan with the lid ajar, or tip them into a covered dish. Lukewarm potatoes are the most common way this meal disappoints, because the cheese sets the moment it lands.' },
+      { title: 'Heat the grill', text: 'Turn the raclette grill on 10 minutes before you sit down so the top plate and the little pans are properly hot. Without a raclette grill, lay cheese slices in a heavy ovenproof pan and melt them under a hot grill for 3-4 minutes.' },
+      { title: 'Lay the table', text: 'Put the potatoes, cheese slices, pickles, cured meats and the paprika and nutmeg within everyone\'s reach. Each person needs a pan, a plate and a wooden spatula.' },
+      { title: 'Melt and scrape', text: 'Everyone lays a slice or two of cheese in their pan and slides it under the heat for 3-5 minutes, until it bubbles and browns at the edges. Crush a potato on the plate, scrape the molten cheese over it, and season.' },
+      { title: 'Keep going in rounds', text: 'Refill the pan and repeat. Raclette is eaten in rounds over an hour or more rather than plated all at once, so pace the potatoes and keep the pickles moving.' }
+    ],
+    tips: [
+      'Waxy potatoes only. Floury varieties collapse into mash under hot cheese and turn the plate into a paste.',
+      'Allow about 7 oz / 200 g of cheese per person. It sounds enormous and it is almost exactly right.',
+      'Put the pickles on the table, not on the side. The acidity is structural here, not a garnish, and without it the meal becomes heavy within twenty minutes.'
+    ],
+    variations: [
+      'Grill mushrooms, cherry tomatoes, courgette rounds or peppers in the little pans under the cheese.',
+      'Smoked raclette gives a deeper, bacon-like note if you can find it.',
+      'Swap in Morbier, young Gouda or Fontina, all of which melt smoothly and behave the same way.'
+    ],
+    storage: 'Best made only for the number of people at the table. Leftover boiled potatoes keep 3 days and fry beautifully for breakfast; leftover cheese keeps wrapped in the fridge for a week and melts fine, though it is at its best fresh.',
+    faqs: [
+      { q: 'Do I need a raclette grill?', a: 'No. Lay the cheese in a heavy ovenproof pan or on a lined baking tray and melt it under a hot grill for 3-4 minutes, then scrape it over the potatoes. You lose the round-by-round rhythm at the table, but the food is the same.' },
+      { q: 'What can I use instead of raclette cheese?', a: 'Any good melting cheese with a bit of character: Morbier, Fontina, young Gouda, Comte or Taleggio. Avoid anything very hard or very aged, which will split rather than flow.' },
+      { q: 'What do I serve with it?', a: 'A sharply dressed green salad and plenty of pickles, and that is genuinely enough. Traditionally you drink white wine or hot tea rather than anything cold and fizzy, which is said to sit badly with the volume of melted cheese.' }
+    ],
+    related: ['cheese-fondue', 'baked-mac-and-cheese', 'breakfast-hash']
+  },
+  {
+    slug: 'chicken-tikka-masala',
+    title: 'Chicken Tikka Masala',
+    description: 'Yogurt-marinated chicken charred hard, then folded into a spiced tomato and cream sauce built on bloomed whole spices.',
+    intro: 'The two halves of this dish are cooked separately and for good reason. The chicken needs fierce dry heat to char, which is where the tikka flavour actually comes from, and the sauce needs a long gentle simmer to lose its raw tomato edge. Cook them together in one pan and you get neither: pale chicken poached in a thin sauce. The yogurt marinade is not optional either, since its acidity and enzymes are what keep breast or thigh tender through that kind of heat.',
+    category: 'comfort-food',
+    cuisine: 'Indian',
+    course: 'Dinner',
+    method: 'Simmered',
+    diet: ['gluten-free', 'high-protein'],
+    keywords: ['chicken tikka masala', 'indian curry recipe', 'tikka masala sauce', 'restaurant style curry'],
+    image: 'https://images.unsplash.com/photo-1742599361574-6fb156181466?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A bowl of creamy orange chicken tikka masala topped with fresh mint',
+    prepMinutes: 25,
+    cookMinutes: 40,
+    servings: 4,
+    yieldText: '4 generous servings',
+    difficulty: 'Medium',
+    rating: 4.9,
+    ratingCount: 274,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 624, protein: 46, carbs: 18, fat: 40, fiber: 3, sugar: 9, sodium: 890 },
+    equipment: ['Large heavy skillet or wok', 'Grill pan or baking tray', 'Blender (optional, for a smooth sauce)'],
+    ingredients: [
+      { group: 'For the chicken tikka', items: [
+        '2 lb (900 g) boneless chicken thighs, cut into 2 inch pieces',
+        '3/4 cup (180 g) thick natural yogurt',
+        '2 tbsp fresh ginger, grated',
+        '4 garlic cloves, crushed',
+        '2 tsp ground cumin',
+        '2 tsp sweet paprika',
+        '1 tsp ground turmeric',
+        '1 tsp garam masala',
+        '1.5 tsp fine sea salt',
+        'Juice of 1 lemon'
+      ] },
+      { group: 'For the masala sauce', items: [
+        '3 tbsp ghee or neutral oil',
+        '2 large onions, finely diced',
+        '4 garlic cloves, minced',
+        '1 tbsp fresh ginger, grated',
+        '2 tsp ground coriander',
+        '1 tsp ground cumin',
+        '1 tsp Kashmiri chilli powder',
+        '1/2 tsp ground turmeric',
+        '1 can (14 oz / 400 g) chopped tomatoes',
+        '2 tsp tomato paste',
+        '1 tsp caster sugar',
+        '3/4 cup (180 ml) double cream',
+        '1 tsp garam masala, to finish',
+        'Coriander leaves and lemon wedges, to serve'
+      ] }
+    ],
+    instructions: [
+      { title: 'Marinate the chicken', text: 'Whisk every marinade ingredient together and fold the chicken through until each piece is coated. Cover and refrigerate for at least 2 hours, ideally overnight. The yogurt tenderises as much as it seasons, so this is worth the wait.' },
+      { title: 'Char the chicken', text: 'Heat a grill pan or the oven grill as hot as it goes. Cook the chicken in a single layer for 4-5 minutes a side, until blackened in patches and just cooked through. Those charred edges are the whole point; a crowded pan steams instead and you lose them. Set aside.' },
+      { title: 'Build the onion base', text: 'Melt the ghee in a large skillet over medium heat and cook the onions with a pinch of salt for 12-15 minutes, until deeply golden and sweet. This is the longest step and the one that decides how the sauce tastes.' },
+      { title: 'Bloom the spices', text: 'Stir in the garlic and ginger for a minute, then the coriander, cumin, chilli and turmeric. Cook 45 seconds, stirring constantly, until fragrant. Ground spices need hot fat to release, but they scorch in seconds.' },
+      { title: 'Simmer the sauce', text: 'Add the tomatoes, tomato paste, sugar and a splash of water. Simmer gently for 15-18 minutes, until the sauce darkens and the oil separates at the edges. For a restaurant-smooth texture, blend it at this point and return it to the pan.' },
+      { title: 'Bring it together', text: 'Lower the heat, stir in the cream, then fold in the charred chicken with any resting juices. Warm through for 5 minutes without boiling. Finish with the garam masala, taste for salt, and scatter over coriander.' }
+    ],
+    tips: [
+      'Thighs, not breast. They survive the char and the simmer without drying, and the extra fat carries the spice.',
+      'Kashmiri chilli powder gives the colour people expect with very little heat. Ordinary chilli powder will make the dish considerably hotter at the same quantity.',
+      'If the sauce tastes flat at the end, it usually wants salt and acid rather than more spice. A squeeze of lemon does more than another spoon of garam masala.'
+    ],
+    variations: [
+      'Use paneer or roasted cauliflower in place of the chicken, marinated the same way.',
+      'Stir a tablespoon of ground almonds or cashew paste into the sauce for a richer, korma-leaning version.',
+      'Swap the cream for coconut cream to make it dairy-free, using oil rather than ghee and coconut yogurt in the marinade.'
+    ],
+    storage: 'Keeps 3 days in the fridge and improves overnight as the spices settle. Reheat gently over low heat with a splash of water; boiling can split the cream. Freezes for 3 months, though it is best frozen before the cream goes in and finished fresh.',
+    faqs: [
+      { q: 'What is the difference between tikka masala and butter chicken?', a: 'They overlap heavily. Butter chicken is generally milder, sweeter and thicker, built on butter and cashew or almond paste, while tikka masala carries more onion, more chilli and a looser, more tomato-forward sauce.' },
+      { q: 'Can I skip the marinating time?', a: 'You can cook it after 30 minutes, but the chicken will be noticeably less tender and less seasoned through. If time is short, marinate while the oven heats and the onions cook, which gets you most of an hour without waiting around.' },
+      { q: 'Why is my sauce orange rather than red?', a: 'That is correct. The colour comes from turmeric, paprika and Kashmiri chilli meeting cream, not from tomato alone. A vivid red usually means food colouring, which restaurants use and home kitchens do not need.' }
+    ],
+    related: ['thai-green-curry', 'moroccan-chicken-tajine', 'honey-soy-chicken']
+  },
+  {
+    slug: 'beef-stroganoff',
+    title: 'Beef Stroganoff',
+    description: 'Fast-seared steak strips and browned mushrooms in a mustard and sour cream sauce, over buttered egg noodles.',
+    intro: 'Stroganoff has a reputation as a heavy dish, which is usually the result of stewing the beef. It is not a stew. The strips want ninety seconds in a very hot pan and then to be taken out entirely while the sauce is built, going back in only at the end to warm through. The other rule is that sour cream must never boil, or it curdles into grains you cannot whisk out. Both rules are about restraint, and both take less time than doing it wrong.',
+    category: 'comfort-food',
+    cuisine: 'Russian',
+    course: 'Dinner',
+    method: 'Stovetop',
+    diet: ['high-protein'],
+    keywords: ['beef stroganoff recipe', 'stroganoff sauce', 'quick beef dinner', 'mushroom cream sauce'],
+    image: 'https://images.unsplash.com/photo-1644592219048-5c070fd3c91c?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Beef stroganoff in a creamy mushroom sauce served over egg noodles',
+    prepMinutes: 15,
+    cookMinutes: 25,
+    servings: 4,
+    yieldText: '4 servings',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 196,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 596, protein: 42, carbs: 41, fat: 28, fiber: 3, sugar: 6, sodium: 720 },
+    equipment: ['Large heavy skillet', 'Large pot for the noodles', 'Tongs'],
+    ingredients: [
+      { group: 'For the beef', items: [
+        '1.5 lb (680 g) sirloin or rump steak, sliced into 1/2 inch strips across the grain',
+        '1 tsp fine sea salt',
+        '1/2 tsp black pepper',
+        '2 tbsp neutral oil'
+      ] },
+      { group: 'For the sauce', items: [
+        '2 tbsp butter',
+        '1 large onion, thinly sliced',
+        '14 oz (400 g) chestnut mushrooms, thickly sliced',
+        '2 garlic cloves, minced',
+        '1 tbsp plain flour',
+        '1 cup (240 ml) beef stock',
+        '2 tsp Dijon mustard',
+        '1 tsp Worcestershire sauce',
+        '3/4 cup (180 g) full-fat sour cream, at room temperature',
+        'Chopped dill or parsley, to finish'
+      ] },
+      { group: 'To serve', items: [
+        '12 oz (340 g) wide egg noodles',
+        '1 tbsp butter, for the noodles'
+      ] }
+    ],
+    instructions: [
+      { title: 'Dry and season the beef', text: 'Pat the strips thoroughly dry and season with the salt and pepper. Wet meat will not brown, and browning is most of the flavour in a dish this quick.' },
+      { title: 'Sear in batches', text: 'Heat the oil in a large skillet over high until it shimmers. Sear the beef in two or three batches, 60-90 seconds a batch, turning once. It should be brown outside and pink within. Move each batch to a plate.' },
+      { title: 'Brown the mushrooms', text: 'Lower to medium-high, add the butter and the onion and cook 5 minutes. Add the mushrooms and leave them undisturbed for 3-4 minutes to colour before stirring. Cook until their water has evaporated and they are properly golden.' },
+      { title: 'Make the sauce base', text: 'Stir in the garlic for a minute, then the flour, and cook 1 minute more. Pour in the stock while stirring, scraping the base clean, then add the mustard and Worcestershire. Simmer 4-5 minutes until it thickens enough to coat a spoon.' },
+      { title: 'Add the sour cream off the boil', text: 'Take the pan off the heat and stir in the sour cream. Return it to the lowest heat only to warm through. If it boils it will split, and there is no recovering the texture.' },
+      { title: 'Finish and serve', text: 'Return the beef with its resting juices and warm for 1-2 minutes, no longer. Toss the cooked noodles with butter, spoon the stroganoff over, and scatter with dill.' }
+    ],
+    tips: [
+      'Slice across the grain. With a quick-cooking cut this is the difference between tender strips and chewy ones.',
+      'Let the sour cream come to room temperature first. Cold dairy hitting a hot pan is the usual reason a stroganoff curdles.',
+      'Do not crowd the pan when searing. Three small batches take four minutes total and give you a fond worth building on; one big batch gives you grey, watery beef.'
+    ],
+    variations: [
+      'Use sliced chicken thigh or pork loin, seared exactly the same way.',
+      'Make it vegetarian with 2 lb of mixed mushrooms, browned hard in batches, and vegetable stock.',
+      'A splash of brandy or dry white wine into the pan before the stock adds depth; reduce it by half first.'
+    ],
+    storage: 'Keeps 2 days in the fridge. Reheat very gently over low heat, ideally with a splash of stock, and stop as soon as it is warm; the sour cream will split if it simmers. Not suitable for freezing, as the sauce separates on thawing.',
+    faqs: [
+      { q: 'Why did my sauce curdle?', a: 'The sour cream boiled, or it went in cold and straight onto high heat. Always add it off the heat, use full-fat rather than low-fat, and bring it to room temperature first. Low-fat sour cream splits far more readily.' },
+      { q: 'Can I use a cheaper cut of beef?', a: 'Only if you change the method. Braising cuts like chuck need 90 minutes of gentle simmering, not 90 seconds, so cook them low and slow first and stir the sour cream in at the very end. For the quick version, use sirloin, rump or fillet.' },
+      { q: 'What should I serve it with?', a: 'Wide egg noodles are the usual choice here, but buttered rice, mashed potato or boiled new potatoes all work. Something plain and starchy to catch the sauce is the only real requirement.' }
+    ],
+    related: ['spaghetti-bolognese', 'baked-mac-and-cheese', 'moussaka']
+  },
+  {
+    slug: 'moussaka',
+    title: 'Greek Moussaka',
+    description: 'Layers of roasted aubergine and cinnamon-scented lamb under a thick baked bechamel, rested until it slices clean.',
+    intro: 'Two habits separate a good moussaka from a greasy one. The aubergine is roasted rather than fried, because aubergine absorbs frying oil like a sponge and gives almost none of it back. And the bechamel is made deliberately thick and enriched with egg yolk, so it sets into a proper custard layer instead of running off the plate. The third thing is patience: it needs a full thirty minutes out of the oven before you cut it, or it will slump.',
+    category: 'comfort-food',
+    cuisine: 'Greek',
+    course: 'Dinner',
+    method: 'Baked',
+    diet: ['gluten-free', 'high-protein'],
+    keywords: ['moussaka recipe', 'greek moussaka', 'aubergine lamb bake', 'bechamel bake'],
+    image: 'https://images.unsplash.com/photo-1777199311086-ec5ff230aefd?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A baked moussaka with a golden bechamel top in an oval dish',
+    prepMinutes: 40,
+    cookMinutes: 65,
+    servings: 6,
+    yieldText: 'One 9x13 inch dish, 6 servings',
+    difficulty: 'Medium',
+    rating: 4.8,
+    ratingCount: 164,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 648, protein: 34, carbs: 29, fat: 44, fiber: 7, sugar: 12, sodium: 780 },
+    equipment: ['Two large baking trays', 'Large skillet', 'Heavy saucepan', '9x13 inch baking dish', 'Whisk'],
+    ingredients: [
+      { group: 'For the aubergine', items: [
+        '3 large aubergines (about 2.6 lb / 1.2 kg), cut into 1/2 inch rounds',
+        '4 tbsp olive oil',
+        '1 tsp fine sea salt'
+      ] },
+      { group: 'For the lamb', items: [
+        '2 tbsp olive oil',
+        '1 large onion, finely diced',
+        '4 garlic cloves, minced',
+        '1.5 lb (680 g) minced lamb',
+        '2 tbsp tomato paste',
+        '1 can (14 oz / 400 g) chopped tomatoes',
+        '1/2 cup (120 ml) red wine',
+        '1 tsp ground cinnamon',
+        '1/2 tsp ground allspice',
+        '1 bay leaf',
+        '1 tsp dried oregano',
+        '1 tsp fine sea salt, plus black pepper'
+      ] },
+      { group: 'For the bechamel', items: [
+        '4 tbsp (60 g) butter',
+        '1/3 cup (45 g) cornflour',
+        '3 cups (720 ml) whole milk, warmed',
+        '2 egg yolks',
+        '3/4 cup (65 g) grated kefalotyri or parmesan',
+        '1/4 tsp freshly grated nutmeg',
+        'Salt and white pepper'
+      ] }
+    ],
+    instructions: [
+      { title: 'Roast the aubergine', text: 'Heat the oven to 425F / 220C. Brush the rounds on both sides with olive oil, season with the salt, and spread them over two trays in a single layer. Roast 25-30 minutes, turning once, until golden and collapsing. Roasting rather than frying is what keeps this dish out of grease.' },
+      { title: 'Start the lamb', text: 'Meanwhile, heat the oil in a large skillet and cook the onion for 8 minutes until soft. Add the garlic for a minute, then the lamb, breaking it up and letting it brown properly rather than steam. Pour off the fat if there is a lot.' },
+      { title: 'Simmer the sauce', text: 'Stir in the tomato paste and cook 2 minutes, then add the wine and let it reduce by half. Add the tomatoes, cinnamon, allspice, bay, oregano and seasoning. Simmer 20-25 minutes until thick and almost dry; a wet lamb layer makes a soggy moussaka.' },
+      { title: 'Make a thick bechamel', text: 'Melt the butter in a saucepan, whisk in the cornflour and cook 1 minute. Add the warm milk in a slow stream, whisking hard, and cook 5-6 minutes until very thick. Off the heat, beat in the yolks one at a time, then the cheese, nutmeg and seasoning.' },
+      { title: 'Layer it', text: 'Lower the oven to 350F / 180C. Lay half the aubergine in the dish, spread over all the lamb, then the remaining aubergine. Pour the bechamel over and smooth it flat to the edges so it seals the top.' },
+      { title: 'Bake and rest', text: 'Bake 40-45 minutes until deeply golden and set with only a slight wobble at the centre. Rest for at least 30 minutes before cutting. This is not optional; cut it hot and it will slide apart on the plate.' }
+    ],
+    tips: [
+      'Salting the aubergine is unnecessary with modern varieties, which are not bitter. Roasting them dry is what matters.',
+      'The lamb layer should look almost too dry in the pan. It picks up moisture from the aubergine as it bakes.',
+      'Cornflour rather than wheat flour keeps this gluten-free and gives a slightly cleaner, firmer set. Plain flour works if you do not need that.'
+    ],
+    variations: [
+      'Add a layer of thinly sliced par-boiled potato on the base, which is common in many Greek households.',
+      'Use minced beef, or a half-and-half mix of beef and lamb, for a milder result.',
+      'For a vegetarian version, replace the lamb with brown lentils and finely chopped mushrooms cooked the same way.'
+    ],
+    storage: 'Refrigerate for up to 4 days; it slices far better cold and reheats well, covered, at 325F / 160C for 25 minutes. It can be assembled a day ahead and baked from cold with an extra 15 minutes. Freezes for 3 months, baked or unbaked.',
+    faqs: [
+      { q: 'Why is my moussaka watery?', a: 'Almost always the lamb sauce went in too loose, or the aubergine was not roasted long enough and released its water in the dish. Reduce the meat sauce until a spoon leaves a clear channel, and roast the aubergine until it is genuinely soft and browned.' },
+      { q: 'Can I make it ahead?', a: 'Yes, and it is arguably better for it. Assemble it completely, refrigerate overnight, and bake from cold with an extra 15 minutes. The layers firm up and it slices more cleanly the next day.' },
+      { q: 'What is the cinnamon doing in a savoury dish?', a: 'It is characteristic of Greek meat sauces and it is not there to taste sweet. Along with the allspice it gives the lamb a warm, rounded background note; leave it out and the dish tastes noticeably flatter.' }
+    ],
+    related: ['seafood-paella', 'lamb-apricot-tajine', 'stuffed-peppers']
+  },
+  {
+    slug: 'seafood-paella',
+    title: 'Seafood Paella',
+    description: 'Saffron rice cooked flat and undisturbed with prawns, mussels and squid, finished with a crisp socarrat on the base.',
+    intro: 'The single hardest instruction in paella is to leave it alone. Rice cooked in a wide flat pan without stirring absorbs stock evenly and forms socarrat, the caramelised crust on the base that Spaniards fight over. Stir it and you get risotto, which is a fine thing but not this. Everything else is preparation: a proper sofrito, good stock, bomba or another short absorbent rice, and enough patience to add the seafood in the order it actually needs.',
+    category: 'comfort-food',
+    cuisine: 'Spanish',
+    course: 'Dinner',
+    method: 'Simmered',
+    diet: ['gluten-free', 'dairy-free', 'high-protein'],
+    keywords: ['seafood paella recipe', 'spanish paella', 'saffron rice', 'socarrat'],
+    image: 'https://images.unsplash.com/photo-1746587293135-7a59f5764cd8?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A pan of seafood paella with mussels, prawns and octopus on saffron rice',
+    prepMinutes: 20,
+    cookMinutes: 35,
+    servings: 6,
+    yieldText: 'One 15 inch pan, 6 servings',
+    difficulty: 'Medium',
+    rating: 4.8,
+    ratingCount: 187,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 542, protein: 38, carbs: 62, fat: 14, fiber: 3, sugar: 5, sodium: 940 },
+    equipment: ['Paella pan or wide shallow skillet, 15 inch', 'Small pan for the stock', 'Tongs'],
+    ingredients: [
+      { group: 'For the sofrito', items: [
+        '4 tbsp olive oil',
+        '1 onion, very finely diced',
+        '1 red pepper, finely diced',
+        '4 garlic cloves, minced',
+        '2 ripe tomatoes, grated to a pulp and skins discarded',
+        '1 tsp sweet smoked paprika'
+      ] },
+      { group: 'For the rice', items: [
+        '2 cups (400 g) bomba or calasparra rice',
+        '5 cups (1.2 l) hot fish or shellfish stock',
+        'Generous pinch of saffron threads',
+        '1 tsp fine sea salt'
+      ] },
+      { group: 'For the seafood', items: [
+        '12 large raw prawns, shell on',
+        '1 lb (450 g) mussels, scrubbed and debearded',
+        '9 oz (250 g) squid, cleaned and cut into rings',
+        'Lemon wedges and flat-leaf parsley, to serve'
+      ] }
+    ],
+    instructions: [
+      { title: 'Warm the stock with saffron', text: 'Crumble the saffron into the hot stock and keep it barely simmering in a pan alongside. Adding cold stock to hot rice stalls the cook and gives you uneven grains.' },
+      { title: 'Sear the seafood briefly', text: 'Heat the oil in the paella pan and sear the prawns for about 45 seconds a side, then the squid for a minute. Both should be barely coloured, not cooked through. Lift them out and set aside.' },
+      { title: 'Build the sofrito', text: 'In the same pan cook the onion and pepper over medium heat for 8-10 minutes until soft. Add the garlic, then the grated tomato and the paprika, and cook 5-6 minutes more until it darkens to a thick jammy base with the oil separating.' },
+      { title: 'Toast the rice', text: 'Tip in the rice and stir for 1-2 minutes so every grain is coated in the sofrito. This is the last time you will stir it.' },
+      { title: 'Add stock and stop stirring', text: 'Pour in the hot saffron stock and the salt, shake the pan flat, and spread the rice into an even layer. Simmer briskly for 10 minutes, then lower the heat and cook 8 minutes more. Do not stir at any point from here.' },
+      { title: 'Add the seafood back', text: 'Nestle the prawns, squid and mussels into the surface, hinge-side down for the mussels. Cover loosely with foil and cook 5-6 minutes until the mussels open; discard any that stay shut.' },
+      { title: 'Make the socarrat and rest', text: 'Remove the foil and raise the heat to high for 60-90 seconds. Listen for a crackle and smell toasted rice, not burning. Take it off the heat, cover with a cloth and rest 5 minutes, then serve with lemon.' }
+    ],
+    tips: [
+      'Use a short absorbent rice such as bomba or calasparra. Risotto rice releases starch and turns creamy, which is the opposite of what paella wants.',
+      'The rice layer should be shallow, around 1/2 inch. A deep layer steams unevenly and never forms socarrat, which is why a wide pan matters more than a heavy one.',
+      'Bloom the saffron in a little warm stock for ten minutes before it goes in. Threads dropped in dry never give up their full colour or aroma.'
+    ],
+    variations: [
+      'Paella mixta adds chicken thigh and chorizo, browned at the start before the sofrito.',
+      'For paella de verduras, use artichokes, green beans and butter beans with a good vegetable stock.',
+      'Add a spoonful of alioli at the table, though purists will tell you not to.'
+    ],
+    storage: 'Best eaten the day it is made, since the seafood toughens on reheating and the socarrat softens. Leftovers keep 2 days refrigerated and are traditionally eaten cold or at room temperature rather than reheated. Do not freeze.',
+    faqs: [
+      { q: 'Why should I not stir paella?', a: 'Stirring releases starch and works the grains against each other, giving a creamy risotto texture. Paella is meant to have separate grains and a crisp base, and both depend on the rice sitting still in a flat, even layer.' },
+      { q: 'How do I know when the socarrat has formed?', a: 'You hear it before you see it: a faint crackle and a smell of toasted rice, usually after 60-90 seconds on high heat at the end. Test by scraping gently with a spoon at the edge. Pull it the moment it smells like burning rather than toast.' },
+      { q: 'Can I make paella without a paella pan?', a: 'Yes, provided the pan is wide and shallow so the rice sits in a thin layer. A large skillet works for four; a deep casserole does not, and neither does a pan so thin that the base scorches in patches.' }
+    ],
+    related: ['moussaka', 'garlic-butter-salmon', 'lemon-herb-shrimp']
   }
 ];
 

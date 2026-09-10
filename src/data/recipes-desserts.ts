@@ -692,6 +692,75 @@ const recipes: RecipeSource[] = [
       { q: 'Why press instead of roll the crust?', a: 'Ground almonds make a dough too short and crumbly to roll neatly. Pressing gives the same result with none of the difficulty, and it never shrinks in the tin.' }
     ],
     related: ['berry-tartlets', 'lemon-bars', 'berry-crumble']
+  },
+  {
+    slug: 'tiramisu',
+    title: 'Classic Tiramisu',
+    description: 'Espresso-soaked savoiardi under a whipped mascarpone zabaglione, set overnight and dusted with bitter cocoa.',
+    intro: 'Tiramisu goes wrong in two places, and neither is the recipe. The first is the dip: savoiardi need one second a side in the coffee, not a soak, because they keep drinking long after they leave the bowl. The second is the mascarpone, which is a set cream rather than a whipping cream and turns grainy the moment it is overworked. Beat the eggs and sugar properly over gentle heat, fold the mascarpone in by hand, and the rest is just waiting for it to set.',
+    category: 'desserts',
+    cuisine: 'Italian',
+    course: 'Dessert',
+    method: 'No-Bake',
+    diet: ['vegetarian'],
+    keywords: ['tiramisu recipe', 'classic italian tiramisu', 'mascarpone dessert', 'no bake dessert'],
+    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A slice of tiramisu dusted with cocoa showing its cream and sponge layers',
+    prepMinutes: 30,
+    cookMinutes: 10,
+    servings: 8,
+    yieldText: 'One 8x8 inch dish, 8 servings',
+    difficulty: 'Medium',
+    rating: 4.9,
+    ratingCount: 312,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 438, protein: 8, carbs: 34, fat: 29, fiber: 1, sugar: 24, sodium: 95 },
+    equipment: ['Heatproof bowl and small saucepan for a bain-marie', 'Electric hand whisk', 'Shallow bowl for dipping', '8x8 inch dish', 'Fine sieve'],
+    ingredients: [
+      { group: 'For the coffee soak', items: [
+        '1.5 cups (360 ml) strong espresso, cooled to room temperature',
+        '2 tbsp caster sugar',
+        '3 tbsp marsala, dark rum or coffee liqueur (optional)'
+      ] },
+      { group: 'For the mascarpone cream', items: [
+        '4 large eggs, separated',
+        '1/2 cup (100 g) caster sugar',
+        '1 lb (450 g) mascarpone, at room temperature',
+        '1 tsp vanilla extract',
+        'Pinch of fine salt'
+      ] },
+      { group: 'To assemble', items: [
+        '24-30 savoiardi (hard Italian ladyfingers)',
+        '2 tbsp unsweetened cocoa powder, for dusting',
+        'Dark chocolate, for shaving (optional)'
+      ] }
+    ],
+    instructions: [
+      { title: 'Mix the soak', text: 'Stir the sugar into the warm espresso until dissolved, add the marsala if using, and leave it to cool completely in a shallow bowl. Hot coffee turns savoiardi to mush on contact.' },
+      { title: 'Cook the yolks', text: 'Whisk the yolks with the sugar in a heatproof bowl set over barely simmering water, not touching it. Beat for 6-8 minutes until pale, thick and doubled in volume. This gently cooks the yolks and is what makes the cream stable. Cool for 5 minutes.' },
+      { title: 'Fold in the mascarpone', text: 'Add the mascarpone and vanilla and fold with a spatula, or beat on the lowest speed, only until smooth. Stop the moment it comes together; mascarpone splits into grains if you keep going.' },
+      { title: 'Whisk and fold the whites', text: 'In a clean bowl whisk the whites with the salt to soft peaks. Fold a third into the mascarpone to loosen it, then fold in the rest in two additions, keeping as much air as you can.' },
+      { title: 'Dip fast and layer', text: 'Dip each savoiardo in the coffee for one second a side, no longer, and lay it in the dish. Cover the base, spread over half the cream, then repeat for a second layer of biscuits and cream. Smooth the top flat.' },
+      { title: 'Chill, then dust', text: 'Cover and refrigerate at least 6 hours, ideally overnight, so the biscuits soften into cake and the cream sets. Dust thickly with cocoa through a sieve just before serving, never in advance, or it goes damp and patchy.' }
+    ],
+    tips: [
+      'Use hard savoiardi, not soft sponge fingers. Soft ones collapse on contact with coffee and give you a wet base.',
+      'Take the mascarpone out of the fridge 30 minutes ahead. Cold mascarpone is what seizes and turns grainy when beaten.',
+      'Dust the cocoa at the table. Applied hours early it absorbs moisture from the cream and loses its bitterness, which is the whole point of it.'
+    ],
+    variations: [
+      'Leave the alcohol out entirely; the dessert is complete without it and is then suitable for children.',
+      'Swap the coffee for strong cocoa or a fruit puree with lemon for a caffeine-free version.',
+      'Assemble in individual glasses for a cleaner serve that needs no slicing.'
+    ],
+    storage: 'Keeps covered in the fridge for 3 days and is at its best on day two. It does not freeze well; the mascarpone weeps on thawing. If you are concerned about lightly cooked eggs, use pasteurised eggs, which behave identically here.',
+    faqs: [
+      { q: 'Are the eggs safe?', a: 'The yolks are cooked over a bain-marie to a stable foam, which brings them to a safe temperature. The whites are raw, so use pasteurised eggs if you are serving anyone pregnant, elderly or immunocompromised, or fold in whipped double cream instead of the whites.' },
+      { q: 'Why did my mascarpone cream turn grainy?', a: 'It was cold, or it was overbeaten. Mascarpone is already a set cream and needs only a few turns of a spatula to loosen. Bring it to room temperature and stop mixing the second it looks smooth.' },
+      { q: 'Can I make it the same day?', a: 'It needs a minimum of 6 hours to set, and overnight is genuinely better. Before that the biscuits are still biscuits rather than cake, and the cream has not firmed enough to hold a slice.' }
+    ],
+    related: ['panna-cotta', 'rice-pudding', 'almond-tart']
   }
   ];
 

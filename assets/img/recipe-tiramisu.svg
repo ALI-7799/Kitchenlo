@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Classic Tiramisu">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9b44c"/>
+      <stop offset="1" stop-color="#c0562a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="807" cy="377" r="168" fill="#fff" opacity="0.11"/><circle cx="468" cy="119" r="172" fill="#fff" opacity="0.10"/><circle cx="445" cy="212" r="160" fill="#fff" opacity="0.06"/><circle cx="106" cy="634" r="164" fill="#fff" opacity="0.05"/>
+  <g transform="translate(600 400) scale(2.1)" color="#77300f">
+    <path d="M-70 -20h140l-22 84a16 16 0 0 1-16 12h-48a16 16 0 0 1-16-12z" fill="rgba(255,255,255,.92)"/>
+    <path d="M-70 -20c14-34 126-34 140 0z" fill="currentColor" opacity=".8"/>
+    <circle cx="0" cy="-46" r="12" fill="rgba(255,255,255,.95)"/>
+  </g>
+</svg>

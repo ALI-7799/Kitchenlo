@@ -691,6 +691,140 @@ const recipes: RecipeSource[] = [
       { q: 'Can I make a batch for a crowd?', a: 'Cook them all and hold them on a rack in a 150C / 300F oven. A rack keeps the bottoms crisp, whereas a plate traps steam.' }
     ],
     related: ['taco-rice-bowls', 'stuffed-peppers', 'roasted-wrap']
+  },
+  {
+    slug: 'spaghetti-carbonara',
+    title: 'Spaghetti Carbonara',
+    description: 'Guanciale, egg yolk and pecorino emulsified with pasta water into a glossy sauce, with no cream anywhere near it.',
+    intro: 'Carbonara is four ingredients and one technique, and the technique is temperature control. The sauce is an emulsion of egg yolk, cheese and rendered pork fat, loosened with starchy pasta water; take it above roughly 160F and the yolk scrambles. So the pan comes off the heat before the eggs go in, and the residual warmth of the pasta does the rest. Cream is not in the dish and never was: it is a shortcut that papers over a broken emulsion.',
+    category: 'quick-dinners',
+    cuisine: 'Italian',
+    course: 'Dinner',
+    method: 'Stovetop',
+    diet: ['high-protein'],
+    keywords: ['carbonara recipe', 'spaghetti carbonara', 'authentic carbonara no cream', 'quick italian pasta'],
+    image: 'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Spaghetti carbonara with crisp guanciale cubes and grated pecorino',
+    prepMinutes: 10,
+    cookMinutes: 15,
+    servings: 4,
+    yieldText: '4 servings',
+    difficulty: 'Medium',
+    rating: 4.9,
+    ratingCount: 341,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 612, protein: 27, carbs: 66, fat: 26, fiber: 3, sugar: 3, sodium: 780 },
+    equipment: ['Large pot', 'Large skillet', 'Mixing bowl', 'Microplane or fine grater'],
+    ingredients: [
+      { group: 'The four ingredients', items: [
+        '1 lb (450 g) spaghetti or rigatoni',
+        '7 oz (200 g) guanciale, cut into 1/4 inch batons',
+        '4 large egg yolks plus 1 whole egg',
+        '1 cup (90 g) pecorino romano, finely grated, plus more to serve'
+      ] },
+      { group: 'To finish', items: [
+        '1.5 tsp coarsely cracked black pepper',
+        'Salt, for the pasta water',
+        'Reserved pasta water'
+      ] }
+    ],
+    instructions: [
+      { title: 'Boil the pasta', text: 'Bring a large pot of well-salted water to a boil and cook the spaghetti to one minute short of the package time. Salt the water less than usual, because the guanciale and pecorino both bring a lot.' },
+      { title: 'Render the guanciale', text: 'Put the guanciale in a cold, dry skillet and set it over medium-low heat. Starting cold renders the fat slowly instead of burning the outside. Cook 8-10 minutes until the fat is translucent and the edges are crisp, then take the pan off the heat.' },
+      { title: 'Make the egg and cheese paste', text: 'In a bowl, whisk the yolks, whole egg, pecorino and black pepper into a thick paste. It should look like wet sand rather than a liquid; the cheese is doing structural work here.' },
+      { title: 'Temper the eggs', text: 'Whisk two or three tablespoons of hot pasta water into the egg mixture, a little at a time. This warms it gently so it does not seize when it meets the pasta.' },
+      { title: 'Combine off the heat', text: 'Drain the pasta, reserving a large mug of water, and tip it into the skillet with the rendered fat. Toss to coat, wait 30 seconds for the pan to cool slightly, then pour in the egg mixture and toss hard and continuously.' },
+      { title: 'Loosen and serve', text: 'Add pasta water a splash at a time, tossing all the while, until the sauce turns glossy and coats every strand. Serve immediately with more pecorino and pepper; carbonara waits for nobody.' }
+    ],
+    tips: [
+      'Take the pan off the heat before the eggs go in. Almost every scrambled carbonara comes from adding them to a pan still on the burner.',
+      'Grate the pecorino as finely as you can. Coarse shreds refuse to melt into the emulsion and leave stringy clumps.',
+      'Keep more pasta water than you think you need. The sauce tightens as it cools on the plate, so it should look slightly loose in the pan.'
+    ],
+    variations: [
+      'Pancetta is the usual substitute for guanciale, and streaky bacon works at a push, though both are leaner and less sweet.',
+      'Cacio e pepe is the same dish without the pork or egg: just pecorino, pepper and pasta water.',
+      'For a vegetarian version, render cubes of smoked firm tofu or use browned butter in place of the pork fat.'
+    ],
+    storage: 'Carbonara must be eaten immediately; the emulsion breaks as it cools and cannot be brought back. Leftovers keep a day in the fridge and are best refried into a frittata-style cake rather than reheated as pasta.',
+    faqs: [
+      { q: 'Should carbonara contain cream?', a: 'No. The sauce is an emulsion of egg yolk, cheese, pork fat and pasta water, and it is creamy without any cream in it. Cream is added to make the dish forgiving, but it mutes the pecorino and gives a heavier, flatter result.' },
+      { q: 'My eggs scrambled. What went wrong?', a: 'The pan was too hot. Egg yolk sets from about 150F, so the skillet must be off the heat and given half a minute to cool before the egg goes in. Tempering with a little hot pasta water first also helps considerably.' },
+      { q: 'What is the difference between guanciale and pancetta?', a: 'Guanciale is cured pork cheek, pancetta is cured belly. Guanciale has a higher proportion of fat, renders to a softer texture and tastes sweeter and more intense, which is why it is traditional here. Pancetta is a perfectly good stand-in.' }
+    ],
+    related: ['smoky-tomato-pasta', 'creamy-tomato-rigatoni', 'pesto-tortellini']
+  },
+  {
+    slug: 'thai-green-curry',
+    title: 'Thai Green Curry',
+    description: 'Green curry paste fried in cracked coconut cream, with chicken, Thai aubergine and basil, balanced with fish sauce and lime.',
+    intro: 'The step that separates a fragrant green curry from a flat one takes four minutes and is usually skipped. Coconut cream is heated until it splits and the oil rises, and the paste is fried in that oil until it darkens and smells of makrut lime and galangal. Only then does the rest of the coconut milk go in. Skip it and you are boiling paste in liquid, which tastes raw and one-dimensional no matter how much fish sauce you add afterwards.',
+    category: 'quick-dinners',
+    cuisine: 'Thai',
+    course: 'Dinner',
+    method: 'Simmered',
+    diet: ['gluten-free', 'dairy-free'],
+    keywords: ['thai green curry', 'green curry recipe', 'coconut curry chicken', 'quick thai dinner'],
+    image: 'https://images.unsplash.com/photo-1707056924965-2c687206af67?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A bowl of Thai green curry with chicken, Thai aubergines and chillies',
+    prepMinutes: 15,
+    cookMinutes: 20,
+    servings: 4,
+    yieldText: '4 servings',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 228,
+    datePublished: '2026-09-10',
+    dateModified: '2026-09-10',
+    nutrition: { calories: 486, protein: 32, carbs: 14, fat: 34, fiber: 4, sugar: 7, sodium: 1040 },
+    equipment: ['Wok or wide skillet', 'Rice pan', 'Wooden spoon'],
+    ingredients: [
+      { group: 'For the curry', items: [
+        '2 cans (14 oz / 400 ml each) full-fat coconut milk, not shaken',
+        '3-4 tbsp green curry paste, to taste',
+        '1.5 lb (680 g) chicken thighs, sliced into strips',
+        '5 oz (150 g) Thai aubergines, quartered, or 1 regular aubergine, cubed',
+        '3 makrut lime leaves, torn',
+        '1 cup (150 g) green beans, cut into 2 inch lengths'
+      ] },
+      { group: 'To season', items: [
+        '2 tbsp fish sauce, plus more to taste',
+        '1 tbsp palm sugar or soft brown sugar',
+        'Juice of 1/2 lime',
+        'Large handful of Thai basil leaves',
+        '1 red chilli, sliced on the diagonal'
+      ] },
+      { group: 'To serve', items: [
+        'Jasmine rice',
+        'Lime wedges'
+      ] }
+    ],
+    instructions: [
+      { title: 'Crack the coconut cream', text: 'Open the cans without shaking and spoon the thick cream from the top into a wok. Heat over medium-high for 3-4 minutes until it bubbles, thickens and the clear oil visibly separates out. This is the step that makes the curry.' },
+      { title: 'Fry the paste', text: 'Stir the curry paste into that hot oil and fry 2-3 minutes, pressing it against the pan, until it darkens a shade and smells intensely aromatic. It should sizzle rather than simmer.' },
+      { title: 'Seal the chicken', text: 'Add the chicken strips and turn them through the paste for 3-4 minutes until coated and no longer pink outside.' },
+      { title: 'Add the rest of the coconut milk', text: 'Pour in the remaining coconut milk with the lime leaves and aubergine. Bring to a gentle simmer and cook 8-10 minutes, until the aubergine is tender and the chicken is cooked through. Do not let it boil hard or the coconut milk will separate.' },
+      { title: 'Add the beans and season', text: 'Stir in the green beans and cook 3 minutes more. Season with the fish sauce, sugar and lime juice, then taste and adjust. A green curry should land salty, sweet, sour and hot all at once, with no single note dominating.' },
+      { title: 'Finish with basil', text: 'Take the pan off the heat, stir through the Thai basil and sliced chilli, and let the residual heat wilt them. Serve straight away with jasmine rice.' }
+    ],
+    tips: [
+      'Do not shake the coconut milk cans. You need the thick cream from the top separately, and shaking makes the cracking step impossible.',
+      'Taste and adjust at the end, always. Curry pastes vary enormously in salt and heat between brands, so the fish sauce and sugar quantities here are a starting point rather than a rule.',
+      'Add the basil off the heat. Boiled Thai basil turns black and loses the aniseed note it is there for.'
+    ],
+    variations: [
+      'Use prawns, firm white fish or sliced beef; add prawns in only the last 3 minutes.',
+      'For a vegan version, use tofu and vegetables, swap the fish sauce for light soy or a vegan fish sauce, and check the paste for shrimp paste.',
+      'Bamboo shoots, sugar snap peas, courgette and red pepper all work in place of the aubergine.'
+    ],
+    storage: 'Keeps 3 days in the fridge and the flavour deepens overnight. Reheat gently without boiling. It freezes for 2 months, though the coconut milk can look grainy on thawing; whisk it as it warms and it will come back together.',
+    faqs: [
+      { q: 'Why is my green curry not green?', a: 'Long cooking dulls the colour, and many commercial pastes are duller than homemade to begin with. Adding the Thai basil off the heat at the very end restores some brightness, and avoiding a hard boil keeps the paste from browning.' },
+      { q: 'How do I make it less spicy?', a: 'Use less paste and make up the volume with more coconut cream, which tempers heat without thinning the flavour. A little extra palm sugar also rounds the edge. Serve the sliced fresh chilli on the side rather than stirred in.' },
+      { q: 'Can I use light coconut milk?', a: 'Not for this method. Light coconut milk has too little fat to crack and release oil, so you cannot fry the paste properly, and the finished sauce stays thin. Use full-fat and serve smaller portions if that is the concern.' }
+    ],
+    related: ['chicken-tikka-masala', 'miso-noodles', 'coconut-rice-bowl']
   }
   ];
 
