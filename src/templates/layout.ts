@@ -298,7 +298,7 @@ function render(page: PageSpec): string {
     </script>
 ${schemaTags}
   </head>
-  <body class="${esc(page.bodyClass || '')}">
+  <body class="${esc(page.bodyClass || '')}" data-depth="${depth === 'abs' ? 0 : depth}">
     ${headerMarkup(page.active || '', depth)}
     ${breadcrumbNav}
     <main id="main">

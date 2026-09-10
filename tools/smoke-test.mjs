@@ -536,33 +536,68 @@ suite('404.html', () => {
  * emitted a site-relative image path without the per-page prefix, which
  * resolved to a 404 from every nested page.
  */
-suite('search dropdown from a nested page', async () => {
-  const { window, doc, errors } = load('recipes/raclette.html');
-  check('no script errors', errors.length === 0, errors[0]);
+suite('search results resolve their images from every page depth', async () => {
+  // One page per directory the generator emits. A client-built image path is
+  // relative to the page it was built on, so a page at the wrong assumed depth
+  // asks for a file that is not there and the row renders broken.
+  const pages = [
+    'index.html',
+    'recipes.html',
+    'recipes/raclette.html',
+    'category/comfort-food.html',
+    'collection/vegetarian-recipes.html',
+    'guides/knife-skills-basics.html',
+    'favorites.html'
+  ];
 
-  const input = doc.querySelector('#searchOverlayInput');
-  const results = doc.querySelector('#searchOverlayResults');
-  check('search input and results panel present', !!input && !!results);
-  if (!input || !results) return;
+  for (const page of pages) {
+    const { window, doc } = load(page);
+    const input = doc.querySelector('#searchOverlayInput');
+    const results = doc.querySelector('#searchOverlayResults');
+    if (!input || !results) {
+      check(page + ': search present', false, 'no overlay');
+      continue;
+    }
 
-  // 'knife' matches a guide by title, so both row types get exercised.
-  input.value = 'knife';
-  input.dispatchEvent(new window.Event('input', { bubbles: true }));
-  await new Promise((resolve) => setTimeout(resolve, 300));
+    // 'knife' matches a guide by title, so recipe rows and guide rows - which
+    // are built by two different code paths - are both exercised.
+    input.value = 'knife';
+    input.dispatchEvent(new window.Event('input', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 250));
 
-  const rows = Array.from(results.querySelectorAll('a.search-result'));
-  check('rows rendered', rows.length > 0, String(rows.length));
+    const rows = Array.from(results.querySelectorAll('a.search-result'));
+    const dir = path.dirname(page);
+    const broken = rows
+      .map((a) => {
+        const img = a.querySelector('img');
+        return img ? img.getAttribute('src') : '';
+      })
+      .filter((src) => !src || (!/^https?:/.test(src) && !fs.existsSync(path.join(ROOT, dir, src))));
 
-  const srcs = rows.map((a) => {
-    const img = a.querySelector('img');
-    return img ? img.getAttribute('src') : '';
-  });
-  check('every row carries an image', srcs.every(Boolean));
+    check(
+      page + ': every result image resolves',
+      rows.length > 0 && broken.length === 0,
+      rows.length + ' rows, ' + broken.length + ' broken: ' + broken.join(', ')
+    );
+  }
+});
 
-  const broken = srcs.filter(
-    (src) => src && !/^https?:/.test(src) && !fs.existsSync(path.join(ROOT, 'recipes', src))
-  );
-  check('every result image resolves from a nested page', broken.length === 0, broken.join(', '));
+suite('every page declares its depth to the client', () => {
+  // The client reads body[data-depth] to rebuild paths. If a page omits it,
+  // the client silently falls back to guessing from the URL.
+  const pages = [
+    ['index.html', '0'],
+    ['recipes.html', '0'],
+    ['recipes/raclette.html', '1'],
+    ['category/comfort-food.html', '1'],
+    ['collection/vegetarian-recipes.html', '1'],
+    ['guides/knife-skills-basics.html', '1']
+  ];
+  for (const [page, expected] of pages) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    const found = (html.match(/<body[^>]*data-depth="(\d+)"/) || [])[1];
+    check(page + ': data-depth=' + expected, found === expected, 'got ' + found);
+  }
 });
 
 /* --------------------------------------------------------------- runner -- */

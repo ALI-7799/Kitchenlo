@@ -34,15 +34,25 @@ export function escapeHtml(value: unknown): string {
 
 /**
  * How many directories deep the current page sits, so links and image paths
- * built on the client match the ones the generator produced. Derived from the
- * directory name rather than path depth, so it holds whether the site is served
- * from a domain root or a project sub-path.
+ * built on the client match the ones the generator produced.
+ *
+ * The generator knows this exactly and publishes it as body[data-depth], so we
+ * read it rather than infer it. Inferring it from the URL meant keeping a list
+ * of nested directory names in sync with the generator by hand, and that list
+ * silently omitted /collection/: every client-built image path on a collection
+ * page came out one directory too shallow and 404ed, so search results there
+ * rendered as broken images.
+ *
+ * The URL test survives only as a fallback for a page cached before the
+ * attribute existed, and now names every directory the generator emits.
  */
-export const depth: number = /\/(recipes|category|guides)\/[^/]*$/.test(
-  window.location.pathname
-)
-  ? 1
-  : 0;
+function readDepth(): number {
+  const declared = document.body?.getAttribute('data-depth');
+  if (declared && /^\d+$/.test(declared)) return Number(declared);
+  return /\/(recipes|category|collection|guides)\/[^/]*$/.test(window.location.pathname) ? 1 : 0;
+}
+
+export const depth: number = readDepth();
 
 /** Prefix back to the site root, for hand-built links. */
 export const ROOT = depth > 0 ? '../' : '';
