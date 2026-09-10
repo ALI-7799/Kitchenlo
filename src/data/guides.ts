@@ -14,7 +14,7 @@ const guides: Guide[] = [
       'A component-based approach to meal prep: cook building blocks instead of finished meals, and assemble different dishes all week.',
     excerpt:
       'Most meal prep fails by Wednesday because you cooked five identical boxes on Sunday. Component prep fixes that in about the same amount of time.',
-    image: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-how-to-meal-prep.jpg',
     imageAlt: 'Meal prep containers filled with grains, vegetables and protein',
     readMinutes: 8,
     datePublished: '2025-09-02',
@@ -73,7 +73,7 @@ const guides: Guide[] = [
       'A working pantry list built around what actually gets used, so you can cook a real dinner without shopping first.',
     excerpt:
       'A good pantry is not a large one. Twenty items, chosen properly, mean you can make dinner on a night you had no plan.',
-    image: 'https://images.unsplash.com/photo-1584473457409-ae5c91d7d8b1?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-pantry-essentials.jpg',
     imageAlt: 'Pantry shelves stocked with jars, oils and dried goods',
     readMinutes: 7,
     datePublished: '2025-09-18',
@@ -136,7 +136,7 @@ const guides: Guide[] = [
       'Learn the grip, the claw and four fundamental cuts that make prep faster, safer and more consistent.',
     excerpt:
       'Most home cooks are slow at prep because of grip and board setup, not because of the knife. Both are fixable in an afternoon.',
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-knife-skills-basics.jpg',
     imageAlt: 'Hands dicing vegetables on a wooden cutting board',
     readMinutes: 9,
     datePublished: '2025-10-06',
@@ -177,7 +177,7 @@ const guides: Guide[] = [
       'Salt, acid, fat and heat are the four levers behind almost every flavour problem. Here is how to diagnose which one is missing.',
     excerpt:
       'When a dish tastes like it is missing something, it is almost always one of four things. Learning to identify which changes how you cook.',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-how-to-season-food.jpg',
     imageAlt: 'Salt, lemon and olive oil arranged on a kitchen counter',
     readMinutes: 8,
     datePublished: '2025-10-22',
@@ -222,7 +222,7 @@ const guides: Guide[] = [
       'Practical storage, planning and cooking habits that keep food out of the bin and money in your pocket.',
     excerpt:
       'The average household throws away roughly a third of what it buys. Most of that is preventable with four or five changes.',
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-reduce-food-waste.jpg',
     imageAlt: 'Fresh vegetables arranged on a kitchen counter',
     readMinutes: 7,
     datePublished: '2025-11-11',
@@ -276,7 +276,7 @@ const guides: Guide[] = [
       'A structured path from never having cooked to being able to feed yourself well, ordered by what each recipe teaches.',
     excerpt:
       'Beginners are usually told to start with easy recipes. It is more useful to start with recipes that each teach one transferable technique.',
-    image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/guide-cooking-for-beginners.jpg',
     imageAlt: 'A beginner cook preparing vegetables in a home kitchen',
     readMinutes: 9,
     datePublished: '2025-12-03',

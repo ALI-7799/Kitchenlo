@@ -21,7 +21,7 @@ const collections: Collection[] = [
       'Vegetarian dinners, lunches and desserts built around flavour rather than substitution, with full nutrition and timings for every dish.',
     filter: { diet: ['vegetarian'] },
     keywords: ['vegetarian recipes', 'vegetarian dinner ideas', 'easy vegetarian meals', 'meat free recipes'],
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-vegetarian-recipes.jpg',
     imageAlt: 'A vegetarian bowl of chickpeas, cucumber and feta',
     intro: [
       'Vegetarian cooking goes wrong when it is conceived as a subtraction. Take the meat out of a dish designed around meat and you are left with a gap where the savoury depth used to be, which is why so many vegetarian recipes taste thin.',
@@ -51,7 +51,7 @@ const collections: Collection[] = [
       'Naturally gluten-free dinners, bowls and desserts. No specialist flour blends, no gums, no substitutions that need explaining.',
     filter: { diet: ['gluten-free'] },
     keywords: ['gluten free recipes', 'gluten free dinner', 'celiac friendly meals', 'naturally gluten free'],
-    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-gluten-free-recipes.jpg',
     imageAlt: 'Seared salmon with lemon, a naturally gluten-free dinner',
     intro: [
       'The most reliable gluten-free cooking is not gluten-free baking. It is the very large body of food that never contained wheat to begin with: seared fish, rice bowls, grain salads built on quinoa, soups thickened by their own lentils, custards set with gelatine.',
@@ -81,7 +81,7 @@ const collections: Collection[] = [
       'Meals delivering 20 g of protein or more per serving, with the full breakdown shown on every recipe rather than implied.',
     filter: { diet: ['high-protein'] },
     keywords: ['high protein recipes', 'high protein meals', 'protein dinner ideas', 'meals with 30g protein'],
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-high-protein-recipes.jpg',
     imageAlt: 'A protein-rich taco rice bowl with chicken, beans and avocado',
     intro: [
       'Most recipes described as high protein never say how much protein they contain. Every recipe in this collection publishes the figure per serving, alongside calories, carbohydrate, fat and fibre, so you can judge it rather than take the label on trust.',
@@ -111,7 +111,7 @@ const collections: Collection[] = [
       'Meals delivering 10 g of fibre or more per serving from beans, lentils, whole grains and vegetables, with the numbers published.',
     filter: { diet: ['high-fibre'] },
     keywords: ['high fibre recipes', 'high fiber meals', 'gut health recipes', 'fibre rich dinner'],
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-high-fibre-recipes.jpg',
     imageAlt: 'A bowl of lentil soup, high in fibre',
     intro: [
       'Fibre is the nutrient most people under-eat without noticing. UK guidance suggests around 30 g a day for adults and average intake sits closer to 20 g, a gap that is easier to close with meals than with supplements.',
@@ -141,7 +141,7 @@ const collections: Collection[] = [
       'Weeknight meals from a cold start to a plated dinner in 30 minutes or less, including the chopping. Timed properly, not optimistically.',
     filter: { maxTime: 30 },
     keywords: ['30 minute meals', 'quick dinner recipes', 'fast weeknight dinner', 'easy dinner ideas'],
-    image: 'https://images.unsplash.com/photo-1762631882087-ab1b3060c61b?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-30-minute-meals.jpg',
     imageAlt: 'Lemon herb shrimp, a ten-minute dinner',
     intro: [
       'Published cooking times are routinely optimistic, because they measure the cooking and quietly omit the twelve minutes of chopping that precede it. Everything here is timed from a cold start with nothing prepared, which is why some of these numbers look larger than equivalent recipes elsewhere. They are simply honest.',
@@ -182,7 +182,7 @@ const collections: Collection[] = [
       'roasted-wrap'
     ],
     keywords: ['meal prep recipes', 'make ahead meals', 'batch cooking', 'lunch prep ideas'],
-    image: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80',
+    image: 'assets/img/photos/collection-meal-prep-recipes.jpg',
     imageAlt: 'Meal prep containers filled with grains, vegetables and protein',
     intro: [
       'Not every good recipe is a good meal prep recipe. Anything that depends on a crisp texture, a fresh herb garnish or a sauce emulsified at the last second will disappoint by Wednesday, however well it cooks on Sunday.',
