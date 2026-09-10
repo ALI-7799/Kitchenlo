@@ -101,7 +101,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Electric whisk', 'Piping bag, optional', 'Fine grater'],
     ingredients: [
       { group: 'Shells', items: [
-        '6 pre-baked sweet pastry tartlet shells (about 8 cm each)'
+        '6 pre-baked sweet pastry tartlet shells (about 8 cm / 3 inch each)'
       ] },
       { group: 'Lemon mascarpone cream', items: [
         '250 g mascarpone, cold',

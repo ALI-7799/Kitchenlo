@@ -193,7 +193,7 @@ const recipes: RecipeSource[] = [
         '1 cinnamon stick',
         '1.5 cups (360 ml) chicken stock or water',
         '1 cup (150 g) green olives, cracked and rinsed',
-        '1 preserved lemon, flesh discarded and rind sliced thin',
+        '1 preserved lemon (salt-cured lemon, sold in jars), flesh discarded and rind sliced thin',
         'Small bunch of coriander and flat-leaf parsley, tied together',
         '1 tbsp lemon juice, to finish'
       ] }
@@ -402,7 +402,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Tajine or heavy lidded casserole', 'Small dry frying pan', 'Tongs'],
     ingredients: [
       { group: 'For the lamb', items: [
-        '3 lb (1.4 kg) boneless lamb shoulder, cut into 2 inch chunks',
+        '3 lb (1.4 kg) boneless lamb shoulder, cut into 2 inch (5 cm) chunks',
         '2 tbsp olive oil',
         '2 tsp fine sea salt',
         '1 tsp black pepper',
@@ -412,7 +412,7 @@ const recipes: RecipeSource[] = [
         '2 large onions, thinly sliced',
         '4 garlic cloves, minced',
         '1 tbsp fresh ginger, grated',
-        '2 tsp ras el hanout',
+        '2 tsp ras el hanout (Moroccan spice blend)',
         '1 tsp ground cumin',
         '1 tsp ground cinnamon',
         '1/2 tsp ground turmeric',
@@ -488,12 +488,12 @@ const recipes: RecipeSource[] = [
         '1 garlic clove, halved',
         '1.5 cups (350 ml) dry white wine, such as Fendant or Riesling',
         '1 tsp lemon juice',
-        '2 tbsp kirsch (optional)',
+        '2 tbsp kirsch (clear cherry brandy, optional)',
         'Freshly grated nutmeg and black pepper'
       ] },
       { group: 'To dip', items: [
-        '1 large day-old crusty loaf, cut into 1 inch cubes with crust on every piece',
-        'Cornichons and pickled onions',
+        '1 large day-old crusty loaf, cut into 1 inch (2.5 cm) cubes with crust on every piece',
+        'Cornichons (small sharp gherkins) and pickled onions',
         'Boiled new potatoes (optional)'
       ] }
     ],
@@ -550,12 +550,12 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'The cheese and potatoes', items: [
         '2.6 lb (1.2 kg) small waxy potatoes, such as Charlotte or new potatoes',
-        '2.6 lb (1.2 kg) raclette cheese, sliced about 1/4 inch thick',
+        '2.6 lb (1.2 kg) raclette cheese, sliced about 1/4 inch (5 mm) thick',
         '1 tbsp salt, for the potato water'
       ] },
       { group: 'On the table', items: [
-        '1 jar cornichons, drained',
-        '1 jar pickled silverskin onions, drained',
+        '1 jar cornichons (small sharp gherkins), drained',
+        '1 jar pickled silverskin onions (small white pickled onions), drained',
         '7 oz (200 g) air-dried ham or bresaola (omit to keep it vegetarian)',
         'Freshly ground black pepper',
         'Sweet paprika and grated nutmeg, in small bowls'
@@ -617,7 +617,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Large heavy skillet or wok', 'Grill pan or baking tray', 'Blender (optional, for a smooth sauce)'],
     ingredients: [
       { group: 'For the chicken tikka', items: [
-        '2 lb (900 g) boneless chicken thighs, cut into 2 inch pieces',
+        '2 lb (900 g) boneless chicken thighs, cut into 2 inch (5 cm) pieces',
         '3/4 cup (180 g) thick natural yogurt',
         '2 tbsp fresh ginger, grated',
         '4 garlic cloves, crushed',
@@ -697,7 +697,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Large heavy skillet', 'Large pot for the noodles', 'Tongs'],
     ingredients: [
       { group: 'For the beef', items: [
-        '1.5 lb (680 g) sirloin or rump steak, sliced into 1/2 inch strips across the grain',
+        '1.5 lb (680 g) sirloin or rump steak, sliced into 1/2 inch (1 cm) strips across the grain',
         '1 tsp fine sea salt',
         '1/2 tsp black pepper',
         '2 tbsp neutral oil'
@@ -771,7 +771,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Two large baking trays', 'Large skillet', 'Heavy saucepan', '9x13 inch baking dish', 'Whisk'],
     ingredients: [
       { group: 'For the aubergine', items: [
-        '3 large aubergines (about 2.6 lb / 1.2 kg), cut into 1/2 inch rounds',
+        '3 large aubergines (about 2.6 lb / 1.2 kg), cut into 1/2 inch (1 cm) rounds',
         '4 tbsp olive oil',
         '1 tsp fine sea salt'
       ] },
@@ -794,7 +794,7 @@ const recipes: RecipeSource[] = [
         '1/3 cup (45 g) cornflour',
         '3 cups (720 ml) whole milk, warmed',
         '2 egg yolks',
-        '3/4 cup (65 g) grated kefalotyri or parmesan',
+        '3/4 cup (65 g) grated kefalotyri (hard salty Greek cheese) or parmesan',
         '1/4 tsp freshly grated nutmeg',
         'Salt and white pepper'
       ] }
@@ -859,8 +859,8 @@ const recipes: RecipeSource[] = [
         '1 tsp sweet smoked paprika'
       ] },
       { group: 'For the rice', items: [
-        '2 cups (400 g) bomba or calasparra rice',
-        '5 cups (1.2 l) hot fish or shellfish stock',
+        '2 cups (400 g) bomba or calasparra rice (short-grain Spanish paella rice)',
+        '5 cups (1.2 L) hot fish or shellfish stock',
         'Generous pinch of saffron threads',
         '1 tsp fine sea salt'
       ] },

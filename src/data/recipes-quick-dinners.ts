@@ -175,7 +175,7 @@ const recipes: RecipeSource[] = [
         '1 cup corn kernels, fresh or frozen',
         '1 large avocado, sliced',
         '1 cup salsa or pico de gallo',
-        '1/2 cup (55 g) grated cheddar or cotija',
+        '1/2 cup (55 g) grated cheddar or cotija (crumbly salty Mexican cheese)',
         '2 limes, cut into wedges',
         'Fresh coriander, to serve'
       ] }
@@ -240,7 +240,7 @@ const recipes: RecipeSource[] = [
         '4 spring onions, sliced on the diagonal'
       ] },
       { group: 'Miso sauce', items: [
-        '3 tbsp white miso paste',
+        '3 tbsp white miso paste (fermented soybean paste, from the chiller aisle)',
         '2 tbsp soy sauce or tamari',
         '1 tbsp honey or maple syrup',
         '1 tbsp rice vinegar',
@@ -388,7 +388,7 @@ const recipes: RecipeSource[] = [
         '1 tbsp cornflour mixed with 2 tbsp cold water'
       ] },
       { group: 'To serve', items: [
-        'Steamed rice',
+        'Steamed rice, from about 1.5 cups (280 g) uncooked',
         'Sesame seeds and sliced spring onion'
       ] }
     ],
@@ -719,7 +719,7 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'The four ingredients', items: [
         '1 lb (450 g) spaghetti or rigatoni',
-        '7 oz (200 g) guanciale, cut into 1/4 inch batons',
+        '7 oz (200 g) guanciale (cured pork cheek), cut into 1/4 inch (5 mm) batons',
         '4 large egg yolks plus 1 whole egg',
         '1 cup (90 g) pecorino romano, finely grated, plus more to serve'
       ] },
@@ -784,19 +784,19 @@ const recipes: RecipeSource[] = [
         '2 cans (14 oz / 400 ml each) full-fat coconut milk, not shaken',
         '3-4 tbsp green curry paste, to taste',
         '1.5 lb (680 g) chicken thighs, sliced into strips',
-        '5 oz (150 g) Thai aubergines, quartered, or 1 regular aubergine, cubed',
-        '3 makrut lime leaves, torn',
-        '1 cup (150 g) green beans, cut into 2 inch lengths'
+        '5 oz (150 g) Thai aubergines (small, green, golf-ball sized), quartered, or 1 regular aubergine, cubed',
+        '3 makrut lime leaves (also sold as kaffir lime leaves), torn',
+        '1 cup (150 g) green beans, cut into 2 inch (5 cm) lengths'
       ] },
       { group: 'To season', items: [
         '2 tbsp fish sauce, plus more to taste',
-        '1 tbsp palm sugar or soft brown sugar',
+        '1 tbsp palm sugar (sold in blocks or tubs) or soft brown sugar',
         'Juice of 1/2 lime',
         'Large handful of Thai basil leaves',
         '1 red chilli, sliced on the diagonal'
       ] },
       { group: 'To serve', items: [
-        'Jasmine rice',
+        'Jasmine rice, from about 1.5 cups (280 g) uncooked',
         'Lime wedges'
       ] }
     ],

@@ -121,7 +121,7 @@ const recipes: RecipeSource[] = [
         '8 large eggs',
         '3.5 oz (100 g) feta, crumbled',
         'Large handful of coriander or parsley',
-        'Warm flatbread, to serve'
+        '4 warm flatbreads, to serve'
       ] }
     ],
     instructions: [
@@ -243,7 +243,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Large skillet', 'Sheet pan', 'Foil or parchment', 'Freezer bags'],
     ingredients: [
       { group: 'Potatoes', items: [
-        '2 lb (900 g) potatoes, cut into 1 cm cubes',
+        '2 lb (900 g) potatoes, cut into 1 cm (1/2 inch) cubes',
         '2 tbsp olive oil',
         '1 tsp smoked paprika',
         '1 tsp garlic powder',
@@ -259,7 +259,7 @@ const recipes: RecipeSource[] = [
         '1 tsp salt and plenty of black pepper'
       ] },
       { group: 'Assembly', items: [
-        '12 large flour tortillas (25 cm)'
+        '12 large flour tortillas (25 cm / 10 inch)'
       ] }
     ],
     instructions: [
@@ -324,7 +324,7 @@ const recipes: RecipeSource[] = [
         '1/2 tsp fine salt'
       ] },
       { group: 'Bread', items: [
-        '8 slices brioche, cut 2.5 cm thick, ideally a day or two old',
+        '8 slices brioche, cut 2.5 cm (1 inch) thick, ideally a day or two old',
         '3 tbsp butter, for the pan'
       ] },
       { group: 'To serve', items: [
@@ -524,7 +524,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Large cast-iron or heavy skillet', 'Lid'],
     ingredients: [
       { group: 'Hash', items: [
-        '2 large sweet potatoes (about 800 g), cut into 1.5 cm cubes',
+        '2 large sweet potatoes (about 1.75 lb / 800 g), cut into 1.5 cm (1/2 inch) cubes',
         '7 oz (200 g) cooking chorizo, sliced',
         '2 tbsp olive oil',
         '1 red onion, diced',

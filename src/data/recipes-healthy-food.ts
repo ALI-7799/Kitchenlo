@@ -175,7 +175,7 @@ const recipes: RecipeSource[] = [
         '1/2 tsp salt'
       ] },
       { group: 'Roasted vegetables', items: [
-        '1 large sweet potato, cut into 2 cm cubes',
+        '1 large sweet potato, cut into 2 cm (3/4 inch) cubes',
         '1 red onion, cut into wedges',
         '1 courgette, half-moons',
         '1 can (15 oz / 425 g) chickpeas, drained and dried',
@@ -185,7 +185,7 @@ const recipes: RecipeSource[] = [
         'Salt and pepper'
       ] },
       { group: 'Lemon tahini dressing', items: [
-        '1/3 cup (80 g) tahini',
+        '1/3 cup (80 g) tahini (sesame seed paste)',
         'Juice of 1.5 lemons',
         '1 garlic clove, grated',
         '1 tsp maple syrup',
@@ -479,7 +479,7 @@ const recipes: RecipeSource[] = [
         '1/2 tsp sumac or za atar',
         'Good extra-virgin olive oil',
         'Cracked black pepper',
-        'Warm pita, to serve'
+        '2 warm pita breads, to serve'
       ] }
     ],
     instructions: [
@@ -548,7 +548,7 @@ const recipes: RecipeSource[] = [
         '2.5 cups cooked rice',
         '1 can (15 oz / 425 g) black beans, drained',
         '1 cup corn kernels',
-        '1 cup (240 ml) tomato passata',
+        '1 cup (240 ml) tomato passata (smooth sieved tomatoes)',
         '1/2 cup coriander, chopped'
       ] },
       { group: 'Topping', items: [
@@ -608,7 +608,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Sheet pan', 'Medium saucepan', 'Large bowl'],
     ingredients: [
       { group: 'Grains and vegetables', items: [
-        '1.5 cups (270 g) pearled farro',
+        '1.5 cups (270 g) pearled farro (a nutty wheat grain; pearl barley works too)',
         '4 cups (960 ml) vegetable stock',
         '1 small butternut squash, peeled and cubed',
         '2 tbsp olive oil',
