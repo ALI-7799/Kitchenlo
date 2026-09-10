@@ -18,18 +18,18 @@ import type { SiteConfig } from '../types.js';
   var basePath = '';
 
 const site: SiteConfig = {
-  name: 'Kitchenlo',
+  name: 'KIT',
   tagline: 'Fresh recipes for every home cook',
   origin: origin,
   basePath: basePath,
   description:
-    'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
+    'KIT is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
   locale: 'en_US',
   twitter: '@kitchenlo',
   /* Fallback share image for pages that have no image of their own. */
   ogImage:
     'https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&h=630&q=80',
-  email: 'hello@kitchenlo.com',
+  email: 'Kitchenlo@kitchenlo.com',
   founded: '2025',
 
   /**
@@ -48,7 +48,7 @@ const site: SiteConfig = {
   ratings: { enabled: false },
 
   author: {
-    name: 'The Kitchenlo Kitchen',
+    name: 'The KIT Kitchen',
     url: origin + '/about.html'
   },
   social: [
@@ -69,7 +69,8 @@ const site: SiteConfig = {
         { label: 'Quick Dinners', href: 'category/quick-dinners.html' },
         { label: 'Healthy Food', href: 'category/healthy-food.html' },
         { label: 'Breakfast & Brunch', href: 'category/breakfast.html' },
-        { label: 'Desserts', href: 'category/desserts.html' }
+        { label: 'Desserts', href: 'category/desserts.html' },
+        { label: 'Comfort Food', href: 'category/comfort-food.html' }
       ]
     },
     { label: 'Meal Planner', href: 'meal-planner.html' },
@@ -88,6 +89,7 @@ const site: SiteConfig = {
         { label: 'Healthy Food', href: 'category/healthy-food.html' },
         { label: 'Breakfast & Brunch', href: 'category/breakfast.html' },
         { label: 'Desserts', href: 'category/desserts.html' },
+        { label: 'Comfort Food', href: 'category/comfort-food.html' },
         { label: 'Browse Categories', href: 'categories.html' }
       ]
     },
@@ -167,8 +169,9 @@ const site: SiteConfig = {
         'Weekday breakfasts you can make half-asleep and weekend brunches worth setting the table for, from five-minute overnight oats to a proper shakshuka.',
       intro:
         'Breakfast splits cleanly into two problems. On a weekday you need something that takes minutes or was made in advance, which is what the overnight oats, freezer burritos and six-minute omelette are for. At the weekend the constraint disappears and technique becomes the point, which is where the pancakes, French toast and shakshuka earn their place. Both halves are here, and each recipe says plainly which one it is.',
-      image: 'assets/img/recipe-shakshuka.svg',
-      imageAlt: 'A breakfast spread with eggs, pancakes and coffee',
+      image:
+        'https://images.unsplash.com/photo-1682622110419-b671026a4536?auto=format&fit=crop&w=1200&q=80',
+      imageAlt: 'Eggs poached in a spiced tomato and pepper sauce in a black skillet',
       keywords: ['breakfast recipes', 'brunch ideas', 'easy breakfast', 'make ahead breakfast']
     },
     {
@@ -183,6 +186,20 @@ const site: SiteConfig = {
       image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&q=80',
       imageAlt: 'A styled dessert with fresh berries',
       keywords: ['easy dessert recipes', 'simple baking', 'quick desserts', 'homemade puddings']
+    },
+    {
+      slug: 'comfort-food',
+      title: 'Comfort Food',
+      short: 'Comfort',
+      tagline: 'Hearty plates worth the time',
+      description:
+        'Generous, deeply savoury mains from pasta and burgers to slow-braised Moroccan tajines, with the technique that separates each one from a mediocre version explained.',
+      intro:
+        'Comfort food is where technique hides in plain sight. The difference between a good ragu and a grey one is browning the meat in batches; the difference between silky macaroni cheese and a grainy pan is melting the cheese off the heat; the difference between a burger and a smash burger is how hot the pan gets. None of these recipes is difficult, but each turns on one step that is easy to skip, so every one of them says plainly which step that is. Some are on the table in half an hour and some ask for two unhurried hours, and each says so before you start.',
+      image:
+        'https://images.unsplash.com/photo-1692071097529-320eb2b32292?auto=format&fit=crop&w=1200&q=80',
+      imageAlt: 'A plate of spaghetti in a rich meat ragu with herbs and a glass of red wine',
+      keywords: ['comfort food recipes', 'hearty dinner ideas', 'pasta and burgers', 'moroccan tajine recipes']
     }
   ],
 
@@ -217,7 +234,7 @@ const site: SiteConfig = {
 
   /* Home page trust strip. */
   stats: [
-    { value: '40', label: 'Tested recipes' },
+    { value: '46', label: 'Tested recipes' },
     { value: '4.7', label: 'Average rating' },
     { value: '5 min', label: 'Fastest recipe' },
     { value: '100%', label: 'Home-cook friendly' }

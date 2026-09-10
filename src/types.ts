@@ -8,7 +8,12 @@
  * means no template has to defensively check for a null image.
  */
 
-export type CategorySlug = 'quick-dinners' | 'healthy-food' | 'breakfast' | 'desserts';
+export type CategorySlug =
+  | 'quick-dinners'
+  | 'healthy-food'
+  | 'breakfast'
+  | 'desserts'
+  | 'comfort-food';
 
 export type DietTag =
   | 'vegetarian'

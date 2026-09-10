@@ -141,7 +141,7 @@ const collections: Collection[] = [
       'Weeknight meals from a cold start to a plated dinner in 30 minutes or less, including the chopping. Timed properly, not optimistically.',
     filter: { maxTime: 30 },
     keywords: ['30 minute meals', 'quick dinner recipes', 'fast weeknight dinner', 'easy dinner ideas'],
-    image: 'https://images.unsplash.com/photo-1563379091331-03b75bec4a25?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1762631882087-ab1b3060c61b?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Lemon herb shrimp, a ten-minute dinner',
     intro: [
       'Published cooking times are routinely optimistic, because they measure the cooking and quietly omit the twelve minutes of chopping that precede it. Everything here is timed from a cold start with nothing prepared, which is why some of these numbers look larger than equivalent recipes elsewhere. They are simply honest.',

@@ -13,8 +13,15 @@ import quickDinners from './recipes-quick-dinners.js';
 import healthyFood from './recipes-healthy-food.js';
 import breakfast from './recipes-breakfast.js';
 import desserts from './recipes-desserts.js';
+import comfortFood from './recipes-comfort-food.js';
 
-const sources: RecipeSource[] = [...quickDinners, ...healthyFood, ...breakfast, ...desserts];
+const sources: RecipeSource[] = [
+  ...quickDinners,
+  ...healthyFood,
+  ...breakfast,
+  ...desserts,
+  ...comfortFood
+];
 
 /**
  * Resolves the authored shape into the rendered shape.

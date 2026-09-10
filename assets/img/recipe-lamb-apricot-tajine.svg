@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Lamb and Apricot Tajine">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6c99f"/>
+      <stop offset="1" stop-color="#bf5b28"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="522" cy="-446" r="-50" fill="#fff" opacity="-0.01"/><circle cx="861" cy="-189" r="-54" fill="#fff" opacity="0.00"/><circle cx="884" cy="-281" r="-42" fill="#fff" opacity="0.04"/><circle cx="183" cy="-24" r="-46" fill="#fff" opacity="0.05"/>
+  <g transform="translate(600 400) scale(2.1)" color="#733212">
+    <path d="M-92 18h184l-16 44a16 16 0 0 1-15 11h-122a16 16 0 0 1-15-11z" fill="rgba(255,255,255,.92)"/>
+    <path d="M-92 18h184" fill="none" stroke="currentColor" stroke-width="6" opacity=".5"/>
+    <path d="M-68 18L0 -64L68 18z" fill="currentColor" opacity=".8"/>
+    <circle cx="0" cy="-74" r="10" fill="rgba(255,255,255,.95)"/>
+  </g>
+</svg>

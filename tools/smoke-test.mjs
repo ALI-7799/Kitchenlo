@@ -231,7 +231,19 @@ suite('recipes/garlic-butter-salmon.html', () => {
 
 suite('generated cover art', () => {
   const generated = RECIPES.all.filter((r) => r.generatedImage);
-  check('breakfast recipes use generated art', generated.length === 10, String(generated.length));
+  const photographed = RECIPES.all.filter((r) => !r.generatedImage);
+  // Derived, not a fixed count: how many recipes ship without photography
+  // changes as collections are added, so assert the invariant instead.
+  check(
+    'recipes without a photo use their generated art',
+    generated.every((r) => r.image === r.fallbackImage),
+    'a photoless recipe is not using its art'
+  );
+  check(
+    'photographed recipes keep their photo',
+    photographed.every((r) => r.image !== r.fallbackImage),
+    'a photographed recipe fell back to art'
+  );
   check(
     'every cover exists on disk',
     RECIPES.all.every((r) => fs.existsSync(path.join(ROOT, r.fallbackImage)))
@@ -244,7 +256,14 @@ suite('generated cover art', () => {
   const { doc, errors } = load('recipes/shakshuka.html');
   check('breakfast recipe page renders', errors.length === 0 && !!doc.querySelector('h1'), errors[0]);
   const hero = doc.querySelector('.recipe-hero-media img');
-  check('cover resolves from a nested page', hero.getAttribute('src').startsWith('../assets/img/'), hero.getAttribute('src'));
+  // The hero may be a photo or the art itself, but the fallback it degrades to
+  // must always resolve from a nested directory.
+  const heroFallback = hero.getAttribute('data-fallback');
+  check(
+    'cover resolves from a nested page',
+    !!heroFallback && heroFallback.startsWith('../assets/img/'),
+    heroFallback
+  );
 
   const ld = Array.from(doc.querySelectorAll('script[type="application/ld+json"]'))
     .map((s) => JSON.parse(s.textContent))

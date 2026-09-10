@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Kitchenlo static site generator.
+ * KIT static site generator.
  *
  * Reads src/data/*, renders every page through src/templates/* and writes the
  * result to the repo root so GitHub Pages can serve it directly. Also emits
@@ -176,7 +176,7 @@ const counts = {
   guides: guides.length
 };
 
-console.log(`Kitchenlo build complete`);
+console.log(`KIT build complete`);
 console.log(`  ${written.length} pages written`);
 console.log(`    ${counts.recipes} recipe pages`);
 console.log(`    ${counts.categories} category pages`);

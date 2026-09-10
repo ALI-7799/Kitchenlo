@@ -52,6 +52,13 @@ const MOTIFS: Record<string, string[]> = {
     '<path d="M-70 -20h140l-22 84a16 16 0 0 1-16 12h-48a16 16 0 0 1-16-12z" fill="rgba(255,255,255,.92)"/>',
     '<path d="M-70 -20c14-34 126-34 140 0z" fill="currentColor" opacity=".8"/>',
     '<circle cx="0" cy="-46" r="12" fill="rgba(255,255,255,.95)"/>'
+  ],
+  'comfort-food': [
+    // A lidded braising pot with the conical lid of a tajine.
+    '<path d="M-92 18h184l-16 44a16 16 0 0 1-15 11h-122a16 16 0 0 1-15-11z" fill="rgba(255,255,255,.92)"/>',
+    '<path d="M-92 18h184" fill="none" stroke="currentColor" stroke-width="6" opacity=".5"/>',
+    '<path d="M-68 18L0 -64L68 18z" fill="currentColor" opacity=".8"/>',
+    '<circle cx="0" cy="-74" r="10" fill="rgba(255,255,255,.95)"/>'
   ]
 };
 

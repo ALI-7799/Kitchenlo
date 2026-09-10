@@ -1,9 +1,10 @@
 /**
  * Breakfast & Brunch collection.
  *
- * These recipes carry `image: null`, which makes the generator produce
- * deterministic SVG cover art in assets/img/. Replace a null with a photo URL
- * and the artwork is dropped automatically on the next build.
+ * Every recipe here has its own photograph. A recipe may instead carry
+ * `image: null`, which makes the generator produce deterministic SVG cover art
+ * in assets/img/; replacing a null with a photo URL drops the artwork on the
+ * next build.
  */
 import type { RecipeSource } from '../types.js';
 
@@ -19,8 +20,8 @@ const recipes: RecipeSource[] = [
     method: 'Griddled',
     diet: ['vegetarian'],
     keywords: ['buttermilk pancakes', 'fluffy pancakes', 'easy pancake recipe', 'weekend breakfast'],
-    image: null,
-    imageAlt: 'A stack of fluffy buttermilk pancakes with butter and syrup',
+    image: 'https://images.unsplash.com/photo-1710533820700-dd6f6623cc97?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A stack of fluffy buttermilk pancakes with syrup poured over the top',
     prepMinutes: 10,
     cookMinutes: 15,
     servings: 4,
@@ -88,8 +89,8 @@ const recipes: RecipeSource[] = [
     method: 'Skillet',
     diet: ['vegetarian', 'gluten-free', 'high-protein', 'low-carb'],
     keywords: ['shakshuka', 'eggs in tomato sauce', 'brunch recipe', 'one pan eggs'],
-    image: null,
-    imageAlt: 'Shakshuka with eggs poached in a spiced tomato sauce',
+    image: 'https://images.unsplash.com/photo-1682622110419-b671026a4536?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Eggs poached in a spiced tomato and pepper sauce in a black skillet',
     prepMinutes: 10,
     cookMinutes: 30,
     servings: 4,
@@ -160,8 +161,8 @@ const recipes: RecipeSource[] = [
     method: 'No-Cook',
     diet: ['vegetarian', 'high-fibre', 'high-protein'],
     keywords: ['overnight oats', 'make ahead breakfast', 'healthy breakfast', 'meal prep breakfast'],
-    image: null,
-    imageAlt: 'A jar of vanilla overnight oats topped with berries',
+    image: 'https://images.unsplash.com/photo-1638777742192-3cccddaea89f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A jar of creamy overnight oats with a wooden spoon',
     prepMinutes: 8,
     cookMinutes: 0,
     servings: 4,
@@ -227,8 +228,8 @@ const recipes: RecipeSource[] = [
     method: 'Skillet',
     diet: ['high-protein'],
     keywords: ['breakfast burritos', 'freezer breakfast', 'make ahead breakfast', 'meal prep burritos'],
-    image: null,
-    imageAlt: 'Breakfast burritos wrapped in foil, ready for the freezer',
+    image: 'https://images.unsplash.com/photo-1788538397125-8fef2bf2af0b?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A breakfast burrito wrapped in foil and held in one hand',
     prepMinutes: 20,
     cookMinutes: 30,
     servings: 12,
@@ -298,8 +299,8 @@ const recipes: RecipeSource[] = [
     method: 'Pan-Fried',
     diet: ['vegetarian'],
     keywords: ['french toast', 'brioche french toast', 'brunch recipe', 'best french toast'],
-    image: null,
-    imageAlt: 'Golden brioche French toast dusted with icing sugar and berries',
+    image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Stacked brioche French toast with blueberries, banana and icing sugar',
     prepMinutes: 10,
     cookMinutes: 16,
     servings: 4,
@@ -369,8 +370,8 @@ const recipes: RecipeSource[] = [
     method: 'No-Cook',
     diet: ['vegetarian', 'high-fibre'],
     keywords: ['avocado toast', 'avocado toast with egg', 'healthy breakfast', 'quick breakfast'],
-    image: null,
-    imageAlt: 'Avocado toast topped with a jammy soft-boiled egg and chilli',
+    image: 'https://images.unsplash.com/photo-1631311915775-e8f4250a7d4e?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Smashed avocado on seeded sourdough toast scattered with coriander',
     prepMinutes: 8,
     cookMinutes: 7,
     servings: 2,
@@ -438,8 +439,8 @@ const recipes: RecipeSource[] = [
     method: 'Baked',
     diet: ['vegetarian'],
     keywords: ['banana bread', 'easy banana bread', 'one bowl baking', 'overripe bananas'],
-    image: null,
-    imageAlt: 'A sliced loaf of banana bread with a cracked top',
+    image: 'https://images.unsplash.com/photo-1632931057819-4eefffa8e007?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A sliced banana bread loaf topped with banana slices and walnuts',
     prepMinutes: 15,
     cookMinutes: 60,
     servings: 10,
@@ -508,8 +509,8 @@ const recipes: RecipeSource[] = [
     method: 'Skillet',
     diet: ['gluten-free', 'dairy-free', 'high-protein'],
     keywords: ['breakfast hash', 'sweet potato hash', 'one pan breakfast', 'brunch skillet'],
-    image: null,
-    imageAlt: 'A skillet of sweet potato hash with peppers and eggs',
+    image: 'https://images.unsplash.com/photo-1783685736962-336abefabfae?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'A skillet of sweet potato hash with chorizo, peppers and fried eggs',
     prepMinutes: 15,
     cookMinutes: 28,
     servings: 4,
@@ -577,8 +578,8 @@ const recipes: RecipeSource[] = [
     method: 'Baked',
     diet: ['vegetarian'],
     keywords: ['blueberry muffins', 'bakery style muffins', 'muffin recipe', 'breakfast baking'],
-    image: null,
-    imageAlt: 'Bakery-style blueberry muffins with domed sugary tops',
+    image: 'https://images.unsplash.com/photo-1722251172860-39856cdd3bcd?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Blueberry muffins in a muffin tin surrounded by fresh blueberries',
     prepMinutes: 15,
     cookMinutes: 25,
     servings: 12,
@@ -648,8 +649,8 @@ const recipes: RecipeSource[] = [
     method: 'Pan-Fried',
     diet: ['vegetarian', 'gluten-free', 'high-protein', 'low-carb'],
     keywords: ['spinach feta omelette', 'easy omelette', 'high protein breakfast', 'low carb breakfast'],
-    image: null,
-    imageAlt: 'A folded omelette filled with spinach and feta',
+    image: 'https://images.unsplash.com/photo-1630684789447-2484443c6c1b?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Folded omelettes filled with feta and fresh herbs on a dark plate',
     prepMinutes: 5,
     cookMinutes: 6,
     servings: 1,
