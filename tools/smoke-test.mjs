@@ -44,9 +44,10 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 /**
  * Boots a generated page with its scripts executed.
  * @param {string} relPath page to load, relative to the repo root
- * @param {{storage?: Record<string,string>}} [options] localStorage to seed
- *   before scripts run, which is how state is carried between page loads since
- *   each JSDOM instance gets its own empty storage.
+ * @param {{storage?: Record<string,string>, origin?: string}} [options] localStorage
+ *   to seed before scripts run, which is how state is carried between page loads
+ *   since each JSDOM instance gets its own empty storage; and the origin to serve
+ *   the page from, which stands in for a preview or project-pages host.
  */
 /** A generated recipe page's raw HTML, for checks that need no DOM. */
 function readPage(slug) {
@@ -66,7 +67,7 @@ function load(relPath, options = {}) {
   virtualConsole.on('error', (...args) => errors.push(args.join(' ')));
 
   const dom = new JSDOM(fs.readFileSync(path.join(ROOT, relPath), 'utf8'), {
-    url: 'https://www.kitchenlo.com/' + relPath,
+    url: (options.origin ?? SITE.origin) + '/' + relPath,
     runScripts: 'dangerously',
     virtualConsole,
     pretendToBeVisual: true,
@@ -309,6 +310,78 @@ suite('recipe video section', () => {
 });
 
 /* ------------------------------------------------------------ breakfast -- */
+
+/* ---------------------------------------------------------- recipe share -- */
+
+suite('recipe share section', async () => {
+  // Every recipe gets the section, and each one shares its own page.
+  const wrong = RECIPES.all.filter((r) => {
+    const declared = (readPage(r.slug).match(/data-share-url="([^"]*)"/) || [])[1];
+    return declared !== SITE.origin + '/recipes/' + r.slug + '.html';
+  });
+  check('every recipe shares its own URL', wrong.length === 0, wrong.map((r) => r.slug)[0]);
+
+  const { doc, errors } = load('recipes/lentil-soup.html');
+  check('no script errors', errors.length === 0, errors[0]);
+
+  const links = Array.from(doc.querySelectorAll('[data-share-link]'));
+  check('platform links present', links.length === 3, links.length + ' found');
+  check(
+    'links open away from the page safely',
+    links.every((a) => a.target === '_blank' && /noopener/.test(a.rel))
+  );
+
+  // Each endpoint must carry the recipe's own address, whatever the platform
+  // wraps around it.
+  const encoded = encodeURIComponent(SITE.origin + '/recipes/lentil-soup.html');
+  check(
+    'every target points at this recipe',
+    links.every((a) => a.getAttribute('href').includes(encoded)),
+    links.map((a) => a.getAttribute('href'))[0]
+  );
+  check(
+    'whatsapp, facebook and pinterest covered',
+    ['wa.me', 'facebook.com/sharer', 'pinterest.com/pin/create'].every((host) =>
+      links.some((a) => a.getAttribute('href').includes(host))
+    )
+  );
+
+  // The share sheet is absent in jsdom, as it is on most desktop browsers, so
+  // the button has to stay hidden rather than offering an action that no-ops.
+  check(
+    'native button hidden without navigator.share',
+    doc.querySelector('[data-share-native]').hidden === true
+  );
+
+  // A visitor on the project-pages host, or any preview, must be handed the
+  // link they are actually looking at rather than the canonical build target.
+  const preview = load('recipes/lentil-soup.html', { origin: 'https://ali-7799.github.io' });
+  const previewUrl = encodeURIComponent('https://ali-7799.github.io/recipes/lentil-soup.html');
+  check(
+    'links retarget to the host being viewed',
+    Array.from(preview.doc.querySelectorAll('[data-share-link]')).every((a) =>
+      a.getAttribute('href').includes(previewUrl)
+    ),
+    preview.doc.querySelector('[data-share-link]').getAttribute('href')
+  );
+
+  // Copying is the fallback for everyone without a share sheet, so it has to
+  // report back either way rather than failing silently. jsdom implements
+  // neither clipboard path, which exercises the failure branch.
+  doc.querySelector('[data-share-copy]').click();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const status = doc.querySelector('[data-share-status]');
+  check('copy reports an outcome', status.textContent.length > 0, 'status stayed empty');
+
+  // Nothing here may disturb the controls the page already had.
+  check(
+    'save, plan and print survive',
+    !!doc.querySelector('[data-fav]') &&
+      !!doc.querySelector('[data-add-to-plan]') &&
+      !!doc.querySelector('[data-print]')
+  );
+  check('one h1 on the page', doc.querySelectorAll('h1').length === 1);
+});
 
 suite('generated cover art', () => {
   const generated = RECIPES.all.filter((r) => r.generatedImage);

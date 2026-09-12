@@ -2,7 +2,7 @@
  * Templates for the content pages: home, recipe index, categories, single
  * recipe, guides index and single guide.
  */
-import { esc, rel, site } from './layout.js';
+import { canonicalUrl, esc, rel, site } from './layout.js';
 import * as C from './components.js';
 import * as Recipes from '../data/recipes.js';
 import guides from '../data/guides.js';
@@ -541,6 +541,59 @@ function recipePage(recipe: Recipe): PageSpec {
               <p class="video-caption">${esc(videoCaption)}</p>
             </div>`;
 
+  /* Share links are rendered with the canonical URL, so they work with no
+     JavaScript at all; the recipe page module then rewrites them to the address
+     the visitor is actually on, which is what keeps a shared link pointing at
+     the page in front of them rather than at whichever host this was built for.
+     They are nofollow because a share endpoint is plumbing, not a citation. */
+  const shareUrl = canonicalUrl(`recipes/${recipe.slug}.html`);
+  const shareImage = C.absoluteImageUrl(recipe);
+  const enc = encodeURIComponent;
+
+  /* Pinterest pins an image. A recipe without a photograph falls back to
+     generated SVG art, which Pinterest will not accept, so that case omits
+     `media` and leaves Pinterest to read og:image off the page instead. */
+  const pinMedia = /\.svg$/i.test(shareImage) ? '' : `&media=${enc(shareImage)}`;
+
+  const shareTargets: [string, string][] = [
+    ['WhatsApp', `https://wa.me/?text=${enc(recipe.title + ' ' + shareUrl)}`],
+    ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${enc(shareUrl)}`],
+    [
+      'Pinterest',
+      `https://www.pinterest.com/pin/create/button/?url=${enc(
+        shareUrl
+      )}${pinMedia}&description=${enc(recipe.description)}`
+    ]
+  ];
+
+  const sharePanel = `      <section class="section-tight share-section" aria-labelledby="share-heading">
+        <div class="container narrow">
+          <div class="share-box" data-share data-share-url="${esc(
+            shareUrl
+          )}" data-share-title="${esc(recipe.title)}" data-share-text="${esc(recipe.description)}">
+            <div class="share-intro">
+              <h2 id="share-heading">Share this recipe</h2>
+              <p>Send it to whoever is cooking with you.</p>
+            </div>
+            <div class="share-links">
+              <button class="btn btn-primary btn-sm" type="button" data-share-native hidden>Share</button>
+              ${shareTargets
+                .map(
+                  ([label, href]) =>
+                    `<a class="btn btn-secondary btn-sm" href="${esc(
+                      href
+                    )}" data-share-link target="_blank" rel="noopener noreferrer nofollow">${esc(
+                      label
+                    )}</a>`
+                )
+                .join('\n              ')}
+              <button class="btn btn-secondary btn-sm" type="button" data-share-copy>Copy link</button>
+              <p class="form-status" data-share-status role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </section>`;
+
   const n = recipe.nutrition;
   const nutritionRows = ([
     ['Calories', n.calories + ' kcal'],
@@ -695,6 +748,8 @@ function recipePage(recipe: Recipe): PageSpec {
           </div>
         </section>
       </article>
+
+${sharePanel}
 
       ${C.faqBlock(recipe.faqs, `${recipe.title}: your questions answered`)}
 

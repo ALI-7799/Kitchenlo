@@ -39,7 +39,7 @@ form validation, the full signup and login lifecycle, the planner, the shopping
 list and the image fallback.
 
 ```
-npm test           # builds, then runs 106 checks
+npm test           # builds, then runs 207 checks
 ```
 
 These tests deliberately go through the UI rather than reaching into internals.
@@ -267,6 +267,11 @@ four A records pointing at `185.199.108-111.153` plus a `www` CNAME to
 - Saved recipes, a seven-day meal planner and an aisle-grouped shopping list.
   Anything saved while signed out is merged into the account on first sign-in.
 - Print stylesheet that strips the chrome from recipe pages.
+- Sharing on every recipe page: the device share sheet where the browser has
+  one, WhatsApp, Facebook and Pinterest otherwise, and a copy-link fallback.
+  The links are generated with the canonical URL and rewritten in the browser to
+  the address actually being viewed, so a link shared from a preview host or a
+  project subpath still points at the page the visitor was reading.
 - Keyboard accessible throughout: skip link, visible focus rings, ARIA live
   regions on results, `/` or `Ctrl/Cmd+K` for search, and `prefers-reduced-motion`
   respected.

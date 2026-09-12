@@ -1,7 +1,7 @@
 /**
  * Single recipe page: ingredient scaling, shopping list, meal plan and print.
  */
-import { $, $$ } from '../dom.js';
+import { $, $$, setStatus } from '../dom.js';
 import * as store from '../store.js';
 
 const display = $('[data-servings-display]');
@@ -169,6 +169,102 @@ planBtn?.addEventListener('click', () => {
 /* ---------------------------------------------------------------- print -- */
 
 $('[data-print]')?.addEventListener('click', () => window.print());
+
+/* ---------------------------------------------------------------- share -- */
+
+/* The links arrive from the generator already built around this recipe's
+   canonical URL, so they work before this module runs. Everything here is
+   enhancement: point them at the address the visitor is really on, offer the
+   device share sheet where there is one, and copy the link on request. */
+
+const share = $('[data-share]');
+
+if (share) {
+  const canonical = share.getAttribute('data-share-url') ?? '';
+
+  /* The page being viewed, without the fragment or query string so a scroll
+     position or a campaign parameter is never shared along with it. A file://
+     or about: document falls back to the canonical URL, since its location
+     would mean nothing to whoever received it. */
+  const shareUrl = /^https?:$/.test(window.location.protocol)
+    ? window.location.origin + window.location.pathname
+    : canonical;
+
+  /* Retarget the platform links by substituting the URL inside them rather than
+     rebuilding each one, so the generator stays the only place the share
+     endpoints are written down. encodeURIComponent works a character at a time,
+     so the canonical URL encodes to the same substring whether it sits alone in
+     a parameter or inside WhatsApp's longer message. */
+  if (shareUrl !== canonical) {
+    const from = encodeURIComponent(canonical);
+    const to = encodeURIComponent(shareUrl);
+    $$('[data-share-link]', share).forEach((link) => {
+      link.setAttribute('href', (link.getAttribute('href') ?? '').split(from).join(to));
+    });
+  }
+
+  let statusTimer = 0;
+
+  function report(message: string, kind: 'success' | 'error'): void {
+    setStatus(share!, message, kind);
+    window.clearTimeout(statusTimer);
+    statusTimer = window.setTimeout(() => setStatus(share!, ''), 2600);
+  }
+
+  /* The share sheet is the best option where it exists, and absent on most
+     desktop browsers, so the button stays hidden until it is confirmed. */
+  const nativeBtn = $('[data-share-native]', share);
+  if (nativeBtn && typeof navigator.share === 'function') {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener('click', () => {
+      navigator
+        .share({
+          title: share.getAttribute('data-share-title') ?? document.title,
+          text: share.getAttribute('data-share-text') ?? '',
+          url: shareUrl
+        })
+        // Dismissing the sheet rejects, which is not an error worth reporting.
+        .catch(() => {});
+    });
+  }
+
+  /**
+   * The Clipboard API where it is available, which needs a secure context,
+   * with the older selection-based copy behind it for plain http and Safari.
+   */
+  async function copyLink(text: string): Promise<void> {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const field = document.createElement('input');
+    field.value = text;
+    field.readOnly = true;
+    field.style.position = 'fixed';
+    field.style.top = '0';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    field.select();
+
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch {
+      copied = false;
+    }
+    field.remove();
+
+    if (!copied) throw new Error('copy unavailable');
+  }
+
+  $('[data-share-copy]', share)?.addEventListener('click', () => {
+    copyLink(shareUrl).then(
+      () => report('Link copied to your clipboard.', 'success'),
+      () => report(`Copying is blocked here. The link is ${shareUrl}`, 'error')
+    );
+  });
+}
 
 /* Anchor targets referenced by the HowToStep structured data. */
 $$('.step').forEach((step, i) => {

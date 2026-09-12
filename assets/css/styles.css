@@ -1838,6 +1838,45 @@ a.badge-link:hover {
   margin: var(--sp-4) 0 0;
 }
 
+/* Share
+
+   The same hairline card as the tips and nutrition boxes, so the share row
+   reads as part of the recipe rather than a widget bolted onto it. The actions
+   are ordinary buttons: sharing does not need a colour of its own. */
+
+.share-box {
+  display: grid;
+  gap: var(--sp-4);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  padding: var(--sp-5);
+}
+
+.share-intro h2 {
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-xl);
+}
+
+.share-intro p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.share-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* The copy confirmation sits beside the button that produced it, and takes no
+   room at all while it is empty, so the card keeps its shape between uses. */
+.share-links .form-status {
+  margin: 0;
+  font-size: var(--fs-xs);
+}
+
 /* FAQ */
 
 .faq-section {
@@ -3063,6 +3102,7 @@ a.badge-link:hover {
   }
 
   .recipe-actions .btn,
+  .share-links .btn,
   .empty-state .btn {
     flex: 1 1 auto;
   }
@@ -3116,6 +3156,7 @@ a.badge-link:hover {
   .search-overlay,
   .cta-band,
   .faq-section,
+  .share-section,
   .servings-control,
   .recipe-ingredients .btn,
   .recipe-video,
