@@ -96,12 +96,19 @@ function renderSearch(term: string): void {
   if (!searchResults) return;
 
   const recipeHits = Recipes.query({ query: term, sort: 'popular' }).slice(0, 6);
-  const needle = term.toLowerCase();
-  const guideHits = term
+
+  /* Guides are matched the way recipes are: every whitespace-separated term
+     has to appear somewhere, in any order. Testing the raw string as one
+     substring instead made the two halves of the same box disagree, so
+     "skills knife" and "knife  skills" found nothing while "knife skills"
+     did. */
+  const terms = term.toLowerCase().split(/\s+/).filter(Boolean);
+  const guideHits = terms.length
     ? guides
-        .filter((g) =>
-          `${g.title} ${g.description} ${g.keywords.join(' ')}`.toLowerCase().includes(needle)
-        )
+        .filter((g) => {
+          const text = `${g.title} ${g.description} ${g.keywords.join(' ')}`.toLowerCase();
+          return terms.every((t) => text.includes(t));
+        })
         .slice(0, 3)
     : [];
 

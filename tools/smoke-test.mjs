@@ -661,6 +661,38 @@ suite('search results resolve their images from every page depth', async () => {
       rows.length + ' rows, ' + broken.length + ' broken: ' + broken.join(', ')
     );
   }
+
+  /* Both halves of the box have to agree about word order and stray spaces.
+     Guides were matched as one contiguous substring while recipes were matched
+     term by term, so "skills knife" and "knife  skills" found nothing. */
+  const { window, doc } = load('index.html');
+  const input = doc.querySelector('#searchOverlayInput');
+  const results = doc.querySelector('#searchOverlayResults');
+
+  async function overlaySearch(term) {
+    input.value = term;
+    input.dispatchEvent(new window.Event('input', { bubbles: true }));
+    await new Promise((resolve) => setTimeout(resolve, 250));
+    return Array.from(results.querySelectorAll('a.search-result')).map((a) =>
+      a.getAttribute('href')
+    );
+  }
+
+  for (const term of ['knife skills', 'skills knife', 'knife  skills', '  KNIFE skills ']) {
+    const hrefs = await overlaySearch(term);
+    check(
+      `overlay finds the knife guide for ${JSON.stringify(term)}`,
+      hrefs.some((h) => h.endsWith('guides/knife-skills-basics.html')),
+      hrefs.join(', ') || 'no results'
+    );
+  }
+
+  const recipeTerms = await overlaySearch('salmon garlic');
+  check(
+    'overlay matches recipe terms in any order',
+    recipeTerms.some((h) => h.endsWith('recipes/garlic-butter-salmon.html')),
+    recipeTerms.join(', ') || 'no results'
+  );
 });
 
 suite('every image on every generated page resolves', () => {
