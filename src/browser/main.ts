@@ -10,6 +10,7 @@
  * changed without a rebuild.
  */
 import './app.js';
+import './consent.js';
 
 import './pages/recipe-index.js';
 import './pages/recipe-page.js';

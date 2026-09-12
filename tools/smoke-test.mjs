@@ -695,6 +695,165 @@ suite('search results resolve their images from every page depth', async () => {
   );
 });
 
+/* -------------------------------------------------------- cookie consent -- */
+
+const CONSENT_KEY = 'kitchenlo-consent';
+const consentOf = (window) => {
+  const raw = window.localStorage.getItem(CONSENT_KEY);
+  return raw ? JSON.parse(raw) : null;
+};
+/** A stored answer as the browser would have written it. */
+const answered = (analytics, advertising) => ({
+  [CONSENT_KEY]: JSON.stringify({
+    v: 1,
+    decidedAt: '2026-01-01T00:00:00.000Z',
+    allowed: { analytics, advertising }
+  })
+});
+
+suite('cookie consent', () => {
+  /* Nothing optional may run before it is allowed, so the site must ship no
+     analytics or advertising script at all while none is consented to. */
+  const offenders = [];
+  (function scan(dir) {
+    for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
+      const rel = dir ? dir + '/' + entry.name : entry.name;
+      if (entry.isDirectory()) {
+        if (!['node_modules', '.git', '.build'].includes(entry.name)) scan(rel);
+      } else if (/\.(html|js)$/.test(entry.name) && !entry.name.endsWith('.map')) {
+        const text = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+        if (/googletagmanager|google-analytics|gtag\(|adsbygoogle|doubleclick|facebook\.net/i.test(text)) {
+          offenders.push(rel);
+        }
+      }
+    }
+  })('');
+  check('no analytics or advertising script is present', offenders.length === 0, offenders[0]);
+
+  /* First visit: the banner is offered with all three choices. */
+  const first = load('index.html');
+  const banner = first.doc.querySelector('#cookieBanner');
+  check('banner shown on a first visit', !!banner);
+  check('no script errors with the banner up', first.errors.length === 0, first.errors[0]);
+  check(
+    'banner offers accept, reject and manage',
+    !!banner?.querySelector('[data-cookie-accept]') &&
+      !!banner?.querySelector('[data-cookie-reject]') &&
+      !!banner?.querySelector('[data-cookie-preferences]')
+  );
+  check('nothing is stored until a choice is made', consentOf(first.window) === null);
+  check(
+    'banner is reachable before the page content',
+    first.doc.body.firstElementChild === banner,
+    first.doc.body.firstElementChild?.className
+  );
+  check('banner is labelled for assistive tech', !!banner?.getAttribute('aria-labelledby'));
+
+  /* Accept all. */
+  const accept = load('index.html');
+  accept.doc.querySelector('[data-cookie-accept]').click();
+  check(
+    'accept all allows every optional category',
+    consentOf(accept.window)?.allowed.analytics === true &&
+      consentOf(accept.window)?.allowed.advertising === true
+  );
+  check('accept all dismisses the banner', !accept.doc.querySelector('#cookieBanner'));
+
+  /* Reject all. */
+  const reject = load('index.html');
+  reject.doc.querySelector('[data-cookie-reject]').click();
+  check(
+    'reject all refuses every optional category',
+    consentOf(reject.window)?.allowed.analytics === false &&
+      consentOf(reject.window)?.allowed.advertising === false
+  );
+  check('reject all dismisses the banner', !reject.doc.querySelector('#cookieBanner'));
+
+  /* A recorded choice is not asked again. */
+  const returning = load('index.html', { storage: answered(false, false) });
+  check('banner stays away on a later visit', !returning.doc.querySelector('#cookieBanner'));
+
+  /* Manage preferences: necessary is locked on, optional ones are choosable. */
+  const manage = load('index.html');
+  manage.doc.querySelector('[data-cookie-preferences]').click();
+  const dialog = manage.doc.querySelector('#cookieDialog');
+  check('manage preferences opens the dialog', !!dialog && dialog.hidden === false);
+
+  const necessary = dialog?.querySelector('#cookie-necessary');
+  check(
+    'necessary cookies are on and cannot be switched off',
+    necessary?.checked === true && necessary?.disabled === true
+  );
+  const optional = Array.from(dialog?.querySelectorAll('[data-cookie-option]') ?? []);
+  check('optional categories are offered', optional.length >= 2, String(optional.length));
+  check('optional categories start unticked', optional.every((el) => !el.checked));
+  check(
+    'dialog is a labelled modal',
+    dialog?.querySelector('[role="dialog"][aria-modal="true"][aria-labelledby]') !== null
+  );
+
+  /* Tick one, save, and only that one is allowed. */
+  dialog.querySelector('[data-cookie-option="analytics"]').checked = true;
+  dialog.querySelector('[data-cookie-save]').click();
+  check(
+    'saving honours each category separately',
+    consentOf(manage.window)?.allowed.analytics === true &&
+      consentOf(manage.window)?.allowed.advertising === false
+  );
+  check('saving dismisses the banner', !manage.doc.querySelector('#cookieBanner'));
+  check('saving closes the dialog', manage.doc.querySelector('#cookieDialog').hidden === true);
+
+  /* Preferences can be changed later, from any page, and show what is stored. */
+  for (const page of ['index.html', 'recipes/raclette.html', 'privacy.html']) {
+    const later = load(page, { storage: answered(true, false) });
+    check(page + ': no banner once decided', !later.doc.querySelector('#cookieBanner'));
+
+    const link = later.doc.querySelector('.site-footer [data-cookie-preferences]');
+    check(page + ': footer offers cookie preferences', !!link);
+    link?.click();
+
+    const reopened = later.doc.querySelector('#cookieDialog');
+    check(page + ': footer link reopens the dialog', reopened?.hidden === false);
+    check(
+      page + ': dialog reflects the stored choice',
+      reopened?.querySelector('[data-cookie-option="analytics"]')?.checked === true &&
+        reopened?.querySelector('[data-cookie-option="advertising"]')?.checked === false
+    );
+
+    /* Cancelling changes nothing. */
+    reopened.querySelector('[data-cookie-option="advertising"]').checked = true;
+    reopened.querySelector('[data-cookie-close]').click();
+    check(page + ': cancel leaves the stored choice alone', consentOf(later.window)?.allowed.advertising === false);
+    check(page + ': cancel closes the dialog', reopened.hidden === true);
+  }
+
+  /* Escape closes the dialog, and the scroll lock is released. */
+  const esc = load('index.html', { storage: answered(false, false) });
+  esc.doc.querySelector('.site-footer [data-cookie-preferences]').click();
+  check('dialog locks page scroll while open', esc.doc.body.style.overflow === 'hidden');
+  esc.doc.dispatchEvent(new esc.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  check('escape closes the dialog', esc.doc.querySelector('#cookieDialog').hidden === true);
+  check('page scroll is released again', esc.doc.body.style.overflow === '');
+
+  /* The gate other scripts will use. */
+  const api = load('index.html', { storage: answered(true, false) });
+  check('consent gate is exposed to unbundled scripts', typeof api.window.KitchenloConsent?.allows === 'function');
+  check('gate allows what was consented to', api.window.KitchenloConsent.allows('analytics') === true);
+  check('gate refuses what was not', api.window.KitchenloConsent.allows('advertising') === false);
+
+  /* An unreadable or outdated record must not be treated as consent. */
+  const stale = load('index.html', { storage: { [CONSENT_KEY]: '{"v":0,"allowed":{"analytics":true}}' } });
+  check('an outdated record asks again', !!stale.doc.querySelector('#cookieBanner'));
+  check(
+    'an outdated record grants nothing',
+    stale.window.KitchenloConsent.allows('analytics') === false
+  );
+
+  const broken = load('index.html', { storage: { [CONSENT_KEY]: 'not json' } });
+  check('a corrupt record asks again rather than throwing', !!broken.doc.querySelector('#cookieBanner'));
+  check('a corrupt record causes no script error', broken.errors.length === 0, broken.errors[0]);
+});
+
 suite('every image on every generated page resolves', () => {
   /*
    * Walks the whole output and resolves each img src and data-fallback

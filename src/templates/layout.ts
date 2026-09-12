@@ -222,6 +222,7 @@ function footerMarkup(depth: Depth): string {
             <a href="${esc(rel('privacy.html', depth))}">Privacy</a>
             <a href="${esc(rel('terms.html', depth))}">Terms</a>
             <a href="${esc(rel('sitemap.xml', depth))}">Sitemap</a>
+            <button class="footer-legal-btn" type="button" data-cookie-preferences>Cookies</button>
           </p>
         </div>
       </div>
