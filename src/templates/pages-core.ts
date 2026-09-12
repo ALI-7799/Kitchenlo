@@ -623,15 +623,24 @@ function recipePage(recipe: Recipe): PageSpec {
           </div>
         </section>
 
+        <section class="section-tight">
+          <div class="container narrow">
+            ${videoPanel}
+          </div>
+        </section>
+
         <section class="section">
           <div class="container recipe-body-grid">
             <div class="recipe-ingredients">
               <div class="ingredients-head">
                 <h2>Ingredients</h2>
-                <div class="servings-scaler" role="group" aria-label="Adjust servings">
-                  <button type="button" data-servings-step="-1" aria-label="Fewer servings">&minus;</button>
-                  <span data-servings-display>${recipe.servings}</span>
-                  <button type="button" data-servings-step="1" aria-label="More servings">+</button>
+                <div class="servings-control">
+                  <svg class="servings-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="6.5" r="3.25" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.75 17.25c0-3.45 2.8-6.25 6.25-6.25s6.25 2.8 6.25 6.25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <div class="servings-scaler" role="group" aria-label="Adjust servings">
+                    <button type="button" data-servings-step="-1" aria-label="Fewer servings">&minus;</button>
+                    <span data-servings-display>${recipe.servings}</span>
+                    <button type="button" data-servings-step="1" aria-label="More servings">+</button>
+                  </div>
                 </div>
               </div>
               <p class="scale-note">Quantities scale automatically. Cooking times stay the same.</p>
@@ -647,8 +656,6 @@ function recipePage(recipe: Recipe): PageSpec {
                 </ul>
               </div>
             </div>
-
-            ${videoPanel}
 
             <div class="recipe-method">
               <h2>Method</h2>

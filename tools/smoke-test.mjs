@@ -215,6 +215,14 @@ suite('recipes/garlic-butter-salmon.html', () => {
     'aggregateRating' in recipeLd === SITE.ratings.enabled
   );
 
+  // The figure beside the stepper is what tells a reader the number counts
+  // people, so it travels with the control.
+  check(
+    'servings number is labelled with a person icon',
+    !!doc.querySelector('.servings-control .servings-icon') &&
+      !!doc.querySelector('.servings-control [data-servings-display]')
+  );
+
   const first = doc.querySelector('[data-ingredient]');
   const original = first.textContent;
   for (let i = 0; i < 4; i++) doc.querySelector('[data-servings-step="1"]').click();
@@ -259,16 +267,32 @@ suite('recipe video section', () => {
   );
   check('every recipe has a video panel', missing.length === 0, missing.map((r) => r.slug)[0]);
 
-  // Desktop places it in column 2 beside the ingredients; on mobile the grid
-  // collapses and source order becomes the visual order.
+  // The body grid is ingredients beside method, as it was before the video
+  // existed. The video is its own section ahead of that grid, never a third
+  // grid item, or it would push the method out of the right-hand column.
   const { doc } = load('recipes/garlic-butter-salmon.html');
-  const order = Array.from(
-    doc.querySelectorAll('.recipe-body-grid > div[class^="recipe-"]')
-  ).map((el) => el.className);
+  const order = Array.from(doc.querySelectorAll('.recipe-body-grid > div')).map(
+    (el) => el.className
+  );
   check(
-    'order is ingredients, video, method',
-    order.join(' ') === 'recipe-ingredients recipe-video recipe-method',
+    'grid holds ingredients then method, nothing else',
+    order.join(' ') === 'recipe-ingredients recipe-method',
     order.join(' ')
+  );
+
+  // Checked on every recipe, not just one, so no page can drift.
+  const misplaced = RECIPES.all.filter((r) => {
+    const html = readPage(r.slug);
+    const video = html.indexOf('class="recipe-video"');
+    const grid = html.indexOf('recipe-body-grid');
+    const ingredients = html.indexOf('class="recipe-ingredients"');
+    const method = html.indexOf('class="recipe-method"');
+    return !(video > -1 && video < grid && grid < ingredients && ingredients < method);
+  });
+  check(
+    'every recipe has that same layout',
+    misplaced.length === 0,
+    misplaced.map((r) => r.slug)[0]
   );
 
   // A recipe must never show another recipe's video.

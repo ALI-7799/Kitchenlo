@@ -1518,23 +1518,7 @@ a.badge-link:hover {
   align-items: start;
 }
 
-/* Row one pairs the ingredients with the video; the method runs the full width
-   beneath both. Below 960px the grid collapses to one column and the three
-   stack in source order: ingredients, video, method. */
-.recipe-video {
-  grid-column: 2;
-}
-
-/* Spanning both columns would otherwise stretch the steps to the full
-   container, so the method keeps to the standard measure. Capping the block
-   rather than each child keeps every hairline rule inside it aligned. */
-.recipe-method {
-  grid-column: 1 / -1;
-  max-width: var(--measure);
-}
-
 .recipe-ingredients {
-  grid-column: 1;
   position: sticky;
   top: calc(var(--header-h) + var(--sp-5));
   background: var(--surface-2);
@@ -1553,6 +1537,20 @@ a.badge-link:hover {
 .ingredients-head h2 {
   margin: 0;
   font-size: var(--fs-xl);
+}
+
+/* The figure marks the stepper's number as a count of people rather than an
+   abstract quantity. It sits outside the stepper so the control itself, and
+   the scaling it drives, are untouched. */
+.servings-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.servings-icon {
+  flex: none;
+  color: var(--ink-2);
 }
 
 .servings-scaler {
@@ -1659,8 +1657,9 @@ a.badge-link:hover {
   color: var(--ink-2);
 }
 
-/* The video panel takes the same card treatment as the ingredients box so the
-   two read as one matched row rather than a video bolted on. */
+/* The video sits in its own section between the intro and the ingredients, on
+   the same narrow measure as the intro above it. It takes the same card
+   treatment as the ingredients box so it reads as part of the set. */
 .recipe-video {
   background: var(--surface-2);
   border: 1px solid var(--rule);
@@ -2969,12 +2968,6 @@ a.badge-link:hover {
     grid-template-columns: 1fr;
   }
 
-  /* One column: the video has to leave column 2 or it would spawn an implicit
-     second track and sit beside the stacked cards. */
-  .recipe-video {
-    grid-column: 1;
-  }
-
   .recipe-ingredients,
   .guide-toc,
   .account-nav {
@@ -3122,7 +3115,7 @@ a.badge-link:hover {
   .search-overlay,
   .cta-band,
   .faq-section,
-  .servings-scaler,
+  .servings-control,
   .recipe-ingredients .btn,
   .recipe-video,
   .alt-bg {

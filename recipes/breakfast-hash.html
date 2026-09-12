@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/styles.css?v=5472db73f8" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=a5cc242de7" />
 
     <script>
       /* Applies the stored theme before first paint so the page never flashes. */
@@ -347,15 +347,33 @@
           </div>
         </section>
 
+        <section class="section-tight">
+          <div class="container narrow">
+            <div class="recipe-video">
+              <div class="video-head">
+                <h2>Watch</h2>
+              </div>
+              <div class="video-frame video-frame-empty">
+                <p class="video-empty-mark" aria-hidden="true">&#9654;</p>
+                <p class="video-empty-note">Video coming soon</p>
+              </div>
+              <p class="video-caption">How to make Sweet Potato Breakfast Hash</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section">
           <div class="container recipe-body-grid">
             <div class="recipe-ingredients">
               <div class="ingredients-head">
                 <h2>Ingredients</h2>
-                <div class="servings-scaler" role="group" aria-label="Adjust servings">
-                  <button type="button" data-servings-step="-1" aria-label="Fewer servings">&minus;</button>
-                  <span data-servings-display>4</span>
-                  <button type="button" data-servings-step="1" aria-label="More servings">+</button>
+                <div class="servings-control">
+                  <svg class="servings-icon" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="6.5" r="3.25" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.75 17.25c0-3.45 2.8-6.25 6.25-6.25s6.25 2.8 6.25 6.25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <div class="servings-scaler" role="group" aria-label="Adjust servings">
+                    <button type="button" data-servings-step="-1" aria-label="Fewer servings">&minus;</button>
+                    <span data-servings-display>4</span>
+                    <button type="button" data-servings-step="1" aria-label="More servings">+</button>
+                  </div>
                 </div>
               </div>
               <p class="scale-note">Quantities scale automatically. Cooking times stay the same.</p>
@@ -456,17 +474,6 @@
                   <li>Lid</li>
                 </ul>
               </div>
-            </div>
-
-            <div class="recipe-video">
-              <div class="video-head">
-                <h2>Watch</h2>
-              </div>
-              <div class="video-frame video-frame-empty">
-                <p class="video-empty-mark" aria-hidden="true">&#9654;</p>
-                <p class="video-empty-note">Video coming soon</p>
-              </div>
-              <p class="video-caption">How to make Sweet Potato Breakfast Hash</p>
             </div>
 
             <div class="recipe-method">
@@ -747,7 +754,7 @@
     </button>
 
     <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
-    <script src="../assets/js/config.js?v=5472db73f8"></script>
-    <script src="../assets/js/kitchenlo.js?v=5472db73f8" defer></script>
+    <script src="../assets/js/config.js?v=a5cc242de7"></script>
+    <script src="../assets/js/kitchenlo.js?v=a5cc242de7" defer></script>
   </body>
 </html>
