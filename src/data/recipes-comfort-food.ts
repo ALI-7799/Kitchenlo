@@ -31,14 +31,14 @@ const recipes: RecipeSource[] = [
     equipment: ['Large pot', 'Wide deep skillet or saute pan', 'Colander', 'Wooden spoon'],
     ingredients: [
       { group: 'For the sauce', items: [
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '1 medium onion, finely diced',
         '4 garlic cloves, thinly sliced',
-        '3 tbsp tomato paste',
-        '1/2 tsp chilli flakes, or to taste',
+        '3 tablespoons tomato paste',
+        '1/2 teaspoon chilli flakes, or to taste',
         '1 can (14 oz / 400 g) whole peeled tomatoes, crushed by hand',
-        '1 tsp fine sea salt',
-        '1/2 tsp sugar, only if the tomatoes are sharp'
+        '1 teaspoon fine sea salt',
+        '1/2 teaspoon sugar, only if the tomatoes are sharp'
       ] },
       { group: 'For the pasta and finish', items: [
         '1 lb (450 g) rigatoni',
@@ -102,22 +102,22 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the patties', items: [
         '1.5 lb (680 g) ground beef chuck, 80/20',
-        '1 tsp fine sea salt',
-        '1/2 tsp freshly ground black pepper',
+        '1 teaspoon fine sea salt',
+        '1/2 teaspoon freshly ground black pepper',
         '8 slices American cheese or mild cheddar',
-        '1 tbsp neutral oil, for the pan'
+        '1 tablespoon neutral oil, for the pan'
       ] },
       { group: 'For the burger sauce', items: [
         '1/2 cup (110 g) mayonnaise',
-        '2 tbsp ketchup',
-        '1 tbsp yellow mustard',
-        '2 tbsp dill pickles, very finely chopped',
-        '1 tsp pickle brine from the jar',
-        '1/2 tsp smoked paprika'
+        '2 tablespoons ketchup',
+        '1 tablespoon yellow mustard',
+        '2 tablespoons dill pickles, very finely chopped',
+        '1 teaspoon pickle brine from the jar',
+        '1/2 teaspoon smoked paprika'
       ] },
       { group: 'To assemble', items: [
         '4 brioche or potato buns, split',
-        '2 tbsp butter, softened',
+        '2 tablespoons butter, softened',
         '1/2 small white onion, sliced paper thin',
         'Dill pickle slices',
         'Shredded iceberg lettuce (optional)'
@@ -178,15 +178,15 @@ const recipes: RecipeSource[] = [
       { group: 'For the marinade', items: [
         '8 bone-in, skin-on chicken thighs (about 2.5 lb / 1.1 kg)',
         '4 garlic cloves, crushed to a paste',
-        '1 tbsp fresh ginger, grated',
-        '1 tsp ground cumin',
-        '1 tsp ground coriander',
-        '1 tsp sweet paprika',
-        '1/2 tsp ground turmeric',
+        '1 tablespoon fresh ginger, grated',
+        '1 teaspoon ground cumin',
+        '1 teaspoon ground coriander',
+        '1 teaspoon sweet paprika',
+        '1/2 teaspoon ground turmeric',
         'Generous pinch of saffron threads, crumbled',
-        '3 tbsp olive oil',
-        '1.5 tsp fine sea salt',
-        '1/2 tsp black pepper'
+        '3 tablespoons olive oil',
+        '1.5 teaspoons fine sea salt',
+        '1/2 teaspoon black pepper'
       ] },
       { group: 'For the tajine', items: [
         '2 large onions, halved and thinly sliced',
@@ -195,7 +195,7 @@ const recipes: RecipeSource[] = [
         '1 cup (150 g) green olives, cracked and rinsed',
         '1 preserved lemon (salt-cured lemon, sold in jars), flesh discarded and rind sliced thin',
         'Small bunch of coriander and flat-leaf parsley, tied together',
-        '1 tbsp lemon juice, to finish'
+        '1 tablespoon lemon juice, to finish'
       ] }
     ],
     instructions: [
@@ -251,24 +251,24 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the pasta', items: [
         '1 lb (450 g) elbow macaroni',
-        '1 tbsp salt, for the water'
+        '1 tablespoon salt, for the water'
       ] },
       { group: 'For the sauce', items: [
-        '5 tbsp (70 g) unsalted butter',
+        '5 tablespoons (70 g) unsalted butter',
         '1/3 cup (45 g) plain flour',
         '4 cups (950 ml) whole milk, warmed',
-        '1 tsp English or Dijon mustard',
-        '1/2 tsp sweet paprika',
-        '1/4 tsp freshly grated nutmeg',
-        '1.5 tsp fine sea salt',
-        '1/2 tsp white pepper',
+        '1 teaspoon English or Dijon mustard',
+        '1/2 teaspoon sweet paprika',
+        '1/4 teaspoon freshly grated nutmeg',
+        '1.5 teaspoons fine sea salt',
+        '1/2 teaspoon white pepper',
         '10 oz (280 g) mature cheddar, grated',
         '4 oz (115 g) gruyere, grated',
         '2 oz (55 g) parmesan, finely grated'
       ] },
       { group: 'For the topping', items: [
         '1 cup (60 g) panko breadcrumbs',
-        '2 tbsp butter, melted',
+        '2 tablespoons butter, melted',
         '1/4 cup (20 g) grated parmesan'
       ] }
     ],
@@ -325,7 +325,7 @@ const recipes: RecipeSource[] = [
     equipment: ['Heavy casserole or Dutch oven', 'Large pot', 'Wooden spoon', 'Sharp knife'],
     ingredients: [
       { group: 'For the soffritto', items: [
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '1 oz (30 g) butter',
         '1 large onion, very finely diced',
         '2 carrots, very finely diced',
@@ -337,11 +337,11 @@ const recipes: RecipeSource[] = [
         '8 oz (225 g) ground pork',
         '1 cup (240 ml) whole milk',
         '1 cup (240 ml) dry white or red wine',
-        '2 tbsp tomato paste',
+        '2 tablespoons tomato paste',
         '1 can (28 oz / 800 g) whole peeled tomatoes, crushed by hand',
         '1 cup (240 ml) beef stock, plus more as needed',
         '1 bay leaf',
-        '1.5 tsp fine sea salt',
+        '1.5 teaspoons fine sea salt',
         'Black pepper and grated nutmeg to taste'
       ] },
       { group: 'To serve', items: [
@@ -403,30 +403,30 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the lamb', items: [
         '3 lb (1.4 kg) boneless lamb shoulder, cut into 2 inch (5 cm) chunks',
-        '2 tbsp olive oil',
-        '2 tsp fine sea salt',
-        '1 tsp black pepper',
-        '1 tbsp plain flour or cornflour (optional, for a thicker sauce)'
+        '2 tablespoons olive oil',
+        '2 teaspoons fine sea salt',
+        '1 teaspoon black pepper',
+        '1 tablespoon plain flour or cornflour (optional, for a thicker sauce)'
       ] },
       { group: 'For the braise', items: [
         '2 large onions, thinly sliced',
         '4 garlic cloves, minced',
-        '1 tbsp fresh ginger, grated',
-        '2 tsp ras el hanout (Moroccan spice blend)',
-        '1 tsp ground cumin',
-        '1 tsp ground cinnamon',
-        '1/2 tsp ground turmeric',
+        '1 tablespoon fresh ginger, grated',
+        '2 teaspoons ras el hanout (Moroccan spice blend)',
+        '1 teaspoon ground cumin',
+        '1 teaspoon ground cinnamon',
+        '1/2 teaspoon ground turmeric',
         'Pinch of saffron threads, bloomed in warm water',
         '2 cups (480 ml) lamb or chicken stock',
         '1 can (14 oz / 400 g) chopped tomatoes'
       ] },
       { group: 'To finish', items: [
         '7 oz (200 g) soft dried apricots',
-        '2 tbsp honey',
+        '2 tablespoons honey',
         '1/2 cup (60 g) blanched almonds',
-        '1 tbsp sesame seeds',
+        '1 tablespoon sesame seeds',
         'Small handful of coriander, chopped',
-        '1 tbsp lemon juice'
+        '1 tablespoon lemon juice'
       ] }
     ],
     instructions: [
@@ -450,7 +450,7 @@ const recipes: RecipeSource[] = [
     ],
     storage: 'Keeps for 4 days in the fridge and improves markedly after a night, as the spices settle and the sauce thickens. Freeze for up to 3 months without the nuts, and toast those fresh when you reheat. Warm through gently over low heat with a splash of stock.',
     faqs: [
-      { q: 'What is ras el hanout and can I substitute it?', a: 'It is a Moroccan house blend that typically runs to a dozen or more spices, among them cinnamon, cumin, coriander, ginger, allspice and rose petals. For a rough substitute, mix 1 tsp cumin, 1/2 tsp each of cinnamon, ginger and coriander, and 1/4 tsp each of allspice and cayenne.' },
+      { q: 'What is ras el hanout and can I substitute it?', a: 'It is a Moroccan house blend that typically runs to a dozen or more spices, among them cinnamon, cumin, coriander, ginger, allspice and rose petals. For a rough substitute, mix 1 teaspoon cumin, 1/2 teaspoon each of cinnamon, ginger and coriander, and 1/4 teaspoon each of allspice and cayenne.' },
       { q: 'Can I make this in a slow cooker?', a: 'Yes, and it suits one well. Brown the lamb and build the spiced onion base on the hob first, since a slow cooker cannot brown, then transfer everything and cook on low for 7-8 hours. Add the apricots for the final hour and reduce the sauce in a pan at the end if it is loose.' },
       { q: 'Should I soak the dried apricots first?', a: 'Not if they are the soft ready-to-eat kind, which is what this recipe assumes. Firmer, fully dried apricots benefit from 20 minutes in hot water, and you can add that soaking liquid to the braise rather than throwing it away.' }
     ],
@@ -484,11 +484,11 @@ const recipes: RecipeSource[] = [
       { group: 'For the fondue', items: [
         '10 oz (300 g) Gruyere, coarsely grated',
         '10 oz (300 g) Vacherin Fribourgeois or Emmental, coarsely grated',
-        '1 tbsp cornflour',
+        '1 tablespoon cornflour',
         '1 garlic clove, halved',
         '1.5 cups (350 ml) dry white wine, such as Fendant or Riesling',
-        '1 tsp lemon juice',
-        '2 tbsp kirsch (clear cherry brandy, optional)',
+        '1 teaspoon lemon juice',
+        '2 tablespoons kirsch (clear cherry brandy, optional)',
         'Freshly grated nutmeg and black pepper'
       ] },
       { group: 'To dip', items: [
@@ -551,7 +551,7 @@ const recipes: RecipeSource[] = [
       { group: 'The cheese and potatoes', items: [
         '2.6 lb (1.2 kg) small waxy potatoes, such as Charlotte or new potatoes',
         '2.6 lb (1.2 kg) raclette cheese, sliced about 1/4 inch (5 mm) thick',
-        '1 tbsp salt, for the potato water'
+        '1 tablespoon salt, for the potato water'
       ] },
       { group: 'On the table', items: [
         '1 jar cornichons (small sharp gherkins), drained',
@@ -619,29 +619,29 @@ const recipes: RecipeSource[] = [
       { group: 'For the chicken tikka', items: [
         '2 lb (900 g) boneless chicken thighs, cut into 2 inch (5 cm) pieces',
         '3/4 cup (180 g) thick natural yogurt',
-        '2 tbsp fresh ginger, grated',
+        '2 tablespoons fresh ginger, grated',
         '4 garlic cloves, crushed',
-        '2 tsp ground cumin',
-        '2 tsp sweet paprika',
-        '1 tsp ground turmeric',
-        '1 tsp garam masala',
-        '1.5 tsp fine sea salt',
+        '2 teaspoons ground cumin',
+        '2 teaspoons sweet paprika',
+        '1 teaspoon ground turmeric',
+        '1 teaspoon garam masala',
+        '1.5 teaspoons fine sea salt',
         'Juice of 1 lemon'
       ] },
       { group: 'For the masala sauce', items: [
-        '3 tbsp ghee or neutral oil',
+        '3 tablespoons ghee or neutral oil',
         '2 large onions, finely diced',
         '4 garlic cloves, minced',
-        '1 tbsp fresh ginger, grated',
-        '2 tsp ground coriander',
-        '1 tsp ground cumin',
-        '1 tsp Kashmiri chilli powder',
-        '1/2 tsp ground turmeric',
+        '1 tablespoon fresh ginger, grated',
+        '2 teaspoons ground coriander',
+        '1 teaspoon ground cumin',
+        '1 teaspoon Kashmiri chilli powder',
+        '1/2 teaspoon ground turmeric',
         '1 can (14 oz / 400 g) chopped tomatoes',
-        '2 tsp tomato paste',
-        '1 tsp caster sugar',
+        '2 teaspoons tomato paste',
+        '1 teaspoon caster sugar',
         '3/4 cup (180 ml) double cream',
-        '1 tsp garam masala, to finish',
+        '1 teaspoon garam masala, to finish',
         'Coriander leaves and lemon wedges, to serve'
       ] }
     ],
@@ -698,25 +698,25 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the beef', items: [
         '1.5 lb (680 g) sirloin or rump steak, sliced into 1/2 inch (1 cm) strips across the grain',
-        '1 tsp fine sea salt',
-        '1/2 tsp black pepper',
-        '2 tbsp neutral oil'
+        '1 teaspoon fine sea salt',
+        '1/2 teaspoon black pepper',
+        '2 tablespoons neutral oil'
       ] },
       { group: 'For the sauce', items: [
-        '2 tbsp butter',
+        '2 tablespoons butter',
         '1 large onion, thinly sliced',
         '14 oz (400 g) chestnut mushrooms, thickly sliced',
         '2 garlic cloves, minced',
-        '1 tbsp plain flour',
+        '1 tablespoon plain flour',
         '1 cup (240 ml) beef stock',
-        '2 tsp Dijon mustard',
-        '1 tsp Worcestershire sauce',
+        '2 teaspoons Dijon mustard',
+        '1 teaspoon Worcestershire sauce',
         '3/4 cup (180 g) full-fat sour cream, at room temperature',
         'Chopped dill or parsley, to finish'
       ] },
       { group: 'To serve', items: [
         '12 oz (340 g) wide egg noodles',
-        '1 tbsp butter, for the noodles'
+        '1 tablespoon butter, for the noodles'
       ] }
     ],
     instructions: [
@@ -772,30 +772,30 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the aubergine', items: [
         '3 large aubergines (about 2.6 lb / 1.2 kg), cut into 1/2 inch (1 cm) rounds',
-        '4 tbsp olive oil',
-        '1 tsp fine sea salt'
+        '4 tablespoons olive oil',
+        '1 teaspoon fine sea salt'
       ] },
       { group: 'For the lamb', items: [
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '1 large onion, finely diced',
         '4 garlic cloves, minced',
         '1.5 lb (680 g) minced lamb',
-        '2 tbsp tomato paste',
+        '2 tablespoons tomato paste',
         '1 can (14 oz / 400 g) chopped tomatoes',
         '1/2 cup (120 ml) red wine',
-        '1 tsp ground cinnamon',
-        '1/2 tsp ground allspice',
+        '1 teaspoon ground cinnamon',
+        '1/2 teaspoon ground allspice',
         '1 bay leaf',
-        '1 tsp dried oregano',
-        '1 tsp fine sea salt, plus black pepper'
+        '1 teaspoon dried oregano',
+        '1 teaspoon fine sea salt, plus black pepper'
       ] },
       { group: 'For the bechamel', items: [
-        '4 tbsp (60 g) butter',
+        '4 tablespoons (60 g) butter',
         '1/3 cup (45 g) cornflour',
         '3 cups (720 ml) whole milk, warmed',
         '2 egg yolks',
         '3/4 cup (65 g) grated kefalotyri (hard salty Greek cheese) or parmesan',
-        '1/4 tsp freshly grated nutmeg',
+        '1/4 teaspoon freshly grated nutmeg',
         'Salt and white pepper'
       ] }
     ],
@@ -851,18 +851,18 @@ const recipes: RecipeSource[] = [
     equipment: ['Paella pan or wide shallow skillet, 15 inch', 'Small pan for the stock', 'Tongs'],
     ingredients: [
       { group: 'For the sofrito', items: [
-        '4 tbsp olive oil',
+        '4 tablespoons olive oil',
         '1 onion, very finely diced',
         '1 red pepper, finely diced',
         '4 garlic cloves, minced',
         '2 ripe tomatoes, grated to a pulp and skins discarded',
-        '1 tsp sweet smoked paprika'
+        '1 teaspoon sweet smoked paprika'
       ] },
       { group: 'For the rice', items: [
         '2 cups (400 g) bomba or calasparra rice (short-grain Spanish paella rice)',
         '5 cups (1.2 L) hot fish or shellfish stock',
         'Generous pinch of saffron threads',
-        '1 tsp fine sea salt'
+        '1 teaspoon fine sea salt'
       ] },
       { group: 'For the seafood', items: [
         '12 large raw prawns, shell on',

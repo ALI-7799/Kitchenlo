@@ -44,10 +44,10 @@ const recipes: RecipeSource[] = [
         '1/3 cup (80 ml) extra-virgin olive oil',
         'Juice of 2 lemons',
         '1 garlic clove, grated',
-        '1 tsp dried oregano',
-        '1 tsp honey or maple syrup',
-        '1/2 tsp salt',
-        '1/4 tsp black pepper'
+        '1 teaspoon dried oregano',
+        '1 teaspoon honey or maple syrup',
+        '1/2 teaspoon salt',
+        '1/4 teaspoon black pepper'
       ] }
     ],
     instructions: [
@@ -106,14 +106,14 @@ const recipes: RecipeSource[] = [
         '2 cups (60 g) baby spinach, packed',
         '1 cup (240 g) thick Greek yogurt',
         '1 scoop (30 g) vanilla protein powder',
-        '2 tbsp almond butter',
+        '2 tablespoons almond butter',
         '1/4 cup (60 ml) milk of choice, plus more only if needed',
-        '1 tsp vanilla extract'
+        '1 teaspoon vanilla extract'
       ] },
       { group: 'Toppings', items: [
         '1/2 cup mixed berries',
-        '1 tbsp chia seeds',
-        '2 tbsp granola',
+        '1 tablespoon chia seeds',
+        '2 tablespoons granola',
         'Toasted coconut flakes',
         'Drizzle of honey'
       ] }
@@ -172,25 +172,25 @@ const recipes: RecipeSource[] = [
       { group: 'Quinoa', items: [
         '1.5 cups (255 g) quinoa, rinsed well',
         '3 cups (720 ml) vegetable stock',
-        '1/2 tsp salt'
+        '1/2 teaspoon salt'
       ] },
       { group: 'Roasted vegetables', items: [
         '1 large sweet potato, cut into 2 cm (3/4 inch) cubes',
         '1 red onion, cut into wedges',
         '1 courgette, half-moons',
         '1 can (15 oz / 425 g) chickpeas, drained and dried',
-        '3 tbsp olive oil',
-        '1.5 tsp ground cumin',
-        '1 tsp smoked paprika',
+        '3 tablespoons olive oil',
+        '1.5 teaspoons ground cumin',
+        '1 teaspoon smoked paprika',
         'Salt and pepper'
       ] },
       { group: 'Lemon tahini dressing', items: [
         '1/3 cup (80 g) tahini (sesame seed paste)',
         'Juice of 1.5 lemons',
         '1 garlic clove, grated',
-        '1 tsp maple syrup',
-        '4-6 tbsp cold water',
-        '1/2 tsp salt'
+        '1 teaspoon maple syrup',
+        '4-6 tablespoons cold water',
+        '1/2 teaspoon salt'
       ] },
       { group: 'To serve', items: [
         '2 ripe avocados, sliced',
@@ -249,27 +249,27 @@ const recipes: RecipeSource[] = [
     equipment: ['Large heavy pot or Dutch oven', 'Wooden spoon'],
     ingredients: [
       { group: 'Base', items: [
-        '3 tbsp olive oil',
+        '3 tablespoons olive oil',
         '1 large onion, finely diced',
         '2 carrots, finely diced',
         '2 celery sticks, finely diced',
         '4 garlic cloves, minced',
-        '2 tbsp tomato paste',
-        '1.5 tsp ground cumin',
-        '1 tsp ground coriander',
-        '1/2 tsp smoked paprika'
+        '2 tablespoons tomato paste',
+        '1.5 teaspoons ground cumin',
+        '1 teaspoon ground coriander',
+        '1/2 teaspoon smoked paprika'
       ] },
       { group: 'Soup', items: [
         '1.5 cups (300 g) brown or green lentils, rinsed',
         '1 can (14 oz / 400 g) chopped tomatoes',
         '7 cups (1.7 L) vegetable stock',
         '2 bay leaves',
-        '1 tsp salt, plus more to taste'
+        '1 teaspoon salt, plus more to taste'
       ] },
       { group: 'To finish', items: [
         'Juice of 1 large lemon',
         '1/2 cup flat-leaf parsley, chopped',
-        '2 tbsp fresh dill, chopped',
+        '2 tablespoons fresh dill, chopped',
         'Good olive oil, for drizzling'
       ] }
     ],
@@ -330,9 +330,9 @@ const recipes: RecipeSource[] = [
         '1 courgette, sliced into planks',
         '1 red onion, sliced',
         '1 small aubergine, cubed',
-        '3 tbsp olive oil',
-        '1 tsp dried oregano',
-        '1/2 tsp salt'
+        '3 tablespoons olive oil',
+        '1 teaspoon dried oregano',
+        '1/2 teaspoon salt'
       ] },
       { group: 'Assembly', items: [
         '4 large tortillas or flatbreads',
@@ -399,17 +399,17 @@ const recipes: RecipeSource[] = [
         '2 oranges, segmented',
         '1/2 red onion, very thinly sliced',
         '1/3 cup pumpkin seeds',
-        '2 tbsp sunflower seeds',
+        '2 tablespoons sunflower seeds',
         '1/3 cup (30 g) shaved parmesan or pecorino',
         '1/4 cup dried cranberries, optional'
       ] },
       { group: 'Lemon dressing', items: [
         '1/4 cup (60 ml) extra-virgin olive oil',
         'Juice of 1 lemon',
-        '1 tbsp orange juice',
-        '1 tsp Dijon mustard',
-        '1 tsp honey',
-        '1/2 tsp salt',
+        '1 tablespoon orange juice',
+        '1 teaspoon Dijon mustard',
+        '1 teaspoon honey',
+        '1/2 teaspoon salt',
         'Black pepper'
       ] }
     ],
@@ -468,15 +468,15 @@ const recipes: RecipeSource[] = [
         '2 cups (500 g) thick Greek yogurt',
         '1 garlic clove, grated',
         'Juice of 1/2 lemon',
-        '3 tbsp fresh dill, chopped',
-        '3 tbsp fresh mint, chopped',
-        '2 tbsp chives, snipped',
-        '3/4 tsp salt'
+        '3 tablespoons fresh dill, chopped',
+        '3 tablespoons fresh mint, chopped',
+        '2 tablespoons chives, snipped',
+        '3/4 teaspoon salt'
       ] },
       { group: 'Toppings', items: [
         '1 cucumber, diced small',
-        '2 tbsp mixed seeds (pumpkin, sunflower, sesame)',
-        '1/2 tsp sumac or za atar',
+        '2 tablespoons mixed seeds (pumpkin, sunflower, sesame)',
+        '1/2 teaspoon sumac or za atar',
         'Good extra-virgin olive oil',
         'Cracked black pepper',
         '2 warm pita breads, to serve'
@@ -535,16 +535,16 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Peppers', items: [
         '6 large bell peppers, halved lengthways and seeded',
-        '1 tbsp olive oil',
+        '1 tablespoon olive oil',
         'Salt and pepper'
       ] },
       { group: 'Filling', items: [
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '1 onion, diced',
         '3 garlic cloves, minced',
-        '1 tsp ground cumin',
-        '1 tsp smoked paprika',
-        '1/2 tsp dried oregano',
+        '1 teaspoon ground cumin',
+        '1 teaspoon smoked paprika',
+        '1/2 teaspoon dried oregano',
         '2.5 cups cooked rice',
         '1 can (15 oz / 425 g) black beans, drained',
         '1 cup corn kernels',
@@ -611,8 +611,8 @@ const recipes: RecipeSource[] = [
         '1.5 cups (270 g) pearled farro (a nutty wheat grain; pearl barley works too)',
         '4 cups (960 ml) vegetable stock',
         '1 small butternut squash, peeled and cubed',
-        '2 tbsp olive oil',
-        '1 tsp fresh thyme leaves',
+        '2 tablespoons olive oil',
+        '1 teaspoon fresh thyme leaves',
         '4 cups baby kale or chard, roughly chopped',
         '1/2 cup toasted walnuts, chopped',
         '1/2 cup dried cranberries',
@@ -620,9 +620,9 @@ const recipes: RecipeSource[] = [
       ] },
       { group: 'Mustard vinaigrette', items: [
         '1/4 cup (60 ml) extra-virgin olive oil',
-        '2 tbsp red wine vinegar',
-        '1 tbsp Dijon mustard',
-        '1 tsp maple syrup',
+        '2 tablespoons red wine vinegar',
+        '1 tablespoon Dijon mustard',
+        '1 teaspoon maple syrup',
         '1 shallot, very finely minced',
         'Salt and black pepper'
       ] }
@@ -682,24 +682,24 @@ const recipes: RecipeSource[] = [
         '1.5 cups (300 g) jasmine rice, rinsed until the water runs clear',
         '1 can (14 oz / 400 ml) full-fat coconut milk',
         '3/4 cup (180 ml) water',
-        '1 tsp salt',
-        '1 tsp sugar'
+        '1 teaspoon salt',
+        '1 teaspoon sugar'
       ] },
       { group: 'Quick pickles', items: [
         '2 carrots, julienned',
         '1 cucumber, thinly sliced',
         '1/2 red onion, thinly sliced',
         '1/2 cup (120 ml) rice vinegar',
-        '2 tbsp sugar',
-        '1 tsp salt'
+        '2 tablespoons sugar',
+        '1 teaspoon salt'
       ] },
       { group: 'Lime peanut sauce', items: [
         '1/3 cup (85 g) smooth peanut butter',
-        '2 tbsp soy sauce or tamari',
+        '2 tablespoons soy sauce or tamari',
         'Juice of 2 limes',
-        '1 tbsp maple syrup',
+        '1 tablespoon maple syrup',
         '1 garlic clove, grated',
-        '3-5 tbsp warm water'
+        '3-5 tablespoons warm water'
       ] },
       { group: 'To serve', items: [
         '1.5 cups shelled edamame, cooked',

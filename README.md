@@ -57,6 +57,7 @@ src/
     recipes-*.ts        The four recipe collections (10 recipes each)
     collections.ts      Curated cross-cutting collections (diet, time, meal prep)
     guides.ts           Six long-form cooking guides
+    videos.ts           Per-recipe videos, keyed by slug
   templates/          Rendering, shared by the generator and the browser
     layout.ts           <head>, header, footer, SEO tags, JSON-LD wrapper
     components.ts       Cards, FAQ blocks and other shared fragments
@@ -105,6 +106,13 @@ in search, its category page, the relevant collections and the meal planner.
 
 **Add a category.** Add it to `CategorySlug` in `src/types.ts`, then to
 `site.categories`. The compiler will point at everything else that needs updating.
+
+**Add a recipe video.** Add one line to `src/data/videos.ts`, keyed by the recipe
+slug, then rebuild. Every recipe already has a video panel beside its ingredients;
+a recipe with no entry shows a "coming soon" placeholder, so videos can land one
+at a time. Self-hosted files go in `assets/video/`, and YouTube or Vimeo links
+work too — the file documents the three accepted shapes. A recipe with a video
+also emits `VideoObject` structured data.
 
 **Change the navigation or footer.** Edit `nav` or `footer` in `src/data/site.ts`
 and rebuild. Every page updates, because both are defined once in

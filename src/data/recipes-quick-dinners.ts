@@ -32,15 +32,15 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the salmon', items: [
         '4 salmon fillets (about 6 oz / 170 g each), skin on',
-        '1 tbsp olive oil',
-        '3/4 tsp fine sea salt',
-        '1/2 tsp freshly ground black pepper'
+        '1 tablespoon olive oil',
+        '3/4 teaspoon fine sea salt',
+        '1/2 teaspoon freshly ground black pepper'
       ] },
       { group: 'For the garlic butter', items: [
-        '3 tbsp unsalted butter',
+        '3 tablespoons unsalted butter',
         '4 garlic cloves, thinly sliced',
         '1 lemon (zest of the whole, juice of half)',
-        '3 tbsp flat-leaf parsley, chopped',
+        '3 tablespoons flat-leaf parsley, chopped',
         'Pinch of chilli flakes (optional)'
       ] }
     ],
@@ -100,7 +100,7 @@ const recipes: RecipeSource[] = [
         '2 cups (280 g) cooked chicken, shredded or cubed',
         '1/2 cup (120 g) basil pesto',
         '2 cups cherry tomatoes, halved',
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '2 garlic cloves, minced'
       ] },
       { group: 'To finish', items: [
@@ -162,12 +162,12 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Spiced chicken', items: [
         '1.25 lb (570 g) boneless chicken thighs, cut into bite-size pieces',
-        '2 tsp chilli powder',
-        '1 tsp ground cumin',
-        '1 tsp smoked paprika',
-        '1/2 tsp garlic powder',
-        '3/4 tsp salt',
-        '1 tbsp neutral oil'
+        '2 teaspoons chilli powder',
+        '1 teaspoon ground cumin',
+        '1 teaspoon smoked paprika',
+        '1/2 teaspoon garlic powder',
+        '3/4 teaspoon salt',
+        '1 tablespoon neutral oil'
       ] },
       { group: 'Bowls', items: [
         '3 cups cooked long-grain rice, preferably day-old',
@@ -234,29 +234,29 @@ const recipes: RecipeSource[] = [
       { group: 'Noodles and vegetables', items: [
         '10 oz (280 g) flat rice noodles',
         '14 oz (400 g) extra-firm tofu, pressed and cubed',
-        '2 tbsp neutral oil',
+        '2 tablespoons neutral oil',
         '2 cups sugar snap peas, trimmed',
         '2 medium carrots, cut into matchsticks',
         '4 spring onions, sliced on the diagonal'
       ] },
       { group: 'Miso sauce', items: [
-        '3 tbsp white miso paste (fermented soybean paste, from the chiller aisle)',
-        '2 tbsp soy sauce or tamari',
-        '1 tbsp honey or maple syrup',
-        '1 tbsp rice vinegar',
-        '2 tsp toasted sesame oil',
-        '1 tbsp fresh ginger, grated',
+        '3 tablespoons white miso paste (fermented soybean paste, from the chiller aisle)',
+        '2 tablespoons soy sauce or tamari',
+        '1 tablespoon honey or maple syrup',
+        '1 tablespoon rice vinegar',
+        '2 teaspoons toasted sesame oil',
+        '1 tablespoon fresh ginger, grated',
         '1/3 cup (80 ml) warm water'
       ] },
       { group: 'To serve', items: [
-        '2 tsp toasted sesame seeds',
+        '2 teaspoons toasted sesame seeds',
         'Chilli oil or sriracha, optional'
       ] }
     ],
     instructions: [
       { title: 'Soak the noodles', text: 'Cover the rice noodles with just-boiled water and soak until pliable but still firm, 5-7 minutes. Drain and rinse under cold water so they stop cooking and do not clump.' },
       { title: 'Whisk the sauce', text: 'Whisk the miso, soy sauce, honey, rice vinegar, sesame oil, ginger and warm water in a small bowl until completely smooth with no lumps of paste.' },
-      { title: 'Crisp the tofu', text: 'Heat 1 tbsp of the oil in a wok over medium-high. Add the tofu in one layer and cook 6-8 minutes, turning every couple of minutes, until three or four sides are golden. Move it to a plate.' },
+      { title: 'Crisp the tofu', text: 'Heat 1 tablespoon of the oil in a wok over medium-high. Add the tofu in one layer and cook 6-8 minutes, turning every couple of minutes, until three or four sides are golden. Move it to a plate.' },
       { title: 'Stir-fry the vegetables', text: 'Add the remaining oil, then the carrots and snap peas. Toss constantly for 2-3 minutes; they should stay bright and squeaky, not soft.' },
       { title: 'Combine', text: 'Return the tofu, add the drained noodles and pour the sauce over. Toss for 1-2 minutes until everything is coated and the sauce has thickened slightly around the noodles.' },
       { title: 'Serve', text: 'Fold through most of the spring onions, then top with the rest, sesame seeds and chilli oil if you want heat.' }
@@ -308,9 +308,9 @@ const recipes: RecipeSource[] = [
         '2 large flatbreads or naan',
         '1 cup (250 g) whole-milk ricotta',
         '1 garlic clove, grated',
-        '1 tsp dried oregano',
+        '1 teaspoon dried oregano',
         'Zest of 1 lemon',
-        '2 tbsp olive oil, plus more for drizzling'
+        '2 tablespoons olive oil, plus more for drizzling'
       ] },
       { group: 'Toppings', items: [
         '1.5 cups cherry tomatoes, halved',
@@ -323,7 +323,7 @@ const recipes: RecipeSource[] = [
     ],
     instructions: [
       { title: 'Heat the oven', text: 'Heat the oven to 220C / 425F and slide a baking sheet in to warm. A preheated tray is what keeps the base crisp rather than soft.' },
-      { title: 'Mix the ricotta', text: 'Stir the ricotta with the grated garlic, oregano, lemon zest, 1 tbsp of the olive oil and a good pinch of salt until smooth and spreadable.' },
+      { title: 'Mix the ricotta', text: 'Stir the ricotta with the grated garlic, oregano, lemon zest, 1 tablespoon of the olive oil and a good pinch of salt until smooth and spreadable.' },
       { title: 'Assemble', text: 'Spread the herbed ricotta over the flatbreads, leaving a 1 cm border. Scatter over the tomatoes, olives and red onion, then drizzle with the remaining oil.' },
       { title: 'Bake', text: 'Bake on the hot tray for 10-12 minutes, until the edges are deep golden and the tomatoes have burst and started to caramelise.' },
       { title: 'Finish off the heat', text: 'Crumble the feta over the hot flatbread so it softens without drying out, then add the herbs, chilli flakes and pepper.' },
@@ -374,18 +374,18 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Chicken and vegetables', items: [
         '1.5 lb (680 g) boneless chicken thighs, sliced',
-        '1 tbsp neutral oil',
+        '1 tablespoon neutral oil',
         '3 cups broccoli florets',
         '1 red bell pepper, sliced',
         '3 garlic cloves, minced',
-        '1 tbsp fresh ginger, grated'
+        '1 tablespoon fresh ginger, grated'
       ] },
       { group: 'Honey soy glaze', items: [
         '1/3 cup (80 ml) soy sauce',
         '1/4 cup (85 g) honey',
-        '2 tbsp rice vinegar',
-        '1 tsp toasted sesame oil',
-        '1 tbsp cornflour mixed with 2 tbsp cold water'
+        '2 tablespoons rice vinegar',
+        '1 teaspoon toasted sesame oil',
+        '1 tablespoon cornflour mixed with 2 tablespoons cold water'
       ] },
       { group: 'To serve', items: [
         'Steamed rice, from about 1.5 cups (280 g) uncooked',
@@ -446,11 +446,11 @@ const recipes: RecipeSource[] = [
       { group: 'Whipped ricotta', items: [
         '1.5 cups (375 g) whole-milk ricotta',
         'Zest and juice of 1 lemon',
-        '2 tbsp olive oil',
-        '1/2 tsp salt'
+        '2 tablespoons olive oil',
+        '1/2 teaspoon salt'
       ] },
       { group: 'Garlic spinach', items: [
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '3 garlic cloves, thinly sliced',
         '10 oz (280 g) baby spinach',
         'Pinch of chilli flakes',
@@ -515,19 +515,19 @@ const recipes: RecipeSource[] = [
     equipment: ['Large pot', 'Wide sauté pan'],
     ingredients: [
       { group: 'Sauce', items: [
-        '3 tbsp olive oil',
+        '3 tablespoons olive oil',
         '1 small onion, finely diced',
         '4 garlic cloves, sliced',
-        '2 tbsp tomato paste',
-        '2 tsp smoked paprika',
-        '1/2 tsp chilli flakes',
+        '2 tablespoons tomato paste',
+        '2 teaspoons smoked paprika',
+        '1/2 teaspoon chilli flakes',
         '1 can (28 oz / 800 g) whole plum tomatoes, crushed by hand',
-        '1 tsp sugar',
+        '1 teaspoon sugar',
         'Salt and black pepper'
       ] },
       { group: 'To finish', items: [
         '1 lb (450 g) rigatoni or penne',
-        '2 tbsp unsalted butter',
+        '2 tablespoons unsalted butter',
         '1/2 cup (45 g) grated parmesan',
         'Fresh basil leaves',
         'Reserved pasta water'
@@ -586,17 +586,17 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Shrimp', items: [
         '1.5 lb (680 g) large shrimp, peeled and deveined',
-        '1/2 tsp salt',
-        '1/4 tsp black pepper',
-        '2 tbsp olive oil'
+        '1/2 teaspoon salt',
+        '1/4 teaspoon black pepper',
+        '2 tablespoons olive oil'
       ] },
       { group: 'Pan sauce', items: [
         '4 garlic cloves, minced',
         '1/2 cup (120 ml) dry white wine or chicken stock',
         'Juice and zest of 1 large lemon',
-        '3 tbsp cold unsalted butter, cubed',
+        '3 tablespoons cold unsalted butter, cubed',
         '1/4 cup flat-leaf parsley, chopped',
-        '2 tbsp fresh dill or chives',
+        '2 tablespoons fresh dill or chives',
         'Pinch of chilli flakes'
       ] }
     ],
@@ -653,16 +653,16 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Filling', items: [
         '4 cups broccoli florets, cut small',
-        '2 tbsp olive oil',
-        '1 tsp ground cumin',
-        '1/2 tsp chilli powder',
-        '1/2 tsp salt',
+        '2 tablespoons olive oil',
+        '1 teaspoon ground cumin',
+        '1/2 teaspoon chilli powder',
+        '1/2 teaspoon salt',
         '2 spring onions, sliced',
         '2 cups (220 g) grated sharp cheddar'
       ] },
       { group: 'To assemble', items: [
         '4 large flour tortillas',
-        '1 tbsp butter or oil, for the pan',
+        '1 tablespoon butter or oil, for the pan',
         'Sour cream, salsa and lime, to serve'
       ] }
     ],
@@ -724,7 +724,7 @@ const recipes: RecipeSource[] = [
         '1 cup (90 g) pecorino romano, finely grated, plus more to serve'
       ] },
       { group: 'To finish', items: [
-        '1.5 tsp coarsely cracked black pepper',
+        '1.5 teaspoons coarsely cracked black pepper',
         'Salt, for the pasta water',
         'Reserved pasta water'
       ] }
@@ -782,15 +782,15 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the curry', items: [
         '2 cans (14 oz / 400 ml each) full-fat coconut milk, not shaken',
-        '3-4 tbsp green curry paste, to taste',
+        '3-4 tablespoons green curry paste, to taste',
         '1.5 lb (680 g) chicken thighs, sliced into strips',
         '5 oz (150 g) Thai aubergines (small, green, golf-ball sized), quartered, or 1 regular aubergine, cubed',
         '3 makrut lime leaves (also sold as kaffir lime leaves), torn',
         '1 cup (150 g) green beans, cut into 2 inch (5 cm) lengths'
       ] },
       { group: 'To season', items: [
-        '2 tbsp fish sauce, plus more to taste',
-        '1 tbsp palm sugar (sold in blocks or tubs) or soft brown sugar',
+        '2 tablespoons fish sauce, plus more to taste',
+        '1 tablespoon palm sugar (sold in blocks or tubs) or soft brown sugar',
         'Juice of 1/2 lime',
         'Large handful of Thai basil leaves',
         '1 red chilli, sliced on the diagonal'

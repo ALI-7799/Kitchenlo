@@ -7,6 +7,7 @@ import * as C from './components.js';
 import * as Recipes from '../data/recipes.js';
 import guides from '../data/guides.js';
 import collections from '../data/collections.js';
+import * as Videos from '../data/videos.js';
 import type { Block, Category, Collection, Depth, Guide, PageSpec, Recipe } from '../types.js';
 
 /* ------------------------------------------------------------------ home -- */
@@ -501,6 +502,45 @@ function recipePage(recipe: Recipe): PageSpec {
     )
     .join('\n                ');
 
+  /* The video panel sits beside the ingredients. Each recipe resolves its own
+     entry by slug, so the two can never cross; a recipe without one yet gets
+     the placeholder rather than an empty column. See src/data/videos.ts. */
+  const video = Videos.forRecipe(recipe.slug);
+  const videoCaption = video && video.title ? video.title : `How to make ${recipe.title}`;
+
+  let videoFrame: string;
+  if (!video) {
+    videoFrame = `<div class="video-frame video-frame-empty">
+                <p class="video-empty-mark" aria-hidden="true">&#9654;</p>
+                <p class="video-empty-note">Video coming soon</p>
+              </div>`;
+  } else if (video.kind === 'embed') {
+    videoFrame = `<div class="video-frame">
+                <iframe src="${esc(video.src)}" title="${esc(
+                  videoCaption
+                )}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>`;
+  } else {
+    videoFrame = `<div class="video-frame">
+                <video controls preload="metadata"${
+                  video.poster ? ` poster="${esc(rel(video.poster, 1))}"` : ''
+                } playsinline>
+                  <source src="${esc(rel(video.src, 1))}" type="video/mp4" />
+                  <p>Your browser cannot play this video. <a href="${esc(
+                    rel(video.src, 1)
+                  )}">Download it instead</a>.</p>
+                </video>
+              </div>`;
+  }
+
+  const videoPanel = `<div class="recipe-video">
+              <div class="video-head">
+                <h2>Watch</h2>
+              </div>
+              ${videoFrame}
+              <p class="video-caption">${esc(videoCaption)}</p>
+            </div>`;
+
   const n = recipe.nutrition;
   const nutritionRows = ([
     ['Calories', n.calories + ' kcal'],
@@ -608,6 +648,8 @@ function recipePage(recipe: Recipe): PageSpec {
               </div>
             </div>
 
+            ${videoPanel}
+
             <div class="recipe-method">
               <h2>Method</h2>
               <ol class="steps">
@@ -709,6 +751,25 @@ function recipePage(recipe: Recipe): PageSpec {
   };
 
   if (!(schema.suitableForDiet as string[]).length) delete schema.suitableForDiet;
+
+  /* A recipe video is eligible for video rich results, but only if it is
+     declared. Emitted only where one exists, so the placeholder never claims
+     a video the page does not have. */
+  if (video) {
+    const videoSchema: Record<string, unknown> = {
+      '@type': 'VideoObject',
+      name: videoCaption,
+      description: recipe.description,
+      thumbnailUrl: [C.absoluteImageUrl(recipe)],
+      uploadDate: recipe.datePublished
+    };
+    if (video.kind === 'embed') videoSchema.embedUrl = video.src;
+    else videoSchema.contentUrl = site.origin + '/' + video.src.replace(/^\/+/, '');
+    if (video.seconds) {
+      videoSchema.duration = C.isoDuration(Math.round(video.seconds / 60)) || 'PT1M';
+    }
+    schema.video = videoSchema;
+  }
 
   // Only publish a rating once it reflects genuine reviews; see site.ratings.
   if (site.ratings.enabled) {

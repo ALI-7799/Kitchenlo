@@ -77,6 +77,19 @@ if (baseEl) {
     });
   }
 
+  /* Spelled-out units have to agree with the quantity in front of them, or
+     halving "2 tablespoons" leaves "1 tablespoons". Plurality is read back off
+     the formatted label rather than the raw value, so the word always matches
+     the number actually on screen even where the label has been rounded. */
+  const UNIT_WORD = /^(\s+)(tablespoon|teaspoon|cup)s?\b/;
+
+  function agreeUnit(rest: string, label: string): string {
+    const quantity = parseQuantity(label);
+    return rest.replace(UNIT_WORD, (_m, gap: string, unit: string) =>
+      gap + unit + (quantity > 1 ? 's' : '')
+    );
+  }
+
   function scaleIngredients(servings: number): void {
     const factor = servings / base;
 
@@ -95,8 +108,9 @@ if (baseEl) {
         return;
       }
 
-      span.textContent =
-        formatQuantity(amount * factor) + scaleConversions(original.slice(match[1]!.length), factor);
+      const rest = scaleConversions(original.slice(match[1]!.length), factor);
+      const label = formatQuantity(amount * factor);
+      span.textContent = label + agreeUnit(rest, label);
     });
   }
 

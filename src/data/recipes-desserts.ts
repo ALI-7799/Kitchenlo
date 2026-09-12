@@ -31,18 +31,18 @@ const recipes: RecipeSource[] = [
     equipment: ['Large microwave-safe mug (at least 350 ml)', 'Fork'],
     ingredients: [
       { group: 'Batter', items: [
-        '4 tbsp plain flour',
-        '3 tbsp caster sugar',
-        '2 tbsp unsweetened cocoa powder',
-        '1/4 tsp baking powder',
+        '4 tablespoons plain flour',
+        '3 tablespoons caster sugar',
+        '2 tablespoons unsweetened cocoa powder',
+        '1/4 teaspoon baking powder',
         'Pinch of salt',
-        '3 tbsp milk',
-        '2 tbsp neutral oil or melted butter',
-        '1/2 tsp vanilla extract'
+        '3 tablespoons milk',
+        '2 tablespoons neutral oil or melted butter',
+        '1/2 teaspoon vanilla extract'
       ] },
       { group: 'Lava centre', items: [
-        '1 square (about 15 g) dark chocolate, or 1 tbsp chocolate chips',
-        '1 tsp chocolate spread, optional'
+        '1 square (about 15 g) dark chocolate, or 1 tablespoon chocolate chips',
+        '1 teaspoon chocolate spread, optional'
       ] },
       { group: 'To serve', items: [
         'Vanilla ice cream or cream',
@@ -108,12 +108,12 @@ const recipes: RecipeSource[] = [
         '1/2 cup (120 ml) double cream, cold',
         '1/3 cup (40 g) icing sugar',
         'Zest of 2 lemons',
-        '2 tbsp lemon juice',
-        '1 tsp vanilla extract'
+        '2 tablespoons lemon juice',
+        '1 teaspoon vanilla extract'
       ] },
       { group: 'Topping', items: [
         '2 cups mixed berries (raspberries, blueberries, halved strawberries)',
-        '2 tbsp apricot jam, warmed and sieved',
+        '2 tablespoons apricot jam, warmed and sieved',
         'Fresh mint leaves',
         'Extra lemon zest'
       ] }
@@ -174,7 +174,7 @@ const recipes: RecipeSource[] = [
         '4 cups (960 ml) whole milk',
         '1 cup (240 ml) single cream',
         '1/3 cup (70 g) caster sugar',
-        '1 vanilla pod, split, or 2 tsp vanilla bean paste',
+        '1 vanilla pod, split, or 2 teaspoons vanilla bean paste',
         '1 cinnamon stick',
         'Pinch of salt',
         'Strip of lemon peel, optional'
@@ -239,17 +239,17 @@ const recipes: RecipeSource[] = [
       { group: 'Fruit', items: [
         '6 cups mixed berries, fresh or frozen',
         '1/3 cup (70 g) caster sugar',
-        '3 tbsp cornflour',
+        '3 tablespoons cornflour',
         'Juice and zest of 1 lemon',
-        '1 tsp vanilla extract',
+        '1 teaspoon vanilla extract',
         'Pinch of salt'
       ] },
       { group: 'Oat crumble topping', items: [
         '1 cup (90 g) rolled oats',
         '3/4 cup (95 g) plain flour',
         '2/3 cup (135 g) light brown sugar',
-        '1/2 tsp ground cinnamon',
-        '1/2 tsp salt',
+        '1/2 teaspoon ground cinnamon',
+        '1/2 teaspoon salt',
         '150 g cold unsalted butter, cubed',
         '1/3 cup chopped pecans or almonds, optional'
       ] }
@@ -309,19 +309,19 @@ const recipes: RecipeSource[] = [
         '2.5 cups (600 ml) double cream',
         '1 cup (240 ml) whole milk',
         '1/2 cup (100 g) caster sugar',
-        '1 vanilla pod, split and scraped, or 2 tsp vanilla bean paste',
-        '3 sheets (about 6 g) leaf gelatine, or 2 tsp powdered gelatine',
+        '1 vanilla pod, split and scraped, or 2 teaspoons vanilla bean paste',
+        '3 sheets (about 6 g) leaf gelatine, or 2 teaspoons powdered gelatine',
         'Pinch of salt'
       ] },
       { group: 'Berry syrup', items: [
         '2 cups mixed berries',
         '1/4 cup (50 g) caster sugar',
-        '1 tbsp lemon juice',
-        '1 tbsp water'
+        '1 tablespoon lemon juice',
+        '1 tablespoon water'
       ] }
     ],
     instructions: [
-      { title: 'Bloom the gelatine', text: 'Soak the leaf gelatine in cold water for 5 minutes until floppy, then squeeze out the excess. For powdered gelatine, sprinkle it over 3 tbsp cold water and leave 5 minutes until spongy.' },
+      { title: 'Bloom the gelatine', text: 'Soak the leaf gelatine in cold water for 5 minutes until floppy, then squeeze out the excess. For powdered gelatine, sprinkle it over 3 tablespoons cold water and leave 5 minutes until spongy.' },
       { title: 'Infuse the cream', text: 'Warm the cream, milk, sugar, vanilla and salt in a saucepan over medium-low, stirring until the sugar dissolves. Bring it to steaming, never to a boil.' },
       { title: 'Dissolve the gelatine', text: 'Take the pan off the heat, add the bloomed gelatine and whisk for 30 seconds until fully dissolved. Rub a little between your fingers to check for grains.' },
       { title: 'Strain and pour', text: 'Pass the mixture through a fine sieve into a jug, which catches the vanilla pod and any undissolved gelatine, then pour into six cups.' },
@@ -374,7 +374,7 @@ const recipes: RecipeSource[] = [
       { group: 'Shortbread base', items: [
         '1.5 cups (190 g) plain flour',
         '1/2 cup (60 g) icing sugar',
-        '1/4 tsp salt',
+        '1/4 teaspoon salt',
         '170 g cold unsalted butter, cubed'
       ] },
       { group: 'Lemon filling', items: [
@@ -404,7 +404,7 @@ const recipes: RecipeSource[] = [
     ],
     variations: [
       'Use half lime or a mix of lemon and passionfruit for the filling.',
-      'Add 2 tbsp of finely chopped rosemary or lavender to the shortbread.',
+      'Add 2 tablespoons of finely chopped rosemary or lavender to the shortbread.',
       'Swap a third of the plain flour in the base for ground almonds for a richer crust.'
     ],
     storage: 'Keeps 4 days refrigerated in an airtight container, and the flavour sharpens overnight. Freeze uncut for 2 months; dust with icing sugar only after thawing.',
@@ -442,18 +442,18 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Honeyed yogurt', items: [
         '3 cups (750 g) thick Greek yogurt',
-        '3 tbsp honey',
-        '1 tsp vanilla extract',
+        '3 tablespoons honey',
+        '1 teaspoon vanilla extract',
         'Zest of 1 lemon'
       ] },
       { group: 'Macerated fruit', items: [
         '3 cups mixed berries and chopped stone fruit',
-        '2 tbsp caster sugar',
-        '1 tbsp lemon juice'
+        '2 tablespoons caster sugar',
+        '1 tablespoon lemon juice'
       ] },
       { group: 'Layers', items: [
         '1.5 cups granola',
-        '2 tbsp toasted flaked almonds',
+        '2 tablespoons toasted flaked almonds',
         'Extra honey, for drizzling',
         'Fresh mint'
       ] }
@@ -513,12 +513,12 @@ const recipes: RecipeSource[] = [
         '4 ripe but firm bananas, halved crossways',
         '8 wooden lolly sticks',
         '200 g dark chocolate (70 per cent), chopped',
-        '1 tbsp coconut oil'
+        '1 tablespoon coconut oil'
       ] },
       { group: 'Coatings', items: [
         '1/3 cup chopped roasted peanuts or pistachios',
         '1/4 cup desiccated coconut',
-        '2 tbsp sprinkles',
+        '2 tablespoons sprinkles',
         'Flaky sea salt'
       ] }
     ],
@@ -577,19 +577,19 @@ const recipes: RecipeSource[] = [
         '4 firm apples (Granny Smith or Braeburn), peeled and sliced',
         '4 soft apples (Golden Delicious or Gala), peeled and sliced',
         '1/2 cup (100 g) light brown sugar',
-        '2 tbsp cornflour',
-        '1.5 tsp ground cinnamon',
-        '1/4 tsp ground nutmeg',
+        '2 tablespoons cornflour',
+        '1.5 teaspoons ground cinnamon',
+        '1/4 teaspoon ground nutmeg',
         'Juice of 1 lemon',
-        '1 tsp vanilla extract',
+        '1 teaspoon vanilla extract',
         'Pinch of salt'
       ] },
       { group: 'Crisp topping', items: [
         '1.25 cups (110 g) rolled oats',
         '3/4 cup (95 g) plain flour',
         '3/4 cup (150 g) light brown sugar',
-        '1 tsp ground cinnamon',
-        '1/2 tsp salt',
+        '1 teaspoon ground cinnamon',
+        '1/2 teaspoon salt',
         '170 g cold unsalted butter, cubed'
       ] }
     ],
@@ -648,22 +648,22 @@ const recipes: RecipeSource[] = [
         '1 cup (125 g) plain flour',
         '3/4 cup (75 g) ground almonds',
         '1/3 cup (40 g) icing sugar',
-        '1/2 tsp salt',
+        '1/2 teaspoon salt',
         '115 g unsalted butter, melted',
-        '1/2 tsp almond extract'
+        '1/2 teaspoon almond extract'
       ] },
       { group: 'Vanilla cream filling', items: [
         '2 cups (480 ml) whole milk',
         '4 egg yolks',
         '1/2 cup (100 g) caster sugar',
         '1/4 cup (32 g) cornflour',
-        '1 vanilla pod or 2 tsp vanilla bean paste',
-        '2 tbsp unsalted butter',
+        '1 vanilla pod or 2 teaspoons vanilla bean paste',
+        '2 tablespoons unsalted butter',
         'Pinch of salt'
       ] },
       { group: 'Topping', items: [
         '3 cups mixed fresh berries',
-        '2 tbsp apricot jam, warmed',
+        '2 tablespoons apricot jam, warmed',
         'Toasted flaked almonds'
       ] }
     ],
@@ -720,19 +720,19 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'For the coffee soak', items: [
         '1.5 cups (360 ml) strong espresso, cooled to room temperature',
-        '2 tbsp caster sugar',
-        '3 tbsp marsala, dark rum or coffee liqueur (optional)'
+        '2 tablespoons caster sugar',
+        '3 tablespoons marsala, dark rum or coffee liqueur (optional)'
       ] },
       { group: 'For the mascarpone cream', items: [
         '4 large eggs, separated',
         '1/2 cup (100 g) caster sugar',
         '1 lb (450 g) mascarpone, at room temperature',
-        '1 tsp vanilla extract',
+        '1 teaspoon vanilla extract',
         'Pinch of fine salt'
       ] },
       { group: 'To assemble', items: [
         '24-30 savoiardi (hard Italian ladyfingers)',
-        '2 tbsp unsweetened cocoa powder, for dusting',
+        '2 tablespoons unsweetened cocoa powder, for dusting',
         'Dark chocolate, for shaving (optional)'
       ] }
     ],

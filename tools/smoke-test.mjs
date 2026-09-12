@@ -21,6 +21,7 @@ import * as RECIPES from '../src/data/recipes.ts';
 import SITE from '../src/data/site.ts';
 import COLLECTIONS from '../src/data/collections.ts';
 import * as CORE from '../src/templates/pages-core.ts';
+import * as VIDEOS from '../src/data/videos.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const TOTAL = RECIPES.all.length;
@@ -47,6 +48,11 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  *   before scripts run, which is how state is carried between page loads since
  *   each JSDOM instance gets its own empty storage.
  */
+/** A generated recipe page's raw HTML, for checks that need no DOM. */
+function readPage(slug) {
+  return fs.readFileSync(path.join(ROOT, 'recipes', slug + '.html'), 'utf8');
+}
+
 function load(relPath, options = {}) {
   const errors = [];
   const virtualConsole = new VirtualConsole();
@@ -218,7 +224,21 @@ suite('recipes/garlic-butter-salmon.html', () => {
   const butter = Array.from(doc.querySelectorAll('[data-ingredient]')).find((el) =>
     /butter/.test(el.getAttribute('data-ingredient'))
   );
-  check('3 tbsp butter doubled to 6', /^6 tbsp/.test(butter.textContent), butter.textContent);
+  check(
+    '3 tablespoons butter doubled to 6',
+    /^6 tablespoons/.test(butter.textContent),
+    butter.textContent
+  );
+
+  // A spelled-out unit has to follow the scaled quantity from singular to plural.
+  const oil = Array.from(doc.querySelectorAll('[data-ingredient]')).find((el) =>
+    /olive oil/.test(el.getAttribute('data-ingredient'))
+  );
+  check(
+    '1 tablespoon oil doubled to 2 tablespoons',
+    /^2 tablespoons\b/.test(oil.textContent),
+    oil.textContent
+  );
 
   const wine = Array.from(doc.querySelectorAll('[data-ingredient]')).find((el) =>
     /\(\d+ ml\)/.test(el.getAttribute('data-ingredient'))
@@ -228,6 +248,40 @@ suite('recipes/garlic-butter-salmon.html', () => {
     const base = Number(wine.getAttribute('data-ingredient').match(/\((\d+) ml\)/)[1]);
     check('bracketed metric scales too', scaled === base * 2, `${base} -> ${scaled}`);
   }
+});
+
+/* ---------------------------------------------------------- recipe video -- */
+
+suite('recipe video section', () => {
+  // Every recipe gets the section, whether or not a video has been added yet.
+  const missing = RECIPES.all.filter(
+    (r) => !/<div class="recipe-video">/.test(readPage(r.slug))
+  );
+  check('every recipe has a video panel', missing.length === 0, missing.map((r) => r.slug)[0]);
+
+  // Desktop places it in column 2 beside the ingredients; on mobile the grid
+  // collapses and source order becomes the visual order.
+  const { doc } = load('recipes/garlic-butter-salmon.html');
+  const order = Array.from(
+    doc.querySelectorAll('.recipe-body-grid > div[class^="recipe-"]')
+  ).map((el) => el.className);
+  check(
+    'order is ingredients, video, method',
+    order.join(' ') === 'recipe-ingredients recipe-video recipe-method',
+    order.join(' ')
+  );
+
+  // A recipe must never show another recipe's video.
+  const crossed = RECIPES.all.filter((r) => {
+    const own = VIDEOS.forRecipe(r.slug);
+    const html = readPage(r.slug);
+    const src = (html.match(/<(?:source|iframe) src="([^"]*)"/) || [])[1];
+    if (!own) return Boolean(src) || !/video-frame-empty/.test(html);
+    return !src || !src.includes(own.src.replace(/^.*\//, ''));
+  });
+  check('each video belongs to its own recipe', crossed.length === 0, crossed.map((r) => r.slug)[0]);
+
+  check('placeholder when unset', VIDEOS.forRecipe('no-such-recipe') === null);
 });
 
 /* ------------------------------------------------------------ breakfast -- */

@@ -36,16 +36,16 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Dry', items: [
         '2 cups (250 g) plain flour',
-        '2 tbsp caster sugar',
-        '2 tsp baking powder',
-        '1 tsp bicarbonate of soda',
-        '3/4 tsp fine salt'
+        '2 tablespoons caster sugar',
+        '2 teaspoons baking powder',
+        '1 teaspoon bicarbonate of soda',
+        '3/4 teaspoon fine salt'
       ] },
       { group: 'Wet', items: [
         '2 cups (480 ml) buttermilk',
         '2 large eggs',
-        '3 tbsp unsalted butter, melted and cooled',
-        '1 tsp vanilla extract'
+        '3 tablespoons unsalted butter, melted and cooled',
+        '1 teaspoon vanilla extract'
       ] },
       { group: 'To cook and serve', items: [
         'Butter or neutral oil, for the pan',
@@ -63,7 +63,7 @@ const recipes: RecipeSource[] = [
     tips: [
       'Lumps are correct. A smooth batter has been overmixed and will cook up flat and chewy.',
       'Medium-low heat, not medium-high. Hot pans brown the outside before the middle has risen.',
-      'No buttermilk? Stir 2 tbsp lemon juice into 2 cups of milk and leave it 10 minutes. The acid is what reacts with the bicarbonate of soda.'
+      'No buttermilk? Stir 2 tablespoons lemon juice into 2 cups of milk and leave it 10 minutes. The acid is what reacts with the bicarbonate of soda.'
     ],
     variations: [
       'Scatter blueberries or chocolate chips onto each pancake after ladling, rather than mixing them into the batter.',
@@ -104,18 +104,18 @@ const recipes: RecipeSource[] = [
     equipment: ['Wide lidded skillet', 'Wooden spoon'],
     ingredients: [
       { group: 'Sauce', items: [
-        '3 tbsp olive oil',
+        '3 tablespoons olive oil',
         '1 large onion, thinly sliced',
         '2 red bell peppers, sliced',
         '4 garlic cloves, sliced',
-        '2 tsp ground cumin',
-        '2 tsp sweet paprika',
-        '1/2 tsp caraway seeds, crushed',
-        '1/4 tsp cayenne, or to taste',
-        '2 tbsp tomato paste',
+        '2 teaspoons ground cumin',
+        '2 teaspoons sweet paprika',
+        '1/2 teaspoon caraway seeds, crushed',
+        '1/4 teaspoon cayenne, or to taste',
+        '2 tablespoons tomato paste',
         '1 can (28 oz / 800 g) whole plum tomatoes, crushed by hand',
-        '1 tsp sugar',
-        '1 tsp salt'
+        '1 teaspoon sugar',
+        '1 teaspoon salt'
       ] },
       { group: 'To finish', items: [
         '8 large eggs',
@@ -179,14 +179,14 @@ const recipes: RecipeSource[] = [
         '2 cups (180 g) rolled oats',
         '2 cups (480 ml) milk of choice',
         '1 cup (250 g) Greek yogurt',
-        '3 tbsp chia seeds',
-        '2 tbsp maple syrup or honey',
-        '2 tsp vanilla extract',
-        '1/2 tsp fine salt'
+        '3 tablespoons chia seeds',
+        '2 tablespoons maple syrup or honey',
+        '2 teaspoons vanilla extract',
+        '1/2 teaspoon fine salt'
       ] },
       { group: 'Toppings, added in the morning', items: [
         'Fresh berries or sliced banana',
-        '2 tbsp nut butter',
+        '2 tablespoons nut butter',
         'Toasted nuts or granola',
         'Ground cinnamon'
       ] }
@@ -244,19 +244,19 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Potatoes', items: [
         '2 lb (900 g) potatoes, cut into 1 cm (1/2 inch) cubes',
-        '2 tbsp olive oil',
-        '1 tsp smoked paprika',
-        '1 tsp garlic powder',
-        '1 tsp salt'
+        '2 tablespoons olive oil',
+        '1 teaspoon smoked paprika',
+        '1 teaspoon garlic powder',
+        '1 teaspoon salt'
       ] },
       { group: 'Filling', items: [
         '16 large eggs',
         '1/4 cup (60 ml) milk',
-        '2 tbsp butter',
+        '2 tablespoons butter',
         '1 lb (450 g) breakfast sausage or chorizo',
         '1 can (15 oz / 425 g) black beans, drained and rinsed',
         '2.5 cups (280 g) grated cheddar',
-        '1 tsp salt and plenty of black pepper'
+        '1 teaspoon salt and plenty of black pepper'
       ] },
       { group: 'Assembly', items: [
         '12 large flour tortillas (25 cm / 10 inch)'
@@ -317,15 +317,15 @@ const recipes: RecipeSource[] = [
         '4 large eggs',
         '1 cup (240 ml) whole milk',
         '1/4 cup (60 ml) double cream',
-        '3 tbsp caster sugar',
-        '2 tsp vanilla extract',
-        '1 tsp ground cinnamon',
-        '1/4 tsp ground nutmeg',
-        '1/2 tsp fine salt'
+        '3 tablespoons caster sugar',
+        '2 teaspoons vanilla extract',
+        '1 teaspoon ground cinnamon',
+        '1/4 teaspoon ground nutmeg',
+        '1/2 teaspoon fine salt'
       ] },
       { group: 'Bread', items: [
         '8 slices brioche, cut 2.5 cm (1 inch) thick, ideally a day or two old',
-        '3 tbsp butter, for the pan'
+        '3 tablespoons butter, for the pan'
       ] },
       { group: 'To serve', items: [
         'Maple syrup',
@@ -390,9 +390,9 @@ const recipes: RecipeSource[] = [
       { group: 'Avocado', items: [
         '2 ripe avocados',
         'Juice of 1 lime',
-        '1/2 tsp flaky sea salt',
-        '1/4 tsp black pepper',
-        '2 tbsp coriander, chopped'
+        '1/2 teaspoon flaky sea salt',
+        '1/4 teaspoon black pepper',
+        '2 tablespoons coriander, chopped'
       ] },
       { group: 'To assemble', items: [
         '2 thick slices sourdough',
@@ -459,17 +459,17 @@ const recipes: RecipeSource[] = [
         '3/4 cup (150 g) light brown sugar',
         '2 large eggs',
         '1/4 cup (60 g) sour cream or Greek yogurt',
-        '2 tsp vanilla extract'
+        '2 teaspoons vanilla extract'
       ] },
       { group: 'Dry', items: [
         '1.75 cups (220 g) plain flour',
-        '1 tsp bicarbonate of soda',
-        '1 tsp ground cinnamon',
-        '3/4 tsp fine salt'
+        '1 teaspoon bicarbonate of soda',
+        '1 teaspoon ground cinnamon',
+        '3/4 teaspoon fine salt'
       ] },
       { group: 'Optional', items: [
         '3/4 cup chopped walnuts or dark chocolate chunks',
-        '1 tbsp demerara sugar, for the top'
+        '1 tablespoon demerara sugar, for the top'
       ] }
     ],
     instructions: [
@@ -486,8 +486,8 @@ const recipes: RecipeSource[] = [
       'Test at 55 minutes. A skewer with moist crumbs means done; a clean skewer usually means slightly overbaked.'
     ],
     variations: [
-      'Swirl 3 tbsp of tahini or peanut butter through the batter before baking.',
-      'Add a cream cheese ribbon: beat 150 g cream cheese with an egg yolk and 2 tbsp sugar, then layer it through the middle.',
+      'Swirl 3 tablespoons of tahini or peanut butter through the batter before baking.',
+      'Add a cream cheese ribbon: beat 150 g cream cheese with an egg yolk and 2 tablespoons sugar, then layer it through the middle.',
       'Make muffins instead, baking at 190C / 375F for 20-22 minutes.'
     ],
     storage: 'Keeps 4 days wrapped at room temperature and improves on day two as the flavour settles. Freezes for 3 months whole or in slices; toast frozen slices straight from the freezer.',
@@ -526,13 +526,13 @@ const recipes: RecipeSource[] = [
       { group: 'Hash', items: [
         '2 large sweet potatoes (about 1.75 lb / 800 g), cut into 1.5 cm (1/2 inch) cubes',
         '7 oz (200 g) cooking chorizo, sliced',
-        '2 tbsp olive oil',
+        '2 tablespoons olive oil',
         '1 red onion, diced',
         '1 red bell pepper, diced',
         '3 garlic cloves, minced',
-        '1 tsp smoked paprika',
-        '1/2 tsp ground cumin',
-        '3/4 tsp salt'
+        '1 teaspoon smoked paprika',
+        '1/2 teaspoon ground cumin',
+        '3/4 teaspoon salt'
       ] },
       { group: 'To finish', items: [
         '4 large eggs',
@@ -595,21 +595,21 @@ const recipes: RecipeSource[] = [
       { group: 'Dry', items: [
         '2.5 cups (315 g) plain flour',
         '1 cup (200 g) caster sugar',
-        '2.5 tsp baking powder',
-        '3/4 tsp fine salt'
+        '2.5 teaspoons baking powder',
+        '3/4 teaspoon fine salt'
       ] },
       { group: 'Wet', items: [
         '2 large eggs',
         '1 cup (240 g) Greek yogurt',
         '1/2 cup (115 g) butter, melted',
         '1/4 cup (60 ml) milk',
-        '2 tsp vanilla extract',
+        '2 teaspoons vanilla extract',
         'Zest of 1 lemon'
       ] },
       { group: 'Fruit and top', items: [
         '2 cups (300 g) blueberries, fresh or frozen',
-        '1 tbsp flour, for tossing the berries',
-        '3 tbsp demerara sugar'
+        '1 tablespoon flour, for tossing the berries',
+        '3 tablespoons demerara sugar'
       ] }
     ],
     instructions: [
@@ -665,16 +665,16 @@ const recipes: RecipeSource[] = [
     ingredients: [
       { group: 'Omelette', items: [
         '3 large eggs',
-        '1 tbsp milk or water',
-        '1/4 tsp fine salt',
+        '1 tablespoon milk or water',
+        '1/4 teaspoon fine salt',
         'Black pepper',
-        '1 tbsp butter'
+        '1 tablespoon butter'
       ] },
       { group: 'Filling', items: [
         '2 cups (60 g) baby spinach',
         '1 small garlic clove, thinly sliced',
         '1.75 oz (50 g) feta, crumbled',
-        '1 tbsp fresh dill or chives',
+        '1 tablespoon fresh dill or chives',
         'Squeeze of lemon'
       ] }
     ],
