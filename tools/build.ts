@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-import { render, setAssetVersion } from '../src/templates/layout.js';
+import { render, setAssetVersion, canonicalUrl } from '../src/templates/layout.js';
 import * as core from '../src/templates/pages-core.js';
 import * as statics from '../src/templates/pages-static.js';
 import * as Recipes from '../src/data/recipes.js';
@@ -129,7 +129,9 @@ function lastModFor(page: PageSpec): string {
 const urls = pages
   .filter((p: PageSpec) => !excluded.has(p.file))
   .map((p: PageSpec) => {
-    const loc = site.origin + '/' + (p.file === 'index.html' ? '' : p.file);
+    // Same helper the canonical tag uses, so the sitemap cannot advertise a
+    // URL the page itself disowns.
+    const loc = canonicalUrl(p.file);
     return `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastModFor(p)}</lastmod>

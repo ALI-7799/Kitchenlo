@@ -906,6 +906,96 @@ suite('share images are absolute', () => {
   }
 });
 
+suite('one page, one URL', () => {
+  /*
+   * The home page is served as the site root, so advertising it as
+   * /index.html as well leaves a crawler choosing between two addresses for
+   * one page. The canonical tag, og:url, every breadcrumb trail and the
+   * sitemap all have to name the same string.
+   */
+  const canonicalOf = (page) => {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    return {
+      canonical: (html.match(/<link rel="canonical" href="([^"]+)"/) || [])[1],
+      ogUrl: (html.match(/property="og:url" content="([^"]+)"/) || [])[1],
+      ld: [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) =>
+        JSON.parse(m[1])
+      )
+    };
+  };
+
+  const home = canonicalOf('index.html');
+  check('home canonical is the root', home.canonical === SITE.origin + '/', home.canonical);
+  check('home og:url matches its canonical', home.ogUrl === home.canonical, home.ogUrl);
+
+  const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  check('sitemap lists the root, not /index.html', locs.includes(SITE.origin + '/'), 'missing');
+  check(
+    'sitemap never mentions index.html',
+    !locs.some((l) => l.endsWith('/index.html')),
+    locs.find((l) => l.endsWith('/index.html'))
+  );
+
+  /* Each sitemap URL must be the one its own page claims as canonical. */
+  const mismatched = locs.filter((loc) => {
+    const rel = loc.slice(SITE.origin.length + 1) || 'index.html';
+    if (!fs.existsSync(path.join(ROOT, rel))) return true;
+    return canonicalOf(rel).canonical !== loc;
+  });
+  check('every sitemap URL is that page canonical', mismatched.length === 0, mismatched[0]);
+
+  /* Breadcrumbs are a second place the home URL is written down. */
+  const crumbOffenders = [];
+  for (const page of ['recipes.html', 'recipes/raclette.html', 'category/comfort-food.html']) {
+    const bc = canonicalOf(page).ld.find((d) => d['@type'] === 'BreadcrumbList');
+    const items = (bc?.itemListElement ?? []).map((li) => li.item);
+    if (items.some((i) => i.endsWith('/index.html'))) crumbOffenders.push(page);
+    if (items[0] !== SITE.origin + '/') crumbOffenders.push(page + ' starts at ' + items[0]);
+  }
+  check('breadcrumbs point at the root for Home', crumbOffenders.length === 0, crumbOffenders[0]);
+});
+
+suite('recipe schema claims nothing the data does not support', () => {
+  /*
+   * suitableForDiet is a factual claim about a restricted diet, so it may only
+   * carry tags with a truthful schema.org counterpart. There is no low-carb
+   * value, and the LowCalorieDiet once used for it says something different.
+   * high-protein and high-fibre have no counterpart either; all three still
+   * travel in `keywords`.
+   */
+  const MAP = {
+    vegetarian: 'https://schema.org/VegetarianDiet',
+    vegan: 'https://schema.org/VeganDiet',
+    'gluten-free': 'https://schema.org/GlutenFreeDiet',
+    'dairy-free': 'https://schema.org/LowLactoseDiet'
+  };
+
+  const unsupported = [];
+  const missing = [];
+  for (const recipe of RECIPES.all) {
+    const html = readPage(recipe.slug);
+    const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+      .map((m) => JSON.parse(m[1]))
+      .find((d) => d['@type'] === 'Recipe');
+    const claimed = ld.suitableForDiet ?? [];
+    const supported = recipe.diet.map((d) => MAP[d]).filter(Boolean);
+
+    claimed
+      .filter((c) => !supported.includes(c))
+      .forEach((c) => unsupported.push(`${recipe.slug} claims ${c} from [${recipe.diet}]`));
+    supported
+      .filter((s) => !claimed.includes(s))
+      .forEach((s) => missing.push(`${recipe.slug} omits ${s}`));
+  }
+  check('no unsupported diet is asserted', unsupported.length === 0, unsupported[0]);
+  check('every supported diet is asserted', missing.length === 0, missing[0]);
+  check(
+    'no recipe claims a low-calorie diet',
+    !RECIPES.all.some((r) => readPage(r.slug).includes('LowCalorieDiet'))
+  );
+});
+
 suite('every page declares its depth to the client', () => {
   // The client reads body[data-depth] to rebuild paths. If a page omits it,
   // the client silently falls back to guessing from the URL.

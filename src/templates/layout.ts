@@ -35,6 +35,19 @@ function rel(href: string, depth: Depth): string {
   return depth > 0 ? '../'.repeat(depth) + href : href;
 }
 
+/**
+ * The one absolute URL a page is allowed to be known by.
+ *
+ * A directory index is served as the directory itself, so index.html must not
+ * also be advertised as /index.html. The canonical tag, og:url, the breadcrumb
+ * trail and the sitemap all resolve through here, because naming the same page
+ * two ways leaves a crawler to guess which one is the real address.
+ */
+function canonicalUrl(pathname: string): string {
+  const clean = pathname.replace(/^\//, '').replace(/(^|\/)index\.html$/, '$1');
+  return site.origin + '/' + clean;
+}
+
 /*
  * Cache busting for the CSS and JS.
  *
@@ -242,7 +255,7 @@ function footerMarkup(depth: Depth): string {
  */
 function render(page: PageSpec): string {
   const depth = page.absolute ? 'abs' : page.depth || 0;
-  const canonical = site.origin + '/' + page.canonical.replace(/^\//, '');
+  const canonical = canonicalUrl(page.canonical);
   // og:image and twitter:image are read off-site, so they must be absolute.
   // Pages may hand us either an absolute URL or a site-relative path; since the
   // photography moved in-repo most are relative, and a relative share image is
@@ -261,7 +274,7 @@ function render(page: PageSpec): string {
         '@type': 'ListItem',
         position: i + 1,
         name: crumb.name,
-        item: site.origin + '/' + crumb.href.replace(/^\//, '')
+        item: canonicalUrl(crumb.href)
       }))
     });
   }
@@ -348,4 +361,4 @@ ${page.body}
 `;
 }
 
-export { render, esc, rel, jsonLd, site, setAssetVersion };
+export { render, esc, rel, canonicalUrl, jsonLd, site, setAssetVersion };

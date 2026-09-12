@@ -726,13 +726,19 @@ function recipePage(recipe: Recipe): PageSpec {
     recipeCategory: recipe.course,
     recipeCuisine: recipe.cuisine,
     keywords: (recipe.keywords || []).join(', '),
+    /* Only the tags that have a truthful RestrictedDiet counterpart. Schema.org
+       has no low-carb value, and the LowCalorieDiet this used to claim for it
+       says something different and often untrue — a low-carb dish is frequently
+       the richer one. high-protein and high-fibre have no counterpart either.
+       All three still reach search through `keywords`, which carries them
+       without asserting a dietary restriction the recipe was never tested for. */
     suitableForDiet: (recipe.diet || [])
       .map((d: string) =>
         ({
           vegetarian: 'https://schema.org/VegetarianDiet',
           vegan: 'https://schema.org/VeganDiet',
           'gluten-free': 'https://schema.org/GlutenFreeDiet',
-          'low-carb': 'https://schema.org/LowCalorieDiet'
+          'dairy-free': 'https://schema.org/LowLactoseDiet'
         }[d])
       )
       .filter(Boolean),
