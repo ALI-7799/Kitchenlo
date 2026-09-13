@@ -190,6 +190,11 @@ export interface SiteConfig {
   origin: string;
   /** Sub-path when served from GitHub Pages project URL, otherwise ''. */
   basePath: string;
+  /**
+   * IANA zone whose midnight rolls the Recipe of the Day. One fixed zone, not
+   * the visitor's, so every visitor sees the same recipe at the same moment.
+   */
+  timezone: string;
   description: string;
   locale: string;
   twitter: string;

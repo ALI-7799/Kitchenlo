@@ -22,6 +22,13 @@ const site: SiteConfig = {
   tagline: 'Fresh recipes for every home cook',
   origin: origin,
   basePath: basePath,
+  /*
+   * The clock the Recipe of the Day turns on. Deliberately a real zone rather
+   * than the visitor's: two people loading the page at the same instant in
+   * Tokyo and Los Angeles are on different calendar dates, and they must still
+   * be shown the same recipe. Handles its own DST.
+   */
+  timezone: 'America/New_York',
   description:
     'Kitchenlo is a recipe library for busy home cooks: tested quick dinners, healthy bowls, breakfasts and easy desserts with measured ingredients, clear steps and nutrition for every dish.',
   locale: 'en_US',

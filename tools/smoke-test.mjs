@@ -21,6 +21,7 @@ import * as RECIPES from '../src/data/recipes.ts';
 import SITE from '../src/data/site.ts';
 import COLLECTIONS from '../src/data/collections.ts';
 import * as CORE from '../src/templates/pages-core.ts';
+import * as COMPONENTS from '../src/templates/components.ts';
 import * as VIDEOS from '../src/data/videos.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -72,6 +73,21 @@ function load(relPath, options = {}) {
     virtualConsole,
     pretendToBeVisual: true,
     beforeParse(window) {
+      // Freeze the clock when a test needs to stand at a particular instant.
+      // new Date(x) keeps working; only "now" is pinned.
+      if (options.now !== undefined) {
+        const fixed = options.now;
+        const RealDate = window.Date;
+        function FakeDate(...args) {
+          return args.length === 0 ? new RealDate(fixed) : new RealDate(...args);
+        }
+        FakeDate.prototype = RealDate.prototype;
+        FakeDate.now = () => fixed;
+        FakeDate.UTC = RealDate.UTC;
+        FakeDate.parse = RealDate.parse;
+        window.Date = FakeDate;
+      }
+
       // jsdom has no layout engine, so stub the few APIs the site touches.
       window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
       window.scrollTo = () => {};
@@ -1090,6 +1106,118 @@ suite('every address is clean, and every link still lands', () => {
     locs.every((l) => fs.existsSync(path.join(ROOT, fileFor(new URL(l).pathname)))),
     locs.find((l) => !fs.existsSync(path.join(ROOT, fileFor(new URL(l).pathname))))
   );
+});
+
+suite('recipe of the day holds for the whole day and turns at midnight', () => {
+  /*
+   * The pages are static, so the panel is baked in at build time and the
+   * browser re-renders it once the site's date has moved past the build's.
+   * What matters is that the result depends on the date and nothing else: the
+   * same recipe from 00:00:00 to 23:59:59, a different one the moment the
+   * site's midnight passes, and the same one for every visitor whatever clock
+   * their own machine is on.
+   */
+  const TZ = SITE.timezone;
+  const at = (iso) => new Date(iso).getTime();
+  const shown = (ms) => {
+    const { doc } = load('index.html', { now: ms });
+    const panel = doc.querySelector('[data-recipe-of-the-day]');
+    const href = panel?.querySelector('h2 a')?.getAttribute('href') ?? '';
+    return href.replace(/^recipes\//, '');
+  };
+
+  check('the panel is present and stamped with a day', (() => {
+    const { doc } = load('index.html');
+    const p = doc.querySelector('[data-recipe-of-the-day]');
+    return !!p && /^[0-9]+$/.test(p.getAttribute('data-rotd-day') ?? '');
+  })());
+
+  // A full site-day, sampled hourly, must never change the recipe.
+  const day = [];
+  for (let h = 0; h < 24; h++) {
+    day.push(shown(at(`2026-06-15T${String(h).padStart(2, '0')}:30:00-04:00`)));
+  }
+  const distinct = [...new Set(day)];
+  check(
+    'same recipe at all 24 hours of one site day',
+    distinct.length === 1 && distinct[0] !== '',
+    distinct.join(', ')
+  );
+
+  // The edges of the day, to the second.
+  const lastSecond = shown(at('2026-06-15T23:59:59-04:00'));
+  const firstSecond = shown(at('2026-06-16T00:00:00-04:00'));
+  check('23:59:59 still shows the day recipe', lastSecond === distinct[0], lastSecond);
+  check('00:00:00 has turned over', firstSecond !== lastSecond, firstSecond + ' vs ' + lastSecond);
+  check('00:00:01 matches 00:00:00', shown(at('2026-06-16T00:00:01-04:00')) === firstSecond);
+
+  // Reloading is just loading again, and must not shuffle anything.
+  check(
+    'reloading during the day does not change it',
+    [0, 1, 2, 3].every(() => shown(at('2026-06-15T12:00:00-04:00')) === distinct[0])
+  );
+
+  // The visitor's own timezone must not enter into it. Same instant, and the
+  // site date is what decides: 20:00 in New York is already tomorrow in Tokyo.
+  const instant = at('2026-06-15T20:00:00-04:00');
+  check('a visitor whose own date is already tomorrow sees today', shown(instant) === distinct[0], shown(instant));
+
+  // The swapped-in card must be what the generator would have produced.
+  const built = RECIPES.recipeOfTheDay(new Date(at('2026-06-15T12:00:00-04:00')), TZ);
+  check('browser and generator agree on the recipe', distinct[0] === built.slug, distinct[0] + ' vs ' + built.slug);
+
+  const { doc: liveDoc } = load('index.html', { now: at('2026-06-15T12:00:00-04:00') });
+  const livePanel = liveDoc.querySelector('[data-recipe-of-the-day]');
+  check('the stamped day is updated after a swap', livePanel.getAttribute('data-rotd-day') === String(RECIPES.siteDayNumber(new Date(at('2026-06-15T12:00:00-04:00')), TZ)));
+  // Compared as DOM, not as text: the template writes void elements as
+  // <img ... /> and a serialiser writes <img ...>, which is the same element.
+  const asDom = (html) =>
+    new JSDOM('<div>' + html + '</div>').window.document.querySelector('div')
+      .innerHTML.replace(/\s+/g, ' ').trim();
+  check(
+    'swapped markup is identical to freshly built markup',
+    asDom(livePanel.innerHTML) === asDom(COMPONENTS.recipeOfTheDayCard(built, 0)),
+    asDom(livePanel.innerHTML).slice(0, 90)
+  );
+
+  // Design must be untouched: same wrapper, same pieces, in the same order.
+  check(
+    'the panel keeps its original structure',
+    ['p.eyebrow', 'a.showcase-media', 'a.showcase-media img', 'h2 a', 'p', '.showcase-meta', 'a.btn.btn-secondary']
+      .every((sel) => livePanel.querySelector(sel)),
+    'a piece of the showcase is missing'
+  );
+
+  // Across a DST change the day must still advance by exactly one.
+  const springBefore = RECIPES.siteDayNumber(new Date(at('2026-03-07T12:00:00-05:00')), TZ);
+  const springAfter = RECIPES.siteDayNumber(new Date(at('2026-03-08T12:00:00-04:00')), TZ);
+  check('day advances by one across spring forward', springAfter - springBefore === 1, String(springAfter - springBefore));
+  const fallBefore = RECIPES.siteDayNumber(new Date(at('2026-10-31T12:00:00-04:00')), TZ);
+  const fallAfter = RECIPES.siteDayNumber(new Date(at('2026-11-01T12:00:00-05:00')), TZ);
+  check('day advances by one across fall back', fallAfter - fallBefore === 1, String(fallAfter - fallBefore));
+
+  // Every recipe gets a turn within a cycle, and the order changes next cycle.
+  const n = RECIPES.all.length;
+  let d0 = RECIPES.siteDayNumber(new Date(at('2026-01-01T12:00:00-05:00')), TZ);
+  while (((d0 % n) + n) % n !== 0) d0++;
+  const cycle = (c) =>
+    Array.from({ length: n }, (_, i) =>
+      RECIPES.recipeOfTheDay(new Date((d0 + c * n + i) * 86400000 + 43200000), TZ).slug
+    );
+  const first = cycle(0);
+  const second = cycle(1);
+  check('every recipe appears exactly once per cycle', new Set(first).size === n, new Set(first).size + '/' + n);
+  check('the next cycle uses a different order', first.join() !== second.join());
+
+  // And no recipe two days running over a long stretch.
+  let backToBack = 0;
+  let prev = '';
+  for (let i = 0; i < 400; i++) {
+    const s = RECIPES.recipeOfTheDay(new Date((d0 + i) * 86400000 + 43200000), TZ).slug;
+    if (s === prev) backToBack++;
+    prev = s;
+  }
+  check('never the same recipe two days running', backToBack === 0, backToBack + ' repeats');
 });
 
 suite('recipe schema claims nothing the data does not support', () => {

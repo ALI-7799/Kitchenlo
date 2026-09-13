@@ -15,7 +15,11 @@ import type { Block, Category, Collection, Depth, Guide, PageSpec, Recipe } from
 function home(): PageSpec {
   const popular = Recipes.query({ sort: 'popular' }).slice(0, 6);
   const quickest = Recipes.query({ sort: 'quickest' }).slice(0, 3);
-  const featured = Recipes.requireBySlug('lentil-soup');
+  // Chosen from the date, not pinned to a slug, so the panel turns over at the
+  // site's midnight. The build stamps the day it rendered for; the browser
+  // compares that against today and re-renders only once it has moved on.
+  const buildDay = Recipes.siteDayNumber(new Date(), site.timezone);
+  const featured = Recipes.recipeOfTheDay(new Date(), site.timezone);
   const total = Recipes.all.length;
 
   const body = `      <section class="hero">
@@ -38,29 +42,8 @@ function home(): PageSpec {
             </div>
           </div>
           <div class="hero-card">
-            <div class="recipe-showcase">
-              <p class="eyebrow">Recipe of the day</p>
-              <a href="${esc(rel(`recipes/${featured.slug}.html`, 0))}" class="showcase-media">
-                <img src="${esc(C.imageUrl(featured, 0))}" alt="${esc(
-    featured.imageAlt
-  )}" width="600" height="400" loading="eager" decoding="async" data-fallback="${esc(
-    featured.fallbackImage
-  )}" />
-              </a>
-              <h2><a href="${esc(rel(`recipes/${featured.slug}.html`, 0))}">${esc(featured.title)}</a></h2>
-              <p>${esc(featured.description)}</p>
-              <div class="showcase-meta">
-                ${
-                  site.ratings.enabled
-                    ? `${C.stars(featured.rating)}<span>${featured.ratingCount} ratings</span>`
-                    : `<span>${esc(featured.difficulty)}</span>`
-                }
-                <span class="meta-dot">&middot;</span>
-                <span>${esc(C.timeLabel(Recipes.totalMinutes(featured)))}</span>
-                <span class="meta-dot">&middot;</span>
-                <span>${featured.nutrition.calories} cal</span>
-              </div>
-              <a class="btn btn-secondary" href="${esc(rel(`recipes/${featured.slug}.html`, 0))}">See this recipe</a>
+            <div class="recipe-showcase" data-recipe-of-the-day data-rotd-day="${buildDay}">
+              ${C.recipeOfTheDayCard(featured, 0)}
             </div>
           </div>
         </div>

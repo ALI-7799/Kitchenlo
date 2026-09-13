@@ -12,6 +12,7 @@
 import './app.js';
 import './consent.js';
 
+import './pages/home.js';
 import './pages/recipe-index.js';
 import './pages/recipe-page.js';
 import './pages/auth-pages.js';

@@ -230,6 +230,44 @@ function newsletterCta(depth: Depth = 0) {
       </section>`;
 }
 
+/**
+ * Inside of the Recipe of the Day panel on the home page.
+ *
+ * Split out of the home template because the browser re-renders this same
+ * panel when the site's date has rolled past the one the page was built on.
+ * Both sides call this one function, so the markup they produce cannot drift
+ * and the swapped-in card is identical to a freshly built one.
+ *
+ * Returns the contents of .recipe-showcase, not the wrapper: the wrapper is
+ * the element the browser replaces into, and it carries the build's day
+ * number.
+ */
+function recipeOfTheDayCard(recipe: Recipe, depth: Depth): string {
+  const href = rel(`recipes/${recipe.slug}.html`, depth);
+  return `<p class="eyebrow">Recipe of the day</p>
+              <a href="${esc(href)}" class="showcase-media">
+                <img src="${esc(imageUrl(recipe, depth))}" alt="${esc(
+    recipe.imageAlt
+  )}" width="600" height="400" loading="eager" decoding="async" data-fallback="${esc(
+    rel(recipe.fallbackImage, depth)
+  )}" />
+              </a>
+              <h2><a href="${esc(href)}">${esc(recipe.title)}</a></h2>
+              <p>${esc(recipe.description)}</p>
+              <div class="showcase-meta">
+                ${
+                  site.ratings.enabled
+                    ? `${stars(recipe.rating)}<span>${recipe.ratingCount} ratings</span>`
+                    : `<span>${esc(recipe.difficulty)}</span>`
+                }
+                <span class="meta-dot">&middot;</span>
+                <span>${esc(timeLabel(Recipes.totalMinutes(recipe)))}</span>
+                <span class="meta-dot">&middot;</span>
+                <span>${recipe.nutrition.calories} cal</span>
+              </div>
+              <a class="btn btn-secondary" href="${esc(href)}">See this recipe</a>`;
+}
+
 export {
   imageUrl,
   absoluteUrl,
@@ -239,6 +277,7 @@ export {
   timeLabel,
   isoDuration,
   recipeCard,
+  recipeOfTheDayCard,
   recipeGrid,
   sectionHeading,
   guideCard,
