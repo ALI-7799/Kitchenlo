@@ -7,4 +7,4 @@ Disallow: /signup
 Disallow: /favorites
 Disallow: /shopping-list
 
-Sitemap: https://www.kitchenlo.com/sitemap.xml
+Sitemap: https://kitchenlo.com/sitemap.xml

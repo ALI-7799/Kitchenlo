@@ -9,12 +9,12 @@ import type { SiteConfig } from '../types.js';
    * Where the site is served from. Used for canonical URLs, Open Graph tags,
    * the sitemap and robots.txt, so it must match the live address exactly.
    *
-   *   Custom domain:  origin 'https://www.kitchenlo.com', basePath ''
+   *   Custom domain:  origin 'https://kitchenlo.com', basePath ''
    *   Project pages:  origin 'https://ali-7799.github.io', basePath '/Kitchenlo'
    *
    * Change these two values and rerun `node tools/build.js`.
    */
-  var origin = 'https://www.kitchenlo.com';
+  var origin = 'https://kitchenlo.com';
   var basePath = '';
 
 const site: SiteConfig = {
