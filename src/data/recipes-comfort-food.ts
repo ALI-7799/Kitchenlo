@@ -73,7 +73,7 @@ const recipes: RecipeSource[] = [
       { q: 'Why did my sauce taste sour or tinny?', a: 'Almost always undercooked tomato paste, or tomatoes that were sharp to begin with. Give the paste the full four minutes until it darkens, and if it is still sharp add the half teaspoon of sugar; a small knob of butter at the end also softens the edge.' },
       { q: 'Can I use a different pasta shape?', a: 'Any ridged tubular shape works well here, so penne rigate, paccheri or mezzi rigatoni are all fine. Avoid long thin shapes like spaghetti, which this sauce is too heavy for.' }
     ],
-    related: ['spaghetti-bolognese', 'baked-mac-and-cheese', 'smoky-tomato-pasta']
+    related: ['spaghetti-bolognese', 'baked-mac-and-cheese', 'smoky-tomato-pasta', 'spaghetti-carbonara']
   },
   {
     slug: 'classic-smash-burgers',
@@ -297,7 +297,7 @@ const recipes: RecipeSource[] = [
       { q: 'Which cheeses work best?', a: 'You want one for flavour and one for melt. Mature cheddar brings the flavour but can split on its own; gruyere, fontina, comte or young gouda melt smoothly and hold it together. Parmesan is for savoury depth rather than texture, so keep it to a small proportion.' },
       { q: 'Can I make it without baking it?', a: 'Yes. Stop after folding the pasta through the sauce and serve it straight from the pan, which gives a looser, creamier stovetop version. Cook the macaroni to full package time in that case, since it gets no oven time to soften.' }
     ],
-    related: ['creamy-tomato-rigatoni', 'classic-smash-burgers', 'broccoli-quesadillas']
+    related: ['creamy-tomato-rigatoni', 'classic-smash-burgers', 'broccoli-quesadillas', 'beef-stroganoff']
   },
   {
     slug: 'spaghetti-bolognese',
@@ -374,7 +374,7 @@ const recipes: RecipeSource[] = [
       { q: 'Red wine or white?', a: 'Traditional Bolognese ragu uses dry white, which keeps the sauce lighter and lets the meat come through. Red gives a deeper, more robust result that most people outside Italy expect. Either is correct; use whichever you would drink.' },
       { q: 'Why is my bolognese watery?', a: 'Usually the lid was on too tight, or the meat was not browned in batches and released its liquid into the pot. Finish it uncovered for the last 20-30 minutes and let it reduce until the fat visibly separates and pools at the surface.' }
     ],
-    related: ['creamy-tomato-rigatoni', 'baked-mac-and-cheese', 'pesto-tortellini']
+    related: ['creamy-tomato-rigatoni', 'baked-mac-and-cheese', 'pesto-tortellini', 'beef-stroganoff']
   },
   {
     slug: 'lamb-apricot-tajine',
@@ -823,7 +823,7 @@ const recipes: RecipeSource[] = [
       { q: 'Can I make it ahead?', a: 'Yes, and it is arguably better for it. Assemble it completely, refrigerate overnight, and bake from cold with an extra 15 minutes. The layers firm up and it slices more cleanly the next day.' },
       { q: 'What is the cinnamon doing in a savoury dish?', a: 'It is characteristic of Greek meat sauces and it is not there to taste sweet. Along with the allspice it gives the lamb a warm, rounded background note; leave it out and the dish tastes noticeably flatter.' }
     ],
-    related: ['seafood-paella', 'lamb-apricot-tajine', 'stuffed-peppers']
+    related: ['seafood-paella', 'lamb-apricot-tajine', 'stuffed-peppers', 'beef-stroganoff']
   },
   {
     slug: 'seafood-paella',

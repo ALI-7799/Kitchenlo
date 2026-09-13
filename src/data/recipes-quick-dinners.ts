@@ -133,7 +133,7 @@ const recipes: RecipeSource[] = [
       { q: 'Is homemade pesto worth it?', a: 'If you have basil to use up, yes, and it takes five minutes in a food processor. But a good jarred pesto finished with fresh basil and real parmesan gets you most of the way there.' },
       { q: 'How do I keep the sauce from drying out?', a: 'Reserve more pasta water than you think you need and add it gradually. Tortellini keeps absorbing liquid as it sits, so the sauce should look slightly loose in the pan.' }
     ],
-    related: ['smoky-tomato-pasta', 'mediterranean-flatbread', 'chickpea-salad']
+    related: ['smoky-tomato-pasta', 'mediterranean-flatbread', 'chickpea-salad', 'spaghetti-carbonara']
   },
   {
     slug: 'taco-rice-bowls',
@@ -557,7 +557,7 @@ const recipes: RecipeSource[] = [
       { q: 'Why is my sauce watery?', a: 'It has not reduced enough. Keep it at an active simmer uncovered until you can drag a spoon through and the trail holds for a second.' },
       { q: 'What pasta shape is best?', a: 'Ridged tubes like rigatoni catch this sauce best. Long shapes work but need a slightly looser sauce and more vigorous tossing.' }
     ],
-    related: ['pesto-tortellini', 'mediterranean-flatbread', 'stuffed-peppers']
+    related: ['pesto-tortellini', 'mediterranean-flatbread', 'stuffed-peppers', 'spaghetti-carbonara']
   },
   {
     slug: 'lemon-herb-shrimp',

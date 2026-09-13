@@ -209,7 +209,7 @@ const recipes: RecipeSource[] = [
       { q: 'Can I use skimmed milk?', a: 'You can, but the result is noticeably thin. Whole milk plus a little cream is what gives rice pudding its body.' },
       { q: 'Warm or cold?', a: 'Both are traditional. Warm is comforting and looser; chilled is thicker and firmer, and better under a sharp fruit compote.' }
     ],
-    related: ['apple-crisp', 'panna-cotta', 'yogurt-parfait']
+    related: ['apple-crisp', 'panna-cotta', 'yogurt-parfait', 'tiramisu']
   },
   {
     slug: 'berry-crumble',
@@ -344,7 +344,7 @@ const recipes: RecipeSource[] = [
       { q: 'Can I use agar agar instead?', a: 'Yes, for a vegetarian version, but agar must be boiled for 2 minutes to activate and gives a firmer, less wobbly set. Follow the ratio on your package.' },
       { q: 'How do I unmould it cleanly?', a: 'Dip the ramekin in hot water for 5 seconds, run a thin knife around the edge, then invert onto a plate. Use the higher gelatine quantity if you plan to do this.' }
     ],
-    related: ['berry-tartlets', 'rice-pudding', 'lemon-bars']
+    related: ['berry-tartlets', 'rice-pudding', 'lemon-bars', 'tiramisu']
   },
   {
     slug: 'lemon-bars',
@@ -691,7 +691,7 @@ const recipes: RecipeSource[] = [
       { q: 'My custard is lumpy, can I fix it?', a: 'Pass it through a fine sieve while still warm. That removes any set egg and usually rescues it completely.' },
       { q: 'Why press instead of roll the crust?', a: 'Ground almonds make a dough too short and crumbly to roll neatly. Pressing gives the same result with none of the difficulty, and it never shrinks in the tin.' }
     ],
-    related: ['berry-tartlets', 'lemon-bars', 'berry-crumble']
+    related: ['berry-tartlets', 'lemon-bars', 'berry-crumble', 'tiramisu']
   },
   {
     slug: 'tiramisu',
