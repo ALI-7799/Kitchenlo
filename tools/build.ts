@@ -157,11 +157,11 @@ write(
   `# ${site.name}
 User-agent: *
 Allow: /
-Disallow: /account.html
-Disallow: /login.html
-Disallow: /signup.html
-Disallow: /favorites.html
-Disallow: /shopping-list.html
+Disallow: /account
+Disallow: /login
+Disallow: /signup
+Disallow: /favorites
+Disallow: /shopping-list
 
 Sitemap: ${site.origin}/sitemap.xml
 `
@@ -176,7 +176,7 @@ write(
       name: site.name,
       short_name: site.name,
       description: site.description,
-      start_url: '/index.html',
+      start_url: '/',
       display: 'standalone',
       background_color: '#f7f2ea',
       theme_color: '#d96a2b',

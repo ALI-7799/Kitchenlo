@@ -48,7 +48,7 @@ const site: SiteConfig = {
 
   author: {
     name: 'The Kitchenlo Kitchen',
-    url: origin + '/about.html'
+    url: origin + '/about'
   },
   social: [
     { label: 'Instagram', href: 'https://instagram.com/kitchenlo', icon: 'instagram' },

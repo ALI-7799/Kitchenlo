@@ -26,8 +26,10 @@ $$('[data-toggle-password]').forEach((btn) => {
  */
 function nextUrl(): string {
   const target = new URLSearchParams(window.location.search).get('next');
-  if (target && /^[a-z0-9\-/.]+\.html$/i.test(target) && !target.includes('..')) return target;
-  return 'account.html';
+  // Must start with a path character, so "//evil.example" and any scheme are
+  // rejected; the .html tail stays accepted so old bookmarked links still work.
+  if (target && /^[a-z0-9][a-z0-9\-/]*(\.html)?$/i.test(target) && !target.includes('..')) return target;
+  return 'account';
 }
 
 const value = (id: string): string =>

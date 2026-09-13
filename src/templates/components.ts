@@ -215,7 +215,7 @@ function faqSchema(faqs: Faq[]): Record<string, unknown> {
   };
 }
 
-function newsletterCta() {
+function newsletterCta(depth: Depth = 0) {
   return `<section class="section cta-band">
         <div class="container cta-inner">
           <div>
@@ -223,8 +223,8 @@ function newsletterCta() {
             <p>Create a free account to save recipes, build a meal plan and generate a shopping list in one click.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-primary" href="signup.html">Create free account</a>
-            <a class="btn btn-ghost" href="recipes.html">Browse all recipes</a>
+            <a class="btn btn-primary" href="${esc(rel('signup.html', depth))}">Create free account</a>
+            <a class="btn btn-ghost" href="${esc(rel('recipes.html', depth))}">Browse all recipes</a>
           </div>
         </div>
       </section>`;

@@ -2,7 +2,7 @@
  * Templates for the non-content pages: about, contact, auth, account tools
  * and legal.
  */
-import { esc, site } from './layout.js';
+import { canonicalUrl, esc, rel, site } from './layout.js';
 import * as C from './components.js';
 import * as Recipes from '../data/recipes.js';
 import type { PageSpec } from '../types.js';
@@ -49,7 +49,7 @@ function about() {
                 <li>Build a seven-day meal plan</li>
                 <li>Generate a combined shopping list</li>
               </ul>
-              <a class="btn btn-primary btn-block" href="signup.html">Create a free account</a>
+              <a class="btn btn-primary btn-block" href="${esc(rel('signup.html', 0))}">Create a free account</a>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ function about() {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
         name: 'About Kitchenlo',
-        url: site.origin + '/about.html',
+        url: canonicalUrl('about.html'),
         description: 'How Kitchenlo tests and writes its recipes.'
       }
     ]
@@ -156,9 +156,9 @@ function contact() {
               <h3>Common questions</h3>
               <p>Many questions are already answered on the recipe itself, at the bottom of every page.</p>
               <ul class="check-list">
-                <li><a href="guides/how-to-season-food.html">Why does my food taste flat?</a></li>
-                <li><a href="guides/how-to-meal-prep.html">How do I meal prep properly?</a></li>
-                <li><a href="guides/pantry-essentials.html">What should I keep in the cupboard?</a></li>
+                <li><a href="${esc(rel('guides/how-to-season-food.html', 0))}">Why does my food taste flat?</a></li>
+                <li><a href="${esc(rel('guides/how-to-meal-prep.html', 0))}">How do I meal prep properly?</a></li>
+                <li><a href="${esc(rel('guides/pantry-essentials.html', 0))}">What should I keep in the cupboard?</a></li>
               </ul>
             </div>
             <div class="card info-card">
@@ -195,7 +195,7 @@ function contact() {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
         name: 'Contact Kitchenlo',
-        url: site.origin + '/contact.html'
+        url: canonicalUrl('contact.html')
       }
     ]
   };
@@ -235,7 +235,7 @@ function login() {
               <p class="form-status" role="status" aria-live="polite"></p>
             </form>
 
-            <p class="auth-alt">New here? <a href="signup.html">Create a free account</a></p>
+            <p class="auth-alt">New here? <a href="${esc(rel('signup.html', 0))}">Create a free account</a></p>
           </div>
 
           <aside class="auth-aside">
@@ -305,14 +305,14 @@ function signup() {
                 <p class="field-error" data-error-for="signupConfirm"></p>
               </div>
 
-              <label class="checkbox"><input type="checkbox" id="signupTerms" required /> <span>I agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a></span></label>
+              <label class="checkbox"><input type="checkbox" id="signupTerms" required /> <span>I agree to the <a href="${esc(rel('terms.html', 0))}">Terms</a> and <a href="${esc(rel('privacy.html', 0))}">Privacy Policy</a></span></label>
               <p class="field-error" data-error-for="signupTerms"></p>
 
               <button class="btn btn-primary btn-block" type="submit">Create account</button>
               <p class="form-status" role="status" aria-live="polite"></p>
             </form>
 
-            <p class="auth-alt">Already have an account? <a href="login.html">Sign in</a></p>
+            <p class="auth-alt">Already have an account? <a href="${esc(rel('login.html', 0))}">Sign in</a></p>
           </div>
 
           <aside class="auth-aside">
@@ -357,9 +357,9 @@ function account() {
           <div class="account-grid">
             <nav class="account-nav" aria-label="Account sections">
               <a href="#profile" class="is-active">Profile</a>
-              <a href="favorites.html">Saved recipes</a>
-              <a href="meal-planner.html">Meal planner</a>
-              <a href="shopping-list.html">Shopping list</a>
+              <a href="${esc(rel('favorites.html', 0))}">Saved recipes</a>
+              <a href="${esc(rel('meal-planner.html', 0))}">Meal planner</a>
+              <a href="${esc(rel('shopping-list.html', 0))}">Shopping list</a>
               <a href="#preferences">Preferences</a>
               <a href="#data">Your data</a>
             </nav>
@@ -436,8 +436,8 @@ function account() {
             <h2>You are not signed in</h2>
             <p>Sign in or create a free account to manage your profile, saved recipes and meal plan.</p>
             <div class="button-row">
-              <a class="btn btn-primary" href="login.html">Sign in</a>
-              <a class="btn btn-secondary" href="signup.html">Create account</a>
+              <a class="btn btn-primary" href="${esc(rel('login.html', 0))}">Sign in</a>
+              <a class="btn btn-secondary" href="${esc(rel('signup.html', 0))}">Create account</a>
             </div>
           </div>
         </div>
@@ -475,7 +475,7 @@ function favorites() {
           <div class="empty-state" id="favoritesEmpty">
             <h2>Nothing saved yet</h2>
             <p>Tap the heart on any recipe to keep it here.</p>
-            <a class="btn btn-primary" href="recipes.html">Browse recipes</a>
+            <a class="btn btn-primary" href="${esc(rel('recipes.html', 0))}">Browse recipes</a>
           </div>
         </div>
       </section>`;
@@ -592,8 +592,8 @@ function shoppingList() {
             <h2>Your list is empty</h2>
             <p>Add ingredients from any recipe, or build a list from your meal plan.</p>
             <div class="button-row">
-              <a class="btn btn-primary" href="recipes.html">Browse recipes</a>
-              <a class="btn btn-secondary" href="meal-planner.html">Open meal planner</a>
+              <a class="btn btn-primary" href="${esc(rel('recipes.html', 0))}">Browse recipes</a>
+              <a class="btn btn-secondary" href="${esc(rel('meal-planner.html', 0))}">Open meal planner</a>
             </div>
           </div>
         </div>
@@ -765,8 +765,8 @@ function notFound() {
           <h1>This page went the way of the leftovers.</h1>
           <p class="lede">The link is broken or the page has moved. Here is a way back into the kitchen.</p>
           <div class="button-row">
-            <a class="btn btn-primary" href="${esc(site.basePath)}/index.html">Back to home</a>
-            <a class="btn btn-secondary" href="${esc(site.basePath)}/recipes.html">Browse all recipes</a>
+            <a class="btn btn-primary" href="${esc(rel('index.html', 'abs'))}">Back to home</a>
+            <a class="btn btn-secondary" href="${esc(rel('recipes.html', 'abs'))}">Browse all recipes</a>
           </div>
         </div>
       </section>

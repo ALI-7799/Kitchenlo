@@ -51,7 +51,7 @@ if ($('#plannerGrid')) {
         <button class="planner-remove" type="button" data-remove-day="${day}" aria-label="Remove ${escapeHtml(
         recipe.title
       )} from ${day}">&times;</button>
-        <a href="recipes/${recipe.slug}.html">
+        <a href="recipes/${recipe.slug}">
           <img src="${escapeHtml(src)}" alt="" loading="lazy" data-fallback="${escapeHtml(
         recipe.fallbackImage
       )}" />

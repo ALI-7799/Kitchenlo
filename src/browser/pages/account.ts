@@ -113,7 +113,7 @@ document.addEventListener('click', (event) => {
     auth
       .deleteAccount()
       .then(() => {
-        window.location.href = 'index.html';
+        window.location.href = './';
       })
       .catch((error: Error) => setDataStatus(error.message, 'error'));
   }

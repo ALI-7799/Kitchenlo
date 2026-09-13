@@ -123,7 +123,7 @@ function renderSearch(term: string): void {
 
   const recipeRows = recipeHits
     .map(
-      (r) => `<a class="search-result" href="${ROOT}recipes/${r.slug}.html">
+      (r) => `<a class="search-result" href="${ROOT}recipes/${r.slug}">
         <img src="${escapeHtml(src(r.image))}" alt="" loading="lazy" data-fallback="${escapeHtml(
         ROOT + r.fallbackImage
       )}" />
@@ -135,7 +135,7 @@ function renderSearch(term: string): void {
 
   const guideRows = guideHits
     .map(
-      (g) => `<a class="search-result" href="${ROOT}guides/${g.slug}.html">
+      (g) => `<a class="search-result" href="${ROOT}guides/${g.slug}">
         <img src="${escapeHtml(src(g.image))}" alt="" loading="lazy" />
         <span><strong>${escapeHtml(g.title)}</strong><span>Guide &middot; ${
         g.readMinutes
@@ -254,7 +254,7 @@ document.addEventListener('click', (event) => {
   if (!(event.target as Element).closest('[data-signout]')) return;
   event.preventDefault();
   void auth.signOut().then(() => {
-    window.location.href = ROOT + 'index.html';
+    window.location.href = ROOT || './';
   });
 });
 

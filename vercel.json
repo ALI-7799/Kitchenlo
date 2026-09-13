@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "framework": null,
   "trailingSlash": false,
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/index", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -12,7 +17,7 @@
       ]
     },
     {
-      "source": "/(.*).html",
+      "source": "/((?!assets/).*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]

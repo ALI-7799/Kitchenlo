@@ -24,27 +24,50 @@ function jsonLd(data: unknown): string {
 }
 
 /**
- * Rewrites a root-relative href for a page nested `depth` directories deep.
+ * Strips the extension a generated file has but its address does not.
+ *
+ * Every page is written to disk as a .html file and served without the
+ * extension (cleanUrls in vercel.json), so the file name and the URL differ by
+ * exactly this suffix. "index.html" is the site root and cleans to nothing.
+ */
+function cleanPath(pathname: string): string {
+  return pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+}
+
+/**
+ * Rewrites a root-relative href for a page nested `depth` directories deep,
+ * and drops the .html the served address does not carry.
  * Pages live in the repo root or one directory down (recipes/, category/, guides/),
- * so a depth of 1 turns "recipes.html" into "../recipes.html".
+ * so a depth of 1 turns "recipes.html" into "../recipes".
  */
 function rel(href: string, depth: Depth): string {
   if (!href || /^(https?:|mailto:|tel:|#|\/)/.test(href)) return href;
+  // Keep any ?query or #hash intact; only the path loses its extension.
+  const split = /^([^?#]*)([?#].*)?$/.exec(href) as RegExpExecArray;
+  const clean = cleanPath(split[1] || '');
+  const suffix = split[2] || '';
+  const root = (site.basePath || '') + '/';
+
+  // The home page is the one address with no path of its own, so it is written
+  // root-relative rather than as a chain of "../": no depth arithmetic can then
+  // resolve it to anything but "/".
+  if (clean === '') return root + suffix;
   // 404.html is served for arbitrary URLs, so it links from the site root.
-  if (depth === 'abs') return (site.basePath || '') + '/' + href;
-  return depth > 0 ? '../'.repeat(depth) + href : href;
+  if (depth === 'abs') return root + clean + suffix;
+  return (depth > 0 ? '../'.repeat(depth) : '') + clean + suffix;
 }
 
 /**
  * The one absolute URL a page is allowed to be known by.
  *
- * A directory index is served as the directory itself, so index.html must not
- * also be advertised as /index.html. The canonical tag, og:url, the breadcrumb
- * trail and the sitemap all resolve through here, because naming the same page
- * two ways leaves a crawler to guess which one is the real address.
+ * Pages are served without their .html extension and the home page is served
+ * as "/", so neither the extension nor an index path may be advertised. The
+ * canonical tag, og:url, the breadcrumb trail and the sitemap all resolve
+ * through here, because naming the same page two ways leaves a crawler to
+ * guess which one is the real address.
  */
 function canonicalUrl(pathname: string): string {
-  const clean = pathname.replace(/^\//, '').replace(/(^|\/)index\.html$/, '$1');
+  const clean = cleanPath(pathname.replace(/^\//, ''));
   return site.origin + '/' + clean;
 }
 

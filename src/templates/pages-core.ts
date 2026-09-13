@@ -24,30 +24,30 @@ function home(): PageSpec {
             <p class="eyebrow">${esc(site.tagline)}</p>
             <h1>Cook meals that feel cozy, bright, and effortless.</h1>
             <p class="lede">${total} tested recipes with measured ingredients, real timings and nutrition for every dish. Quick dinners, healthy bowls and easy desserts, written for people who cook on weeknights.</p>
-            <form class="hero-search" action="recipes.html" method="get" role="search">
+            <form class="hero-search" action="${esc(rel('recipes.html', 0))}" method="get" role="search">
               <label class="sr-only" for="heroSearch">Search recipes</label>
               <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               <input type="search" id="heroSearch" name="q" placeholder="Try &quot;chickpea&quot;, &quot;30 minutes&quot;, &quot;vegan&quot;..." />
               <button class="btn btn-primary" type="submit">Search</button>
             </form>
             <div class="hero-badges">
-              <a class="badge-link" href="recipes.html?time=under-30">30-minute meals</a>
-              <a class="badge-link" href="recipes.html?diet=vegetarian">Vegetarian</a>
-              <a class="badge-link" href="recipes.html?diet=high-protein">High protein</a>
-              <a class="badge-link" href="category/desserts.html">Desserts</a>
+              <a class="badge-link" href="${esc(rel('recipes.html?time=under-30', 0))}">30-minute meals</a>
+              <a class="badge-link" href="${esc(rel('recipes.html?diet=vegetarian', 0))}">Vegetarian</a>
+              <a class="badge-link" href="${esc(rel('recipes.html?diet=high-protein', 0))}">High protein</a>
+              <a class="badge-link" href="${esc(rel('category/desserts.html', 0))}">Desserts</a>
             </div>
           </div>
           <div class="hero-card">
             <div class="recipe-showcase">
               <p class="eyebrow">Recipe of the day</p>
-              <a href="recipes/${esc(featured.slug)}.html" class="showcase-media">
+              <a href="${esc(rel(`recipes/${featured.slug}.html`, 0))}" class="showcase-media">
                 <img src="${esc(C.imageUrl(featured, 0))}" alt="${esc(
     featured.imageAlt
   )}" width="600" height="400" loading="eager" decoding="async" data-fallback="${esc(
     featured.fallbackImage
   )}" />
               </a>
-              <h2><a href="recipes/${esc(featured.slug)}.html">${esc(featured.title)}</a></h2>
+              <h2><a href="${esc(rel(`recipes/${featured.slug}.html`, 0))}">${esc(featured.title)}</a></h2>
               <p>${esc(featured.description)}</p>
               <div class="showcase-meta">
                 ${
@@ -60,7 +60,7 @@ function home(): PageSpec {
                 <span class="meta-dot">&middot;</span>
                 <span>${featured.nutrition.calories} cal</span>
               </div>
-              <a class="btn btn-secondary" href="recipes/${esc(featured.slug)}.html">See this recipe</a>
+              <a class="btn btn-secondary" href="${esc(rel(`recipes/${featured.slug}.html`, 0))}">See this recipe</a>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ function home(): PageSpec {
       <section class="section alt-bg">
         <div class="container">
           ${C.sectionHeading('Popular this week', 'Make something delicious tonight.', null, {
-            href: 'recipes.html',
+            href: rel('recipes.html', 0),
             label: `View all ${total} recipes`
           })}
           ${C.recipeGrid(popular, 0, { eager: true })}
@@ -111,7 +111,7 @@ function home(): PageSpec {
               <li>Storage and make-ahead notes on every recipe</li>
               <li>Answers to the questions that actually come up</li>
             </ul>
-            <a class="btn btn-primary" href="about.html">How we test recipes</a>
+            <a class="btn btn-primary" href="${esc(rel('about.html', 0))}">How we test recipes</a>
           </div>
           <div class="preview-stack">
             <div class="preview-card">
@@ -133,7 +133,7 @@ function home(): PageSpec {
       <section class="section alt-bg">
         <div class="container">
           ${C.sectionHeading('In a hurry', 'Dinner in under 25 minutes.', null, {
-            href: 'recipes.html?time=under-30',
+            href: rel('recipes.html?time=under-30', 0),
             label: 'More quick recipes'
           })}
           ${C.recipeGrid(quickest, 0)}
@@ -147,7 +147,7 @@ function home(): PageSpec {
             ${collections
               .map((c: Collection) => {
                 const count = collectionRecipes(c).length;
-                return `<a class="collection-tile" href="collection/${esc(c.slug)}.html">
+                return `<a class="collection-tile" href="${esc(rel(`collection/${c.slug}.html`, 0))}">
               <span class="collection-count">${count}</span>
               <span class="collection-name">${esc(c.title)}</span>
             </a>`;
@@ -160,7 +160,7 @@ function home(): PageSpec {
       <section class="section alt-bg">
         <div class="container">
           ${C.sectionHeading('Cooking guides', 'Learn the technique, not just the recipe.', 'Long-form guides on the fundamentals that make everything else easier.', {
-            href: 'guides.html',
+            href: rel('guides.html', 0),
             label: 'All guides'
           })}
           <div class="card-grid">
@@ -193,7 +193,7 @@ function home(): PageSpec {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: site.origin + '/recipes.html?q={search_term_string}'
+            urlTemplate: canonicalUrl('recipes.html') + '?q={search_term_string}'
           },
           'query-input': 'required name=search_term_string'
         }
@@ -310,7 +310,7 @@ function recipesIndex(): PageSpec {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'All Recipes',
-        url: site.origin + '/recipes.html',
+        url: canonicalUrl('recipes.html'),
         description: 'The complete Kitchenlo recipe library.',
         mainEntity: {
           '@type': 'ItemList',
@@ -318,7 +318,7 @@ function recipesIndex(): PageSpec {
           itemListElement: all.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
-            url: `${site.origin}/recipes/${r.slug}.html`,
+            url: canonicalUrl(`recipes/${r.slug}.html`),
             name: r.title
           }))
         }
@@ -354,7 +354,7 @@ function categoriesIndex(): PageSpec {
           return `<section class="section${site.categories.indexOf(cat) % 2 ? ' alt-bg' : ''}">
         <div class="container">
           ${C.sectionHeading(cat.tagline, cat.title, cat.description, {
-            href: `category/${cat.slug}.html`,
+            href: rel(`category/${cat.slug}.html`, 0),
             label: `All ${Recipes.byCategory(cat.slug).length} ${cat.title.toLowerCase()}`
           })}
           ${C.recipeGrid(list, 0)}
@@ -445,7 +445,7 @@ function categoryPage(cat: Category): PageSpec {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: `${cat.title} Recipes`,
-        url: `${site.origin}/category/${cat.slug}.html`,
+        url: canonicalUrl(`category/${cat.slug}.html`),
         description: cat.description,
         mainEntity: {
           '@type': 'ItemList',
@@ -453,7 +453,7 @@ function categoryPage(cat: Category): PageSpec {
           itemListElement: list.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
-            url: `${site.origin}/recipes/${r.slug}.html`,
+            url: canonicalUrl(`recipes/${r.slug}.html`),
             name: r.title
           }))
         }
@@ -611,7 +611,7 @@ function recipePage(recipe: Recipe): PageSpec {
         <section class="recipe-hero">
           <div class="container recipe-hero-grid">
             <div class="recipe-hero-copy">
-              <p class="eyebrow"><a href="../category/${esc(recipe.category)}.html">${esc(
+              <p class="eyebrow"><a href="${esc(rel(`category/${recipe.category}.html`, 1))}">${esc(
     cat ? cat.title : ''
   )}</a></p>
               <h1 itemprop="name">${esc(recipe.title)}</h1>
@@ -803,7 +803,7 @@ ${sharePanel}
       position: i + 1,
       name: s.title,
       text: s.text,
-      url: `${site.origin}/recipes/${recipe.slug}.html#step-${i + 1}`
+      url: canonicalUrl(`recipes/${recipe.slug}.html`) + `#step-${i + 1}`
     })),
     nutrition: {
       '@type': 'NutritionInformation',
@@ -945,7 +945,7 @@ function collectionPage(collection: Collection): PageSpec {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: collection.title,
-        url: `${site.origin}/collection/${collection.slug}.html`,
+        url: canonicalUrl(`collection/${collection.slug}.html`),
         description: collection.description,
         keywords: (collection.keywords || []).join(', '),
         mainEntity: {
@@ -954,7 +954,7 @@ function collectionPage(collection: Collection): PageSpec {
           itemListElement: list.map((r: Recipe, i: number) => ({
             '@type': 'ListItem',
             position: i + 1,
-            url: `${site.origin}/recipes/${r.slug}.html`,
+            url: canonicalUrl(`recipes/${r.slug}.html`),
             name: r.title
           }))
         }
@@ -1088,7 +1088,7 @@ function guidePage(guide: Guide): PageSpec {
           name: site.name,
           logo: { '@type': 'ImageObject', url: site.origin + '/favicon.svg' }
         },
-        mainEntityOfPage: { '@type': 'WebPage', '@id': `${site.origin}/guides/${guide.slug}.html` },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl(`guides/${guide.slug}.html`) },
         keywords: (guide.keywords || []).join(', ')
       },
       C.faqSchema(guide.faqs)

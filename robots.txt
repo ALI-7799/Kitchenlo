@@ -1,10 +1,10 @@
 # Kitchenlo
 User-agent: *
 Allow: /
-Disallow: /account.html
-Disallow: /login.html
-Disallow: /signup.html
-Disallow: /favorites.html
-Disallow: /shopping-list.html
+Disallow: /account
+Disallow: /login
+Disallow: /signup
+Disallow: /favorites
+Disallow: /shopping-list
 
 Sitemap: https://www.kitchenlo.com/sitemap.xml

@@ -317,7 +317,7 @@ suite('recipe share section', async () => {
   // Every recipe gets the section, and each one shares its own page.
   const wrong = RECIPES.all.filter((r) => {
     const declared = (readPage(r.slug).match(/data-share-url="([^"]*)"/) || [])[1];
-    return declared !== SITE.origin + '/recipes/' + r.slug + '.html';
+    return declared !== SITE.origin + '/recipes/' + r.slug;
   });
   check('every recipe shares its own URL', wrong.length === 0, wrong.map((r) => r.slug)[0]);
 
@@ -755,7 +755,7 @@ suite('search results resolve their images from every page depth', async () => {
     const hrefs = await overlaySearch(term);
     check(
       `overlay finds the knife guide for ${JSON.stringify(term)}`,
-      hrefs.some((h) => h.endsWith('guides/knife-skills-basics.html')),
+      hrefs.some((h) => h.endsWith('guides/knife-skills-basics')),
       hrefs.join(', ') || 'no results'
     );
   }
@@ -763,7 +763,7 @@ suite('search results resolve their images from every page depth', async () => {
   const recipeTerms = await overlaySearch('salmon garlic');
   check(
     'overlay matches recipe terms in any order',
-    recipeTerms.some((h) => h.endsWith('recipes/garlic-butter-salmon.html')),
+    recipeTerms.some((h) => h.endsWith('recipes/garlic-butter-salmon')),
     recipeTerms.join(', ') || 'no results'
   );
 });
@@ -1012,9 +1012,12 @@ suite('one page, one URL', () => {
 
   /* Each sitemap URL must be the one its own page claims as canonical. */
   const mismatched = locs.filter((loc) => {
-    const rel = loc.slice(SITE.origin.length + 1) || 'index.html';
-    if (!fs.existsSync(path.join(ROOT, rel))) return true;
-    return canonicalOf(rel).canonical !== loc;
+    // Clean URL back to the file the host serves for it: "" is the home page,
+    // everything else regains the .html its address does not carry.
+    const clean = loc.slice(SITE.origin.length + 1);
+    const file = clean === '' ? 'index.html' : clean + '.html';
+    if (!fs.existsSync(path.join(ROOT, file))) return true;
+    return canonicalOf(file).canonical !== loc;
   });
   check('every sitemap URL is that page canonical', mismatched.length === 0, mismatched[0]);
 
@@ -1027,6 +1030,66 @@ suite('one page, one URL', () => {
     if (items[0] !== SITE.origin + '/') crumbOffenders.push(page + ' starts at ' + items[0]);
   }
   check('breadcrumbs point at the root for Home', crumbOffenders.length === 0, crumbOffenders[0]);
+});
+
+suite('every address is clean, and every link still lands', () => {
+  /*
+   * The site is served with cleanUrls: a page written as recipes/foo.html is
+   * addressed as /recipes/foo, and the .html form only redirects to it. Two
+   * things can go wrong. A link can keep spelling .html, which costs a redirect
+   * and advertises a second address for one page. Or a relative link can
+   * resolve somewhere new once the extension is gone, because the browser
+   * reads the last path segment as a file name either way. Both are checked
+   * against the real served address of every page.
+   */
+  const pages = [];
+  (function walk(dir) {
+    for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
+      const rel = dir ? dir + '/' + entry.name : entry.name;
+      if (entry.isDirectory()) {
+        if (!['node_modules', '.git', '.build', 'assets', 'src', 'tools'].includes(entry.name)) walk(rel);
+      } else if (entry.name.endsWith('.html')) pages.push(rel);
+    }
+  })('');
+
+  /** The address a generated file is served at. */
+  const served = (file) => '/' + file.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+  /** The file a served address maps back to. */
+  const fileFor = (pathname) => {
+    const clean = pathname.replace(/^\//, '');
+    if (clean === '') return 'index.html';
+    // Assets (favicon.svg, sitemap.xml) are already whole file names.
+    return /\.[a-z0-9]+$/i.test(clean) ? clean : clean + '.html';
+  };
+
+  const dirty = [];
+  const broken = [];
+  let links = 0;
+
+  for (const page of pages) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    const base = new URL(served(page), 'https://kitchenlo.test');
+    for (const m of html.matchAll(/(?:href|action)="([^"]*)"/g)) {
+      const href = m[1];
+      if (!href || /^(https?:|mailto:|tel:|#|data:|javascript:)/i.test(href)) continue;
+      links++;
+      if (/\.html($|[?#])/.test(href) || /(^|\/)index($|[?#])/.test(href)) dirty.push(page + ' -> ' + href);
+      const target = fileFor(new URL(href, base).pathname);
+      if (!fs.existsSync(path.join(ROOT, target))) broken.push(page + ' -> ' + href + ' (' + target + ')');
+    }
+  }
+
+  check('no internal link spells .html or index', dirty.length === 0, dirty[0]);
+  check('every internal link resolves to a real page', broken.length === 0, broken[0]);
+  check('the crawl saw the whole site', links > 4000 && pages.length === 87, links + ' links, ' + pages.length + ' pages');
+
+  const locs = [...fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  check('no sitemap URL spells .html', !locs.some((l) => l.endsWith('.html')), locs.find((l) => l.endsWith('.html')));
+  check(
+    'every sitemap URL maps to a file that exists',
+    locs.every((l) => fs.existsSync(path.join(ROOT, fileFor(new URL(l).pathname)))),
+    locs.find((l) => !fs.existsSync(path.join(ROOT, fileFor(new URL(l).pathname))))
+  );
 });
 
 suite('recipe schema claims nothing the data does not support', () => {
