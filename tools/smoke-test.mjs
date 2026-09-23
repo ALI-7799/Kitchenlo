@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { webcrypto } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
 import * as RECIPES from '../src/data/recipes.ts';
@@ -24,7 +25,17 @@ import * as CORE from '../src/templates/pages-core.ts';
 import * as COMPONENTS from '../src/templates/components.ts';
 import * as VIDEOS from '../src/data/videos.ts';
 
-const ROOT = path.resolve(import.meta.dirname, '..');
+// See the same note in tools/build.ts: import.meta.dirname is Node 20.11+
+// and is undefined rather than an error on older runtimes.
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/*
+ * Directories the crawlers skip. 'admin' is the dashboard, which is a separate
+ * application rather than a generated page: it is noindex, disallowed in
+ * robots.txt, linked from nowhere on the site, and its markup is hand-written
+ * rather than produced by the generator, so none of the checks below apply.
+ */
+const SKIP_DIRS = ['node_modules', '.git', '.build', 'assets', 'src', 'tools', 'api', 'db', 'admin'];
 const TOTAL = RECIPES.all.length;
 
 let failures = 0;
@@ -955,7 +966,7 @@ suite('every image on every generated page resolves', () => {
     for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
       const rel = dir ? dir + '/' + entry.name : entry.name;
       if (entry.isDirectory()) {
-        if (!['node_modules', '.git', '.build', 'assets', 'src', 'tools'].includes(entry.name)) walk(rel);
+        if (!SKIP_DIRS.includes(entry.name)) walk(rel);
       } else if (entry.name.endsWith('.html')) {
         pages.push(rel);
       }
@@ -1063,7 +1074,7 @@ suite('every address is clean, and every link still lands', () => {
     for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
       const rel = dir ? dir + '/' + entry.name : entry.name;
       if (entry.isDirectory()) {
-        if (!['node_modules', '.git', '.build', 'assets', 'src', 'tools'].includes(entry.name)) walk(rel);
+        if (!SKIP_DIRS.includes(entry.name)) walk(rel);
       } else if (entry.name.endsWith('.html')) pages.push(rel);
     }
   })('');

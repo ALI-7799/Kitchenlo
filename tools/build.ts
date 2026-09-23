@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 
 import { render, setAssetVersion, canonicalUrl } from '../src/templates/layout.js';
 import * as core from '../src/templates/pages-core.js';
@@ -22,7 +23,11 @@ import site from '../src/data/site.js';
 import { placeholderSvg } from '../src/templates/placeholder.js';
 import type { PageSpec } from '../src/types.js';
 
-const ROOT = path.resolve(import.meta.dirname, '..');
+// import.meta.dirname would be shorter, but it only arrived in Node 20.11 and
+// evaluates to undefined rather than throwing on older runtimes, so the failure
+// surfaces as a confusing path error a long way from its cause. Deriving the
+// directory from import.meta.url works on every version that can run this file.
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 function write(relPath: string, contents: string): string {
   const full = path.join(ROOT, relPath);
@@ -162,6 +167,8 @@ Disallow: /login
 Disallow: /signup
 Disallow: /favorites
 Disallow: /shopping-list
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: ${site.origin}/sitemap.xml
 `
