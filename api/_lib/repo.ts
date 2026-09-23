@@ -11,7 +11,7 @@
  * query anywhere in this file, which is what rules out SQL injection rather
  * than any filtering of the input.
  */
-import { db } from './db.js';
+import { db, type Sql } from './db.js';
 import { notFound, conflict } from './http.js';
 import {
   rowToRecipe,
@@ -21,6 +21,32 @@ import {
 } from './recipe-row.js';
 
 /* -------------------------------------------------------------- recipes -- */
+
+/**
+ * The jsonb columns on `recipes`.
+ *
+ * These must be bound with sql.json(). Handed a bare JS array, the driver
+ * infers a Postgres *array* — so `ingredients` would be sent as text[] and the
+ * insert would fail on the column type, and an object would fare no better.
+ * It is not a case the type system can catch, and it only shows up against a
+ * real database, so the wrapping is centralised here and every writer goes
+ * through jsonbReady() rather than remembering it.
+ */
+const JSONB_COLUMNS = ['nutrition', 'ingredients', 'instructions', 'faqs'] as const;
+
+/** Copies a row with its jsonb columns wrapped for the driver. */
+export function jsonbReady(
+  sql: Sql,
+  row: Record<string, unknown>
+): Record<string, unknown> {
+  const prepared = { ...row };
+  for (const column of JSONB_COLUMNS) {
+    if (column in prepared) {
+      prepared[column] = sql.json(prepared[column] as never);
+    }
+  }
+  return prepared;
+}
 
 /** Column list shared by every recipe SELECT, so they all return the same shape. */
 const RECIPE_SELECT = `
@@ -83,7 +109,7 @@ export async function createRecipe(recipe: RecipeRecord): Promise<RecipeRecord> 
   if (existing.length) throw conflict(`A recipe with the slug "${recipe.slug}" already exists`);
 
   const inserted = await sql<RecipeRow[]>`
-    insert into recipes ${sql(row)}
+    insert into recipes ${sql(jsonbReady(sql, row))}
     returning ${sql.unsafe(RECIPE_SELECT)}
   `;
   return rowToRecipe(inserted[0]!);
@@ -111,7 +137,7 @@ export async function updateRecipe(
   for (const column of columns) row[column] = full[column];
 
   const updated = await sql<RecipeRow[]>`
-    update recipes set ${sql(row)}
+    update recipes set ${sql(jsonbReady(sql, row))}
      where slug = ${slug}
     returning ${sql.unsafe(RECIPE_SELECT)}
   `;

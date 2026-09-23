@@ -38,6 +38,7 @@ import site from '../src/data/site.js';
 import videosTable, { forRecipe } from '../src/data/videos.js';
 
 import { db, close, isConfigured } from '../api/_lib/db.js';
+import { jsonbReady } from '../api/_lib/repo.js';
 import {
   recipeToRow,
   rowToRecipe,
@@ -213,16 +214,9 @@ async function importRecipes(): Promise<number> {
   let n = 0;
 
   for (const record of records) {
-    const row = recipeToRow(record);
-    // jsonb columns must be handed to the driver as JSON, not as a JS object,
-    // which it would otherwise try to map to a Postgres composite type.
-    const prepared = {
-      ...row,
-      nutrition: sql.json(row['nutrition'] as never),
-      ingredients: sql.json(row['ingredients'] as never),
-      instructions: sql.json(row['instructions'] as never),
-      faqs: sql.json(row['faqs'] as never)
-    };
+    // jsonbReady is the same helper the admin API writes through, so the
+    // migration and a later edit cannot bind these columns differently.
+    const prepared = jsonbReady(sql, recipeToRow(record));
 
     await sql`
       insert into recipes ${sql(prepared)}
