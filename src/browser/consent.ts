@@ -7,9 +7,12 @@
  *
  * What this site actually stores, which is what the categories below describe:
  *
- *   - Nothing is written to the visitor's device before they choose, except
- *     the consent record itself once they have. No cookie is set for visitors
- *     at all; everything is first-party localStorage.
+ *   - Nothing is written to the visitor's device before they choose. Once they
+ *     have, the answer itself is stored — in localStorage and in one
+ *     first-party cookie, both named kitchenlo-consent. That cookie is the
+ *     only one this site sets for visitors, it holds the answer and nothing
+ *     else, and remembering that the question was already put is the textbook
+ *     case of a cookie that needs no consent of its own.
  *   - Fonts are served from this origin (see section 0 of styles.css), so no
  *     third party is contacted while a page loads. There is no analytics
  *     script, no advertising script and no tag manager anywhere in the bundle.
@@ -24,6 +27,7 @@
  *
  * Unbundled scripts can use the same gate through window.KitchenloConsent.
  */
+import { auth } from './auth.js';
 import { $, ROOT, readStorage, writeStorage } from './dom.js';
 
 /**
@@ -70,7 +74,7 @@ const ALWAYS_ON = [
     id: 'necessary',
     title: 'Necessary',
     description:
-      'The record of this choice, and your signed-in session if you create an account. Without these the site cannot remember that you have answered, or that you are signed in.'
+      'The record of this choice — kept in a cookie named kitchenlo-consent and in your browser storage, so it survives if either is cleared — and your signed-in session if you create an account. Without these the site cannot remember that you have answered, or that you are signed in.'
   },
   {
     id: 'preferences',
@@ -97,14 +101,187 @@ const listeners: Listener[] = [];
 /* ------------------------------------------------------------- the record -- */
 
 /**
- * The visitor's answer, or null when they have not given one. A record from an
- * older version, or one written before a category existed, counts as no answer.
+ * Where the answer is kept, and why there is more than one place.
+ *
+ * localStorage alone was losing answers in two ordinary situations. Safari and
+ * other WebKit browsers cap script-written storage and evict it after about a
+ * week of not visiting, so somebody who accepted in January was asked again in
+ * February through no fault of their own. And a visitor who clears "cookies"
+ * in some browser UIs clears localStorage with it.
+ *
+ * So the record is written to three places and read back from whichever still
+ * has it:
+ *
+ *   local    localStorage, as before. Fast, and the usual source.
+ *   cookie   A first-party cookie. Survives some clears that localStorage does
+ *            not, and vice versa, so the pair is more durable than either.
+ *   account  Namespaced by user id, for people with an account. This is what
+ *            makes the answer follow the account through signing out and back
+ *            in even if the shared copies are gone.
+ *
+ * Any one survivor restores the other two; see hydrate(). Note the limit of
+ * this, stated plainly because it matters: all three live in this browser.
+ * Accounts on this site exist only in the visitor's own browser, so there is
+ * no server that could carry an answer to a second device, and somebody
+ * signing in on a new phone is asked again. Fixing that needs real
+ * server-side accounts, not more local copies.
  */
-export function decision(): Allowed | null {
-  const stored = readStorage<StoredConsent | null>(KEY, null);
+type Source = 'local' | 'cookie' | 'account';
+
+/** Checks shape and version. Anything unrecognised counts as no answer. */
+function validate(stored: StoredConsent | null): Allowed | null {
   if (!stored || stored.v !== VERSION || typeof stored.allowed !== 'object') return null;
   if (OPTIONAL.some((c) => typeof stored.allowed[c.id] !== 'boolean')) return null;
   return stored.allowed;
+}
+
+/** The key this browser's signed-in account keeps its own copy under. */
+function accountKey(): string | null {
+  const id = auth.current()?.id;
+  return id ? `${KEY}:${id}` : null;
+}
+
+function readFrom(source: Source): Allowed | null {
+  if (source === 'local') {
+    return validate(readStorage<StoredConsent | null>(KEY, null));
+  }
+  if (source === 'cookie') {
+    return validate(readCookie());
+  }
+  const key = accountKey();
+  return key ? validate(readStorage<StoredConsent | null>(key, null)) : null;
+}
+
+function writeTo(source: Source, record: StoredConsent): void {
+  if (source === 'local') {
+    writeStorage(KEY, record);
+    return;
+  }
+  if (source === 'cookie') {
+    writeCookie(record);
+    return;
+  }
+  const key = accountKey();
+  if (key) writeStorage(key, record);
+}
+
+/* ------------------------------------------------------------------ cookie -- */
+
+/**
+ * The consent cookie.
+ *
+ * Recording the answer is itself the textbook case of a cookie that needs no
+ * consent: without it the site cannot remember that the question was already
+ * put. It holds the same record as localStorage and nothing else — no
+ * identifier, and nothing that could distinguish one visitor from another
+ * beyond the answer they gave.
+ */
+function readCookie(): StoredConsent | null {
+  try {
+    for (const part of document.cookie.split(';')) {
+      const eq = part.indexOf('=');
+      if (eq === -1) continue;
+      if (part.slice(0, eq).trim() !== KEY) continue;
+      return JSON.parse(decodeURIComponent(part.slice(eq + 1).trim())) as StoredConsent;
+    }
+  } catch {
+    // Malformed or unreadable; treated as absent so another source can answer.
+  }
+  return null;
+}
+
+function writeCookie(record: StoredConsent): void {
+  try {
+    const attributes = [
+      `${KEY}=${encodeURIComponent(JSON.stringify(record))}`,
+      'Path=/',
+      // A year. Long enough to be a real answer, short enough that consent is
+      // not treated as given forever without being asked again.
+      'Max-Age=31536000',
+      // Lax rather than Strict: the cookie must be present on the first page
+      // after arriving from a search result or a shared link, or the banner
+      // reappears to somebody who has already answered.
+      'SameSite=Lax'
+    ];
+    if (location.protocol === 'https:') attributes.push('Secure');
+    document.cookie = attributes.join('; ');
+  } catch {
+    // Cookies disabled. localStorage still holds the answer.
+  }
+}
+
+function clearCookie(): void {
+  try {
+    document.cookie = `${KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
+  } catch {
+    /* nothing to clear */
+  }
+}
+
+/* --------------------------------------------------------------- hydrate -- */
+
+/**
+ * Finds the answer wherever it survived and puts it back everywhere it is
+ * missing, so losing any one store does not lose the answer.
+ *
+ * Runs at startup and again whenever the signed-in user changes, which is what
+ * carries an answer onto a freshly created account and back off it on the next
+ * sign-in.
+ */
+function hydrate(): Allowed | null {
+  const order: Source[] = ['local', 'cookie', 'account'];
+
+  let found: Allowed | null = null;
+  let foundIn: Source | null = null;
+  for (const source of order) {
+    const value = readFrom(source);
+    if (value) {
+      found = value;
+      foundIn = source;
+      break;
+    }
+  }
+  if (!found || !foundIn) return null;
+
+  /*
+   * Rewritten with a fresh timestamp only where it was missing, never where it
+   * already exists: the date on the surviving copy is when consent was
+   * actually given, and overwriting it everywhere would erase that.
+   */
+  const source = foundIn;
+  const existing =
+    source === 'cookie'
+      ? readCookie()
+      : readStorage<StoredConsent | null>(
+          source === 'local' ? KEY : (accountKey() as string),
+          null
+        );
+  const record: StoredConsent = existing ?? {
+    v: VERSION,
+    decidedAt: new Date().toISOString(),
+    allowed: found
+  };
+
+  for (const target of order) {
+    if (target === source) continue;
+    if (target === 'account' && !accountKey()) continue;
+    if (!readFrom(target)) writeTo(target, record);
+  }
+
+  return found;
+}
+
+/**
+ * The visitor's answer, or null when they have not given one. A record from an
+ * older version, or one written before a category existed, counts as no answer.
+ *
+ * Reads the two shared stores directly so the answer survives either being
+ * cleared. The account copy is not consulted here — it is folded in by
+ * hydrate() at startup and on sign-in, which keeps this cheap enough to call
+ * on every allows().
+ */
+export function decision(): Allowed | null {
+  return readFrom('local') ?? readFrom('cookie');
 }
 
 /** Whether one optional category may run. Anything undecided is a no. */
@@ -117,8 +294,25 @@ export function onChange(listener: Listener): void {
   listeners.push(listener);
 }
 
+/**
+ * Records an answer in every store at once, so no single one is the only copy.
+ * This is only ever reached from Accept, Reject or Save — dismissing the
+ * banner or closing the dialog never calls it, which is what keeps "I closed
+ * it" from meaning "I agreed".
+ */
 function save(allowed: Allowed): void {
-  writeStorage(KEY, { v: VERSION, decidedAt: new Date().toISOString(), allowed });
+  const record: StoredConsent = {
+    v: VERSION,
+    decidedAt: new Date().toISOString(),
+    allowed
+  };
+
+  writeTo('local', record);
+  writeTo('cookie', record);
+  // No-op when signed out; hydrate() copies it onto the account at the next
+  // sign-in, so an answer given as a guest is not lost on registering.
+  writeTo('account', record);
+
   listeners.forEach((listener) => listener(allowed));
 }
 
@@ -131,13 +325,18 @@ const everything = (value: boolean): Allowed =>
  * was in before they ever answered.
  */
 export function withdraw(): void {
-  writeStorage(KEY, null);
+  /* Every copy, or the next hydrate() would quietly restore the answer that
+     was just withdrawn from whichever store still held it. */
   try {
     localStorage.removeItem(KEY);
+    const key = accountKey();
+    if (key) localStorage.removeItem(key);
   } catch {
-    // Storage disabled or full. The record is already overwritten with null,
-    // which decision() reads as no answer, so the outcome is the same.
+    // Storage disabled. Overwrite instead, which decision() reads as absent.
+    writeStorage(KEY, null);
   }
+  clearCookie();
+
   listeners.forEach((listener) => listener({}));
   showBanner();
 }
@@ -244,11 +443,11 @@ function buildDialog(): HTMLElement {
         ${ALWAYS_ON.map(alwaysOnRow).join('')}
         ${OPTIONAL.map(optionalRow).join('')}
         <p class="cookie-note">
-          Kitchenlo sets no cookies for visitors and loads no third-party code:
-          the fonts are served from this site, and there is no analytics script,
-          advertising script or tag manager anywhere on it. The only optional
-          thing that runs today is the page counter described above.
-          <a href="${privacyHref}">Read the Privacy Policy</a>.
+          Kitchenlo loads no third-party code: the fonts are served from this
+          site, and there is no analytics script, advertising script or tag
+          manager anywhere on it. The one cookie we set records this choice.
+          The only optional thing that runs today is the page counter described
+          above. <a href="${privacyHref}">Read the Privacy Policy</a>.
         </p>
       </div>
       <div class="cookie-panel-foot">
@@ -392,7 +591,24 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-if (!decision()) showBanner();
+/*
+ * Startup, and every later change of signed-in user.
+ *
+ * auth.onChange fires immediately with the current user, so this covers the
+ * first page load as well as a later sign-in or sign-out. Each time, the
+ * answer is recovered from whichever store still holds it and copied back to
+ * the others — which is what makes signing in restore an answer this browser
+ * had lost, and what carries a guest's answer onto a newly created account.
+ *
+ * The banner is then shown or removed to match. Removing it matters: without
+ * that, a visitor who signed in on a page where the banner was already up
+ * would be left looking at a question that had just been answered for them.
+ */
+auth.onChange(() => {
+  const answered = hydrate() ?? decision();
+  if (answered) removeBanner();
+  else showBanner();
+});
 
 /* The same gate, for scripts that are not part of the bundle. */
 declare global {

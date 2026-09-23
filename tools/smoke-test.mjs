@@ -163,6 +163,13 @@ function load(relPath, options = {}) {
 
   const { window } = dom;
 
+  /*
+   * Cookies a returning visitor would already be carrying. Seeded here rather
+   * than in beforeParse because document does not exist yet at that point, and
+   * before the bundle runs because that is when consent reads them.
+   */
+  for (const cookie of options.cookies ?? []) window.document.cookie = cookie;
+
   // jsdom will not fetch scripts here, so execute the local ones by hand.
   const scripts = Array.from(window.document.querySelectorAll('script[src]'))
     .map((s) => s.getAttribute('src'))
@@ -1339,6 +1346,190 @@ suite('every page declares its depth to the client', () => {
     const found = (html.match(/<body[^>]*data-depth="(\d+)"/) || [])[1];
     check(page + ': data-depth=' + expected, found === expected, 'got ' + found);
   }
+});
+
+/* ------------------------------------------- consent survives a return -- */
+
+/**
+ * The answer has to outlast the visit, and outlast losing any one store.
+ *
+ * It is written to three places — localStorage, a first-party cookie, and a
+ * copy namespaced to the signed-in account — because losing one of them was
+ * asking people who had already answered to answer again. WebKit evicts
+ * script-written storage after about a week of not visiting, and clearing
+ * "cookies" in some browser UIs takes localStorage with it.
+ *
+ * Every case below carries storage *and* cookies from one window into the
+ * next, which is what a returning visitor actually brings with them. Checking
+ * only localStorage would pass whatever the cookie did.
+ */
+suite('consent survives a return visit', () => {
+  const CONSENT_COOKIE = 'kitchenlo-consent=';
+
+  const localOf = (w) => {
+    const out = {};
+    for (let i = 0; i < w.localStorage.length; i++) {
+      const k = w.localStorage.key(i);
+      out[k] = w.localStorage.getItem(k);
+    }
+    return out;
+  };
+  const cookiesOf = (w) =>
+    w.document.cookie.split(';').map((c) => c.trim()).filter(Boolean);
+  const hasCookie = (w) => cookiesOf(w).some((c) => c.startsWith(CONSENT_COOKIE));
+  const accountCopies = (store) =>
+    Object.keys(store).filter((k) => k.startsWith('kitchenlo-consent:'));
+  const shown = (v) => !!v.doc.querySelector('#cookieBanner');
+
+  /** A registered account, as LocalAuthProvider writes one. */
+  const USERS = JSON.stringify({
+    'test@example.com': {
+      id: 'u1', name: 'Test', email: 'test@example.com',
+      createdAt: '2026-01-01T00:00:00.000Z', salt: 'x', hash: 'y', weak: true
+    }
+  });
+  const SESSION = JSON.stringify({ email: 'test@example.com' });
+
+  /* -- a first visit asks, and stores nothing until answered -- */
+
+  let v = load('index.html');
+  check('a new visitor is asked', shown(v));
+  check('nothing is stored before answering',
+    Object.keys(localOf(v.window)).length === 0 && cookiesOf(v.window).length === 0,
+    JSON.stringify(localOf(v.window)) + ' / ' + cookiesOf(v.window).join(','));
+
+  /* -- dismissing is not answering -- */
+
+  v = load('index.html');
+  v.doc.querySelector('[data-cookie-preferences]').click();
+  v.doc.dispatchEvent(new v.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  let store = localOf(v.window);
+  let cookies = cookiesOf(v.window);
+  check('dismissing the dialog records nothing',
+    !('kitchenlo-consent' in store) && !hasCookie(v.window));
+  check('so the next visit asks again',
+    shown(load('index.html', { storage: store, cookies })));
+
+  /* Closing the banner is not offered at all, but assert it stays put if the
+     dialog is cancelled rather than answered. */
+  check('the banner is still there after cancelling', shown(v));
+
+  /* -- accepting persists, across pages and visits -- */
+
+  v = load('index.html');
+  v.doc.querySelector('[data-cookie-accept]').click();
+  store = localOf(v.window);
+  cookies = cookiesOf(v.window);
+
+  check('accepting writes localStorage', 'kitchenlo-consent' in store);
+  check('accepting writes a cookie', hasCookie(v.window));
+  check('the banner is gone immediately', !shown(v));
+  check('a return visit is not asked again',
+    !shown(load('index.html', { storage: store, cookies })));
+  check('navigating to a recipe is not asked again',
+    !shown(load('recipes/shakshuka.html', { storage: store, cookies })));
+
+  /* -- either shared store alone is enough -- */
+
+  check('the cookie alone is enough',
+    !shown(load('index.html', { storage: {}, cookies })));
+  check('localStorage alone is enough',
+    !shown(load('index.html', { storage: store, cookies: [] })));
+
+  /* Whichever one survived puts the other back, so the next clear of the
+     other store is survivable too. */
+  const fromCookie = load('index.html', { storage: {}, cookies });
+  check('a surviving cookie restores localStorage',
+    'kitchenlo-consent' in localOf(fromCookie.window));
+  const fromLocal = load('index.html', { storage: store, cookies: [] });
+  check('surviving localStorage restores the cookie', hasCookie(fromLocal.window));
+
+  /* -- a signed-in user, through sign out and back in -- */
+
+  const signedIn = { 'kitchenlo-users': USERS, 'kitchenlo-session': SESSION };
+  v = load('index.html', { storage: signedIn });
+  check('a signed-in user who never answered is asked', shown(v));
+
+  v.doc.querySelector('[data-cookie-accept]').click();
+  const memberStore = localOf(v.window);
+  const memberCookies = cookiesOf(v.window);
+  check('the answer is mirrored onto the account',
+    accountCopies(memberStore).length === 1, accountCopies(memberStore).join(','));
+
+  const loggedOut = { ...memberStore };
+  delete loggedOut['kitchenlo-session'];
+  check('signing out does not bring the banner back',
+    !shown(load('index.html', { storage: loggedOut, cookies: memberCookies })));
+  check('signing back in does not bring the banner back',
+    !shown(load('index.html', { storage: memberStore, cookies: memberCookies })));
+
+  /* -- the account copy is what rescues a cleared browser -- */
+
+  const accountOnly = { ...signedIn };
+  for (const key of accountCopies(memberStore)) accountOnly[key] = memberStore[key];
+
+  const rescued = load('index.html', { storage: accountOnly, cookies: [] });
+  check('a signed-in user is not re-asked after both shared stores are cleared',
+    !shown(rescued));
+  check('and the shared stores are rebuilt from the account copy',
+    'kitchenlo-consent' in localOf(rescued.window) && hasCookie(rescued.window));
+
+  /* The same clearing without an account has nothing left to recover from,
+     which is the honest limit of storing all three copies in one browser. */
+  check('without an account there is nothing to recover from',
+    shown(load('index.html', { storage: {}, cookies: [] })));
+
+  /* -- an answer given as a guest follows onto a new account -- */
+
+  v = load('index.html');
+  v.doc.querySelector('[data-cookie-accept]').click();
+  const guestStore = localOf(v.window);
+  const guestCookies = cookiesOf(v.window);
+
+  const registered = load('index.html', {
+    storage: { ...guestStore, ...signedIn },
+    cookies: guestCookies
+  });
+  check('registering does not re-ask someone who already answered',
+    !shown(registered));
+  check('and their answer is copied onto the new account',
+    accountCopies(localOf(registered.window)).length === 1);
+
+  /* -- withdrawing clears every copy, or it would come back -- */
+
+  const w = load('index.html', { storage: memberStore, cookies: memberCookies });
+  w.doc.querySelector('[data-cookie-preferences]').click();
+  w.doc.querySelector('[data-cookie-withdraw]').click();
+  const afterWithdraw = localOf(w.window);
+
+  check('withdrawing clears localStorage', !('kitchenlo-consent' in afterWithdraw));
+  check('withdrawing clears the account copy', accountCopies(afterWithdraw).length === 0);
+  check('withdrawing clears the cookie', !hasCookie(w.window));
+  check('withdrawing asks again', shown(w));
+  check('and the answer does not come back on the next visit',
+    shown(load('index.html', {
+      storage: afterWithdraw,
+      cookies: cookiesOf(w.window)
+    })));
+
+  /* -- the gate follows the record, not just the banner -- */
+
+  const rejected = load('index.html');
+  rejected.doc.querySelector('[data-cookie-reject]').click();
+  const rejectedStore = localOf(rejected.window);
+  const rejectedCookies = cookiesOf(rejected.window);
+  const returning = load('index.html', {
+    storage: rejectedStore, cookies: rejectedCookies
+  });
+  check('a stored rejection is not asked again', !shown(returning));
+  check('and a stored rejection still refuses analytics',
+    returning.window.KitchenloConsent.allows('analytics') === false);
+
+  /* -- no console errors anywhere in the above -- */
+
+  check('no script errors while restoring consent',
+    rescued.errors.length === 0 && registered.errors.length === 0 && w.errors.length === 0,
+    rescued.errors[0] || registered.errors[0] || w.errors[0]);
 });
 
 /* ---------------------------------------------- consent actually gates -- */

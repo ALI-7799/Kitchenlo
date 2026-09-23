@@ -682,7 +682,8 @@ function privacy() {
       {
         h: 'Cookies and local storage',
         p: [
-          'We set no cookies for visitors at all. We use local storage in your own browser to remember your theme preference, your saved recipes, your meal plan, your shopping list and your signed-in session. None of it is sent to us, and you can clear all of it at any time from your account page or by clearing site data in your browser.',
+          'We set one cookie, named kitchenlo-consent. It records your answer to the cookie question and nothing else — no identifier, nothing that distinguishes you from anyone else who answered the same way — and it lasts a year. The same answer is also kept in your browser storage, and on your account if you have one, so that clearing one of them does not mean being asked all over again.',
+          'Everything else is local storage in your own browser: your theme preference, your saved recipes, your meal plan, your shopping list and your signed-in session. None of it is sent to us, and you can clear all of it at any time from your account page or by clearing site data in your browser.',
           'If you allow the analytics category in the cookie settings, opening a page sends us its address, the date and a rough indication of where the visit came from — a search engine, a social site, another page here, or none of those. It stores nothing in your browser and records no IP address or any other identifier, so the counts cannot be traced back to a person. It does not run until you allow it, and you can withdraw that at any time from Cookie preferences in the footer.'
         ]
       },
