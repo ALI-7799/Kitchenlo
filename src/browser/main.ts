@@ -11,6 +11,7 @@
  */
 import './app.js';
 import './consent.js';
+import { trackPageView } from './analytics.js';
 
 import './pages/home.js';
 import './pages/recipe-index.js';
@@ -21,3 +22,10 @@ import './pages/favorites.js';
 import './pages/planner.js';
 import './pages/shopping-list.js';
 import './pages/contact.js';
+
+/*
+ * Counted last, after every page module has had its turn. The call sets no
+ * cookie, stores nothing and identifies nobody; see src/browser/analytics.ts
+ * for what is and is not sent, and why it sits outside the consent gate.
+ */
+trackPageView();

@@ -58,6 +58,7 @@ src/
     collections.ts      Curated cross-cutting collections (diet, time, meal prep)
     guides.ts           Six long-form cooking guides
     videos.ts           Per-recipe videos, keyed by slug
+    recipes-generated.ts  Pulled from the database; null until migrated
   templates/          Rendering, shared by the generator and the browser
     layout.ts           <head>, header, footer, SEO tags, JSON-LD wrapper
     components.ts       Cards, FAQ blocks and other shared fragments
@@ -69,13 +70,27 @@ src/
     app.ts              Theme, nav, search, saving, header account state
     auth.ts, store.ts, dom.ts
     pages/              One module per page, each guarding on its own elements
+    analytics.ts        Anonymous view beacon
+    search-api.ts       Backend search, used only to enrich the local results
+  admin/              Admin dashboard, bundled separately from the public site
+    main.ts             Sign-in, views, dashboard, Recipe of the Day
+    editor.ts           The recipe editor
+    api.ts, dom.ts
 tools/
   build.ts            The generator
   bundle.mjs          esbuild driver
   smoke-test.mjs      DOM test suite (plain JS on purpose)
+  migrate.ts          One-shot import of the authored content into Postgres
+  pull.ts             Database -> src/data/recipes-generated.ts
+api/                  Vercel serverless functions
+  _lib/               Database, auth, validation, HTTP helpers (not routes)
+  recipes/, admin/    The endpoints
+db/schema.sql         Postgres schema
+admin/index.html      Dashboard shell (noindex, disallowed in robots.txt)
 assets/css/styles.css
 assets/js/config.js     Runtime keys, deliberately unbundled
 assets/js/kitchenlo.js  Build output, committed so the repo serves statically
+assets/js/admin.js      Admin build output; never loaded by a public page
 ```
 
 Everything else in the repo root is generated output.
@@ -201,6 +216,118 @@ This is stated plainly on the signup page rather than hidden.
 
 To switch to real accounts, follow the steps in `assets/js/config.js`. That file is
 deliberately left out of the bundle so keys can be changed without a rebuild.
+
+## Backend
+
+The site stays statically generated. The backend is an **authoring** layer, not a
+rendering one: recipes live in Postgres and are edited through `/admin`, but every
+public page is still pre-rendered at build time with its structured data, canonical
+tag and sitemap entry exactly as before. Nothing a visitor loads goes through a
+database.
+
+```
+admin edits  ->  Postgres  ->  "Publish"  ->  deploy hook  ->  npm run build
+                                                                    |
+                                                    npm run pull writes
+                                                    src/data/recipes-generated.ts
+                                                                    |
+                                                    generator renders 87 pages
+```
+
+**Why not render recipe pages dynamically.** It would cost pre-rendered structured
+data, a fast first byte, and the build-time validation that currently turns a typo
+in a `related` list into a failed build rather than a live page with a hole in it.
+There is no SEO upside to pay for that.
+
+### Setup
+
+1. Create a project at [supabase.com](https://supabase.com), then run
+   `db/schema.sql` in the SQL editor.
+2. Create a **public** Storage bucket named `recipe-images`.
+3. `cp .env.example .env` and fill it in. Read the comments — the pooler
+   connection string and the service-role key are both easy to get wrong.
+4. Import the existing content and create your login:
+
+   ```bash
+   npm run migrate:check        # proves the round trip loses nothing, writes nothing
+   npm run migrate -- --admin
+   ```
+
+5. Set the same variables in Vercel under **Settings → Environment Variables**,
+   and create a deploy hook under **Settings → Git → Deploy Hooks** for
+   `VERCEL_DEPLOY_HOOK_URL`.
+
+### The fallback that keeps deploys safe
+
+`src/data/recipes-generated.ts` is committed, and the build reads it. `npm run pull`
+refreshes it from the database; if the database is unreachable, unconfigured, or
+returns nothing, pull leaves the file alone and the build continues from the last
+good copy. So a clone with no credentials still builds the whole site, and a
+database outage cannot break a deploy.
+
+Until the first migration is run that file exports `null` and the site builds from
+the hand-authored `recipes-*.ts` files — byte for byte what it built before.
+
+### API
+
+| Route | |
+| --- | --- |
+| `GET /api/recipes` | List, with the same facets the index page uses |
+| `GET /api/recipes/:slug` | One recipe in full |
+| `POST /api/recipes` | Create (admin) |
+| `PUT /api/recipes/:slug` | Update (admin) |
+| `DELETE /api/recipes/:slug` | Delete (admin) |
+| `GET /api/categories` | Categories with live recipe counts |
+| `GET /api/collections` | Collections, resolved to their members |
+| `GET /api/recipe-of-the-day` | Today's recipe and when it changes |
+| `GET /api/search?q=` | Ranked full-text search |
+| `POST /api/track` | Anonymous view counter |
+
+### Recipe of the Day
+
+Unchanged, and still computed rather than stored: `pickForDay()` derives the pick
+from the calendar date in the site's own timezone, so every visitor sees the same
+recipe, a refresh cannot change it, and it turns over at local midnight. The API
+runs the identical function, so it cannot disagree with the built page. The only
+stored state is an optional admin pin for a specific date.
+
+### Search
+
+The recipe index still searches the bundled library first, so results are instant
+and work offline. The API adds relevance ranking and tolerance for a misspelling on
+top, and is only allowed to *add* matches the local pass missed — never to remove
+one. If `/api/search` is slow, rate-limited or not deployed, the page behaves
+exactly as it does today and the visitor sees nothing amiss.
+
+### Videos
+
+Each recipe carries its own video URL, set in the admin. A recipe without one
+renders the existing "Video coming soon" panel — the same graceful state
+`src/data/videos.ts` already produced for a missing entry, never an error or an
+empty frame. YouTube and Vimeo links are embedded; any other https URL is played
+directly.
+
+### Analytics
+
+`page_views` holds a path, a date, a coarse referrer bucket and a counter — that is
+the entire record. No cookie, no visitor id, no IP, no user agent, no timestamp
+finer than the day. Two people reading the same recipe increment the same row and
+are not distinguishable afterwards. Do Not Track and Global Privacy Control are
+both honoured client-side.
+
+### Security
+
+- Admin passwords: scrypt (N=32768), never reversible, never in the bundle.
+- Sessions: server-side rows; the cookie holds a random id, stored only as its
+  SHA-256. `HttpOnly`, `Secure`, `SameSite=Strict`. Signing out revokes instantly.
+- Login: per-account lockout after 5 failures, plus a uniform response time so the
+  endpoint cannot be used to discover which addresses are admins.
+- Every query is a parameterised tagged template; no SQL is ever concatenated.
+- Uploads are validated by magic bytes, not by filename or declared type, so a
+  `.jpg` that is really an SVG is rejected rather than served back as a scriptable
+  document on the site's own origin.
+- `/admin` is `noindex`, disallowed in `robots.txt`, and carries a CSP.
+- Secrets live only in environment variables. The public bundle reads none.
 
 ## Deployment
 

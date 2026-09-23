@@ -14,14 +14,29 @@ import healthyFood from './recipes-healthy-food.js';
 import breakfast from './recipes-breakfast.js';
 import desserts from './recipes-desserts.js';
 import comfortFood from './recipes-comfort-food.js';
+import generated from './recipes-generated.js';
 
-const sources: RecipeSource[] = [
+/** The authored library, used whenever the database has not been pulled. */
+const authored: RecipeSource[] = [
   ...quickDinners,
   ...healthyFood,
   ...breakfast,
   ...desserts,
   ...comfortFood
 ];
+
+/**
+ * One list, from whichever source is active.
+ *
+ * `npm run pull` fills recipes-generated.ts from the database and it wins from
+ * then on; until then it exports null and this is exactly the authored array,
+ * so the site builds identically before and after the backend exists.
+ *
+ * Note this is still a single list, which is the property the module has
+ * always depended on: the generator, the browser and the search index all read
+ * `all` below, and none of them can be handed a different subset than another.
+ */
+const sources: RecipeSource[] = generated ?? authored;
 
 /**
  * Resolves the authored shape into the rendered shape.
@@ -204,10 +219,20 @@ function mulberry32(seed: number): () => number {
  * change it.
  */
 export function recipeOfTheDay(now: Date, timezone: string): Recipe {
-  const list = all;
+  return pickForDay(all, siteDayNumber(now, timezone));
+}
+
+/**
+ * The selection itself, over an arbitrary list and day number.
+ *
+ * Split out so the API can run the identical algorithm against rows read
+ * straight from the database without first constructing the module's `all`.
+ * Keeping one implementation is the point: /api/recipe-of-the-day and the
+ * built page must never disagree about what today's recipe is.
+ */
+export function pickForDay<T>(list: T[], day: number): T {
   if (!list.length) throw new Error('No recipes to choose from');
 
-  const day = siteDayNumber(now, timezone);
   const n = list.length;
   // Floor division, so the cycle is still correct for dates before the epoch.
   const cycle = Math.floor(day / n);

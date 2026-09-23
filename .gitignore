@@ -6,3 +6,11 @@ Thumbs.db
 
 # TypeScript build output
 .build/
+
+# Backend secrets. Never commit a filled-in .env; .env.example is the template.
+.env
+.env.local
+.env.*.local
+
+# Vercel CLI
+.vercel/

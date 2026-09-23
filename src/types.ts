@@ -56,6 +56,25 @@ export interface Faq {
   a: string;
 }
 
+/**
+ * A recipe's video, as stored in the backend.
+ *
+ * Declared here rather than in api/ so that nothing under src/ has to import
+ * from the serverless code: the dependency runs one way, src -> api, and the
+ * browser bundle never pulls in a module that touches the database.
+ *
+ * `null` is a first-class value — it means the recipe has no video yet, and
+ * the recipe template renders its existing "coming soon" panel rather than an
+ * empty frame or an error. See src/data/videos.ts.
+ */
+export interface RecipeVideo {
+  /** An https:// URL or a site-relative assets/ path. Validated server-side. */
+  url: string;
+  poster?: string;
+  title?: string;
+  seconds?: number;
+}
+
 /** A recipe as written in src/data/recipes-*.ts. */
 export interface RecipeSource {
   slug: string;
@@ -91,6 +110,14 @@ export interface RecipeSource {
   faqs: Faq[];
   /** Slugs of related recipes. Validated at build time. */
   related: string[];
+  /**
+   * Set only on recipes that came from the database. Authored recipes leave it
+   * undefined and get their video from the table in src/data/videos.ts, so
+   * both sources work and neither has to know about the other.
+   */
+  video?: RecipeVideo | null;
+  /** Database-only. Unpublished recipes never reach the generator. */
+  published?: boolean;
 }
 
 /** A recipe after normalisation, which is what every template receives. */

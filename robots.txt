@@ -6,5 +6,7 @@ Disallow: /login
 Disallow: /signup
 Disallow: /favorites
 Disallow: /shopping-list
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: https://kitchenlo.com/sitemap.xml

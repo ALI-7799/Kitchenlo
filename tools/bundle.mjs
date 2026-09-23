@@ -39,6 +39,26 @@ const browser = {
   legalComments: 'none'
 };
 
+/*
+ * The admin dashboard, bundled separately from the public site.
+ *
+ * Keeping it out of kitchenlo.js is the point: visitors never download the
+ * editor, and the editor never inherits the public bundle's recipe payload.
+ * It is also never referenced by a generated page — only admin/index.html
+ * loads it — so it stays out of the critical path entirely.
+ */
+const admin = {
+  ...shared,
+  entryPoints: ['src/admin/main.ts'],
+  outfile: 'assets/js/admin.js',
+  format: 'iife',
+  platform: 'browser',
+  target: ['es2020', 'chrome91', 'firefox90', 'safari15'],
+  minify: true,
+  sourcemap: true,
+  legalComments: 'none'
+};
+
 const generator = {
   ...shared,
   entryPoints: ['tools/build.ts'],
@@ -61,21 +81,35 @@ const smokeTest = {
   packages: 'external'
 };
 
+/*
+ * The content tools. Same treatment as the generator: bundled to plain ESM so
+ * they run under a bare `node` with no TypeScript loader, and with `postgres`
+ * left external so the driver is resolved from node_modules at runtime.
+ */
+const nodeTools = ['tools/migrate.ts', 'tools/pull.ts'].map((entry) => ({
+  ...shared,
+  entryPoints: [entry],
+  outfile: `.build/${path.basename(entry, '.ts')}.mjs`,
+  format: 'esm',
+  platform: 'node',
+  target: 'node20',
+  packages: 'external'
+}));
+
 if (watch) {
-  const contexts = await Promise.all([
-    esbuild.context(browser),
-    esbuild.context(generator),
-    esbuild.context(smokeTest)
-  ]);
+  const contexts = await Promise.all(
+    [browser, generator, smokeTest, admin, ...nodeTools].map((c) => esbuild.context(c))
+  );
   await Promise.all(contexts.map((c) => c.watch()));
   console.log('watching src/ for changes...');
 } else {
-  const results = await Promise.all([
-    esbuild.build(browser),
-    esbuild.build(generator),
-    esbuild.build(smokeTest)
-  ]);
+  const results = await Promise.all(
+    [browser, generator, smokeTest, admin, ...nodeTools].map((c) => esbuild.build(c))
+  );
   const errors = results.flatMap((r) => r.errors);
   if (errors.length) process.exit(1);
-  console.log('bundled assets/js/kitchenlo.js, .build/build.mjs and .build/smoke-test.mjs');
+  console.log(
+    'bundled assets/js/kitchenlo.js, assets/js/admin.js, .build/build.mjs,\n' +
+      '         .build/smoke-test.mjs, .build/migrate.mjs and .build/pull.mjs'
+  );
 }

@@ -10,7 +10,8 @@ import site from '../../data/site.js';
 import { recipeCard } from '../../templates/components.js';
 import { $, $$, depth } from '../dom.js';
 import * as store from '../store.js';
-import type { CategorySlug, DietTag, Difficulty, SortKey } from '../../types.js';
+import { searchViaApi } from '../search-api.js';
+import type { CategorySlug, DietTag, Difficulty, Recipe, SortKey } from '../../types.js';
 
 const grid = $('#recipeResults');
 const bar = $('#filterBar');
@@ -44,16 +45,8 @@ if (grid && bar) {
   const maxTimeFor = (id: string): number | null =>
     site.filters.time.find((t) => t.id === id)?.max ?? null;
 
-  function apply(): void {
-    const results = Recipes.query({
-      query: state.query,
-      category: state.category || null,
-      difficulty: state.difficulty || null,
-      maxTime: maxTimeFor(state.time),
-      diet: state.diet ? [state.diet] : [],
-      sort: state.sort
-    });
-
+  /** Paints a result set into the grid. */
+  function render(results: Recipe[]): void {
     grid!.innerHTML = results.map((r) => recipeCard(r, depth)).join('');
     grid!.hidden = results.length === 0;
     if (empty) empty.hidden = results.length !== 0;
@@ -67,7 +60,76 @@ if (grid && bar) {
 
     // Newly rendered cards need their saved state marked.
     store.refresh();
+  }
+
+  function apply(): void {
+    const results = Recipes.query({
+      query: state.query,
+      category: state.category || null,
+      difficulty: state.difficulty || null,
+      maxTime: maxTimeFor(state.time),
+      diet: state.diet ? [state.diet] : [],
+      sort: state.sort
+    });
+
+    // Local results go up immediately. This is the only rendering path that
+    // is guaranteed to run, so the page is never waiting on the network to
+    // show something.
+    render(results);
     syncUrl();
+
+    void refineFromApi(results);
+  }
+
+  /*
+   * Asks the backend to re-rank the current query, and applies the answer only
+   * if it is still relevant and actually better.
+   *
+   * "Better" is deliberately narrow. The backend wins when it finds recipes
+   * the substring match missed — a stemmed word, or a misspelling caught by
+   * trigram similarity. It is not allowed to *remove* a local match, because
+   * a visitor who typed an exact ingredient should not watch a correct result
+   * vanish a moment later.
+   */
+  async function refineFromApi(local: Recipe[]): Promise<void> {
+    const query = state.query;
+    // Only a text query benefits; the facets are already exact locally.
+    if (query.trim().length < 2) return;
+    // Nothing to gain when the sort is not relevance-driven.
+    if (state.sort !== 'popular') return;
+
+    const ranked = await searchViaApi(query, {
+      ...(state.category ? { category: state.category } : {}),
+      ...(state.diet ? { diet: [state.diet] } : {})
+    });
+    if (!ranked) return;
+
+    // The visitor kept typing, or changed a facet, while this was in flight.
+    if (state.query !== query) return;
+
+    const localSlugs = new Set(local.map((r) => r.slug));
+    const extra = ranked
+      .filter((hit) => !localSlugs.has(hit.slug))
+      .flatMap((hit) => {
+        const recipe = Recipes.bySlug(hit.slug);
+        return recipe ? [recipe] : [];
+      })
+      // Respect the facets the visitor has set; the API filters on category
+      // and diet but not on time or difficulty.
+      .filter((recipe) => {
+        const maxTime = maxTimeFor(state.time);
+        if (maxTime && Recipes.totalMinutes(recipe) > maxTime) return false;
+        if (state.difficulty && recipe.difficulty !== state.difficulty) return false;
+        return true;
+      });
+
+    if (!extra.length) return;
+
+    // Ordered by the backend's ranking, appended after the exact local hits.
+    const order = new Map(ranked.map((hit, index) => [hit.slug, index]));
+    extra.sort((a, b) => (order.get(a.slug) ?? 0) - (order.get(b.slug) ?? 0));
+
+    render([...local, ...extra]);
   }
 
   function syncUrl(): void {

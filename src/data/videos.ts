@@ -30,6 +30,8 @@
  * After editing, rerun the build.
  */
 
+import generated from './recipes-generated.js';
+
 /** A self-hosted file. */
 export interface VideoFile {
   file: string;
@@ -78,6 +80,42 @@ const videos: Record<string, VideoEntry> = {
   // 'lentil-soup': { youtube: 'dQw4w9WgXcQ' }
 };
 
+/**
+ * The video stored against a recipe in the database, if there is one.
+ *
+ * Reads the generated list directly rather than going through
+ * src/data/recipes.ts, because that module imports this one for nothing and a
+ * cycle between the two would be needless. A plain lookup over a 55-element
+ * array is not worth an index.
+ *
+ * Returns undefined — not null — when there is no database entry, so that the
+ * caller can tell "no database" apart from "database says no video" and fall
+ * through to the table above in the first case only.
+ */
+function databaseVideo(slug: string): VideoEntry | undefined {
+  if (!generated) return undefined;
+
+  const recipe = generated.find((r) => r.slug === slug);
+  const video = recipe?.video;
+  if (!video?.url) return undefined;
+
+  // An embed URL is recognised by host and handed to the right branch of the
+  // normaliser; anything else is treated as a file, which is what a Supabase
+  // Storage URL or an assets/ path is.
+  if (/(?:youtube\.com|youtu\.be)\//i.test(video.url)) {
+    return { youtube: video.url, title: video.title ?? '', seconds: video.seconds ?? 0 };
+  }
+  if (/vimeo\.com\//i.test(video.url)) {
+    return { vimeo: video.url, title: video.title ?? '', seconds: video.seconds ?? 0 };
+  }
+  return {
+    file: video.url,
+    poster: video.poster ?? '',
+    title: video.title ?? '',
+    seconds: video.seconds ?? 0
+  };
+}
+
 /* Pulls the id out of a watch, share, shorts or embed URL, and passes a bare
    id straight through. */
 function youtubeId(value: string): string {
@@ -97,7 +135,12 @@ function vimeoId(value: string): string {
  * render the placeholder.
  */
 export function forRecipe(slug: string): ResolvedVideo | null {
-  const raw = videos[slug];
+  // A recipe from the database carries its own video, set in the admin. That
+  // takes precedence over this file, which then only serves recipes still
+  // being authored in TypeScript. Both paths end up in the same normaliser
+  // below, so the template cannot tell which one a video came from.
+  const fromDatabase = databaseVideo(slug);
+  const raw = fromDatabase ?? videos[slug];
   if (!raw) return null;
 
   const entry: VideoFile | VideoYouTube | VideoVimeo =
