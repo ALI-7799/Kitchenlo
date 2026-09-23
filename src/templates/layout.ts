@@ -351,9 +351,16 @@ function render(page: PageSpec): string {
     <link rel="apple-touch-icon" href="${esc(rel('favicon.svg', depth))}" />
     <link rel="manifest" href="${esc(rel('site.webmanifest', depth))}" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+${/*
+   * Fonts are self-hosted — see section 0 of assets/css/styles.css for why.
+   * These two are preloaded because @font-face inside the stylesheet is only
+   * discovered once the CSS has parsed, which would otherwise leave a flash of
+   * fallback text on a cold visit. Only the latin subsets: latin-ext is needed
+   * by a minority of pages, and preloading a file a page never uses wastes the
+   * request. The rationale stays here rather than in an HTML comment, which
+   * would ship to every visitor on all 87 pages.
+   */ ''}    <link rel="preload" href="${esc(rel('assets/fonts/inter-latin.woff2', depth))}" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="${esc(rel('assets/fonts/fraunces-latin.woff2', depth))}" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="${esc(asset('assets/css/styles.css', depth))}" />
 
     <script>

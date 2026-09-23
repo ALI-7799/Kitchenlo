@@ -117,6 +117,44 @@ function load(relPath, options = {}) {
       });
       window.TextEncoder = TextEncoder;
 
+      /*
+       * Record anything the page tries to send, so consent gating can be
+       * asserted on what actually left the browser rather than on whether a
+       * flag was set.
+       *
+       * Only sendBeacon is stubbed, not fetch. The analytics module tries
+       * sendBeacon first and returns as soon as it succeeds, so this captures
+       * the call without the fallback running — and leaving fetch undefined
+       * keeps the search enhancement on its offline path, which is what the
+       * rest of the suite already expects.
+       */
+      window.__beacons = [];
+      Object.defineProperty(window.navigator, 'sendBeacon', {
+        value: (url, body) => {
+          /*
+           * The body arrives as a Blob, and jsdom's Blob has no .text() — the
+           * only way to read one here is FileReader, which is asynchronous.
+           * Each entry therefore carries a promise for its own contents, and
+           * a test that cares about the payload awaits it.
+           */
+          let text;
+          if (body && window.Blob && body instanceof window.Blob) {
+            text = new Promise((resolve) => {
+              const reader = new window.FileReader();
+              reader.onload = () => resolve(String(reader.result));
+              reader.onerror = () => resolve('');
+              reader.readAsText(body);
+            });
+          } else {
+            text = Promise.resolve(String(body));
+          }
+          window.__beacons.push({ url: String(url), body, text });
+          return true;
+        },
+        configurable: true,
+        writable: true
+      });
+
       for (const [key, value] of Object.entries(options.storage ?? {})) {
         window.localStorage.setItem(key, value);
       }
@@ -802,10 +840,24 @@ const consentOf = (window) => {
   const raw = window.localStorage.getItem(CONSENT_KEY);
   return raw ? JSON.parse(raw) : null;
 };
+/*
+ * The consent record version, read out of the module rather than hardcoded.
+ *
+ * A bump means every visitor is asked again, which is exactly what these
+ * fixtures simulate not happening — so a stale literal here would turn a
+ * deliberate bump into eight confusing failures about banners reappearing.
+ * Reading it keeps the fixtures correct across a bump automatically.
+ */
+const CONSENT_VERSION = Number(
+  /const VERSION = (\d+)/.exec(
+    fs.readFileSync(path.join(ROOT, 'src/browser/consent.ts'), 'utf8')
+  )?.[1]
+);
+
 /** A stored answer as the browser would have written it. */
 const answered = (analytics, advertising) => ({
   [CONSENT_KEY]: JSON.stringify({
-    v: 1,
+    v: CONSENT_VERSION,
     decidedAt: '2026-01-01T00:00:00.000Z',
     allowed: { analytics, advertising }
   })
@@ -1287,6 +1339,190 @@ suite('every page declares its depth to the client', () => {
     const found = (html.match(/<body[^>]*data-depth="(\d+)"/) || [])[1];
     check(page + ': data-depth=' + expected, found === expected, 'got ' + found);
   }
+});
+
+/* ---------------------------------------------- consent actually gates -- */
+
+/**
+ * The previous suite checks the banner's behaviour. This one checks the thing
+ * that behaviour is *for*: that nothing optional reaches the network until it
+ * has been allowed, and that allowing it works.
+ *
+ * Asserted on captured beacons rather than on internal state, because a gate
+ * that sets a flag correctly and still sends the request would pass any test
+ * written against the flag.
+ */
+suite('nothing optional runs before consent', async () => {
+  const beaconsOf = (w) => w.__beacons.filter((b) => b.url.includes('/api/track'));
+
+  /* -- the site ships no third-party code at all -- */
+
+  const pages = [];
+  (function walk(dir) {
+    for (const entry of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
+      const rel = dir ? dir + '/' + entry.name : entry.name;
+      if (entry.isDirectory()) {
+        if (!SKIP_DIRS.includes(entry.name)) walk(rel);
+      } else if (entry.name.endsWith('.html')) pages.push(rel);
+    }
+  })('');
+
+  /*
+   * Fonts were previously loaded from fonts.googleapis.com, which contacted
+   * Google on every page load before the visitor had been asked anything — a
+   * transfer no banner can cover, because it happens while the page parses.
+   * They are self-hosted now, and this fails if any third-party subresource
+   * creeps back in.
+   */
+  const thirdParty = [];
+  for (const page of pages) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+    for (const m of html.matchAll(/<(?:link|script|iframe|img)\b[^>]*?\b(?:src|href)="(https?:\/\/[^"]+)"/g)) {
+      const host = new URL(m[1]).hostname;
+      // schema.org appears only inside JSON-LD as a vocabulary identifier; it
+      // is never fetched.
+      if (host.endsWith('kitchenlo.com') || host === 'schema.org') continue;
+      thirdParty.push(page + ' -> ' + host);
+    }
+  }
+  check('no page loads a third-party resource', thirdParty.length === 0, thirdParty[0]);
+
+  const fontFiles = fs.existsSync(path.join(ROOT, 'assets/fonts'))
+    ? fs.readdirSync(path.join(ROOT, 'assets/fonts')).filter((f) => f.endsWith('.woff2'))
+    : [];
+  check('fonts are served from this origin', fontFiles.length > 0,
+    'assets/fonts is empty');
+  check('the stylesheet declares them locally',
+    /@font-face[\s\S]*?url\('\.\.\/fonts\//.test(
+      fs.readFileSync(path.join(ROOT, 'assets/css/styles.css'), 'utf8')),
+    'no local @font-face found');
+
+  /* -- the page counter is gated -- */
+
+  const undecided = load('index.html');
+  check('no page view is sent before a choice is made',
+    beaconsOf(undecided.window).length === 0,
+    JSON.stringify(beaconsOf(undecided.window)[0]));
+  check('no script errors while undecided', undecided.errors.length === 0,
+    undecided.errors[0]);
+
+  const rejected = load('index.html', { storage: answered(false, false) });
+  check('no page view is sent after rejecting',
+    beaconsOf(rejected.window).length === 0,
+    JSON.stringify(beaconsOf(rejected.window)[0]));
+
+  const accepted = load('index.html', { storage: answered(true, false) });
+  const sent = beaconsOf(accepted.window);
+  check('a page view is sent once analytics is allowed', sent.length === 1,
+    sent.length + ' beacons');
+  check('exactly one is sent, not one per module', sent.length <= 1);
+
+  /* What it carries is as important as whether it fires. */
+  if (sent.length) {
+    /* Read back through the promise the stub attached; see the sendBeacon
+       stub in load() for why this cannot be synchronous. */
+    const raw = await sent[0].text;
+
+    let payload = {};
+    try {
+      payload = JSON.parse(String(raw));
+    } catch {
+      /* asserted below */
+    }
+    check('the beacon carries only a path and a referrer',
+      Object.keys(payload).sort().join(',') === 'path,referrer',
+      Object.keys(payload).join(','));
+    check('the beacon carries no identifier',
+      !/id|uid|visitor|session|fingerprint/i.test(String(raw)),
+      String(raw));
+  }
+
+  /* Allowing advertising alone must not switch the counter on. */
+  const adsOnly = load('index.html', { storage: answered(false, true) });
+  check('allowing advertising does not enable analytics',
+    beaconsOf(adsOnly.window).length === 0);
+
+  /* -- accepting from the banner counts the page you are already on -- */
+
+  const live = load('index.html');
+  live.doc.querySelector('[data-cookie-accept]').click();
+  check('accepting from the banner counts the current page',
+    beaconsOf(live.window).length === 1,
+    beaconsOf(live.window).length + ' beacons');
+
+  /* -- the banner and dialog link to the policy -- */
+
+  const first = load('index.html');
+  const banner = first.doc.querySelector('#cookieBanner');
+  const bannerPolicy = banner?.querySelector('a[href$="privacy"]');
+  check('the banner links to the privacy policy', !!bannerPolicy);
+  check('there is no close button that could imply an answer',
+    !banner?.querySelector('[data-cookie-close]'));
+
+  first.doc.querySelector('[data-cookie-preferences]').click();
+  const panel = first.doc.querySelector('#cookieDialog');
+  check('the dialog links to the privacy policy',
+    !!panel?.querySelector('a[href$="privacy"]'));
+
+  /* Necessary and Preferences are disclosed, and neither is togglable. */
+  const locked = Array.from(panel.querySelectorAll('input[disabled]'));
+  check('always-on categories are disclosed', locked.length === 2,
+    locked.length + ' locked rows');
+  check('always-on categories are shown as on',
+    locked.every((i) => i.checked));
+  check('always-on categories carry no consent id',
+    locked.every((i) => !i.hasAttribute('data-cookie-option')));
+
+  const optional = Array.from(panel.querySelectorAll('[data-cookie-option]'));
+  check('optional categories are offered', optional.length === 2,
+    optional.length + ' optional rows');
+  check('no optional category is pre-ticked',
+    optional.every((i) => !i.checked));
+
+  /* -- withdrawing brings the question back -- */
+
+  const settled = load('index.html', { storage: answered(true, true) });
+  check('no banner once decided', !settled.doc.querySelector('#cookieBanner'));
+
+  settled.doc.querySelector('[data-cookie-preferences]').click();
+  const withdrawButton = settled.doc.querySelector('[data-cookie-withdraw]');
+  check('withdraw is offered once a choice exists',
+    !!withdrawButton && !withdrawButton.hidden);
+
+  withdrawButton.click();
+  check('withdrawing clears the stored answer',
+    consentOf(settled.window) === null ||
+      settled.window.KitchenloConsent.decision() === null,
+    JSON.stringify(consentOf(settled.window)));
+  check('withdrawing brings the banner back',
+    !!settled.doc.querySelector('#cookieBanner'));
+  check('withdrawing revokes the gate',
+    settled.window.KitchenloConsent.allows('analytics') === false);
+
+  /* Withdraw is pointless before anything has been decided, so it is hidden. */
+  const fresh = load('index.html');
+  fresh.doc.querySelector('[data-cookie-preferences]').click();
+  check('withdraw is hidden before a first choice',
+    fresh.doc.querySelector('[data-cookie-withdraw]').hidden === true);
+
+  /* -- third-party video embeds are click-to-load -- */
+
+  const embedded = CORE.recipePage({
+    ...RECIPES.all[0],
+    slug: RECIPES.all[0].slug
+  });
+  // The fixture above has no video; assert the mechanism on the template's own
+  // output for a recipe that does, by checking no recipe page ships an iframe.
+  const withIframe = pages.filter((p) =>
+    p.startsWith('recipes/') &&
+    /<iframe/.test(fs.readFileSync(path.join(ROOT, p), 'utf8')));
+  check('no recipe page ships a third-party iframe', withIframe.length === 0,
+    withIframe[0]);
+  check('the embed template renders a play button, not a frame',
+    !/videoFrame[\s\S]{0,400}<iframe/.test(
+      fs.readFileSync(path.join(ROOT, 'src/templates/pages-core.ts'), 'utf8')),
+    'an iframe is still emitted at build time');
+  check('recipePage still renders', typeof embedded.body === 'string' && embedded.body.length > 0);
 });
 
 /* ------------------------------------------------------------- API routes -- */

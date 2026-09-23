@@ -26,10 +26,9 @@
     <link rel="apple-touch-icon" href="favicon.svg" />
     <link rel="manifest" href="site.webmanifest" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=53fddcaced" />
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/styles.css?v=50be51cb03" />
 
     <script>
       /* Applies the stored theme before first paint so the page never flashes. */
@@ -169,10 +168,12 @@
             <h2>What we do not do</h2>
             <p>We do not sell personal information. We do not operate advertising trackers on this site. We do not have access to the accounts created in your browser, which also means we cannot recover a forgotten password for you.</p>
             <h2>Third-party services</h2>
-            <p>Recipe photography is served from Unsplash, and web fonts are served from Google Fonts. Both providers receive your IP address as a normal consequence of your browser requesting those files, and each operates under its own privacy policy.</p>
-            <p>If this site is hosted on GitHub Pages, GitHub may collect standard server logs including IP addresses for security and operational purposes.</p>
+            <p>No third-party code runs on this site. Recipe photographs and web fonts are both served from kitchenlo.com, so loading a page contacts nobody but us. There is no analytics script, no advertising script and no tag manager anywhere on the site.</p>
+            <p>A recipe page may offer a video hosted on YouTube or Vimeo. Those load only if you press play: until you do, nothing is requested from them, and pressing play is what tells us you are content for that provider to receive your IP address.</p>
+            <p>Our host, Vercel, processes requests to this site and keeps standard server logs, including IP addresses, for security and operational purposes.</p>
             <h2>Cookies and local storage</h2>
-            <p>We do not set tracking cookies. We use local storage to remember your theme preference, your saved recipes, your meal plan and your signed-in session. You can clear all of it at any time from your account page or by clearing site data in your browser.</p>
+            <p>We set no cookies for visitors at all. We use local storage in your own browser to remember your theme preference, your saved recipes, your meal plan, your shopping list and your signed-in session. None of it is sent to us, and you can clear all of it at any time from your account page or by clearing site data in your browser.</p>
+            <p>If you allow the analytics category in the cookie settings, opening a page sends us its address, the date and a rough indication of where the visit came from — a search engine, a social site, another page here, or none of those. It stores nothing in your browser and records no IP address or any other identifier, so the counts cannot be traced back to a person. It does not run until you allow it, and you can withdraw that at any time from Cookie preferences in the footer.</p>
             <h2>Your rights</h2>
             <p>Because your data lives in your browser, you have direct control over it. The account page provides an export function that produces a JSON copy of everything stored, and a delete function that removes it permanently.</p>
             <p>If this changes in future and we introduce server-side accounts, this policy will be updated before that feature ships.</p>
@@ -284,7 +285,7 @@
     </button>
 
     <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
-    <script src="assets/js/config.js?v=53fddcaced"></script>
-    <script src="assets/js/kitchenlo.js?v=53fddcaced" defer></script>
+    <script src="assets/js/config.js?v=50be51cb03"></script>
+    <script src="assets/js/kitchenlo.js?v=50be51cb03" defer></script>
   </body>
 </html>

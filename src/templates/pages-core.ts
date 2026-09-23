@@ -447,6 +447,21 @@ function categoryPage(cat: Category): PageSpec {
 
 /* --------------------------------------------------------- recipe detail -- */
 
+/**
+ * Names the host an embed would contact, so the notice beside the play button
+ * can say who rather than a vague "a third party". Falls back to the hostname
+ * for anything not recognised.
+ */
+function embedProvider(src: string): string {
+  if (/youtube-nocookie\.com|youtube\.com|youtu\.be/.test(src)) return 'YouTube';
+  if (/vimeo\.com/.test(src)) return 'Vimeo';
+  try {
+    return new URL(src).hostname.replace(/^www\./, '');
+  } catch {
+    return 'the video provider';
+  }
+}
+
 function recipePage(recipe: Recipe): PageSpec {
   const total = Recipes.totalMinutes(recipe);
   const cat = site.categories.find((c) => c.slug === recipe.category);
@@ -498,10 +513,30 @@ function recipePage(recipe: Recipe): PageSpec {
                 <p class="video-empty-note">Video coming soon</p>
               </div>`;
   } else if (video.kind === 'embed') {
-    videoFrame = `<div class="video-frame">
-                <iframe src="${esc(video.src)}" title="${esc(
-                  videoCaption
-                )}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    /*
+     * Click to load, rather than an iframe in the markup.
+     *
+     * A YouTube or Vimeo frame contacts that provider the moment the page
+     * loads, whether or not anybody watches — which would make every recipe
+     * page a third-party request the visitor never asked for. Holding the URL
+     * in a data attribute until someone actually presses play means the
+     * provider is contacted only by a visitor who has chosen to watch, and
+     * that choice is the consent for it.
+     *
+     * This is the reason the embed is not tied to a consent category instead:
+     * gating it that way would leave someone who declined analytics unable to
+     * watch a video they had deliberately clicked on.
+     */
+    videoFrame = `<div class="video-frame video-frame-embed" data-video-embed="${esc(
+      video.src
+    )}" data-video-title="${esc(videoCaption)}">
+                <button class="video-load" type="button">
+                  <span class="video-load-mark" aria-hidden="true">&#9654;</span>
+                  <span class="video-load-label">Play video</span>
+                </button>
+                <p class="video-load-note">
+                  Loads from ${esc(embedProvider(video.src))}, which will then receive your IP address.
+                </p>
               </div>`;
   } else {
     videoFrame = `<div class="video-frame">

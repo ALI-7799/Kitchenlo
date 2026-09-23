@@ -7,20 +7,24 @@
  * between pages or between visits. The server aggregates by (path, day) and
  * keeps no visitor record either; see the comment at the top of api/track.ts.
  *
- * Three ways a visitor is not counted:
+ * Four ways a visitor is not counted:
  *
+ *   - They have not allowed the `analytics` category. This is the first check
+ *     and the beacon does not fire without it.
  *   - Do Not Track, or Global Privacy Control, is enabled. Both are explicit
  *     requests not to be measured, and honouring them costs a number nobody
  *     was going to act on.
  *   - The page is being prerendered by the browser, so no one has seen it.
  *   - The request fails, which is ignored rather than retried.
  *
- * The site's consent module gates *optional* categories. This is not one:
- * with no identifier and no storage there is no personal data to consent to,
- * which is what allows an honest banner to keep saying the site runs no
- * tracking. Adding anything here that identifies a visitor would change that,
- * and would have to move behind consent.allows('analytics').
+ * On the consent gate: this beacon neither writes to nor reads from the
+ * visitor's device, so it does not trigger the storage rules that cookies do,
+ * and it retains no identifier. It is gated anyway. A banner offering an
+ * "Analytics" choice that did not actually govern the only analytics on the
+ * site would be misleading, and that is a worse failure than losing a count.
  */
+
+import { allows, onChange } from './consent.js';
 
 /** Respects both the older DNT header and the newer GPC signal. */
 function optedOut(): boolean {
@@ -38,6 +42,9 @@ function optedOut(): boolean {
   return false;
 }
 
+/** Guards against counting the same page load twice. */
+let counted = false;
+
 /**
  * Counts one page view.
  *
@@ -52,10 +59,28 @@ export function trackPageView(): void {
   } catch {
     // Deliberately silent: analytics is never worth a visible error.
   }
+
+  /*
+   * A visitor who accepts analytics from the banner is already on a page, and
+   * that page was not counted because the answer came after it loaded. Rather
+   * than lose it, or make them navigate again, count it the moment consent
+   * arrives. `counted` keeps a later change of mind from counting it twice.
+   */
+  onChange(() => {
+    try {
+      send();
+    } catch {
+      /* as above */
+    }
+  });
 }
 
 function send(): void {
+  // The gate. Undecided counts as no, so nothing is sent before the visitor
+  // has answered the banner.
+  if (!allows('analytics')) return;
   if (optedOut()) return;
+  if (counted) return;
 
   // A prerendered page has not been seen by anyone yet. Counting it would
   // inflate views for whatever the browser guessed the visitor might click.
@@ -64,6 +89,11 @@ function send(): void {
     document.addEventListener('prerenderingchange', () => trackPageView(), { once: true });
     return;
   }
+
+  /* Past every guard, so this load is now accounted for. Set before the
+     request rather than after, because both send paths below are fire and
+     forget and neither reports back. */
+  counted = true;
 
   const payload = JSON.stringify({
     // Path only. The query string and hash are dropped here as well as on the
