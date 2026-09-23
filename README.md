@@ -82,9 +82,10 @@ tools/
   smoke-test.mjs      DOM test suite (plain JS on purpose)
   migrate.ts          One-shot import of the authored content into Postgres
   pull.ts             Database -> src/data/recipes-generated.ts
-api/                  Vercel serverless functions
-  _lib/               Database, auth, validation, HTTP helpers (not routes)
-  recipes/, admin/    The endpoints
+api/
+  [...route].ts       The only Serverless Function; dispatches every /api/* URL
+  _lib/               Database, auth, validation, HTTP helpers
+  _routes/            One module per endpoint, called by the dispatcher
 db/schema.sql         Postgres schema
 admin/index.html      Dashboard shell (noindex, disallowed in robots.txt)
 assets/css/styles.css
@@ -282,6 +283,32 @@ the hand-authored `recipes-*.ts` files — byte for byte what it built before.
 | `GET /api/recipe-of-the-day` | Today's recipe and when it changes |
 | `GET /api/search?q=` | Ranked full-text search |
 | `POST /api/track` | Anonymous view counter |
+
+### One function, not fourteen
+
+Vercel turns every non-underscore file under `api/` into its own Serverless
+Function, and the Hobby plan allows twelve. Fourteen route files exceeded that
+on their own — and the `functions` glob in `vercel.json` was originally written
+as `api/**/*.ts`, which also matched the eight helpers in `api/_lib/`. Naming a
+path in `functions` opts it *in* as a function source, overriding the rule that
+underscore-prefixed files are skipped, so the deployment tried to create
+twenty-two functions, eight of which were modules with no handler at all.
+
+So `api/[...route].ts` is now the only routable file. It holds the URL table
+and dispatches to a handler in `api/_routes/`, which is underscore-prefixed and
+therefore unreachable as a route. Every URL is unchanged, every handler is
+unchanged, and the count is **1**.
+
+Consolidating also suits the plan: one warm instance serves every endpoint, so
+there are fewer cold starts than when each route warmed up separately, and
+since the handlers already shared `api/_lib/` the bundle is barely larger than
+any single one of them was.
+
+The dispatch table is the one thing this arrangement makes fragile — a mistyped
+key silently 404s an endpoint the dashboard needs, where per-file routing made
+that impossible. `npm test` therefore calls all fourteen routes with a method
+none of them accept: a 405 proves the dispatcher found the handler and ran it,
+while opening no database connection. A 404 means it is not wired up.
 
 ### Recipe of the Day
 

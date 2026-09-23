@@ -11,13 +11,13 @@
  * sees nothing amiss. What the backend adds is relevance ranking, fuzzy
  * matching for typos, and a record of what people search for.
  */
-import type { VercelRequest, VercelResponse } from './_lib/vercel.js';
+import type { VercelRequest, VercelResponse } from '../_lib/vercel.js';
 import {
   assertMethod, cachePublic, intParam, json, param, withErrors
-} from './_lib/http.js';
-import { recordSearch, searchRecipes } from './_lib/repo.js';
-import { hashedIp } from './_lib/auth.js';
-import { overLimit } from './_lib/rate-limit.js';
+} from '../_lib/http.js';
+import { recordSearch, searchRecipes } from '../_lib/repo.js';
+import { hashedIp } from '../_lib/auth.js';
+import { overLimit } from '../_lib/rate-limit.js';
 
 /** Longer than any real query; a huge one is a probe, not a search. */
 const MAX_TERM = 100;

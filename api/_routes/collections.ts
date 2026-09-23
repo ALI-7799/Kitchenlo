@@ -8,10 +8,10 @@
  * the database. Resolving both forms here means callers do not have to know
  * which kind they are looking at.
  */
-import type { VercelRequest, VercelResponse } from './_lib/vercel.js';
-import { assertMethod, cachePublic, json, withErrors } from './_lib/http.js';
-import { allCollections, allRecipes } from './_lib/repo.js';
-import type { RecipeRecord } from './_lib/recipe-row.js';
+import type { VercelRequest, VercelResponse } from '../_lib/vercel.js';
+import { assertMethod, cachePublic, json, withErrors } from '../_lib/http.js';
+import { allCollections, allRecipes } from '../_lib/repo.js';
+import type { RecipeRecord } from '../_lib/recipe-row.js';
 
 interface Filter {
   diet?: string[];

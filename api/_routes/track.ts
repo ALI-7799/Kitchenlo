@@ -17,11 +17,11 @@
  * The caller never waits for this and never sees an error from it. A failed
  * counter must not be visible on a recipe page.
  */
-import type { VercelRequest, VercelResponse } from './_lib/vercel.js';
-import { assertMethod, body, cacheNever, json, withErrors } from './_lib/http.js';
-import { recordView } from './_lib/repo.js';
-import { hashedIp } from './_lib/auth.js';
-import { overLimit } from './_lib/rate-limit.js';
+import type { VercelRequest, VercelResponse } from '../_lib/vercel.js';
+import { assertMethod, body, cacheNever, json, withErrors } from '../_lib/http.js';
+import { recordView } from '../_lib/repo.js';
+import { hashedIp } from '../_lib/auth.js';
+import { overLimit } from '../_lib/rate-limit.js';
 
 /** Only paths the site actually serves; anything else is discarded. */
 const TRACKABLE = /^\/(?:$|recipes(?:\/[a-z0-9-]+)?$|category\/[a-z0-9-]+$|collection\/[a-z0-9-]+$|guides(?:\/[a-z0-9-]+)?$|categories$|meal-planner$|about$|contact$)/;

@@ -6,7 +6,7 @@
   "trailingSlash": false,
   "cleanUrls": true,
   "functions": {
-    "api/**/*.ts": {
+    "api/[...route].ts": {
       "memory": 1024,
       "maxDuration": 15
     }

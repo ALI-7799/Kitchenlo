@@ -13,11 +13,11 @@
  * different calendar dates, and the requirement is that they see the same
  * recipe; one fixed zone is what makes that true.
  */
-import type { VercelRequest, VercelResponse } from './_lib/vercel.js';
-import { assertMethod, cachePublic, json, param, withErrors } from './_lib/http.js';
-import { allRecipes, rotdOverrideFor } from './_lib/repo.js';
-import { pickForDay, siteDayNumber } from '../src/data/recipes.js';
-import site from '../src/data/site.js';
+import type { VercelRequest, VercelResponse } from '../_lib/vercel.js';
+import { assertMethod, cachePublic, json, param, withErrors } from '../_lib/http.js';
+import { allRecipes, rotdOverrideFor } from '../_lib/repo.js';
+import { pickForDay, siteDayNumber } from '../../src/data/recipes.js';
+import site from '../../src/data/site.js';
 
 export default withErrors(async (req: VercelRequest, res: VercelResponse) => {
   assertMethod(req, 'GET');

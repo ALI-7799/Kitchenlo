@@ -3,9 +3,9 @@
  *
  * The five recipe categories, each with a live count of the recipes in it.
  */
-import type { VercelRequest, VercelResponse } from './_lib/vercel.js';
-import { assertMethod, cachePublic, json, withErrors } from './_lib/http.js';
-import { allCategories, allRecipes } from './_lib/repo.js';
+import type { VercelRequest, VercelResponse } from '../_lib/vercel.js';
+import { assertMethod, cachePublic, json, withErrors } from '../_lib/http.js';
+import { allCategories, allRecipes } from '../_lib/repo.js';
 
 export default withErrors(async (req: VercelRequest, res: VercelResponse) => {
   assertMethod(req, 'GET');

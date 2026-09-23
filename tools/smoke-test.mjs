@@ -1289,6 +1289,127 @@ suite('every page declares its depth to the client', () => {
   }
 });
 
+/* ------------------------------------------------------------- API routes -- */
+
+/**
+ * The whole API is one Serverless Function, because the Hobby plan allows
+ * twelve and one file per route needed twenty-two. That makes the dispatch
+ * table in api/[...route].ts load-bearing in a way per-file routing never was:
+ * a typo in a key used to be impossible, and now it silently 404s an endpoint
+ * that the admin dashboard depends on.
+ *
+ * Every route is therefore called here with a method it does not accept. Each
+ * handler checks the method before it does anything else, so a 405 proves the
+ * dispatcher found the right handler and ran it, while never opening a
+ * database connection — which is what lets this run in CI with no credentials.
+ * A 404 means the route is not wired up at all.
+ */
+suite('every API route is reachable through the single function', () => {
+  /** Minimal stand-ins for what Vercel passes a function. */
+  const mockRequest = (method, url) => {
+    const [pathname, query = ''] = url.split('?');
+    const segments = pathname.replace(/^\/+api\/?/, '').split('/').filter(Boolean);
+    return {
+      method,
+      url,
+      // Vercel supplies the catch-all segments alongside the real query string.
+      query: { route: segments, ...Object.fromEntries(new URLSearchParams(query)) },
+      cookies: {},
+      headers: { host: 'kitchenlo.test' },
+      body: undefined
+    };
+  };
+
+  const mockResponse = () => {
+    const state = { code: 0, body: '', headers: {} };
+    const res = {
+      status(code) { state.code = code; return res; },
+      setHeader(key, value) { state.headers[key.toLowerCase()] = value; return res; },
+      getHeader(key) { return state.headers[key.toLowerCase()]; },
+      send(payload) { state.body = String(payload); return res; },
+      json(payload) { state.body = JSON.stringify(payload); return res; },
+      end() { return res; },
+      state
+    };
+    return res;
+  };
+
+  return (async () => {
+    const { default: route } = await import('../api/[...route].ts');
+
+    // PATCH is accepted by nothing, so every handler rejects it at its first
+    // statement, before any query runs.
+    const routes = [
+      '/api/recipes',
+      '/api/recipes/garlic-butter-salmon',
+      '/api/categories',
+      '/api/collections',
+      '/api/recipe-of-the-day',
+      '/api/search',
+      '/api/track',
+      '/api/admin/login',
+      '/api/admin/session',
+      '/api/admin/stats',
+      '/api/admin/publish',
+      '/api/admin/upload',
+      '/api/admin/rotd',
+      '/api/admin/recipes'
+    ];
+
+    for (const url of routes) {
+      const res = mockResponse();
+      await route(mockRequest('PATCH', url), res);
+      check(
+        url + ' reaches its handler',
+        res.state.code === 405,
+        'got ' + res.state.code + ' ' + res.state.body.slice(0, 80)
+      );
+    }
+
+    /* An unknown path must 404 rather than fall through to a handler. */
+    const missing = mockResponse();
+    await route(mockRequest('GET', '/api/does-not-exist'), missing);
+    check('an unknown route 404s', missing.state.code === 404,
+      'got ' + missing.state.code);
+
+    /* The slug is put where the handler already looks for it. */
+    const slugged = mockRequest('PATCH', '/api/recipes/shakshuka');
+    await route(slugged, mockResponse());
+    check('a recipe slug is passed through as ?slug',
+      slugged.query.slug === 'shakshuka', 'got ' + slugged.query.slug);
+
+    /* Other query parameters must survive dispatch. */
+    const withQuery = mockRequest('PATCH', '/api/recipes/shakshuka?draft=1');
+    await route(withQuery, mockResponse());
+    check('query parameters survive dispatch',
+      withQuery.query.draft === '1' && withQuery.query.slug === 'shakshuka',
+      'draft=' + withQuery.query.draft);
+
+    /* A traversal attempt must not resolve to anything. */
+    const traversal = mockResponse();
+    await route(mockRequest('GET', '/api/../../etc/passwd'), traversal);
+    check('a traversal attempt does not resolve', traversal.state.code === 404,
+      'got ' + traversal.state.code);
+
+    /*
+     * Every handler module must be wired into the table. This is the failure
+     * the consolidation actually introduced the risk of: a route file that
+     * exists, compiles, and is simply never reachable.
+     */
+    const handlerFiles = fs
+      .readdirSync(path.join(ROOT, 'api', '_routes'))
+      .filter((f) => f.endsWith('.ts'));
+    const dispatcher = fs.readFileSync(path.join(ROOT, 'api', '[...route].ts'), 'utf8');
+    const unwired = handlerFiles.filter(
+      (f) => !dispatcher.includes("_routes/" + f.replace(/\.ts$/, '.js'))
+    );
+    check('every handler in api/_routes is imported by the dispatcher',
+      unwired.length === 0, unwired.join(', '));
+    check('the dispatcher covers all 14 handlers', handlerFiles.length === 14,
+      handlerFiles.length + ' handler files');
+  })();
+});
+
 /* --------------------------------------------------------------- runner -- */
 
 for (const { name, fn } of suites) {
