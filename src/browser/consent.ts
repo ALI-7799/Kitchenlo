@@ -111,22 +111,29 @@ function showBanner(): void {
   banner.id = 'cookieBanner';
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-labelledby', 'cookieBannerTitle');
+  /*
+   * A compact card in the corner rather than a full-width bar.
+   *
+   * The copy is short because the card is small, not because anything was
+   * dropped: the necessary/optional distinction is still stated here, and the
+   * full per-category detail lives one click away in the preferences dialog,
+   * which is unchanged.
+   *
+   * Accept and Reject sit side by side at equal weight. Making refusal harder
+   * to find than acceptance is the thing consent banners are most often
+   * criticised for, and a two-column grid costs nothing to keep them level.
+   */
   banner.innerHTML = `
-    <div class="container cookie-banner-inner">
-      <div class="cookie-copy">
-        <h2 id="cookieBannerTitle">Cookies on Kitchenlo</h2>
-        <p>
-          We keep a little in your browser to make the site work: your theme, saved
-          recipes, meal plan and sign-in. That much is necessary. Anything optional,
-          such as analytics, stays switched off until you allow it.
-        </p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-primary btn-sm" type="button" data-cookie-accept>Accept all</button>
-        <button class="btn btn-secondary btn-sm" type="button" data-cookie-reject>Reject all</button>
-        <button class="btn btn-ghost btn-sm" type="button" data-cookie-preferences>Manage preferences</button>
-      </div>
-    </div>`;
+    <h2 id="cookieBannerTitle">Cookies</h2>
+    <p>
+      We keep your theme, saved recipes and meal plan in your browser.
+      Optional cookies stay off until you allow them.
+    </p>
+    <div class="cookie-actions">
+      <button class="btn btn-primary btn-sm" type="button" data-cookie-accept>Accept all</button>
+      <button class="btn btn-secondary btn-sm" type="button" data-cookie-reject>Reject all</button>
+    </div>
+    <button class="cookie-manage" type="button" data-cookie-preferences>Manage preferences</button>`;
 
   /* First in the document, so the keyboard reaches it before the page even
      though it is painted at the bottom. Focus is left where it was rather than

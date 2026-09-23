@@ -3,21 +3,16 @@
         <span><strong>${x(n.title)}</strong><span>${S(n)} min &middot; ${x(n.difficulty)}</span></span></a>`).join(""),l=o.map(n=>`<a class="search-result" href="${X}guides/${n.slug}">
         <img src="${x(s(n.image))}" alt="" loading="lazy" />
         <span><strong>${x(n.title)}</strong><span>Guide &middot; ${n.readMinutes} min read</span></span></a>`).join("");Pe.innerHTML=i+l}function xt(){!W||!_||(W.hidden=!1,document.body.style.overflow="hidden",_.focus(),vt(""))}function $e(){!W||!_||(W.hidden=!0,document.body.style.overflow="",_.value="")}r("#searchTrigger")?.addEventListener("click",xt);r("#searchClose")?.addEventListener("click",$e);W?.addEventListener("click",e=>{e.target===W&&$e()});if(_){let e;_.addEventListener("input",()=>{window.clearTimeout(e);let t=_.value;e=window.setTimeout(()=>vt(t),120)})}document.addEventListener("keydown",e=>{e.key==="Escape"&&W&&!W.hidden&&$e(),!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName??"")&&(e.key==="/"||e.key==="k"&&(e.metaKey||e.ctrlKey))&&(e.preventDefault(),xt())});document.addEventListener("click",e=>{let t=e.target.closest("[data-fav]");t&&(e.preventDefault(),ht(t.getAttribute("data-fav")))});L(e=>{let t=new Set(e.favorites);y("[data-fav]").forEach(a=>{let o=t.has(a.getAttribute("data-fav"));a.setAttribute("aria-pressed",String(o)),a.hasAttribute("data-fav-label")&&(a.textContent=o?"Saved":"Save recipe")}),y("[data-favorites-count]").forEach(a=>{a.textContent=String(e.favorites.length),a.hidden=e.favorites.length===0})});function pa(e){y("[data-auth-anon]").forEach(t=>t.hidden=!!e),y("[data-auth-user]").forEach(t=>t.hidden=!e),y("[data-requires-auth]").forEach(t=>t.hidden=!e),y("[data-requires-anon]").forEach(t=>t.hidden=!!e),e&&(y("[data-user-name]").forEach(t=>t.textContent=e.name),y("[data-user-email]").forEach(t=>t.textContent=e.email),y("[data-user-initials]").forEach(t=>t.textContent=e.name.trim().charAt(0).toUpperCase()||"K"))}T.onChange(pa);var xe=r("#accountTrigger"),Te=r("#accountDropdown");xe&&Te&&(xe.addEventListener("click",e=>{e.stopPropagation();let t=Te.hidden;Te.hidden=!t,xe.setAttribute("aria-expanded",String(t))}),document.addEventListener("click",()=>{Te.hidden=!0,xe.setAttribute("aria-expanded","false")}));document.addEventListener("click",e=>{e.target.closest("[data-signout]")&&(e.preventDefault(),T.signOut().then(()=>{window.location.href=X||"./"}))});y("[data-newsletter]").forEach(e=>{e.addEventListener("submit",t=>{t.preventDefault();let a=e.querySelector('input[type="email"]'),o=e.querySelector(".form-status"),s=a.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s)){o.textContent="Please enter a valid email address.",o.className="form-status is-error",a.focus();return}try{let i=JSON.parse(localStorage.getItem("kitchenlo-newsletter")??"[]");i.includes(s)||i.push(s),localStorage.setItem("kitchenlo-newsletter",JSON.stringify(i))}catch{}o.textContent="Thanks. You are on the list.",o.className="form-status is-success",e.reset()})});var Be=r("#backToTop");if(Be){let e=()=>{Be.hidden=window.scrollY<600};window.addEventListener("scroll",e,{passive:!0}),e(),Be.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}))}var St=1,Ct="kitchenlo-consent",ue=[{id:"analytics",title:"Analytics",description:"Anonymous statistics about which recipes people actually cook, so we know what is worth writing more of."},{id:"advertising",title:"Advertising",description:"Measuring or personalising adverts, and sharing what is needed for that with an advertising provider."}],qt=[];function Se(){let e=B(Ct,null);return!e||e.v!==St||typeof e.allowed!="object"||ue.some(t=>typeof e.allowed[t.id]!="boolean")?null:e.allowed}function ga(e){return Se()?.[e]===!0}function ma(e){qt.push(e)}function De(e){z(Ct,{v:St,decidedAt:new Date().toISOString(),allowed:e}),qt.forEach(t=>t(e))}var Tt=e=>Object.fromEntries(ue.map(t=>[t.id,e])),j=null;function Re(){j?.remove(),j=null}function fa(){j||r("#cookieBanner")||(j=document.createElement("section"),j.className="cookie-banner",j.id="cookieBanner",j.setAttribute("role","region"),j.setAttribute("aria-labelledby","cookieBannerTitle"),j.innerHTML=`
-    <div class="container cookie-banner-inner">
-      <div class="cookie-copy">
-        <h2 id="cookieBannerTitle">Cookies on Kitchenlo</h2>
-        <p>
-          We keep a little in your browser to make the site work: your theme, saved
-          recipes, meal plan and sign-in. That much is necessary. Anything optional,
-          such as analytics, stays switched off until you allow it.
-        </p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-primary btn-sm" type="button" data-cookie-accept>Accept all</button>
-        <button class="btn btn-secondary btn-sm" type="button" data-cookie-reject>Reject all</button>
-        <button class="btn btn-ghost btn-sm" type="button" data-cookie-preferences>Manage preferences</button>
-      </div>
-    </div>`,document.body.insertBefore(j,document.body.firstChild))}var C=null,We=null;function ba(){let e=ue.map(a=>`
+    <h2 id="cookieBannerTitle">Cookies</h2>
+    <p>
+      We keep your theme, saved recipes and meal plan in your browser.
+      Optional cookies stay off until you allow them.
+    </p>
+    <div class="cookie-actions">
+      <button class="btn btn-primary btn-sm" type="button" data-cookie-accept>Accept all</button>
+      <button class="btn btn-secondary btn-sm" type="button" data-cookie-reject>Reject all</button>
+    </div>
+    <button class="cookie-manage" type="button" data-cookie-preferences>Manage preferences</button>`,document.body.insertBefore(j,document.body.firstChild))}var C=null,We=null;function ba(){let e=ue.map(a=>`
         <div class="cookie-option">
           <input type="checkbox" id="cookie-${a.id}" data-cookie-option="${a.id}" />
           <div>

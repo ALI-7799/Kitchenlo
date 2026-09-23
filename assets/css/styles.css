@@ -94,6 +94,11 @@
   --measure: 68ch;
   --gutter: 1.5rem;
   --header-h: 74px;
+  /* Width of the cookie card (section 16). It lives here because two
+     unrelated fixed elements have to agree on it: the card is sized by it, and
+     .back-to-top is pushed clear of it. One definition, so they cannot drift
+     into overlapping. */
+  --cookie-w: 21rem;
 }
 
 :root[data-theme='dark'] {
@@ -3205,47 +3210,112 @@ a.badge-link:hover {
 
 /* -- 16. Cookie consent --------------------------------------------------- */
 
-/* A bar rather than a blocking overlay: the site stays readable while the
-   choice is pending. Shadow is warranted here because it genuinely floats. */
+/*
+ * A small card in the bottom corner rather than a full-width bar. The choice
+ * is not urgent enough to take a strip of the viewport, and at this size the
+ * page behind stays entirely readable while it is pending.
+ *
+ * Shadow and a real radius are both warranted here in a way they are not
+ * elsewhere in this stylesheet: this genuinely floats above the page and reads
+ * as a separate object, so it is the one place the near-square corners used by
+ * inline UI would look like a mistake rather than a house style. The radius is
+ * kept modest so it still belongs to the same family.
+ */
 .cookie-banner {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
   z-index: 120;
+  width: min(var(--cookie-w), calc(100vw - 2 * var(--sp-4)));
+  padding: var(--sp-4);
   background: var(--surface);
-  border-top: 1px solid var(--rule-strong);
-  box-shadow: var(--shadow-lg);
-  padding: var(--sp-5) 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  animation: cookie-in 0.2s ease-out both;
 }
 
-.cookie-banner-inner {
-  display: flex;
-  align-items: center;
-  gap: clamp(var(--sp-4), 4vw, var(--sp-7));
+/* Rises and fades, quickly. Long enough to register as arriving rather than
+   appearing, short enough not to delay the decision. */
+@keyframes cookie-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 }
 
-.cookie-copy {
-  max-width: 62ch;
-}
-
-.cookie-copy h2 {
-  font-size: var(--fs-lg);
-  margin-bottom: var(--sp-2);
-}
-
-.cookie-copy p {
+.cookie-banner h2 {
   font-size: var(--fs-sm);
-  color: var(--ink-2);
-  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--sp-2);
 }
 
+.cookie-banner p {
+  font-size: var(--fs-xs);
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 var(--sp-4);
+  /* Keeps a single short word off the last line, which is conspicuous in a
+     paragraph only three lines long. Ignored where unsupported. */
+  text-wrap: pretty;
+}
+
+/* Equal columns, so neither answer is the easier one to reach. */
 .cookie-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3);
-  margin-left: auto;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* Tighter than .btn-sm, which is sized for the page rather than for a card
+   this narrow. Everything else about the buttons is inherited, so they keep
+   the site's colours, hover and focus behaviour. */
+.cookie-banner .btn-sm {
+  padding: 0.5rem 0.65rem;
+  letter-spacing: 0.01em;
+}
+
+/*
+ * A text link rather than a third button. Three buttons of equal weight give
+ * no clue which is the ordinary action, and preferences is the rarest of the
+ * three; underlining it keeps it plainly operable without competing.
+ */
+.cookie-manage {
+  display: block;
+  width: 100%;
+  margin-top: var(--sp-3);
+  padding: 0;
+  font: inherit;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  background: none;
+  border: 0;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.16s ease;
+}
+
+.cookie-manage:hover {
+  color: var(--accent);
+}
+
+/*
+ * Step the back-to-top button aside while the card is up.
+ *
+ * Both are fixed to the same corner, and the banner is inserted as the first
+ * child of <body> while the button is near the last, so a sibling combinator
+ * reaches it with no JavaScript and no :has() — which this stylesheet's
+ * browser targets predate. It also reverts on its own: once the banner is
+ * removed the selector stops matching and the button returns to the corner.
+ *
+ * Sideways rather than upwards, because the card's height depends on how the
+ * copy wraps and a vertical offset would have to guess at it.
+ */
+.cookie-banner ~ .back-to-top {
+  right: calc(var(--sp-5) + var(--cookie-w) + var(--sp-3));
 }
 
 /* The footer link that reopens the dialog. Matches the links beside it rather
@@ -3374,32 +3444,43 @@ a.badge-link:hover {
   border-top: 1px solid var(--rule);
 }
 
-@media (max-width: 860px) {
-  /* Stack, and let the buttons fill the row so they stay easy to hit. */
-  .cookie-banner-inner {
-    display: grid;
-    gap: var(--sp-4);
+@media (max-width: 480px) {
+  /*
+   * Span the width, minus a margin on each side, and sit tight to the bottom.
+   * A 21rem card floated in the corner of a 360px screen leaves a sliver of
+   * page either side that reads as a mistake, and the buttons end up narrower
+   * than they need to be for a thumb.
+   *
+   * 480px rather than something wider on purpose: above it the corner card is
+   * 336px and the page reads around it, while the full-width treatment would
+   * be 536px. Switching too early makes the banner cover *more* of a tablet
+   * than it does of a small laptop, which is backwards.
+   */
+  .cookie-banner {
+    right: var(--sp-3);
+    left: var(--sp-3);
+    bottom: var(--sp-3);
+    width: auto;
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
   }
 
-  .cookie-actions {
-    margin-left: 0;
+  .cookie-banner p {
+    margin-bottom: var(--sp-3);
   }
 
-  .cookie-actions .btn {
-    flex: 1 1 auto;
-    justify-content: center;
+  /*
+   * There is no room beside a near-full-width card, so the back-to-top button
+   * steps aside until the choice is made. It is a convenience, the banner is
+   * shown once, and overlapping the two would obstruct both.
+   */
+  .cookie-banner ~ .back-to-top {
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
+@media (prefers-reduced-motion: reduce) {
   .cookie-banner {
-    padding: var(--sp-4) 0;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-
-  .cookie-actions .btn {
-    flex-basis: 100%;
+    animation: none;
   }
 }
 
