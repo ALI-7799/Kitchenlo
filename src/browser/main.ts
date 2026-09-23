@@ -9,8 +9,16 @@
  * Only assets/js/config.js stays outside the bundle, so runtime keys can be
  * changed without a rebuild.
  */
-import './app.js';
+/*
+ * Consent first, deliberately.
+ *
+ * Modules are evaluated in import order, so putting it ahead of the page code
+ * means the banner is put up before anything larger has had a chance to throw.
+ * A failure in, say, the header or the search box should not be able to take
+ * the cookie question down with it.
+ */
 import './consent.js';
+import './app.js';
 import { trackPageView } from './analytics.js';
 
 import './pages/home.js';

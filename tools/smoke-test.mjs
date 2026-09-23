@@ -1398,6 +1398,37 @@ suite('consent survives a return visit', () => {
     Object.keys(localOf(v.window)).length === 0 && cookiesOf(v.window).length === 0,
     JSON.stringify(localOf(v.window)) + ' / ' + cookiesOf(v.window).join(','));
 
+  /*
+   * On every kind of page, not just the home page, and with no console error.
+   *
+   * The banner was previously put up from inside auth.onChange, which made the
+   * question wait on the accounts module having loaded — so anything that
+   * stopped auth initialising stopped the banner appearing at all, silently.
+   * It is now raised from the consent record alone. These assert the property
+   * that regression broke: asking does not depend on anything else working.
+   */
+  for (const page of [
+    'index.html',
+    'recipes/shakshuka.html',
+    'recipes.html',
+    'category/desserts.html',
+    'guides/knife-skills-basics.html',
+    'about.html',
+    'login.html'
+  ]) {
+    const fresh = load(page);
+    check('a new visitor is asked on ' + page,
+      shown(fresh) && fresh.errors.length === 0,
+      fresh.errors[0] || 'no banner');
+  }
+
+  /* The banner exists before the page modules run, so a later failure cannot
+     remove a question that has already been put. */
+  const order = fs.readFileSync(path.join(ROOT, 'src/browser/main.ts'), 'utf8');
+  check('consent is imported before the page code',
+    order.indexOf("'./consent.js'") < order.indexOf("'./app.js'"),
+    'app.js is imported first');
+
   /* -- dismissing is not answering -- */
 
   v = load('index.html');
@@ -1405,14 +1436,41 @@ suite('consent survives a return visit', () => {
   v.doc.dispatchEvent(new v.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   let store = localOf(v.window);
   let cookies = cookiesOf(v.window);
-  check('dismissing the dialog records nothing',
-    !('kitchenlo-consent' in store) && !hasCookie(v.window));
-  check('so the next visit asks again',
-    shown(load('index.html', { storage: store, cookies })));
+  /*
+   * Dismissing closes the question without agreeing to anything.
+   *
+   * It is recorded, so nobody is asked twice after saying they were done, and
+   * it is recorded as a refusal, so nothing they declined to agree to is
+   * switched on. The second half is the one that matters: a dismissal read as
+   * consent would be the exact dark pattern these rules exist to prevent, and
+   * the assertions below fail if that ever creeps back in.
+   */
+  check('dismissing the dialog is recorded', 'kitchenlo-consent' in store);
+  check('dismissing is recorded in the cookie too', hasCookie(v.window));
+  check('the banner goes away on dismissal', !shown(v));
+  check('so the next visit is not asked again',
+    !shown(load('index.html', { storage: store, cookies })));
 
-  /* Closing the banner is not offered at all, but assert it stays put if the
-     dialog is cancelled rather than answered. */
-  check('the banner is still there after cancelling', shown(v));
+  const dismissed = load('index.html', { storage: store, cookies });
+  check('dismissing grants no analytics consent',
+    dismissed.window.KitchenloConsent.allows('analytics') === false);
+  check('dismissing grants no advertising consent',
+    dismissed.window.KitchenloConsent.allows('advertising') === false);
+  check('dismissing sends no page view',
+    (dismissed.window.__beacons ?? []).filter((b) => b.url.includes('/api/track')).length === 0);
+
+  /* Re-opening the panel later to look, then closing it, must not overwrite a
+     real answer with a refusal. */
+  const hadAccepted = load('index.html');
+  hadAccepted.doc.querySelector('[data-cookie-accept]').click();
+  const settledAlready = load('index.html', {
+    storage: localOf(hadAccepted.window),
+    cookies: cookiesOf(hadAccepted.window)
+  });
+  settledAlready.doc.querySelector('[data-cookie-preferences]').click();
+  settledAlready.doc.querySelector('[data-cookie-close]').click();
+  check('closing the panel later leaves an existing answer alone',
+    settledAlready.window.KitchenloConsent.allows('analytics') === true);
 
   /* -- accepting persists, across pages and visits -- */
 

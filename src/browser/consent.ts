@@ -320,6 +320,25 @@ const everything = (value: boolean): Allowed =>
   Object.fromEntries(OPTIONAL.map((c) => [c.id, value])) as Allowed;
 
 /**
+ * Closing the question without answering it.
+ *
+ * Recorded as a refusal — every optional category off — and never as consent.
+ * That distinction is the whole point: the visitor is not asked again, which
+ * is what they asked for by closing it, but nothing they declined to agree to
+ * is switched on. Treating a dismissal as agreement is the dark pattern these
+ * rules exist to stop, and this is its opposite.
+ *
+ * Only counts when nothing has been decided yet. Somebody reopening the panel
+ * from the footer to look at their existing settings and then closing it has
+ * not withdrawn anything, so their answer is left exactly as it was.
+ */
+function dismiss(): void {
+  if (decision()) return;
+  save(everything(false));
+  removeBanner();
+}
+
+/**
  * Forgets the answer and asks again. This is what makes consent withdrawable
  * rather than merely adjustable: a visitor can return the site to the state it
  * was in before they ever answered.
@@ -435,7 +454,7 @@ function buildDialog(): HTMLElement {
     <div class="cookie-panel" role="dialog" aria-modal="true" aria-labelledby="cookieDialogTitle">
       <div class="cookie-panel-head">
         <h2 id="cookieDialogTitle">Cookie preferences</h2>
-        <button class="cookie-close" type="button" data-cookie-close aria-label="Close without changing anything">
+        <button class="cookie-close" type="button" data-cookie-close aria-label="Close cookie preferences">
           <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
@@ -553,15 +572,19 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  /* Closing changes nothing, which is why the control is labelled "Close
-     without changing anything" rather than being an implied answer. */
+  /* Closing an unanswered question records a refusal, not agreement — see
+     dismiss(). Closing it after an answer exists changes nothing. */
   if (target.closest('[data-cookie-close]')) {
     close();
+    dismiss();
     return;
   }
 
-  // Clicking the backdrop, but not the panel, closes without deciding.
-  if (isOpen() && target === dialog) close();
+  // Clicking the backdrop, but not the panel, closes it.
+  if (isOpen() && target === dialog) {
+    close();
+    dismiss();
+  }
 });
 
 document.addEventListener('keydown', (event) => {
@@ -570,6 +593,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     event.preventDefault();
     close();
+    dismiss();
     return;
   }
 
@@ -591,24 +615,41 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-/*
- * Startup, and every later change of signed-in user.
- *
- * auth.onChange fires immediately with the current user, so this covers the
- * first page load as well as a later sign-in or sign-out. Each time, the
- * answer is recovered from whichever store still holds it and copied back to
- * the others — which is what makes signing in restore an answer this browser
- * had lost, and what carries a guest's answer onto a newly created account.
- *
- * The banner is then shown or removed to match. Removing it matters: without
- * that, a visitor who signed in on a page where the banner was already up
- * would be left looking at a question that had just been answered for them.
- */
-auth.onChange(() => {
-  const answered = hydrate() ?? decision();
-  if (answered) removeBanner();
+/** Shows or removes the banner to match the record. The only place that decides. */
+function sync(): void {
+  if (decision()) removeBanner();
   else showBanner();
-});
+}
+
+/*
+ * Ask straight away, from the consent record alone.
+ *
+ * This deliberately depends on nothing else. An earlier version drove the
+ * banner from auth.onChange, which meant the question was only put once the
+ * accounts module had initialised — so anything that stopped auth from
+ * loading stopped the banner appearing at all, silently, for every visitor.
+ * Whether to ask about cookies has nothing to do with whether somebody has an
+ * account, and the code should not imply otherwise.
+ */
+sync();
+
+/*
+ * Account state then only *reconciles* copies; it never decides whether to ask.
+ *
+ * Signing in recovers an answer this browser had lost and copies a guest's
+ * answer onto a newly created account, and signing out or in re-syncs the
+ * banner so nobody is left looking at a question that was just answered for
+ * them. Wrapped because a failure in here must not take the banner with it —
+ * by this point it is already correct from the record alone.
+ */
+try {
+  auth.onChange(() => {
+    hydrate();
+    sync();
+  });
+} catch {
+  /* Accounts unavailable. Consent still works; it simply does not follow one. */
+}
 
 /* The same gate, for scripts that are not part of the bundle. */
 declare global {
