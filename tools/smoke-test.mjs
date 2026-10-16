@@ -15,17 +15,29 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { webcrypto } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
 import * as RECIPES from '../src/data/recipes.ts';
 import SITE from '../src/data/site.ts';
 import COLLECTIONS from '../src/data/collections.ts';
+import GUIDES from '../src/data/guides.ts';
 import * as CORE from '../src/templates/pages-core.ts';
 import * as COMPONENTS from '../src/templates/components.ts';
 import * as VIDEOS from '../src/data/videos.ts';
 
-const ROOT = path.resolve(import.meta.dirname, '..');
+// See the same note in tools/build.ts: import.meta.dirname is Node 20.11+
+// and is undefined rather than an error on older runtimes.
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TOTAL = RECIPES.all.length;
+
+/*
+ * Generated pages that are not one per recipe, category, collection or guide:
+ * the home page, the recipe index, categories, guides, the three planner tools,
+ * the three account pages, the four legal and company pages and 404. This is a
+ * fixed set that only changes when a page is added to the site itself.
+ */
+const STANDALONE_PAGES = 15;
 
 let failures = 0;
 let checks = 0;
@@ -1097,7 +1109,19 @@ suite('every address is clean, and every link still lands', () => {
 
   check('no internal link spells .html or index', dirty.length === 0, dirty[0]);
   check('every internal link resolves to a real page', broken.length === 0, broken[0]);
-  check('the crawl saw the whole site', links > 4000 && pages.length === 87, links + ' links, ' + pages.length + ' pages');
+  /*
+   * The point of this check is that the crawl reached the whole site rather
+   * than a handful of pages, so the expected total is derived from the data
+   * the generator works from. A frozen number would fail every time a recipe
+   * was added, which says nothing about whether the crawl worked.
+   */
+  const expectedPages =
+    TOTAL + SITE.categories.length + COLLECTIONS.length + GUIDES.length + STANDALONE_PAGES;
+  check(
+    'the crawl saw the whole site',
+    links > 4000 && pages.length === expectedPages,
+    links + ' links, ' + pages.length + ' pages, expected ' + expectedPages
+  );
 
   const locs = [...fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   check('no sitemap URL spells .html', !locs.some((l) => l.endsWith('.html')), locs.find((l) => l.endsWith('.html')));
