@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/styles.css?v=a419ecef41" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=73ef203d02" />
 
     <script>
       /* Applies the stored theme before first paint so the page never flashes. */
@@ -50,7 +50,7 @@
   "description": "Weeknight dinners that land on the table in 30 minutes or less, with short ingredient lists, one pan where possible and nothing that needs a special trip to the shops.",
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": 12,
+    "numberOfItems": 16,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -123,6 +123,30 @@
         "position": 12,
         "url": "https://kitchenlo.com/recipes/ricotta-toasts",
         "name": "Spinach Ricotta Toasts"
+      },
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "url": "https://kitchenlo.com/recipes/egg-fried-rice",
+        "name": "15-Minute Egg Fried Rice"
+      },
+      {
+        "@type": "ListItem",
+        "position": 14,
+        "url": "https://kitchenlo.com/recipes/chicken-fajitas",
+        "name": "Sheet Pan Chicken Fajitas"
+      },
+      {
+        "@type": "ListItem",
+        "position": 15,
+        "url": "https://kitchenlo.com/recipes/sausage-gnocchi",
+        "name": "One-Pan Sausage and Gnocchi"
+      },
+      {
+        "@type": "ListItem",
+        "position": 16,
+        "url": "https://kitchenlo.com/recipes/ginger-chicken-stir-fry",
+        "name": "Ginger Chicken Stir-Fry"
       }
     ]
   }
@@ -230,7 +254,7 @@
       <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
         <div class="search-input-row">
           <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="search" id="searchOverlayInput" placeholder="Search 55 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <input type="search" id="searchOverlayInput" placeholder="Search 70 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
           <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
         </div>
         <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
@@ -252,7 +276,7 @@
           <h1>Quick Dinners</h1>
           <p class="lede">Weeknight dinners that land on the table in 30 minutes or less, with short ingredient lists, one pan where possible and nothing that needs a special trip to the shops.</p>
           <div class="hero-badges">
-            <span class="badge-link">12 recipes</span>
+            <span class="badge-link">16 recipes</span>
             <span class="badge-link">Average 24 min</span>
             <span class="badge-link">Fastest 15 min</span>
           </div>
@@ -492,6 +516,81 @@
                 </div>
               </div>
             </article>
+            <article class="card recipe-card" data-slug="egg-fried-rice">
+              <a class="card-media" href="../recipes/egg-fried-rice" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-egg-fried-rice.svg" alt="A wok of golden egg fried rice with peas, spring onion and ribbons of egg" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-egg-fried-rice.svg" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="egg-fried-rice" aria-label="Save 15-Minute Egg Fried Rice" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">15 min</span><span class="meta-dot">&middot;</span><span>Dinner</span><span class="meta-dot">&middot;</span><span>Chinese-inspired</span></div>
+                <h3><a href="../recipes/egg-fried-rice">15-Minute Egg Fried Rice</a></h3>
+                <p>Day-old rice fried hard with egg, spring onion and peas, seasoned with soy and sesame.</p>
+                <div class="card-tags">
+                  <span class="tag">vegetarian</span>
+                  <span class="tag">dairy free</span>
+                  <span class="tag tag-muted">418 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="chicken-fajitas">
+              <a class="card-media" href="../recipes/chicken-fajitas" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-chicken-fajitas.svg" alt="Charred chicken strips with red and yellow peppers and onions on a baking tray with lime" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-chicken-fajitas.svg" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="chicken-fajitas" aria-label="Save Sheet Pan Chicken Fajitas" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">35 min</span><span class="meta-dot">&middot;</span><span>Dinner</span><span class="meta-dot">&middot;</span><span>Mexican-inspired</span></div>
+                <h3><a href="../recipes/chicken-fajitas">Sheet Pan Chicken Fajitas</a></h3>
+                <p>Spiced chicken strips, peppers and onions roasted on one tray and piled into warm tortillas.</p>
+                <div class="card-tags">
+                  <span class="tag">gluten free</span>
+                  <span class="tag">dairy free</span>
+                  <span class="tag tag-muted">486 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="sausage-gnocchi">
+              <a class="card-media" href="../recipes/sausage-gnocchi" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-sausage-gnocchi.svg" alt="A skillet of golden gnocchi with sausage, wilted spinach and a light tomato cream sauce" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-sausage-gnocchi.svg" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="sausage-gnocchi" aria-label="Save One-Pan Sausage and Gnocchi" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">30 min</span><span class="meta-dot">&middot;</span><span>Dinner</span><span class="meta-dot">&middot;</span><span>Italian</span></div>
+                <h3><a href="../recipes/sausage-gnocchi">One-Pan Sausage and Gnocchi</a></h3>
+                <p>Crisped gnocchi with sausage, spinach and a light tomato cream sauce, all in one skillet in 25 minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">648 cal</span>
+                </div>
+              </div>
+            </article>
+            <article class="card recipe-card" data-slug="ginger-chicken-stir-fry">
+              <a class="card-media" href="../recipes/ginger-chicken-stir-fry" tabindex="-1" aria-hidden="true">
+                <img src="../assets/img/recipe-ginger-chicken-stir-fry.svg" alt="Stir-fried chicken with broccoli, peppers and spring onion in a glossy ginger sauce" loading="lazy" decoding="async" width="600" height="400" data-fallback="../assets/img/recipe-ginger-chicken-stir-fry.svg" />
+                <span class="card-badge">Easy</span>
+              </a>
+              <button class="fav-btn" type="button" data-fav="ginger-chicken-stir-fry" aria-label="Save Ginger Chicken Stir-Fry" aria-pressed="false">
+                <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-6-3.9-6-8a3.6 3.6 0 0 1 6-2.4A3.6 3.6 0 0 1 16 9c0 4.1-6 8-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="card-body">
+                <div class="card-meta"><span class="meta-strong">27 min</span><span class="meta-dot">&middot;</span><span>Dinner</span><span class="meta-dot">&middot;</span><span>Chinese-inspired</span></div>
+                <h3><a href="../recipes/ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</a></h3>
+                <p>Velveted chicken and crisp vegetables in a ginger garlic sauce, cooked in twelve minutes.</p>
+                <div class="card-tags">
+                  <span class="tag">dairy free</span>
+                  <span class="tag">high protein</span>
+                  <span class="tag tag-muted">398 cal</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -510,7 +609,7 @@
                 <img src="../assets/img/photos/category-healthy-food.jpg" alt="A bowl of tofu, edamame, corn and crisp raw vegetables" loading="lazy" decoding="async" width="600" height="400" />
               </a>
               <div class="card-body">
-                <p class="eyebrow">10 recipes</p>
+                <p class="eyebrow">15 recipes</p>
                 <h3><a href="../category/healthy-food">Healthy Food</a></h3>
                 <p>Vegetable-forward bowls, grain salads and soups with real nutrition numbers, built to keep well for meal prep and to taste good cold on the third day.</p>
                 <a class="btn btn-secondary" href="../category/healthy-food">Browse Healthy</a>
@@ -532,7 +631,7 @@
                 <img src="../assets/img/photos/category-desserts.jpg" alt="A styled dessert with fresh berries" loading="lazy" decoding="async" width="600" height="400" />
               </a>
               <div class="card-body">
-                <p class="eyebrow">11 recipes</p>
+                <p class="eyebrow">17 recipes</p>
                 <h3><a href="../category/desserts">Desserts</a></h3>
                 <p>Approachable puddings, tarts and bakes with the technique explained, from a five-minute mug cake to a proper set panna cotta.</p>
                 <a class="btn btn-secondary" href="../category/desserts">Browse Sweet</a>
@@ -653,7 +752,7 @@
     </button>
 
     <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
-    <script src="../assets/js/config.js?v=a419ecef41"></script>
-    <script src="../assets/js/kitchenlo.js?v=a419ecef41" defer></script>
+    <script src="../assets/js/config.js?v=73ef203d02"></script>
+    <script src="../assets/js/kitchenlo.js?v=73ef203d02" defer></script>
   </body>
 </html>

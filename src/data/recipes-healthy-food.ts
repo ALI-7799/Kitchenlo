@@ -733,6 +733,385 @@ const recipes: RecipeSource[] = [
       { q: 'How spicy is this?', a: 'Not at all unless you add the chilli. The sauce is sweet, salty and sour, so heat is entirely up to you.' }
     ],
     related: ['miso-noodles', 'honey-soy-chicken', 'quinoa-bowl']
+  },
+  {
+    slug: 'greek-chicken-bowl',
+    title: 'Greek Chicken Rice Bowl',
+    description: 'Yogurt-marinated chicken thighs over brown rice with a chopped salad, feta and quick tzatziki.',
+    intro: 'The marinade does the work here. Yogurt holds the lemon and oregano against the meat and its acidity tenderises the thighs, so even fifteen minutes makes a visible difference and a few hours makes a great one. Everything else is assembly, and every component keeps separately for lunches later in the week.',
+    category: 'healthy-food',
+    cuisine: 'Greek',
+    course: 'Dinner',
+    method: 'Pan-Seared',
+    diet: ['gluten-free', 'high-protein'],
+    keywords: ['greek chicken bowl', 'yogurt marinated chicken', 'chicken rice bowl', 'tzatziki', 'meal prep bowl'],
+    image: null,
+    imageAlt: 'A bowl of sliced grilled chicken over rice with cucumber, tomato, feta and a spoon of tzatziki',
+    prepMinutes: 20,
+    cookMinutes: 15,
+    servings: 4,
+    yieldText: '4 bowls',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 54,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 572, protein: 43, carbs: 48, fat: 23, fiber: 6, sugar: 7, sodium: 640 },
+    equipment: ['Heavy skillet or griddle pan', 'Box grater', 'Saucepan for the rice'],
+    ingredients: [
+      { group: 'Marinated chicken', items: [
+        '700 g boneless, skinless chicken thighs',
+        '1/2 cup (120 g) Greek yogurt',
+        '3 tablespoons olive oil',
+        'Juice and zest of 1 lemon',
+        '4 garlic cloves, crushed',
+        '2 teaspoons dried oregano',
+        '1 teaspoon fine sea salt',
+        '1/2 teaspoon black pepper'
+      ] },
+      { group: 'Bowls', items: [
+        '1 1/2 cups (280 g) brown rice, or 4 cups cooked',
+        '2 cups cherry tomatoes, halved',
+        '1 cucumber, diced',
+        '1/2 red onion, thinly sliced',
+        '1/2 cup kalamata olives, pitted',
+        '100 g feta, crumbled',
+        'Handful of dill or flat-leaf parsley, chopped'
+      ] },
+      { group: 'Quick tzatziki', items: [
+        '1 cup (240 g) Greek yogurt',
+        '1/2 cucumber, coarsely grated and squeezed dry',
+        '1 garlic clove, finely grated',
+        '1 tablespoon lemon juice',
+        '1 tablespoon olive oil',
+        'Salt, to taste'
+      ] }
+    ],
+    instructions: [
+      { title: 'Marinate the chicken', text: 'Mix the yogurt, olive oil, lemon juice and zest, garlic, oregano, salt and pepper in a bowl, add the thighs and turn them until coated. Leave 15 minutes on the counter, or up to 8 hours in the fridge.' },
+      { title: 'Cook the rice', text: 'Start the brown rice in plenty of salted water, about 25 minutes, so it is ready when the chicken is. Drain it and leave it covered for 5 minutes to steam.' },
+      { title: 'Make the tzatziki', text: 'Squeeze the grated cucumber hard in a clean tea towel; this is what keeps the sauce thick. Stir it through the yogurt with the garlic, lemon juice, oil and a good pinch of salt.' },
+      { title: 'Sear the chicken', text: 'Heat a dry heavy pan over medium-high. Scrape most of the marinade off the thighs and lay them in with space between. Cook 6 to 7 minutes a side, until charred in patches and cooked to 75C / 165F at the thickest point.' },
+      { title: 'Rest and slice', text: 'Move the chicken to a board and rest it 5 minutes before slicing it thickly across the grain. Slicing straight away loses the juices to the board.' },
+      { title: 'Build the bowls', text: 'Divide the rice between four bowls, add the tomatoes, cucumber, onion and olives in sections, then the sliced chicken. Add a spoon of tzatziki, scatter the feta and herbs, and finish with olive oil and a squeeze of lemon.' }
+    ],
+    tips: [
+      'Scrape the thick marinade off before the chicken hits the pan. Left on, the yogurt burns before the meat is cooked through.',
+      'Thighs are more forgiving than breasts here and stay juicy even if they go a minute long. If you only have breasts, pound them to an even thickness and cut the time to 4 minutes a side.',
+      'Salt the tomatoes and cucumber 10 minutes ahead and the juices become a dressing on their own.'
+    ],
+    variations: [
+      'Swap the rice for orzo, quinoa or a bed of shredded romaine for a lower-carb bowl.',
+      'Use the same marinade on halloumi or firm tofu for a vegetarian version.',
+      'Add a scoop of hummus and warm pitta and serve it as a mezze plate instead.'
+    ],
+    storage: 'Store the components separately in the fridge for up to 4 days; the chicken and rice reheat well, and the salad and tzatziki stay fresh because they were never heated. Cooked chicken freezes for 2 months.',
+    faqs: [
+      { q: 'How long should I marinate the chicken?', a: 'Fifteen minutes gives you flavour on the surface, and 4 to 8 hours gives you noticeably more tender meat. Past about 12 hours the yogurt starts to make the texture soft rather than tender.' },
+      { q: 'Can I cook it on a barbecue?', a: 'Yes, and it is better for it. Grill over direct medium heat for 5 to 6 minutes a side, with the lid down between turns.' },
+      { q: 'Why is my tzatziki watery?', a: 'The cucumber was not squeezed dry. It holds a surprising amount of water, and it leaks into the yogurt within the hour if you skip that step.' }
+    ],
+    related: ['quinoa-bowl', 'chickpea-salad', 'mediterranean-flatbread']
+  },
+  {
+    slug: 'sweet-potato-buddha-bowl',
+    title: 'Roasted Sweet Potato Buddha Bowl',
+    description: 'Roasted sweet potato and chickpeas over quinoa with kale and a lemon tahini sauce.',
+    intro: 'A bowl like this lives or dies by two details: the chickpeas have to be dry before they go in the oven, and the kale has to be massaged. Dry chickpeas crisp instead of steaming, and massaged kale softens into something you actually want to eat raw. The tahini sauce is thinned with cold water until it pours, which is the step most people stop short of.',
+    category: 'healthy-food',
+    cuisine: 'Mediterranean',
+    course: 'Lunch',
+    method: 'Roasted',
+    diet: ['vegan', 'gluten-free', 'dairy-free', 'high-fibre'],
+    keywords: ['buddha bowl', 'sweet potato bowl', 'roasted chickpeas', 'tahini dressing', 'vegan bowl'],
+    image: null,
+    imageAlt: 'A bowl of roasted sweet potato, crisp chickpeas, quinoa and kale drizzled with tahini sauce',
+    prepMinutes: 15,
+    cookMinutes: 30,
+    servings: 4,
+    yieldText: '4 generous bowls',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 49,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 548, protein: 18, carbs: 68, fat: 23, fiber: 15, sugar: 12, sodium: 480 },
+    equipment: ['Large baking sheet', 'Saucepan', 'Jar or small bowl for the sauce'],
+    ingredients: [
+      { group: 'Tray', items: [
+        '2 medium sweet potatoes (about 700 g), cut into 2 cm cubes',
+        '1 tin (400 g) chickpeas, drained, rinsed and patted very dry',
+        '2 tablespoons olive oil',
+        '1 teaspoon smoked paprika',
+        '1 teaspoon ground cumin',
+        '1/2 teaspoon chilli flakes',
+        '3/4 teaspoon fine sea salt'
+      ] },
+      { group: 'Bowls', items: [
+        '1 cup (180 g) quinoa, rinsed',
+        '1 bunch kale (about 150 g), stems removed and leaves torn',
+        '1 teaspoon olive oil and a pinch of salt, for the kale',
+        '1 avocado, sliced',
+        '2 tablespoons pumpkin seeds, toasted',
+        'Handful of parsley, chopped'
+      ] },
+      { group: 'Lemon tahini sauce', items: [
+        '1/3 cup (80 g) tahini',
+        '2 tablespoons lemon juice',
+        '1 small garlic clove, finely grated',
+        '1 teaspoon maple syrup',
+        '1/4 teaspoon fine sea salt',
+        '4 to 6 tablespoons cold water'
+      ] }
+    ],
+    instructions: [
+      { title: 'Heat the oven high', text: 'Heat the oven to 220C / 425F. A hot oven is what browns the sweet potato instead of drying it out.' },
+      { title: 'Dry and season the tray', text: 'Pat the chickpeas thoroughly dry, then toss them and the sweet potato with the oil, paprika, cumin, chilli and salt. Spread them over one large sheet in a single layer with space between; a crowded tray steams.' },
+      { title: 'Roast', text: 'Roast for 25 to 30 minutes, turning everything once at the 18-minute mark, until the sweet potato is caramelised at the edges and the chickpeas rattle and crackle.' },
+      { title: 'Cook the quinoa', text: 'Simmer the quinoa in 2 cups of salted water, covered, for 15 minutes, then take it off the heat and leave it covered for 5 minutes before forking it through.' },
+      { title: 'Massage the kale', text: 'Put the torn kale in a bowl with the teaspoon of oil and a pinch of salt and rub it between your hands for a full minute. It darkens, softens and loses its waxy bite.' },
+      { title: 'Make the sauce', text: 'Whisk the tahini with the lemon juice, garlic, maple syrup and salt. It will seize into a thick paste. Keep adding cold water a tablespoon at a time and it loosens into a smooth, pourable cream.' },
+      { title: 'Assemble', text: 'Divide the quinoa and kale between bowls, add the roasted sweet potato and chickpeas, then the avocado. Pour over the tahini sauce and finish with pumpkin seeds and parsley.' }
+    ],
+    tips: [
+      'Dry chickpeas are the whole trick to crisp ones. Roll them in a tea towel and let them sit while the oven heats.',
+      'Do not panic when the tahini seizes. It always does, and cold water brings it back glossier than it started.',
+      'Roast double the tray. The leftovers are the best part of the week and reheat in a hot pan in 3 minutes.'
+    ],
+    variations: [
+      'Swap the sweet potato for butternut squash, cauliflower or beetroot, keeping the roasting time the same.',
+      'Add a soft-boiled egg or 200 g of grilled halloumi for more protein if you are not keeping it vegan.',
+      'Use brown rice or farro in place of the quinoa, or shredded cabbage for a lower-carb bowl.'
+    ],
+    storage: 'Keeps 4 days in the fridge with the sauce in its own jar. The chickpeas soften overnight, so crisp them again in a hot dry pan for 2 minutes before serving. Not suitable for freezing once the avocado is added.',
+    faqs: [
+      { q: 'Why did my chickpeas not crisp up?', a: 'Either they were wet, or the tray was too full. Dry them properly, give the tray space, and if your oven runs cool, give them 5 extra minutes on the top shelf.' },
+      { q: 'Can I make the whole thing ahead?', a: 'Yes, and it is designed for it. Roast the tray and cook the quinoa on Sunday, keep the sauce separate, and assemble bowls cold or briefly warmed through the week.' },
+      { q: 'The tahini sauce tastes bitter. What now?', a: 'Some tahini is noticeably more bitter than others. A little more maple syrup and lemon juice balances it, and a pinch more salt dulls the bitterness directly.' }
+    ],
+    related: ['quinoa-bowl', 'kale-salad', 'farro-salad']
+  },
+  {
+    slug: 'tuna-white-bean-salad',
+    title: 'Tuna and White Bean Salad',
+    description: 'A no-cook store-cupboard lunch of tinned tuna, cannellini beans, red onion and a sharp lemon dressing.',
+    intro: 'This is the lunch to know when there is nothing in the house. Two tins, an onion and a lemon make a bowl with thirty grams of protein and enough fibre to hold until dinner. The one technique involved is soaking the sliced onion in the lemon juice for ten minutes, which takes the harshness out of it and lightly pickles it at the same time.',
+    category: 'healthy-food',
+    cuisine: 'Italian',
+    course: 'Lunch',
+    method: 'No-Cook',
+    diet: ['gluten-free', 'dairy-free', 'high-protein', 'high-fibre'],
+    keywords: ['tuna white bean salad', 'tinned tuna recipe', 'high protein lunch', 'no cook lunch', 'store cupboard salad'],
+    image: null,
+    imageAlt: 'A bowl of tuna, white beans, red onion and parsley dressed with lemon and olive oil',
+    prepMinutes: 15,
+    cookMinutes: 0,
+    servings: 4,
+    yieldText: '4 lunch portions',
+    difficulty: 'Easy',
+    rating: 4.6,
+    ratingCount: 38,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 352, protein: 30, carbs: 26, fat: 14, fiber: 9, sugar: 4, sodium: 580 },
+    equipment: ['Large bowl', 'Fine grater', 'Sieve'],
+    ingredients: [
+      { group: 'Salad', items: [
+        '2 tins (about 300 g drained) tuna in olive oil, drained and flaked',
+        '2 tins (800 g) cannellini or butter beans, drained and rinsed',
+        '1/2 red onion, very thinly sliced',
+        '1 cup cherry tomatoes, halved',
+        '1 celery stick, finely sliced',
+        '2 tablespoons capers, rinsed',
+        'Large handful of flat-leaf parsley, roughly chopped',
+        '2 cups rocket or baby spinach'
+      ] },
+      { group: 'Lemon dressing', items: [
+        'Juice of 1 1/2 lemons and the zest of 1',
+        '3 tablespoons extra virgin olive oil',
+        '1 teaspoon Dijon mustard',
+        '1 small garlic clove, finely grated',
+        '1/2 teaspoon fine sea salt',
+        '1/2 teaspoon black pepper'
+      ] }
+    ],
+    instructions: [
+      { title: 'Tame the onion', text: 'Put the sliced onion in a small bowl with the lemon juice and leave it 10 minutes. It turns pink, softens and loses the raw bite that would otherwise dominate the bowl.' },
+      { title: 'Rinse the beans well', text: 'Rinse the beans under cold water until the water runs clear and no foam remains, then drain them properly. The starchy tin liquid tastes metallic and makes the dressing cloudy.' },
+      { title: 'Make the dressing', text: 'Whisk the lemon zest, olive oil, Dijon, garlic, salt and pepper into the bowl with the onion and its lemon juice until thick and emulsified.' },
+      { title: 'Dress the beans first', text: 'Add the beans to the dressing and turn them gently, then leave them 5 minutes. Beans are bland on their own and need that head start to absorb anything.' },
+      { title: 'Fold in the rest', text: 'Add the tuna, tomatoes, celery, capers and parsley and fold once or twice with a spatula, keeping the tuna in flakes rather than breaking it into paste.' },
+      { title: 'Serve on greens', text: 'Pile over the rocket or spinach and finish with another pour of olive oil and a grind of pepper. Serve at room temperature rather than fridge-cold, which flattens the flavour.' }
+    ],
+    tips: [
+      'Buy tuna in olive oil rather than brine. The texture is better and the oil can go into the dressing instead of down the sink.',
+      'Dress the beans before anything else goes in. It is the difference between a seasoned salad and a seasoned surface.',
+      'Ten minutes of lemon on the onion is not optional unless you like raw onion; it is the step that makes this taste considered.'
+    ],
+    variations: [
+      'Swap the tuna for tinned salmon, sardines or two tins of chickpeas for a vegan bowl.',
+      'Add a jar of roasted peppers, or a handful of olives and torn mozzarella if dairy is not an issue.',
+      'Spoon it over toasted sourdough rubbed with garlic and serve it as bruschetta.'
+    ],
+    storage: 'Keeps 3 days in the fridge and tastes better on day two once the beans have taken on the dressing. Add the greens and parsley only when serving, and do not freeze.',
+    faqs: [
+      { q: 'Can I use dried beans?', a: 'Yes. 150 g of dried cannellini soaked overnight and simmered until tender gives a better texture than tinned, and the recipe is otherwise unchanged.' },
+      { q: 'Is it filling enough for dinner?', a: 'For most people, yes, and a slice of good bread or a soft-boiled egg makes it comfortably so. The beans supply the fibre that keeps it from feeling like a side salad.' },
+      { q: 'How do I reduce the sodium?', a: 'Use no-salt-added beans, rinse the capers twice and halve the added salt. Most of the sodium here comes from the tins rather than the seasoning.' }
+    ],
+    related: ['chickpea-salad', 'farro-salad', 'lentil-soup']
+  },
+  {
+    slug: 'turkey-lettuce-wraps',
+    title: 'Ginger Turkey Lettuce Wraps',
+    description: 'Savoury minced turkey with ginger, garlic and water chestnuts, spooned into cold lettuce cups.',
+    intro: 'Minced turkey is dry when it is treated like beef and excellent when it is not. The trick is a hot pan, very little stirring at the start so it browns rather than steams, and a sauce added only at the end so it glazes instead of boiling the meat. Cold crisp lettuce against the hot filling is most of the appeal.',
+    category: 'healthy-food',
+    cuisine: 'Asian-inspired',
+    course: 'Dinner',
+    method: 'Skillet',
+    diet: ['dairy-free', 'high-protein', 'low-carb'],
+    keywords: ['turkey lettuce wraps', 'low carb dinner', 'minced turkey recipe', 'high protein dinner', 'san choy bow'],
+    image: null,
+    imageAlt: 'Lettuce cups filled with savoury minced turkey, spring onions and sesame seeds',
+    prepMinutes: 15,
+    cookMinutes: 12,
+    servings: 4,
+    yieldText: '12 lettuce cups, 4 servings',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 41,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 326, protein: 34, carbs: 14, fat: 15, fiber: 3, sugar: 8, sodium: 720 },
+    equipment: ['Large skillet or wok', 'Fine grater', 'Wooden spoon'],
+    ingredients: [
+      { group: 'Filling', items: [
+        '600 g turkey mince (thigh mince if you can get it)',
+        '1 tablespoon neutral oil',
+        '4 garlic cloves, finely chopped',
+        '2 tablespoons fresh ginger, finely grated',
+        '1 tin (225 g) water chestnuts, drained and chopped, or 1 diced carrot',
+        '6 spring onions, whites and greens kept separate',
+        '1/2 teaspoon fine sea salt'
+      ] },
+      { group: 'Sauce', items: [
+        '3 tablespoons soy sauce, or tamari for gluten-free',
+        '1 tablespoon rice vinegar',
+        '1 tablespoon hoisin sauce',
+        '2 teaspoons toasted sesame oil',
+        '1 teaspoon honey',
+        '1/2 teaspoon chilli flakes, or 1 tablespoon chilli garlic sauce'
+      ] },
+      { group: 'To serve', items: [
+        '2 baby gem or 1 iceberg lettuce, leaves separated and chilled',
+        '1 tablespoon sesame seeds, toasted',
+        'Handful of coriander or Thai basil',
+        'Lime wedges'
+      ] }
+    ],
+    instructions: [
+      { title: 'Mix the sauce first', text: 'Stir the soy sauce, vinegar, hoisin, sesame oil, honey and chilli together in a small bowl. Once the pan is hot there is no time to measure.' },
+      { title: 'Brown the turkey', text: 'Heat the oil in a large pan over medium-high until it shimmers. Add the mince with the salt, spread it flat and leave it undisturbed for 4 minutes. Letting it sit is what gives you browned crust instead of grey crumbs.' },
+      { title: 'Break it up', text: 'Break the meat into pieces with a wooden spoon and cook 3 to 4 minutes more, until no pink remains and some of the liquid has cooked off.' },
+      { title: 'Add the aromatics', text: 'Push the meat to one side, add the garlic, ginger and spring onion whites to the clear space and stir for 45 seconds, until fragrant but not coloured, then combine everything.' },
+      { title: 'Glaze with the sauce', text: 'Add the water chestnuts and pour in the sauce. Cook for 2 minutes over medium-high, stirring, until the liquid has reduced to a glaze that clings to the meat rather than pooling in the pan.' },
+      { title: 'Serve into cold leaves', text: 'Stir in the spring onion greens. Spoon the hot filling into the chilled lettuce cups at the table, and finish with sesame seeds, herbs and a squeeze of lime.' }
+    ],
+    tips: [
+      'Keep the lettuce in iced water until the moment you serve, then dry it. The contrast between cold leaf and hot filling is the point of the dish.',
+      'Do not stir the mince for the first few minutes. Browning is where the flavour comes from, and turkey gives you very little of it otherwise.',
+      'Reduce the sauce until it glazes. A wet filling will collapse the lettuce and run down your wrist.'
+    ],
+    variations: [
+      'Use chicken, pork or plant mince, or crumbled firm tofu pressed dry for a vegan version with tamari in place of the hoisin.',
+      'Serve the filling over rice or rice noodles instead of lettuce for a more substantial dinner.',
+      'Add a diced red pepper or a cup of shredded cabbage with the water chestnuts for more vegetables.'
+    ],
+    storage: 'The filling keeps 3 days in the fridge and freezes for 2 months. Reheat it in a hot pan rather than the microwave so the glaze tightens again, and prepare the lettuce fresh each time.',
+    faqs: [
+      { q: 'Can I make this gluten-free?', a: 'Yes. Use tamari in place of the soy sauce and check the hoisin, as most brands contain wheat; a gluten-free hoisin or an extra teaspoon of honey with a splash more tamari both work.' },
+      { q: 'Which lettuce holds up best?', a: 'Baby gem is the sturdiest and easiest to eat. Iceberg gives bigger cups and more crunch but tears, and butter lettuce is the most tender but needs a double leaf.' },
+      { q: 'My turkey came out dry. Why?', a: 'Turkey breast mince is very lean and overcooks in about a minute. Buy thigh mince if your shop has it, pull the pan off as soon as the glaze thickens, and do not hold it hot on the stove while you prepare the lettuce.' }
+    ],
+    related: ['miso-noodles', 'honey-soy-chicken', 'coconut-rice-bowl']
+  },
+  {
+    slug: 'black-bean-soup',
+    title: 'Smoky Black Bean Soup',
+    description: 'A thick, smoky black bean soup from tins and store-cupboard spices, blended half smooth in 40 minutes.',
+    intro: 'Blending only half the pot is the detail that makes this worth making. You get the body of a pureed soup and still have whole beans to chew on, without any cream or stock cubes doing the work. Smoked paprika and a little cumin give it the depth that usually comes from a ham bone and several hours.',
+    category: 'healthy-food',
+    cuisine: 'Latin-inspired',
+    course: 'Dinner',
+    method: 'Simmered',
+    diet: ['vegan', 'gluten-free', 'dairy-free', 'high-fibre'],
+    keywords: ['black bean soup', 'vegan soup', 'high fibre soup', 'store cupboard soup', 'smoky bean soup'],
+    image: null,
+    imageAlt: 'A bowl of thick black bean soup topped with coriander, lime and sliced red chilli',
+    prepMinutes: 10,
+    cookMinutes: 30,
+    servings: 6,
+    yieldText: '6 bowls',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 44,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 312, protein: 16, carbs: 48, fat: 7, fiber: 16, sugar: 7, sodium: 540 },
+    equipment: ['Large heavy pot', 'Stick blender or jug blender', 'Wooden spoon'],
+    ingredients: [
+      { group: 'Base', items: [
+        '2 tablespoons olive oil',
+        '1 large onion, diced',
+        '2 celery sticks, diced',
+        '1 red pepper, diced',
+        '5 garlic cloves, chopped',
+        '1 tablespoon ground cumin',
+        '2 teaspoons smoked paprika',
+        '1 teaspoon dried oregano',
+        '1/2 teaspoon chipotle flakes or cayenne, to taste'
+      ] },
+      { group: 'Soup', items: [
+        '3 tins (1.2 kg) black beans, drained and rinsed',
+        '1 tin (400 g) chopped tomatoes',
+        '4 cups (1 litre) vegetable stock',
+        '1 bay leaf',
+        '1 teaspoon fine sea salt, plus more to taste',
+        'Juice of 1 lime, at the end'
+      ] },
+      { group: 'To serve', items: [
+        'Coriander, chopped',
+        'Sliced red chilli or pickled jalapenos',
+        'Lime wedges',
+        'Avocado, diced, or a spoon of coconut yogurt'
+      ] }
+    ],
+    instructions: [
+      { title: 'Soften the vegetables', text: 'Heat the oil in a large pot over medium and cook the onion, celery and pepper with a pinch of salt for 8 minutes, until soft and just starting to colour at the edges. This is the base of the flavour, so do not rush it.' },
+      { title: 'Toast the spices', text: 'Add the garlic, cumin, paprika, oregano and chipotle and stir for 60 seconds, until the pot smells strongly of spice. Toasting them in oil is what separates a deep soup from a dusty one.' },
+      { title: 'Build the pot', text: 'Add the beans, tomatoes, stock, bay leaf and salt. Scrape the bottom of the pot to lift anything stuck, bring it to a boil, then lower to a steady simmer.' },
+      { title: 'Simmer', text: 'Simmer uncovered for 20 minutes, stirring now and then, until the liquid has reduced slightly and the beans are completely soft.' },
+      { title: 'Blend half', text: 'Remove the bay leaf. Blend about half the pot with a stick blender, or take 3 cups out to a blender and return it. Stop while there are still plenty of whole beans visible.' },
+      { title: 'Finish with lime', text: 'Stir in the lime juice and taste for salt; it will need more than you expect. Serve with coriander, chilli, avocado and more lime at the table.' }
+    ],
+    tips: [
+      'Rinse the beans properly. The liquid in the tin makes the soup taste tinny and dulls the smoked paprika.',
+      'The lime at the end is not a garnish. Without acid the soup tastes heavy and flat, however well seasoned it is.',
+      'If it thickens too much on standing, loosen it with stock or water rather than more tomato, which would make it sharp.'
+    ],
+    variations: [
+      'Add 200 g of chorizo or smoked bacon with the onion if you are not keeping it vegan.',
+      'Stir in a cup of sweetcorn or a chopped courgette in the last 5 minutes for more vegetables.',
+      'Serve it thicker over rice as a stew, or thinner with tortilla chips crushed on top.'
+    ],
+    storage: 'Keeps 5 days in the fridge, thickening as it sits, and freezes well for 3 months. Freeze it before adding the lime and the toppings, and reheat gently with a splash of water.',
+    faqs: [
+      { q: 'Can I use dried black beans?', a: 'Yes. 400 g of dried beans soaked overnight and simmered until tender replaces the three tins, and the bean cooking liquid can stand in for some of the stock. Allow an extra hour.' },
+      { q: 'Is it meant to be spicy?', a: 'Only mildly as written. The chipotle is there for smoke rather than heat, so adjust it freely, and put the sliced chilli on the table so everyone can choose.' },
+      { q: 'What makes it taste smoky without meat?', a: 'Smoked paprika and chipotle, both toasted in oil before the liquid goes in. A teaspoon of liquid smoke or a roasted red pepper blended in pushes it further if you want more.' }
+    ],
+    related: ['lentil-soup', 'stuffed-peppers', 'chickpea-salad']
   }
   ];
 

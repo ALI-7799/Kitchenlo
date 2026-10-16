@@ -761,6 +761,421 @@ const recipes: RecipeSource[] = [
       { q: 'Can I make it the same day?', a: 'It needs a minimum of 6 hours to set, and overnight is genuinely better. Before that the biscuits are still biscuits rather than cake, and the cream has not firmed enough to hold a slice.' }
     ],
     related: ['panna-cotta', 'rice-pudding', 'almond-tart']
+  },
+  {
+    slug: 'chocolate-cake',
+    title: 'Chocolate Fudge Layer Cake',
+    description: 'A deep, dark two-layer chocolate cake with glossy fudge frosting, mixed in one bowl with hot coffee.',
+    intro: 'Two things separate a good chocolate cake from a dry one. The first is hot liquid poured over the cocoa, which blooms it and turns the flavour from dusty to deep. The second is oil rather than butter in the crumb, so the cake stays soft straight from the fridge. The frosting is a real fudge frosting built on melted chocolate, not a sweetened buttercream pretending to be one.',
+    category: 'desserts',
+    cuisine: 'American',
+    course: 'Dessert',
+    method: 'Baked',
+    diet: ['vegetarian'],
+    keywords: ['chocolate cake', 'chocolate fudge cake', 'layer cake', 'birthday cake', 'one bowl chocolate cake'],
+    image: null,
+    imageAlt: 'A two-layer chocolate cake with swirled fudge frosting and one slice cut away',
+    prepMinutes: 25,
+    cookMinutes: 33,
+    servings: 12,
+    yieldText: '1 two-layer 20 cm / 8 inch cake, 12 slices',
+    difficulty: 'Medium',
+    rating: 4.9,
+    ratingCount: 64,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 512, protein: 6, carbs: 64, fat: 27, fiber: 4, sugar: 47, sodium: 330 },
+    equipment: ['Two 20 cm / 8 inch round cake tins', 'Electric whisk or stand mixer', 'Cooling rack', 'Offset spatula'],
+    ingredients: [
+      { group: 'Cake', items: [
+        '1 3/4 cups (220 g) plain flour',
+        '3/4 cup (75 g) unsweetened cocoa powder',
+        '2 cups (400 g) caster sugar',
+        '2 teaspoons bicarbonate of soda',
+        '1 teaspoon baking powder',
+        '1 teaspoon fine sea salt',
+        '2 large eggs, at room temperature',
+        '1 cup (240 ml) buttermilk, at room temperature',
+        '1/2 cup (120 ml) neutral oil',
+        '2 teaspoons vanilla extract',
+        '1 cup (240 ml) hot strong coffee, or boiling water'
+      ] },
+      { group: 'Fudge frosting', items: [
+        '200 g dark chocolate (about 60 to 70 per cent), chopped',
+        '225 g unsalted butter, softened',
+        '2 1/2 cups (300 g) icing sugar, sifted',
+        '1/4 cup (25 g) unsweetened cocoa powder, sifted',
+        '3 tablespoons double cream',
+        '1 teaspoon vanilla extract',
+        '1/4 teaspoon fine sea salt'
+      ] }
+    ],
+    instructions: [
+      { title: 'Heat the oven and line the tins', text: 'Heat the oven to 180C / 350F. Grease both tins, line the bases with baking paper and dust the sides with cocoa rather than flour, which would leave pale streaks on a dark cake.' },
+      { title: 'Whisk the dry ingredients', text: 'Whisk the flour, cocoa, sugar, bicarbonate of soda, baking powder and salt in a large bowl for a full 30 seconds, until no cocoa lumps remain. Cocoa clumps will not break up later.' },
+      { title: 'Add the wet ingredients', text: 'Add the eggs, buttermilk, oil and vanilla. Beat on medium for about 2 minutes, until the batter is smooth and slightly glossy.' },
+      { title: 'Pour in the hot coffee', text: 'With the mixer on low, pour in the hot coffee in a steady stream. The batter will go alarmingly thin, almost like a thick cream. That is correct, and it is what makes the crumb moist.' },
+      { title: 'Bake', text: 'Divide the batter between the tins and bake for 30 to 35 minutes, until a skewer in the centre comes out with a few moist crumbs. Start checking at 30 minutes; a clean skewer means it has gone slightly too far.' },
+      { title: 'Cool completely', text: 'Cool in the tins for 15 minutes, then turn out onto a rack and leave until no warmth remains at all, about 1 hour. Frosting a warm cake melts the frosting and tears the crumb.' },
+      { title: 'Make the frosting', text: 'Melt the chocolate gently and let it cool until barely warm. Beat the butter for 3 minutes until pale, then add the icing sugar and cocoa in two batches, followed by the cream, vanilla and salt. Beat in the cooled chocolate last and stop as soon as it is uniform.' },
+      { title: 'Fill and cover', text: 'Level the cake tops if they domed, spread a generous layer of frosting over the first cake, set the second on top and cover the whole thing. Swirl the surface with the back of a spoon and leave it 20 minutes to firm before slicing.' }
+    ],
+    tips: [
+      'Room-temperature eggs and buttermilk matter here. Cold dairy seizes the melted chocolate in the frosting and makes the batter mix unevenly.',
+      'The coffee does not make the cake taste of coffee. It sharpens the chocolate, and boiling water works nearly as well if you would rather skip it.',
+      'Let the melted chocolate cool before it meets the butter. Hot chocolate turns the frosting into a loose glaze that slides off the sides.'
+    ],
+    variations: [
+      'Bake as a single 23 x 33 cm sheet cake for 35 to 40 minutes and frost it in the tin, which is easier for a crowd.',
+      'Fold 150 g of chocolate chips through the batter for a cake with molten pockets.',
+      'Make it dairy-free with plant milk soured with 1 tablespoon of lemon juice in place of the buttermilk, and a vegan block butter in the frosting.'
+    ],
+    storage: 'Keeps under a cake dome at room temperature for 3 days, or 5 days in the fridge; bring chilled slices back to room temperature before serving. Unfrosted layers freeze well for 2 months, wrapped tightly.',
+    faqs: [
+      { q: 'Why is my batter so runny?', a: 'Because it should be. This is a hot-liquid cake batter and it pours like cream rather than mounding on the spoon. Adding flour to thicken it is the one change that will make the cake dry.' },
+      { q: 'Can I make it without buttermilk?', a: 'Yes. Stir 1 tablespoon of lemon juice or white vinegar into 1 cup of whole milk and leave it 10 minutes until it thickens slightly. The acid is what reacts with the bicarbonate of soda, so do not leave it out entirely.' },
+      { q: 'My cake sank in the middle. What happened?', a: 'Usually the oven door was opened before the structure set, or the raising agents were over-measured. Leave the door shut for the first 25 minutes and level the spoons of bicarbonate of soda rather than heaping them.' }
+    ],
+    related: ['fudgy-brownies', 'chocolate-mousse', 'lava-mug-cake']
+  },
+  {
+    slug: 'baked-cheesecake',
+    title: 'New York Baked Cheesecake',
+    description: 'A tall, dense baked cheesecake on a buttery biscuit base, cooled slowly so the top never cracks.',
+    intro: 'A baked cheesecake is mostly a lesson in restraint. Beat it gently, bake it low in a water bath, then let it cool so slowly that it is boring to watch. Nearly every cracked, sunken cheesecake was rushed at one of those three points. Done properly the result is dense, faintly tangy and sliceable like a terrine.',
+    category: 'desserts',
+    cuisine: 'American',
+    course: 'Dessert',
+    method: 'Baked',
+    diet: ['vegetarian'],
+    keywords: ['cheesecake', 'baked cheesecake', 'new york cheesecake', 'cream cheese dessert', 'water bath cheesecake'],
+    image: null,
+    imageAlt: 'A tall slice of baked cheesecake on a biscuit base with a smooth pale top',
+    prepMinutes: 25,
+    cookMinutes: 75,
+    servings: 12,
+    yieldText: '1 23 cm / 9 inch cheesecake, 12 slices',
+    difficulty: 'Medium',
+    rating: 4.8,
+    ratingCount: 57,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 538, protein: 9, carbs: 41, fat: 38, fiber: 1, sugar: 31, sodium: 420 },
+    equipment: ['23 cm / 9 inch springform tin', 'Large roasting tin for the water bath', 'Stand mixer or electric whisk', 'Foil'],
+    ingredients: [
+      { group: 'Base', items: [
+        '200 g digestive biscuits or graham crackers, crushed to crumbs',
+        '85 g unsalted butter, melted',
+        '2 tablespoons caster sugar',
+        'Pinch of fine sea salt'
+      ] },
+      { group: 'Filling', items: [
+        '900 g full-fat cream cheese, at room temperature',
+        '1 cup (200 g) caster sugar',
+        '2 tablespoons cornflour',
+        '3/4 cup (180 ml) sour cream, at room temperature',
+        '2 teaspoons vanilla extract',
+        'Zest of 1 lemon and 1 tablespoon of its juice',
+        '1/4 teaspoon fine sea salt',
+        '4 large eggs plus 1 yolk, at room temperature'
+      ] },
+      { group: 'To serve, optional', items: [
+        '300 g strawberries, hulled and halved',
+        '2 tablespoons caster sugar',
+        '1 teaspoon lemon juice'
+      ] }
+    ],
+    instructions: [
+      { title: 'Build the base', text: 'Heat the oven to 160C / 325F. Mix the crumbs, melted butter, sugar and salt, press firmly into the base of the springform tin with the back of a glass, and bake for 10 minutes. Cool while you make the filling.' },
+      { title: 'Wrap the tin', text: 'Wrap the outside of the tin in two layers of foil, coming all the way up the sides. This keeps the water bath out of the base, which is the only failure mode a water bath has.' },
+      { title: 'Beat the cream cheese smooth', text: 'Beat the cream cheese alone on medium-low for 2 minutes, scraping the bowl twice, until completely smooth. Any lumps left now will still be there in the baked cheesecake.' },
+      { title: 'Add sugar, then the rest', text: 'Add the sugar and cornflour and beat 1 minute more, then the sour cream, vanilla, lemon zest, lemon juice and salt. Keep the mixer on low from here: speed beats air into the batter, and air is what makes a cheesecake rise and then crack as it falls.' },
+      { title: 'Add the eggs one at a time', text: 'Beat in the eggs and the yolk one by one on the lowest speed, stopping the moment each disappears. Finish with a few turns of a spatula by hand.' },
+      { title: 'Bake in a water bath', text: 'Pour the filling over the cooled base and smooth the top. Set the tin in the roasting tin and pour boiling water around it to come halfway up the sides. Bake for 65 to 75 minutes, until the outer 5 cm looks set and the middle still wobbles like soft jelly when you nudge the tin.' },
+      { title: 'Cool slowly', text: 'Turn the oven off, prop the door open with a wooden spoon and leave the cheesecake inside for 1 hour. Then lift it out of the water, run a thin knife around the edge and cool to room temperature.' },
+      { title: 'Chill, then serve', text: 'Refrigerate uncovered for at least 6 hours, ideally overnight, before releasing the tin. For the strawberries, toss them with the sugar and lemon juice 30 minutes before serving and spoon them over each slice.' }
+    ],
+    tips: [
+      'Everything at room temperature, mixer on low. Cold cream cheese gives you lumps and high speed gives you cracks.',
+      'Pull it while the centre still wobbles. The residual heat and the long chill finish the set, and a cheesecake baked until firm in the middle will be dry and grainy.',
+      'Run a knife around the edge while it is still warm. As the cheesecake contracts, an edge stuck to the tin is what tears the top open.'
+    ],
+    variations: [
+      'Swap the biscuit base for crushed chocolate sandwich cookies, with 60 g of butter rather than 85 g.',
+      'Fold 150 g of melted dark chocolate into a third of the batter and marble it through for a chocolate swirl.',
+      'Make it in a 20 cm tin for a taller cake, adding 10 to 15 minutes to the bake.'
+    ],
+    storage: 'Keeps covered in the fridge for 5 days and is at its best on day two. Freeze whole or in slices for up to 2 months, wrapped first in cling film and then in foil, and thaw overnight in the fridge.',
+    faqs: [
+      { q: 'Do I really need a water bath?', a: 'It is the difference between a gentle, even set and a browned, domed edge. If you would rather skip it, set a shallow tin of boiling water on the shelf below and lower the oven to 150C / 300F, which gets you most of the way.' },
+      { q: 'My cheesecake cracked anyway. Can I fix it?', a: 'Yes, and nobody will know. Spread a thin layer of sweetened sour cream over the top once it is chilled, or cover it with the strawberries. Cracks are cosmetic and the texture underneath is unaffected.' },
+      { q: 'Can I use low-fat cream cheese?', a: 'Not for this one. Reduced-fat cream cheese carries far more water, and the filling bakes to something closer to a set custard that weeps as it chills.' }
+    ],
+    related: ['chocolate-cake', 'lemon-bars', 'panna-cotta']
+  },
+  {
+    slug: 'chocolate-chip-cookies',
+    title: 'Brown Butter Chocolate Chip Cookies',
+    description: 'Thick cookies with crisp edges and a soft centre, made with browned butter and chopped dark chocolate.',
+    intro: 'Browning the butter is ten minutes of work for a flavour you cannot get any other way: toffee and toasted nuts, sitting under the chocolate. The other change worth making is chopping a bar instead of using chips, so you get shards and puddles rather than uniform dots. Chilling the dough is not optional if you want thick cookies.',
+    category: 'desserts',
+    cuisine: 'American',
+    course: 'Dessert',
+    method: 'Baked',
+    diet: ['vegetarian'],
+    keywords: ['chocolate chip cookies', 'brown butter cookies', 'chewy cookies', 'bakery style cookies'],
+    image: null,
+    imageAlt: 'Thick chocolate chip cookies on baking paper with pools of melted chocolate and flaky salt',
+    prepMinutes: 20,
+    cookMinutes: 12,
+    servings: 18,
+    yieldText: '18 large cookies',
+    difficulty: 'Easy',
+    rating: 4.9,
+    ratingCount: 88,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 284, protein: 3, carbs: 34, fat: 16, fiber: 2, sugar: 22, sodium: 180 },
+    equipment: ['Light-coloured saucepan', 'Electric whisk or stand mixer', 'Two baking sheets', 'Ice cream scoop, optional'],
+    ingredients: [
+      { group: 'Dough', items: [
+        '225 g unsalted butter',
+        '1 cup (200 g) light brown sugar, packed',
+        '1/2 cup (100 g) caster sugar',
+        '1 large egg plus 1 yolk, at room temperature',
+        '2 teaspoons vanilla extract',
+        '2 1/4 cups (280 g) plain flour',
+        '1 teaspoon bicarbonate of soda',
+        '3/4 teaspoon fine sea salt'
+      ] },
+      { group: 'Chocolate and finishing', items: [
+        '250 g dark chocolate (about 70 per cent), roughly chopped',
+        'Flaky sea salt, for the tops'
+      ] }
+    ],
+    instructions: [
+      { title: 'Brown the butter', text: 'Melt the butter in a light-coloured pan over medium heat, then keep cooking it, swirling often, for 5 to 7 minutes. It will foam, quieten, and then the milk solids at the bottom will turn golden brown and smell nutty. Pour it at once into a bowl, brown bits and all.' },
+      { title: 'Cool it down', text: 'Leave the butter 15 minutes, until it is warm rather than hot. Hot butter cooks the egg and the cookies spread flat.' },
+      { title: 'Beat in the sugars', text: 'Whisk both sugars into the butter for a full minute, until the mixture looks like wet sand and is no longer grainy at the edges.' },
+      { title: 'Add the eggs and vanilla', text: 'Beat in the egg, the extra yolk and the vanilla for 1 to 2 minutes, until the mixture turns slightly paler and thickens enough to ribbon off the whisk.' },
+      { title: 'Fold in the dry ingredients', text: 'Add the flour, bicarbonate of soda and salt and fold with a spatula until a few floury streaks remain, then add the chopped chocolate and fold just until it is distributed. Stop there; worked dough bakes tough.' },
+      { title: 'Chill the dough', text: 'Scoop into 18 balls of about 60 g, cover and refrigerate for at least 2 hours, or overnight. This firms the fat so the cookies rise before they spread, and it lets the flour hydrate, which deepens the flavour.' },
+      { title: 'Bake', text: 'Heat the oven to 190C / 375F. Bake 6 cookies per sheet, well spaced, for 10 to 12 minutes, until the edges are set and golden and the centres still look underdone and puffy.' },
+      { title: 'Settle and salt', text: 'Sprinkle with flaky salt as they come out and leave them on the hot sheet for 5 minutes to finish setting, then move them to a rack. They collapse slightly into the right texture as they cool.' }
+    ],
+    tips: [
+      'Weigh the dough balls if you can. Even cookies bake evenly, and 60 g is the size that gives a crisp edge with a soft middle.',
+      'Pull them while the centres look wet. A cookie that looks done in the oven is a hard cookie on the plate.',
+      'If they spread too much, the butter was too warm or the dough was not chilled long enough. Put the next tray back in the fridge for 20 minutes.'
+    ],
+    variations: [
+      'Add 100 g of toasted chopped walnuts or pecans with the chocolate.',
+      'Swap a third of the dark chocolate for milk or white chocolate for a sweeter cookie.',
+      'Press a few extra chocolate pieces onto the tops before baking for bakery-style puddles on the surface.'
+    ],
+    storage: 'Keep in an airtight tin for 4 days, with a slice of bread in the tin to hold the softness. Raw dough balls freeze for 3 months and bake straight from frozen with 2 extra minutes, which is the reason to make the full batch.',
+    faqs: [
+      { q: 'Can I bake the dough straight away?', a: 'You can, but the cookies will be thinner and the flavour flatter. If you are in a hurry, 30 minutes in the freezer gets you most of the benefit of a long chill.' },
+      { q: 'How do I know when the butter is browned enough?', a: 'Go by smell and by the colour of the solids at the bottom of the pan: nutty and amber is right, acrid and very dark has gone too far. Use a pale pan so you can actually see it.' },
+      { q: 'Why one whole egg and an extra yolk?', a: 'The extra yolk adds fat and emulsifiers without more water, which gives a chewier centre. Two whole eggs make a cakier cookie.' }
+    ],
+    related: ['peanut-butter-cookies', 'fudgy-brownies', 'chocolate-cake']
+  },
+  {
+    slug: 'peanut-butter-cookies',
+    title: 'Three-Ingredient Peanut Butter Cookies',
+    description: 'Soft, flourless peanut butter cookies from three store-cupboard ingredients, on the table in 20 minutes.',
+    intro: 'There is no flour, no butter and no mixer. Peanut butter brings the fat and the structure, sugar brings the crisp edge, and the egg holds it together, which is the entire recipe. They are naturally gluten-free as a result, and the only real decision is how long to bake them: short for soft, a couple of minutes longer for snappy.',
+    category: 'desserts',
+    cuisine: 'American',
+    course: 'Dessert',
+    method: 'Baked',
+    diet: ['vegetarian', 'gluten-free'],
+    keywords: ['peanut butter cookies', 'three ingredient cookies', 'flourless cookies', 'gluten free cookies', 'easy cookies'],
+    image: null,
+    imageAlt: 'Peanut butter cookies marked with a criss-cross fork pattern on a baking sheet',
+    prepMinutes: 10,
+    cookMinutes: 11,
+    servings: 14,
+    yieldText: '14 cookies',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 46,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 196, protein: 6, carbs: 16, fat: 13, fiber: 1, sugar: 14, sodium: 120 },
+    equipment: ['Mixing bowl', 'Baking sheet', 'Fork'],
+    ingredients: [
+      { group: 'Dough', items: [
+        '1 cup (260 g) smooth peanut butter, the kind that does not separate',
+        '3/4 cup (150 g) caster sugar',
+        '1 large egg',
+        '1/2 teaspoon vanilla extract, optional',
+        'Pinch of fine sea salt, if the peanut butter is unsalted'
+      ] },
+      { group: 'To finish', items: [
+        'Flaky sea salt',
+        '2 tablespoons caster sugar, for rolling, optional'
+      ] }
+    ],
+    instructions: [
+      { title: 'Heat the oven', text: 'Heat the oven to 180C / 350F and line a baking sheet with baking paper. These cookies stick to a bare tray.' },
+      { title: 'Mix the dough', text: 'Stir the peanut butter, sugar, egg, vanilla and salt together with a spoon until the dough is uniform and pulls away from the side of the bowl, about 1 minute. It will be stiff and slightly oily, which is right.' },
+      { title: 'Shape the cookies', text: 'Roll tablespoon-sized balls of about 30 g, rolling them in the extra sugar if you want a crisper shell, and space them well apart on the sheet. They spread a little but not much.' },
+      { title: 'Press the pattern', text: 'Flatten each ball with a fork, then again at a right angle to make the criss-cross. This is not only decoration: the dough has no gluten and no raising agent, so pressing it is what gives an even thickness that bakes through.' },
+      { title: 'Bake short', text: 'Bake for 9 to 11 minutes, until the edges are set and the tops have lost their shine but the centres still look soft. They firm up completely as they cool.' },
+      { title: 'Cool on the sheet', text: 'Sprinkle with flaky salt and leave them on the tray for 10 minutes before moving them. Straight out of the oven they are too fragile to lift.' }
+    ],
+    tips: [
+      'Use a stabilised peanut butter rather than a natural one that separates. Natural peanut butter varies in oil content and the dough can come out either greasy or crumbly.',
+      'Ten minutes is the line between soft and crunchy. Pull them early if you want chewy centres.',
+      'Leave them alone on the hot tray. Lifting them too soon is the only way these break.'
+    ],
+    variations: [
+      'Press a chocolate chunk into the centre of each ball before baking, or stir 100 g of chocolate chips through the dough.',
+      'Swap the peanut butter for almond or cashew butter; the ratios are unchanged.',
+      'Use half light brown sugar for a softer, more caramel-flavoured cookie.'
+    ],
+    storage: 'Keep in an airtight tin at room temperature for 5 days. They freeze well baked, and the raw dough balls keep 2 months in the freezer and bake from frozen with an extra 2 minutes.',
+    faqs: [
+      { q: 'Are these really gluten-free?', a: 'The recipe contains no flour, so yes, provided the peanut butter you use is certified gluten-free. Some brands are processed on shared lines, so check the label if you are cooking for someone with coeliac disease.' },
+      { q: 'Can I make them without egg?', a: 'A flax egg, which is 1 tablespoon of ground flaxseed in 3 tablespoons of water left to thicken, works and gives a slightly softer, more crumbly cookie.' },
+      { q: 'Can I reduce the sugar?', a: 'You can go down to 1/2 cup, but sugar is doing structural work here as well as sweetening. Any lower and the cookies turn dense and oily rather than crisp at the edges.' }
+    ],
+    related: ['chocolate-chip-cookies', 'banana-pops', 'fudgy-brownies']
+  },
+  {
+    slug: 'fudgy-brownies',
+    title: 'One-Bowl Fudgy Brownies',
+    description: 'Dense, glossy-topped brownies with a fudge centre, made in one bowl with melted chocolate and cocoa.',
+    intro: 'Fudgy rather than cakey comes down to a short ingredient list and a short bake. Very little flour, no raising agent, melted chocolate rather than only cocoa, and the tray out of the oven while the middle is still soft. Whisking the eggs and sugar hard is what gives the thin, crackled top that people judge a brownie by.',
+    category: 'desserts',
+    cuisine: 'American',
+    course: 'Dessert',
+    method: 'Baked',
+    diet: ['vegetarian'],
+    keywords: ['brownies', 'fudgy brownies', 'one bowl brownies', 'chocolate brownies', 'easy brownies'],
+    image: null,
+    imageAlt: 'Squares of dark fudgy brownie with a crackled top, cut on baking paper',
+    prepMinutes: 15,
+    cookMinutes: 25,
+    servings: 16,
+    yieldText: '16 squares',
+    difficulty: 'Easy',
+    rating: 4.9,
+    ratingCount: 72,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 312, protein: 4, carbs: 34, fat: 19, fiber: 2, sugar: 27, sodium: 160 },
+    equipment: ['20 cm / 8 inch square tin', 'Heatproof bowl', 'Balloon whisk'],
+    ingredients: [
+      { group: 'Brownies', items: [
+        '170 g unsalted butter, cubed',
+        '200 g dark chocolate (about 70 per cent), chopped',
+        '1 1/4 cups (250 g) caster sugar',
+        '1/4 cup (50 g) light brown sugar',
+        '3 large eggs, at room temperature',
+        '2 teaspoons vanilla extract',
+        '3/4 cup (95 g) plain flour',
+        '1/4 cup (25 g) unsweetened cocoa powder',
+        '3/4 teaspoon fine sea salt'
+      ] },
+      { group: 'Optional additions', items: [
+        '100 g extra chocolate, chopped into chunks',
+        'Flaky sea salt, for the top'
+      ] }
+    ],
+    instructions: [
+      { title: 'Prepare the tin', text: 'Heat the oven to 180C / 350F. Line the tin with baking paper, leaving an overhang on two sides so you can lift the whole slab out later.' },
+      { title: 'Melt the butter and chocolate', text: 'Melt the butter and chopped chocolate together over a pan of barely simmering water, or in short bursts in the microwave, stirring until smooth. Take it off the heat and let it cool for 5 minutes.' },
+      { title: 'Whisk the sugars in hard', text: 'Whisk both sugars into the warm chocolate, then add the eggs and vanilla and whisk vigorously for 1 to 2 minutes, until the mixture thickens and turns glossy. This dissolved-sugar step is what forms the papery crackled top.' },
+      { title: 'Fold in the dry ingredients', text: 'Sift the flour, cocoa and salt over the top and fold with a spatula until the last streak of flour disappears, no further. Fold in the extra chocolate chunks if using.' },
+      { title: 'Bake until just set', text: 'Spread into the tin and bake for 22 to 27 minutes. The edges should be set and slightly risen, the centre still soft, and a skewer 5 cm from the edge should come out with thick crumbs on it.' },
+      { title: 'Cool before cutting', text: 'Sprinkle with flaky salt and cool in the tin for at least 2 hours. Warm brownies tear instead of slicing, and the fudge texture only arrives once they are completely cool.' }
+    ],
+    tips: [
+      'Underbake rather than overbake. Brownies carry on setting in the hot tin, and the five minutes that feel cautious are the five minutes that keep them fudgy.',
+      'Whisk the eggs and sugar harder than feels necessary. That is the only source of the shiny crackled top.',
+      'For sharp-edged squares, chill the cooled slab for 30 minutes and cut with a long knife wiped clean between cuts.'
+    ],
+    variations: [
+      'Swirl 150 g of softened cream cheese beaten with 2 tablespoons of sugar through the batter before baking.',
+      'Add 100 g of toasted walnuts, or a layer of salted caramel spooned over half the batter.',
+      'Use a 23 cm square tin for thinner, chewier brownies and cut the bake to 18 to 20 minutes.'
+    ],
+    storage: 'Keep in an airtight tin for 4 days; they improve on day two as the centre settles. Freeze cut squares for 3 months and thaw at room temperature, or warm one for 15 seconds in the microwave.',
+    faqs: [
+      { q: 'How do I tell when brownies are done?', a: 'Ignore the centre and test 5 cm in from the edge: thick, sticky crumbs on the skewer means ready. A clean skewer anywhere in the tray means they have crossed into cakey.' },
+      { q: 'Why did my top come out dull rather than shiny?', a: 'The sugar was not dissolved enough. Whisk it into the warm chocolate and then beat hard once the eggs are in, for a solid minute or two.' },
+      { q: 'Can I use only cocoa and skip the bar chocolate?', a: 'You will get a good cocoa brownie but a drier one. Melted chocolate adds cocoa butter, which is what makes the centre dense and fudgy rather than crumbly.' }
+    ],
+    related: ['chocolate-cake', 'chocolate-chip-cookies', 'chocolate-mousse']
+  },
+  {
+    slug: 'chocolate-mousse',
+    title: 'Dark Chocolate Mousse',
+    description: 'A silky chocolate mousse set with whipped cream rather than raw egg, ready to chill in 20 minutes.',
+    intro: 'Classic mousse leans on raw egg white, which rules it out for a lot of tables. This version builds a ganache first, then folds whipped cream through it in two stages, which gives a texture closer to a chilled truffle than a foam. It is the more forgiving method as well: nothing can curdle and nothing has to be cooked to a temperature.',
+    category: 'desserts',
+    cuisine: 'French-inspired',
+    course: 'Dessert',
+    method: 'Chilled',
+    diet: ['vegetarian', 'gluten-free'],
+    keywords: ['chocolate mousse', 'no egg mousse', 'make ahead dessert', 'dark chocolate dessert'],
+    image: null,
+    imageAlt: 'Glasses of dark chocolate mousse topped with whipped cream and grated chocolate',
+    prepMinutes: 20,
+    cookMinutes: 5,
+    servings: 6,
+    yieldText: '6 small glasses',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 51,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 404, protein: 4, carbs: 23, fat: 33, fiber: 3, sugar: 19, sodium: 45 },
+    equipment: ['Heatproof bowl', 'Electric whisk', 'Six small glasses or ramekins'],
+    ingredients: [
+      { group: 'Ganache base', items: [
+        '200 g dark chocolate (about 70 per cent), finely chopped',
+        '1/2 cup (120 ml) double cream',
+        '2 tablespoons caster sugar',
+        '1/4 teaspoon fine sea salt',
+        '1 teaspoon vanilla extract',
+        '1 teaspoon instant espresso powder, optional'
+      ] },
+      { group: 'To fold and finish', items: [
+        '1 1/4 cups (300 ml) double cream, cold',
+        '2 tablespoons icing sugar',
+        'Grated chocolate or cocoa, to finish',
+        'Flaky sea salt, optional'
+      ] }
+    ],
+    instructions: [
+      { title: 'Make the ganache', text: 'Heat the 120 ml of cream with the caster sugar and salt until it steams and the sugar dissolves, then pour it over the chopped chocolate. Leave it 2 minutes without stirring, then stir from the middle outwards until glossy and smooth.' },
+      { title: 'Flavour and cool it', text: 'Stir in the vanilla and the espresso powder if you are using it, then leave the ganache to cool to room temperature, about 15 minutes. Warm ganache would melt the cream you are about to fold in.' },
+      { title: 'Whip the cream', text: 'Whip the cold 300 ml of cream with the icing sugar to soft peaks that just hold their shape and still flop at the tip. Stiff cream will not fold in without knocking the air out of it.' },
+      { title: 'Slacken the base', text: 'Whisk about a third of the whipped cream into the cooled ganache until uniform. Sacrificing that first third makes the base light enough to accept the rest.' },
+      { title: 'Fold in the rest', text: 'Add the remaining cream in two additions, folding with a spatula down the middle and up the side of the bowl, stopping as soon as no pale streaks remain.' },
+      { title: 'Chill and serve', text: 'Spoon into glasses and refrigerate for at least 2 hours, until set but still spoonable. Finish with grated chocolate and a few flakes of salt just before serving.' }
+    ],
+    tips: [
+      'Both temperatures matter: the ganache at room temperature, the cream straight from the fridge. Get either wrong and the mousse goes grainy or loose.',
+      'Chop the chocolate finely. Large chunks do not melt fully in hot cream and leave a gritty texture.',
+      'Fold, do not stir. The air you whipped into the cream is the only thing making this a mousse.'
+    ],
+    variations: [
+      'Fold in the zest of an orange, or 2 tablespoons of rum or brandy, with the vanilla.',
+      'Layer it in glasses with crushed biscuits and raspberries for a quick trifle.',
+      'Use a good dairy-free dark chocolate and coconut cream chilled overnight for a vegan version.'
+    ],
+    storage: 'Keeps covered in the fridge for 3 days; press cling film to the surface or the top will skin. It does not freeze well, as the cream separates on thawing.',
+    faqs: [
+      { q: 'Why did my mousse turn grainy?', a: 'The ganache was still warm when the cream went in, so the fat separated. Cool it to room temperature, and if it does split, warm it gently and whisk in a tablespoon of warm cream to bring it back.' },
+      { q: 'Can I use milk chocolate?', a: 'Yes, but drop the caster sugar entirely and increase the chocolate to 250 g, since milk chocolate is sweeter and sets more softly.' },
+      { q: 'How far ahead can I make it?', a: 'A day ahead is ideal. The texture firms overnight, so take the glasses out of the fridge 10 minutes before serving to loosen them slightly.' }
+    ],
+    related: ['panna-cotta', 'fudgy-brownies', 'baked-cheesecake']
   }
   ];
 

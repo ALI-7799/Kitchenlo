@@ -2,7 +2,7 @@
   "name": "kitchenlo",
   "version": "2.0.0",
   "private": true,
-  "description": "Kitchenlo — a statically generated recipe site with 30 tested recipes, meal planning and structured data for recipe search.",
+  "description": "Kitchenlo — a statically generated recipe site with 70 tested recipes, meal planning and structured data for recipe search.",
   "homepage": "https://www.kitchenlo.com",
   "repository": {
     "type": "git",

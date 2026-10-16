@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=a419ecef41" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=73ef203d02" />
 
     <script>
       /* Applies the stored theme before first paint so the page never flashes. */
@@ -137,7 +137,7 @@
       <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search recipes">
         <div class="search-input-row">
           <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="search" id="searchOverlayInput" placeholder="Search 55 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
+          <input type="search" id="searchOverlayInput" placeholder="Search 70 recipes and guides..." autocomplete="off" aria-label="Search recipes" />
           <button type="button" class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
         </div>
         <div class="search-results" id="searchOverlayResults" aria-live="polite"></div>
@@ -189,6 +189,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -201,6 +205,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -226,6 +235,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -262,6 +277,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -274,6 +293,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -299,6 +323,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -335,6 +365,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -347,6 +381,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -372,6 +411,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -408,6 +453,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -420,6 +469,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -445,6 +499,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -481,6 +541,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -493,6 +557,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -518,6 +587,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -554,6 +629,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -566,6 +645,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -591,6 +675,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -627,6 +717,10 @@
                   <option value="broccoli-quesadillas">Cheesy Broccoli Quesadillas</option>
                   <option value="spaghetti-carbonara">Spaghetti Carbonara</option>
                   <option value="thai-green-curry">Thai Green Curry</option>
+                  <option value="chicken-fajitas">Sheet Pan Chicken Fajitas</option>
+                  <option value="sausage-gnocchi">One-Pan Sausage and Gnocchi</option>
+                  <option value="egg-fried-rice">15-Minute Egg Fried Rice</option>
+                  <option value="ginger-chicken-stir-fry">Ginger Chicken Stir-Fry</option>
                 </optgroup>
                 <optgroup label="Healthy Food">
                   <option value="chickpea-salad">Mediterranean Chickpea Salad</option>
@@ -639,6 +733,11 @@
                   <option value="stuffed-peppers">Stuffed Bell Peppers</option>
                   <option value="farro-salad">Warm Farro Salad</option>
                   <option value="coconut-rice-bowl">Coconut Rice Bowl</option>
+                  <option value="greek-chicken-bowl">Greek Chicken Rice Bowl</option>
+                  <option value="sweet-potato-buddha-bowl">Roasted Sweet Potato Buddha Bowl</option>
+                  <option value="tuna-white-bean-salad">Tuna and White Bean Salad</option>
+                  <option value="turkey-lettuce-wraps">Ginger Turkey Lettuce Wraps</option>
+                  <option value="black-bean-soup">Smoky Black Bean Soup</option>
                 </optgroup>
                 <optgroup label="Breakfast &amp; Brunch">
                   <option value="buttermilk-pancakes">Fluffy Buttermilk Pancakes</option>
@@ -664,6 +763,12 @@
                   <option value="apple-crisp">Cinnamon Apple Crisp</option>
                   <option value="almond-tart">Almond Berry Tart</option>
                   <option value="tiramisu">Classic Tiramisu</option>
+                  <option value="chocolate-cake">Chocolate Fudge Layer Cake</option>
+                  <option value="baked-cheesecake">New York Baked Cheesecake</option>
+                  <option value="chocolate-chip-cookies">Brown Butter Chocolate Chip Cookies</option>
+                  <option value="peanut-butter-cookies">Three-Ingredient Peanut Butter Cookies</option>
+                  <option value="fudgy-brownies">One-Bowl Fudgy Brownies</option>
+                  <option value="chocolate-mousse">Dark Chocolate Mousse</option>
                 </optgroup>
                 <optgroup label="Comfort Food">
                   <option value="creamy-tomato-rigatoni">Creamy Tomato Rigatoni</option>
@@ -794,7 +899,7 @@
     </button>
 
     <!-- Runtime config stays unbundled so keys can be changed without a rebuild. -->
-    <script src="assets/js/config.js?v=a419ecef41"></script>
-    <script src="assets/js/kitchenlo.js?v=a419ecef41" defer></script>
+    <script src="assets/js/config.js?v=73ef203d02"></script>
+    <script src="assets/js/kitchenlo.js?v=73ef203d02" defer></script>
   </body>
 </html>

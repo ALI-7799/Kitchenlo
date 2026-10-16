@@ -238,7 +238,7 @@ const site: SiteConfig = {
 
   /* Home page trust strip. */
   stats: [
-    { value: '55', label: 'Tested recipes' },
+    { value: '70', label: 'Tested recipes' },
     { value: '4.7', label: 'Average rating' },
     { value: '5 min', label: 'Fastest recipe' },
     { value: '100%', label: 'Home-cook friendly' }

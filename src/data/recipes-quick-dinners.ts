@@ -825,6 +825,299 @@ const recipes: RecipeSource[] = [
       { q: 'Can I use light coconut milk?', a: 'Not for this method. Light coconut milk has too little fat to crack and release oil, so you cannot fry the paste properly, and the finished sauce stays thin. Use full-fat and serve smaller portions if that is the concern.' }
     ],
     related: ['chicken-tikka-masala', 'miso-noodles', 'coconut-rice-bowl']
+  },
+  {
+    slug: 'chicken-fajitas',
+    title: 'Sheet Pan Chicken Fajitas',
+    description: 'Spiced chicken strips, peppers and onions roasted on one tray and piled into warm tortillas.',
+    intro: 'Fajitas made in a pan mean cooking in batches to avoid crowding. A very hot oven and a single large tray get around that: everything roasts at once, the edges char the way they would on a griddle, and the only pan to wash is the one the tortillas warmed in. The lime goes on after roasting, never before.',
+    category: 'quick-dinners',
+    cuisine: 'Mexican-inspired',
+    course: 'Dinner',
+    method: 'Roasted',
+    diet: ['gluten-free', 'dairy-free', 'high-protein'],
+    keywords: ['chicken fajitas', 'sheet pan dinner', 'one pan chicken', 'weeknight mexican', 'tray bake dinner'],
+    image: null,
+    imageAlt: 'Charred chicken strips with red and yellow peppers and onions on a baking tray with lime',
+    prepMinutes: 15,
+    cookMinutes: 20,
+    servings: 4,
+    yieldText: '4 servings, about 12 tortillas',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 61,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 486, protein: 38, carbs: 42, fat: 17, fiber: 7, sugar: 8, sodium: 620 },
+    equipment: ['Large rimmed baking sheet', 'Mixing bowl', 'Dry skillet for the tortillas'],
+    ingredients: [
+      { group: 'Tray', items: [
+        '700 g chicken breast or thighs, sliced into 1 cm strips',
+        '3 peppers (a mix of red, yellow and green), sliced',
+        '1 large red onion, sliced into thick half-moons',
+        '3 tablespoons olive oil',
+        '4 garlic cloves, crushed'
+      ] },
+      { group: 'Fajita spice', items: [
+        '2 teaspoons chilli powder',
+        '2 teaspoons ground cumin',
+        '1 1/2 teaspoons smoked paprika',
+        '1 teaspoon dried oregano',
+        '1/2 teaspoon garlic powder',
+        '1 teaspoon fine sea salt',
+        '1/2 teaspoon black pepper'
+      ] },
+      { group: 'To serve', items: [
+        '12 small corn or flour tortillas, warmed',
+        'Juice of 1 lime, plus wedges',
+        'Handful of coriander, chopped',
+        'Avocado or guacamole',
+        'Soured cream or a thick yogurt, optional'
+      ] }
+    ],
+    instructions: [
+      { title: 'Heat the oven as high as it goes', text: 'Heat the oven to 230C / 450F and put the empty baking sheet in while it comes up to temperature. Food landing on a hot tray starts browning immediately instead of sweating.' },
+      { title: 'Season everything together', text: 'Toss the chicken, peppers and onion in a bowl with the oil, garlic and all the spices until evenly coated. Doing it in the bowl rather than on the tray means no bare patches.' },
+      { title: 'Spread in one layer', text: 'Tip the lot onto the hot tray and spread it out so nothing overlaps. Use two trays if it looks tight; crowding is the only thing that will stop this from charring.' },
+      { title: 'Roast hard', text: 'Roast for 18 to 20 minutes without stirring for the first 12, until the chicken is cooked through to 74C / 165F and the pepper edges are blackened in places.' },
+      { title: 'Warm the tortillas', text: 'While the tray finishes, warm the tortillas for 20 seconds a side in a dry pan over medium-high heat and stack them in a clean tea towel to stay soft.' },
+      { title: 'Finish with lime', text: 'Squeeze the lime over the hot tray and scrape everything together with the juices. Scatter the coriander and serve straight from the tray with the tortillas and toppings.' }
+    ],
+    tips: [
+      'Preheat the tray. It is the single change that makes an oven fajita taste like a griddled one.',
+      'Slice the chicken and vegetables to a similar thickness so they finish at the same time.',
+      'Add the lime only after roasting. Acid in the marinade turns the surface of the chicken pale and stops it browning.'
+    ],
+    variations: [
+      'Use steak strips, prawns or firm tofu. Prawns need only 8 minutes, so add them halfway through.',
+      'Spoon the tray over rice with black beans for a burrito bowl instead of tortillas.',
+      'Add sliced courgette or mushrooms to the tray, and a tin of drained black beans in the last 5 minutes.'
+    ],
+    storage: 'Keeps 3 days in the fridge. Reheat in a hot dry pan for 3 minutes rather than the microwave, which makes the peppers limp. The cooked filling freezes for 2 months and is good in quesadillas straight from frozen.',
+    faqs: [
+      { q: 'Breast or thigh?', a: 'Thighs are more forgiving at this heat and stay juicy; breast is leaner and cooks a couple of minutes faster, so check it at 15 minutes.' },
+      { q: 'Can I marinate the chicken ahead?', a: 'Yes, up to 12 hours with the oil and spices, which deepens the flavour. Keep the lime out until after roasting and keep the vegetables separate so they do not go soft.' },
+      { q: 'Why is there liquid in the bottom of my tray?', a: 'The oven was not hot enough or the tray was overloaded, so everything steamed. Pour the liquid off, turn the grill on for 3 minutes, and the edges will still char.' }
+    ],
+    related: ['taco-rice-bowls', 'broccoli-quesadillas', 'honey-soy-chicken']
+  },
+  {
+    slug: 'sausage-gnocchi',
+    title: 'One-Pan Sausage and Gnocchi',
+    description: 'Crisped gnocchi with sausage, spinach and a light tomato cream sauce, all in one skillet in 25 minutes.',
+    intro: 'Shop-bought gnocchi does not need boiling. Fried straight from the packet in the sausage fat it crisps on the outside and stays pillowy inside, which is a better result than any pot of water gives you. Everything then cooks in the same pan, so the sausage fond ends up in the sauce rather than down the drain.',
+    category: 'quick-dinners',
+    cuisine: 'Italian',
+    course: 'Dinner',
+    method: 'Skillet',
+    diet: ['high-protein'],
+    keywords: ['sausage gnocchi', 'one pan gnocchi', 'crispy gnocchi', 'quick pasta dinner', '25 minute dinner'],
+    image: null,
+    imageAlt: 'A skillet of golden gnocchi with sausage, wilted spinach and a light tomato cream sauce',
+    prepMinutes: 10,
+    cookMinutes: 20,
+    servings: 4,
+    yieldText: '4 bowls',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 58,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 648, protein: 29, carbs: 58, fat: 34, fiber: 5, sugar: 9, sodium: 980 },
+    equipment: ['Large heavy skillet with a lid', 'Wooden spoon'],
+    ingredients: [
+      { group: 'Pan', items: [
+        '400 g Italian sausages, skins removed and meat broken into chunks',
+        '1 tablespoon olive oil',
+        '500 g shelf-stable or fresh potato gnocchi, straight from the packet',
+        '1 small onion, finely diced',
+        '3 garlic cloves, thinly sliced',
+        '1/2 teaspoon fennel seeds, lightly crushed',
+        '1/2 teaspoon chilli flakes'
+      ] },
+      { group: 'Sauce', items: [
+        '2 tablespoons tomato puree',
+        '1/2 cup (120 ml) chicken or vegetable stock',
+        '1/2 cup (120 ml) double cream',
+        '150 g baby spinach',
+        '1/2 cup (40 g) parmesan, finely grated, plus more to serve',
+        'Salt and black pepper, to taste',
+        'Squeeze of lemon, to finish'
+      ] }
+    ],
+    instructions: [
+      { title: 'Brown the sausage', text: 'Heat the oil in a large skillet over medium-high and add the sausage meat in chunks. Leave it 3 minutes before turning, then cook 4 minutes more until browned. Lift it out with a slotted spoon and leave the fat behind.' },
+      { title: 'Crisp the gnocchi', text: 'Add the gnocchi to the hot fat in a single layer and leave it undisturbed for 3 minutes, until the undersides are golden, then toss and give it 2 minutes more. Add a little oil if the pan looks dry.' },
+      { title: 'Cook the aromatics', text: 'Push the gnocchi to the edge, add the onion to the middle with a pinch of salt and cook 3 minutes, then the garlic, fennel seeds and chilli for 45 seconds, until fragrant.' },
+      { title: 'Build the sauce', text: 'Stir in the tomato puree and cook it for 1 minute, until it darkens, then pour in the stock and scrape the base of the pan clean. All the browning from the sausage lifts into the sauce here.' },
+      { title: 'Add cream and spinach', text: 'Return the sausage, add the cream and bring it to a gentle simmer. Add the spinach in handfuls, covering the pan for 30 seconds between each, until just wilted.' },
+      { title: 'Finish off the heat', text: 'Take the pan off the heat, stir in the parmesan, and season with pepper, a little salt and a squeeze of lemon. Serve immediately, while the gnocchi is still crisp at the edges.' }
+    ],
+    tips: [
+      'Do not boil the gnocchi first. Dry from the packet is what lets it crisp, and boiled gnocchi will only turn to paste in the pan.',
+      'Leave the gnocchi alone for the first three minutes. Stirring early is why most attempts come out pale and gluey.',
+      'Add the parmesan off the heat. On a simmer it splits and turns the sauce grainy.'
+    ],
+    variations: [
+      'Use chicken sausage, or swap in 300 g of mushrooms and a tin of butter beans for a vegetarian pan.',
+      'Leave the cream out and finish with a splash of pasta water and more parmesan for a lighter sauce.',
+      'Add a handful of halved cherry tomatoes with the onion, or stir through pesto at the end instead of the tomato puree.'
+    ],
+    storage: 'Best eaten straight away, as the gnocchi softens on standing. Leftovers keep 2 days in the fridge and reheat best in a hot pan with a splash of stock. Not suitable for freezing; the cream and the gnocchi both suffer.',
+    faqs: [
+      { q: 'Which gnocchi works best?', a: 'The vacuum-packed shelf-stable kind is ideal, as it is dry and firm. Fresh chilled gnocchi works too; frozen gnocchi needs a few extra minutes and more space in the pan.' },
+      { q: 'Can I make it without cream?', a: 'Yes. Use 100 ml more stock and an extra handful of parmesan, or a couple of spoons of mascarpone or cream cheese, which will not split as readily.' },
+      { q: 'My sauce is too thick. What do I do?', a: 'Loosen it with stock a tablespoon at a time off the heat. Gnocchi keeps absorbing liquid as it sits, so expect to do this if it waits on the stove.' }
+    ],
+    related: ['creamy-tomato-rigatoni', 'pesto-tortellini', 'smoky-tomato-pasta']
+  },
+  {
+    slug: 'egg-fried-rice',
+    title: '15-Minute Egg Fried Rice',
+    description: 'Day-old rice fried hard with egg, spring onion and peas, seasoned with soy and sesame.',
+    intro: 'Fried rice is a technique rather than a recipe, and the technique is dryness and heat. Cold rice from yesterday has lost enough moisture for the grains to separate and fry; fresh rice steams into a clump no matter how hot the pan. Beyond that, keep the pan loud, cook the egg separately, and have everything within reach before you start.',
+    category: 'quick-dinners',
+    cuisine: 'Chinese-inspired',
+    course: 'Dinner',
+    method: 'Stir-Fry',
+    diet: ['vegetarian', 'dairy-free'],
+    keywords: ['egg fried rice', 'leftover rice recipe', 'quick stir fry', '15 minute dinner', 'vegetarian fried rice'],
+    image: null,
+    imageAlt: 'A wok of golden egg fried rice with peas, spring onion and ribbons of egg',
+    prepMinutes: 7,
+    cookMinutes: 8,
+    servings: 4,
+    yieldText: '4 bowls',
+    difficulty: 'Easy',
+    rating: 4.7,
+    ratingCount: 67,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 418, protein: 14, carbs: 58, fat: 14, fiber: 4, sugar: 4, sodium: 680 },
+    equipment: ['Wok or large heavy skillet', 'Spatula', 'Small bowl for the eggs'],
+    ingredients: [
+      { group: 'Rice and eggs', items: [
+        '4 cups (about 600 g) cooked long-grain rice, cold from the fridge',
+        '4 large eggs, beaten with a pinch of salt',
+        '3 tablespoons neutral oil, such as groundnut or rapeseed'
+      ] },
+      { group: 'Add-ins', items: [
+        '6 spring onions, sliced, whites and greens separated',
+        '3 garlic cloves, finely chopped',
+        '1 tablespoon fresh ginger, finely grated',
+        '1 cup frozen peas',
+        '1 carrot, finely diced, optional'
+      ] },
+      { group: 'Seasoning', items: [
+        '2 1/2 tablespoons light soy sauce, or tamari',
+        '1 teaspoon dark soy sauce, for colour, optional',
+        '2 teaspoons toasted sesame oil',
+        '1/2 teaspoon white pepper',
+        '1 teaspoon rice vinegar'
+      ] }
+    ],
+    instructions: [
+      { title: 'Break up the rice', text: 'Rub the cold rice between your fingers in a bowl until every clump has separated into loose grains. Clumps will not fry, and this is easier to do now than in a hot wok.' },
+      { title: 'Cook the egg first', text: 'Heat 1 tablespoon of the oil in the wok over medium-high, pour in the beaten eggs and let them set for 20 seconds, then scramble into large soft curds. Tip them back into the bowl while still slightly wet.' },
+      { title: 'Start the aromatics', text: 'Add the remaining 2 tablespoons of oil and turn the heat to high. Fry the spring onion whites, garlic, ginger and carrot for 60 seconds, until the kitchen smells of them but nothing has browned.' },
+      { title: 'Fry the rice hard', text: 'Add the rice and press it into the pan, leaving it 45 seconds between turns for 3 to 4 minutes. You want to hear it crackling; that sound is the water leaving and the grains toasting.' },
+      { title: 'Season at the edge', text: 'Add the peas, then pour the soy sauces, sesame oil, white pepper and vinegar around the hot sides of the pan rather than over the rice, so they sizzle and caramelise on the way in. Toss to coat.' },
+      { title: 'Return the egg and serve', text: 'Fold the egg back in with the spring onion greens, break it into pieces with the spatula and serve at once, with chilli oil at the table.' }
+    ],
+    tips: [
+      'Cold rice, ideally a day old. If you only have fresh, spread it on a tray and chill it uncovered for 30 minutes, which gets you close.',
+      'Cook the egg separately and add it at the end. Pouring raw egg over the rice coats every grain and gives you a soft, sticky result instead of ribbons.',
+      'Season down the side of the pan. Soy poured straight onto rice soaks in and steams; on the hot metal it caramelises first.'
+    ],
+    variations: [
+      'Add leftover roast chicken, prawns or cubed firm tofu with the peas.',
+      'Use a mix of whatever vegetables need using: sweetcorn, diced pepper, shredded cabbage or chopped green beans.',
+      'Finish with a fried egg on each bowl and a spoon of chilli crisp for a fuller meal.'
+    ],
+    storage: 'Cool quickly, refrigerate within an hour and eat within 1 day. Reheat until piping hot in a hot pan. Cooked rice should never be left at room temperature for long or reheated more than once.',
+    faqs: [
+      { q: 'Why does my fried rice turn out mushy?', a: 'The rice was too fresh or the pan too cool, so the grains steamed instead of frying. Use cold rice, get the pan properly hot, and cook in two batches if your pan is small.' },
+      { q: 'Is leftover rice safe to use?', a: 'Yes, provided it was cooled quickly after cooking, kept in the fridge and used within a day, and then reheated until piping hot all the way through.' },
+      { q: 'What rice is best?', a: 'Long-grain white rice such as jasmine. Short-grain and risotto rice are too starchy and stick together, and brown rice works but gives a chewier, nuttier result.' }
+    ],
+    related: ['miso-noodles', 'ginger-chicken-stir-fry', 'honey-soy-chicken']
+  },
+  {
+    slug: 'ginger-chicken-stir-fry',
+    title: 'Ginger Chicken Stir-Fry',
+    description: 'Velveted chicken and crisp vegetables in a ginger garlic sauce, cooked in twelve minutes.',
+    intro: 'Takeaway chicken is tender because of velveting: a few minutes in cornflour and soy before it ever meets the pan, which holds the moisture in and gives the sauce something to cling to. It costs two minutes and is the difference between this and a dry stir-fry. Mix the sauce before you light the hob, because after that nothing waits.',
+    category: 'quick-dinners',
+    cuisine: 'Chinese-inspired',
+    course: 'Dinner',
+    method: 'Stir-Fry',
+    diet: ['dairy-free', 'high-protein'],
+    keywords: ['chicken stir fry', 'ginger chicken', 'velveted chicken', 'quick asian dinner', 'wok dinner'],
+    image: null,
+    imageAlt: 'Stir-fried chicken with broccoli, peppers and spring onion in a glossy ginger sauce',
+    prepMinutes: 15,
+    cookMinutes: 12,
+    servings: 4,
+    yieldText: '4 servings, with rice',
+    difficulty: 'Easy',
+    rating: 4.8,
+    ratingCount: 53,
+    datePublished: '2026-10-16',
+    dateModified: '2026-10-16',
+    nutrition: { calories: 398, protein: 39, carbs: 22, fat: 16, fiber: 4, sugar: 9, sodium: 860 },
+    equipment: ['Wok or large heavy skillet', 'Two mixing bowls', 'Fine grater'],
+    ingredients: [
+      { group: 'Velveted chicken', items: [
+        '600 g chicken breast or thighs, sliced thinly across the grain',
+        '1 tablespoon cornflour',
+        '1 tablespoon light soy sauce',
+        '1 tablespoon Shaoxing wine or dry sherry, optional',
+        '1 teaspoon toasted sesame oil',
+        '2 tablespoons neutral oil, for frying'
+      ] },
+      { group: 'Vegetables', items: [
+        '1 head broccoli, cut into small florets',
+        '1 red pepper, sliced',
+        '200 g mangetout or green beans',
+        '4 spring onions, cut into 3 cm lengths',
+        '3 tablespoons fresh ginger, finely julienned or grated',
+        '4 garlic cloves, thinly sliced'
+      ] },
+      { group: 'Sauce', items: [
+        '3 tablespoons light soy sauce, or tamari',
+        '1 tablespoon oyster sauce, or hoisin for a vegetarian pantry',
+        '1 tablespoon rice vinegar',
+        '2 teaspoons honey',
+        '1 teaspoon cornflour',
+        '1/2 cup (120 ml) chicken stock or water',
+        '1/2 teaspoon chilli flakes, optional'
+      ] }
+    ],
+    instructions: [
+      { title: 'Velvet the chicken', text: 'Toss the sliced chicken with the cornflour, soy sauce, Shaoxing wine and sesame oil until every piece is coated in a thin slick. Leave it 10 minutes while you prepare everything else.' },
+      { title: 'Mix the sauce and prep', text: 'Whisk all the sauce ingredients together in a bowl, making sure the cornflour dissolves. Cut all the vegetables and set them by the hob. A stir-fry gives you no time to chop once it starts.' },
+      { title: 'Sear the chicken', text: 'Heat the oil in the wok over high until it just smokes. Add the chicken in one layer, leave it 90 seconds without touching it, then stir-fry 2 minutes until it is golden outside and barely cooked through. Lift it out onto a plate.' },
+      { title: 'Cook the hard vegetables', text: 'Add the broccoli and beans to the same pan with 3 tablespoons of water and cover for 2 minutes, so they steam briefly, then uncover and stir-fry 1 minute until bright green and still squeaky.' },
+      { title: 'Add the aromatics', text: 'Add the pepper, ginger, garlic and spring onion whites and stir-fry 60 seconds. Keep everything moving; ginger and garlic burn in seconds at this heat and turn the whole pan bitter.' },
+      { title: 'Combine and glaze', text: 'Return the chicken, pour in the sauce and toss for 1 to 2 minutes, until it thickens and coats everything in a glossy layer. Add the spring onion greens and serve immediately with rice.' }
+    ],
+    tips: [
+      'Slice the chicken thinly across the grain. Thick pieces need longer than the vegetables can survive.',
+      'Get the pan hotter than feels sensible and cook in two batches if it is small. A crowded wok boils the chicken in its own juices.',
+      'Everything chopped and within reach before the oil goes in. Twelve minutes of cooking does not pause for prep.'
+    ],
+    variations: [
+      'Swap the chicken for prawns, beef strips or pressed firm tofu, and use hoisin in place of the oyster sauce to keep it vegetarian.',
+      'Use whatever vegetables are in the fridge: cabbage, carrot, mushrooms, baby corn or bok choy all work in the same order, hardest first.',
+      'Add a tablespoon of chilli garlic sauce or a drizzle of chilli oil at the end for heat.'
+    ],
+    storage: 'Keeps 3 days in the fridge, though the vegetables soften. Reheat in a hot pan for 2 to 3 minutes rather than the microwave. Freezing is not recommended, as the sauce separates and the vegetables collapse.',
+    faqs: [
+      { q: 'What does velveting actually do?', a: 'The cornflour and soy form a thin coating that seals the surface, so the chicken holds its juices through high heat and comes out silky rather than stringy. It is the main reason restaurant stir-fries are more tender.' },
+      { q: 'Can I use a normal frying pan?', a: 'Yes, as long as it is heavy and wide. Use the largest you have, get it very hot, and cook in two batches; a thin pan loses its heat the moment the chicken lands.' },
+      { q: 'My sauce never thickened. Why?', a: 'Either the cornflour settled at the bottom of the bowl, or the pan was not hot enough to bring the sauce to a boil. Whisk it again before pouring, and let it bubble for a full minute.' }
+    ],
+    related: ['honey-soy-chicken', 'egg-fried-rice', 'thai-green-curry']
   }
   ];
 
