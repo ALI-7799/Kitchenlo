@@ -164,25 +164,31 @@ test asserts the schema and the flag agree, so they cannot drift.
 
 ## Images
 
-Recipe photography is hotlinked from Unsplash. The ten breakfast recipes have no
-photograph yet, so they carry `image: null` and the generator produces
-deterministic SVG cover art in `assets/img/` instead, distinct per recipe and
-derived from the slug. A duplicated stock photo or a hotlink that 404s is worse
-than honest illustration.
+All photography is committed to the repo under `assets/img/photos/` and served
+from there, never hotlinked, so no image can 404 or vanish from a third-party
+host. There are 88 files: one per recipe, named after its slug, plus the five
+category, six collection and six guide heroes and the default share image.
 
-To swap in a real photo, replace the `null` with a URL and rebuild.
+Every recipe carries a photograph, so `image: null` currently appears nowhere in
+the data. It is still supported: a recipe that leaves `image` null gets
+deterministic SVG cover art derived from its slug, on the principle that honest
+illustration beats a duplicated stock photo. To add a recipe without a photo,
+write `image: null` and rebuild.
 
-Cover art is generated for **every** recipe, not just the ten without a photo. The
-other 30 act as fallbacks: each `<img>` carries a `data-fallback`, and if a
-hotlinked photo fails to load the browser swaps in that recipe's artwork rather
-than showing a broken-image icon. Every photo points at a third-party host, so any
-of them can vanish without warning. All 40 files together are about 40 KB.
+Cover art is generated for **every** recipe regardless, and acts as the load
+fallback: each `<img>` carries a `data-fallback`, so a photo that fails to load
+is replaced by that recipe's own artwork rather than a broken-image icon. The 70
+SVG files together are about 280 KB; the photographs are about 22 MB.
 
-Two of the original photos are reused across recipes (one appears on four), which
-predates this rebuild and is worth fixing when you commission photography:
+Every one of the 88 images is distinct — no photo is reused across two recipes,
+a category or a collection. Worth re-checking after adding any, since a repeated
+hero is the kind of thing nobody notices until it is on the live site:
 
-    photo-1488477181946  herbed-yogurt-bowl, berry-tartlets, berry-crumble, yogurt-parfait
-    photo-1529042410759  quinoa-bowl, stuffed-peppers
+    md5sum assets/img/photos/*.jpg | awk '{print $1}' | sort | uniq -d
+
+To swap in a different photo, replace the file at `assets/img/photos/<slug>.jpg`,
+update that recipe's `imageAlt` to describe what the new picture actually shows,
+and rebuild.
 
 ## Accounts
 
