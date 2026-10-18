@@ -368,7 +368,8 @@ function render(page: PageSpec): string {
     </script>
 ${schemaTags}
   </head>
-  <body class="${esc(page.bodyClass || '')}" data-depth="${depth === 'abs' ? 0 : depth}">
+  <body class="${esc(page.bodyClass || '')} page-enter" data-depth="${depth === 'abs' ? 0 : depth}">
+    <div class="page-transition-veil" aria-hidden="true"></div>
     ${headerMarkup(page.active || '', depth)}
     ${breadcrumbNav}
     <main id="main">

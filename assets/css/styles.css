@@ -16,7 +16,7 @@
     1. Tokens      2. Reset      3. Layout      4. Typography   5. Buttons
     6. Header      7. Cards      8. Home        9. Recipe      10. Guides
    11. Forms      12. Tools     13. Footer     14. Utilities   15. Responsive
-   16. Cookie consent
+   16. Cookie consent   17. Page transitions
    ========================================================================== */
 
 /* -- 1. Tokens ------------------------------------------------------------ */
@@ -3410,5 +3410,52 @@ a.badge-link:hover {
   .cookie-banner,
   .cookie-dialog {
     display: none !important;
+  }
+}
+
+/* -- 17. Page transitions --------------------------------------------------- */
+
+/* A full-bleed veil that fades over the page just before an internal link
+   navigates away, and a soft rise-in on the page that lands. Buttons and
+   links keep their own styling untouched; this only wraps the moment
+   between pages. */
+
+body.page-enter {
+  animation: page-enter 0.42s ease both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--paper);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+
+.page-transition-veil.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-enter {
+    animation: none;
+  }
+
+  .page-transition-veil {
+    transition: none;
   }
 }
